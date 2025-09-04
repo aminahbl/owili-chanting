@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chanting</title>
+    <meta name="application-name" content="Chanting for shared happiness" />
+    <meta name="apple-mobile-web-app-title" content="Chanting for shared happiness" />
+    <meta name="description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
+    <meta name="theme-color" content="#f9fafb" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Chanting" />
+    <meta property="og:site_name" content="Chanting for shared happiness" />
+    <meta property="og:description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
+    <meta property="og:image" content="assets/socials/social-1200x630.jpg" />
+    <meta property="og:image:alt" content="Chanting for shared happiness" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chanting" />
+    <meta name="twitter:description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
+    <meta name="twitter:image" content="assets/socials/social-1200x630.jpg" />
+    <meta name="twitter:image:alt" content="Chanting for shared happiness" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="shortcut icon" href="assets/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="index.html" class="button" style="display:grid; place-items:center;min-height:39px;" aria-label="Home">
+            <icon-home size="20"></icon-home>
+            <span class="sr-only">Home</span>
+        </a>
+
+        <h1 id="title" class="chant-title"></h1>
+
+        <div class="header-actions">
+            <button id="menu-button" class="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="controls-drawer" title="Show controls">
+                <icon-tune size="18"></icon-tune>
+                <span class="sr-only">Controls</span>
+            </button>
+
+            <div id="controls-drawer" class="drawer" role="dialog" aria-label="Chant Controls">
+                <div class="controls-drawer">
+                    <h2 class="sr-only">Controls</h2>
+                    <div class="setting-group">
+                        <div style="display:flex; align-items:center; gap:1rem">
+                            <div style="flex:1">
+                                <audio id="audio" controls preload="metadata"></audio>
+                            </div>
+
+                            <div>
+                                <button id="pick-audio" class="button">
+                                    <icon-folder size="22" color="#777"></icon-folder>
+                                </button>
+                                <input id="file-input" type="file" accept="audio/*" style="display:none" />
+                            </div>
+                        </div>
+
+                        <div style="display:flex; align-items:center">
+                            <span id="audioName" class="small"></span>
+                            <button id="remove-audio" class="clean-button" style="display:none; margin-left:0.5rem">
+                                <icon-close size="16"></icon-close>
+                                <span class="sr-only">Remove saved audio</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h2>Mode</h2>
+                        <div class="row">
+                            <div>
+                                <label>
+                                    <input type="radio" name="mode" id="mode-highlight" value="highlight"> Highlight
+                                </label>
+                                <label style="margin-left:1rem">
+                                    <input type="radio" name="mode" id="mode-scroll" value="scroll"> Scroll
+                                </label>
+                            </div>
+                            <div class="kbd-tip"></div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h2>Scroll</h2>
+                        <div class="row row-scroll">
+                            <button id="toggle-scroll" class="button">Start Scroll</button>
+                            <div class="kbd-tip"><kbd>Space</kbd></div>
+                        </div>
+                        <div class="row row-scroll">
+                            <div>
+                                <input id="speed" class="range" type="range" min="0" max="120" value="15" />
+                                <span id="speedValue" class="small">15 px/s</span>
+                            </div>
+                            <div class="kbd-tip"><kbd>↑</kbd> <kbd>↓</kbd></div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h2>Highlight</h2>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="follow-active"> Follow active line
+                                </label>
+                            </div>
+                            <div class="kbd-tip small">gently snaps into view</div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="show-markers" checked> Show markers
+                                </label>
+                            </div>
+                            <div class="kbd-tip small">toggle gutter ticks</div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label for="follow-offset">Follow position</label>
+                                <input id="follow-offset" class="range" type="range" min="0.05" max="0.6" step="0.01" value="0.3" />
+                                <span id="followOffsetValue" class="small">30%</span>
+                            </div>
+                            <div class="kbd-tip small">top bias</div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label for="follow-speed">Follow speed</label>
+                                <input id="follow-speed" class="range" type="range" min="60" max="300" step="10" value="140" />
+                                <span id="followSpeedValue" class="small">140 px/s</span>
+                            </div>
+                            <div class="kbd-tip small">max</div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <button id="mark-line" class="button">Mark current line</button>
+                                <button id="clear-markers" class="button" style="margin-left:0.5rem">Clear markers</button>
+                                <span id="markers-count" class="small" style="margin-left:0.5rem"></span>
+                            </div>
+                            <div class="kbd-tip"><kbd>M</kbd> <kbd>X</kbd></div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <button id="prev-marker" class="button">Prev</button>
+                                <button id="next-marker" class="button" style="margin-left:0.5rem">Next</button>
+                                <button id="undo-marker" class="button" style="margin-left:0.5rem">Undo last</button>
+                            </div>
+                            <div class="kbd-tip"><kbd>J</kbd> <kbd>K</kbd> <kbd>Z</kbd></div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <button id="export-markers" class="button">Export markers</button>
+                                <button id="import-markers" class="button" style="margin-left:0.5rem">Import markers</button>
+                                <input id="import-file" type="file" accept="application/json,.json" style="display:none" />
+                            </div>
+                            <div class="kbd-tip small">JSON</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="drawer-backdrop" class="backdrop" aria-hidden="true"></div>
+
+    <main class="container">
+        <div id="scroll-area" class="scroll-area" role="region" aria-label="Chant Text">
+
+            <div id="content"></div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script type="module" src="assets/chant.js"></script>
+</body>
+
+</html>

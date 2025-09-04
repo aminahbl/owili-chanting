@@ -1,0 +1,378 @@
+/* Light, minimal typography-first layout */
+:root {
+  --bg: #f9fafb;
+  --fg: #0f172a;
+  --muted: #475569;
+  --secondary-text: #7c8085;
+  --accent: #ca6b12;
+  --border: #e5e7eb;
+  --drawer-w: min(560px, 92vw);
+  --gutter-w: 1.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* When drawer is open, shift main layout by reserving space on the right */
+.site-header,
+.container,
+.site-footer {
+  transition: margin-right 220ms ease;
+}
+
+body.drawer-open .site-header,
+body.drawer-open .container,
+body.drawer-open .site-footer {
+  margin-right: var(--drawer-w);
+}
+
+.site-header,
+.site-footer {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.site-footer small {
+  display: inline-block;
+  max-width: 75ch;
+  margin: 0 auto;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.container {
+  width: clamp(300px, 80%, 900px);
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.clean-button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+/* Index page */
+.chant-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.chant-list li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 0 0 0.75rem;
+}
+
+.chant-list a {
+  display: block;
+  padding: 1rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.chant-list a:hover {
+  background: #f8fafc;
+}
+
+/* Chant page layout */
+/* Scrollable chant area: keeps header pinned */
+.scroll-area {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  padding: 0 1rem 50vh;
+}
+
+.controls .row,
+.controls-drawer .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+
+.controls-drawer h2 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+}
+
+.controls-drawer .row {
+  justify-content: space-between;
+}
+
+.controls label,
+.controls-drawer label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--fg);
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: #cbd5e1;
+}
+
+.range {
+  vertical-align: middle;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.kbd-tip {
+  justify-self: flex-end;
+}
+
+.chant-title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.meta {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.section {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1rem 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.item {
+  margin: 0.5rem 0 1.5rem;
+  padding-left: var(--gutter-w);
+}
+
+/* Marker ticks gutter */
+.item.has-marker {
+  position: relative;
+}
+
+.item.has-marker::before {
+  content: attr(data-marker-n);
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: calc(var(--gutter-w) - 0.35rem);
+  padding-right: 0.15rem;
+  font-size: 0.68rem;
+  line-height: 1;
+  color: var(--muted);
+  opacity: 0.75;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.item.active.has-marker::before {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Toggle to hide gutter marker ticks */
+body.markers-hidden .item.has-marker::before {
+  display: none !important;
+}
+
+/* Active line highlighting for timed markers */
+.item.active {
+  background: #fff8f0;
+  /* subtle highlight */
+  box-shadow: inset 3px 0 0 var(--accent);
+  border-radius: 8px;
+}
+
+/* Keep large text readable on highlight */
+.item.active .pali,
+.item.active .en {
+  background: transparent;
+}
+
+.item .pali {
+  font-size: 2.5rem;
+  line-height: 1.15;
+}
+
+.item .en {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  margin-left: 3rem;
+}
+
+.note {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.heading {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  margin: 1rem 0 1rem;
+}
+
+/* Reading comfort */
+.item .pali,
+.item .en {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Audio */
+audio {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Header actions and drawer */
+.header-actions {
+  position: relative;
+  margin-left: auto;
+}
+
+/* Backdrop for side drawer */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 900;
+}
+
+.backdrop.open {
+  opacity: 0;
+  /* keep invisible to allow interaction with content */
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Side drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background: #fff;
+  border-left: 1px solid var(--border);
+  border-radius: 0;
+  padding: 1rem;
+  width: var(--drawer-w);
+  max-height: 100vh;
+  overflow: auto;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 220ms ease, opacity 220ms ease;
+  z-index: 1000;
+}
+
+.drawer.open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.setting-group {
+  margin-bottom: 1.35rem;
+}
+
+kbd {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-bottom-width: 3px;
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Accessibility: screen-reader-only helper */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Mode-based UI polish */
+/* Dim and disable scroll controls while in Highlight mode */
+body.mode-highlight .controls-drawer .row-scroll {
+  opacity: 0.45;
+  filter: grayscale(0.2);
+}
+
+body.mode-highlight .controls-drawer .row-scroll .button,
+body.mode-highlight .controls-drawer .row-scroll .range {
+  pointer-events: none;
+}
+
+body.mode-highlight .controls-drawer .row-scroll .kbd-tip {
+  visibility: hidden;
+}

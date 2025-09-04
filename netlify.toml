@@ -1,0 +1,29 @@
+[build]
+  # No build step; this is a purely static site
+  publish = "."
+
+# Optional: local dev hints for Netlify CLI (not required on Netlify)
+[dev]
+  publish = "."
+
+# Security headers (conservative defaults unlikely to break features)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "0"
+
+# Cache static assets modestly (filenames are not hashed, so keep TTL short)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Redirect HTTP to HTTPS to ensure secure context for browser APIs
+[[redirects]]
+  from = "http://*/*"
+  to = "https://:splat"
+  status = 301
+  force = true
