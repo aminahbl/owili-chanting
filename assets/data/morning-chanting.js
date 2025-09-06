@@ -32,7 +32,6 @@ export const chant = {
                 { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
                 { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
                 { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
-                { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
             ]
         },
         {
@@ -76,8 +75,7 @@ export const chant = {
         {
             title: "Homage to the Sangha",
             items: [
-                { note: "[Handa mayam sanghābhitthutim karomase]" },
-                { note: "[Now let us chant in praise of the Sangha.]" },
+                { pali: "[Handa mayam sanghābhitthutim karomase]", en: "[Now let us chant in praise of the Sangha.]" },
                 { pali: "Yo so supatipanno bhagavato sāvakasangho", en: "They are the Blessed One's disciples, who have practised well," },
                 { pali: "Ujupatipanno bhagavato sāvakasangho", en: "Who have practised directly," },
                 { pali: "Ñāyapatipanno bhagavato sāvakasangho", en: "Who have practised insightfully," },
@@ -88,8 +86,7 @@ export const chant = {
                 { pali: "Pāhuneyyo", en: "Worthy of hospitality," },
                 { pali: "Dakkhineyyo", en: "Worthy of offerings," },
                 { pali: "Añjali-karaṇīyo", en: "Worthy of respect;" },
-                { pali: "Anuttaram puññakkhettam lokassa", en: "They give occasion for incomparable goodness to arise" },
-                { pali: "", en: "in the world." },
+                { pali: "Anuttaram puññakkhettam lokassa", en: "They give occasion for incomparable goodness to arise in the world." },
                 { pali: "Tam-aham sangham abhipūjayāmi tam-aham sangham", en: "I chant my praise to this Sangha, I bow my head to" },
                 { pali: "sirasā namāmi", en: "this Sangha." },
                 { note: "[BOW]" }
@@ -98,8 +95,7 @@ export const chant = {
         {
             title: "Salutation to the Triple Gem",
             items: [
-                { note: "[Hâna mayam ratanattaya-panâma-gâthâyo c'eva samvega-parikittana-pâthañca bhaṇâmase]" },
-                { note: "[Now let us chant our salutation to the Triple Gem and a passage to arouse urgency.]" },
+                { pali: "[Hâna mayam ratanattaya-panâma-gâthâyo c'eva samvega-parikittana-pâthañca bhaṇâmase]", en: "[Now let us chant our salutation to the Triple Gem and a passage to arouse urgency.]" },
                 { pali: "Buddho susuddho karunâ-mahanṇavo", en: "The Buddha, absolutely pure, with ocean-like compassion," },
                 { pali: "Yo'ccanta-suddhabhara-ñâṇa-locano", en: "Possessing the clear sight of wisdom," },
                 { pali: "Lokassa pâpûpakilesa-ghâtako", en: "Destroyer of worldly self-corruption —" },
@@ -112,14 +108,10 @@ export const chant = {
                 { pali: "Yo dittha-santo sugatānubodhako", en: "Those who have realized peace, awakened after the Accomplished One," },
                 { pali: "Lolappahīno ariyo sumedhaso", en: "Noble and wise, all longing abandoned —" },
                 { pali: "Vandāmi sangham aham-ādarena tam", en: "Devotedly indeed, that Sangha I revere." },
-                { pali: "Iccevam-ekantabhipūja-neyyakam vatthuttayam", en: "This salutation should be made to that which is worthy." },
-                { pali: "vandayatābhisankhatam", en: "" },
-                { pali: "Puññam mayā yam mama sabbupaddavā mā hontu ve tassa", en: "Through the power of such good action, may all obstacles disappear." },
-                { pali: "pabhāva-siddhiyā", en: "" },
-                { pali: "Idha tathāgato loke uppanno araham sammāsambuddho", en: "One who knows things as they are has come into this world; and he is an" },
-                { pali: "", en: "Arahant, a perfectly Awakened being," },
-                { pali: "Dhammo ca desito niyyāniko upasamiko parinibbāniko sambodhagāmī", en: "Purifying the way leading out of delusion, calming and directing to perfect" },
-                { pali: "sugatappavedito", en: "peace, and leading to enlightenment — this Way he has made known." },
+                { pali: "Iccevam-ekantabhipūja-neyyakam vatthuttayam vandayatābhisankhatam", en: "This salutation should be made to that which is worthy." },
+                { pali: "Puññam mayā yam mama sabbupaddavā mā hontu ve tassa pabhāva-siddhiyā", en: "Through the power of such good action, may all obstacles disappear." },
+                { pali: "Idha tathāgato loke uppanno araham sammāsambuddho", en: "One who knows things as they are has come into this world; and he is an Arahant, a perfectly Awakened being," },
+                { pali: "Dhammo ca desito niyyāniko upasamiko parinibbāniko sambodhagāmī sugatappavedito", en: "Purifying the way leading out of delusion, calming and directing to perfect peace, and leading to enlightenment — this Way he has made known." },
                 { pali: "Mayan-tam dhammam sutvā evam jānāma", en: "Having heard the Teaching, we know this:" },
                 { pali: "Jātipi dukkhā", en: "Birth is dukkha," },
                 { pali: "Jarāpi dukkhā", en: "Ageing is dukkha," },
@@ -154,12 +146,6 @@ export const chant = {
                 { pali: "Sokehi paridevehi dukkhehi domanassehi upāyāsehi", en: "By sorrow, lamentation, pain, grief, and despair," },
                 { pali: "Dukkhotiņņā dukkha-paretā", en: "Bound by dukkha and obstructed by dukkha." },
                 { pali: "Appeva nāmimassa kevalassa dukkha-kkhandhassa antakiriyā paññāyethā'ti", en: "Let us all aspire to complete freedom from suffering." },
-                { note: "[ THE FOLLOWING IS CHANTED BY LAYPEOPLE AS WELL.]" },
-                { pali: "Cira-parinibbutampi tam bhagavantam saraņam gatā", en: "The Blessed One, who long ago attained Parinibbāna, is our refuge." },
-                { pali: "Dhammañca sanghañca", en: "So too are the Dhamma and the Sangha." },
-                { pali: "Tassa bhagavato sāsanam yathā-sati yathā-balam manasikaroma anupațipajjāma", en: "Attentively we follow the pathway of that Blessed One, with all of our mindfulness and strength." },
-                { pali: "Sā sā no patipatti", en: "May then the cultivation of this practice" },
-                { pali: "Imassa kevalassa dukkha-kkhandhassa antakiriyāya samvattatu", en: "Lead us to the end of every kind of suffering." }
             ]
         }
     ]

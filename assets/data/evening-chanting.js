@@ -135,21 +135,6 @@ export const chant = {
         { pali: "Kāyena vācāya va cetasā vā Sanghe kukammam pakatam mayā yam", en: "By body, speech, or mind, For whatever wrong action I have committed towards the Sangha," },
         { pali: "Sangho patigganhātu accayantam Kālantare samvaritum va sanghe", en: "May my acknowledgement of fault be accepted, That in future there may be restraint regarding the Sangha." }
       ]
-    },
-    {
-      title: "Meditation and Closing Homage",
-      items: [
-        { note: "[AT THIS TIME MEDITATION IS PRACTISED IN SILENCE, SOMETIMES FOLLOWED BY A Dhamma TALK, AND ENDING WITH THE FOLLOWING:]" },
-        { title: "Closing Homage", note: "[Araham] sammāsambuddho bhagavā" },
-        { pali: "Buddhaṁ bhagavantam abhivādemi", en: "I render homage to the Buddha, the Blessed One." },
-        { note: "[BOW]" },
-        { pali: "[Svākkhato] bhagavatā dhammo", en: "The Teaching, so completely explained by him" },
-        { pali: "Dhammam namassāmi", en: "I bow to the Dhamma." },
-        { note: "[BOW]" },
-        { pali: "[Supatipanno ] bhagavato sāvakasangho", en: "The Blessed One's disciples, who have practised well" },
-        { pali: "Sangham namāmi", en: "I bow to the Sangha." },
-        { note: "[BOW]" }
-      ]
     }
   ]
 };

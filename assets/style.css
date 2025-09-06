@@ -250,7 +250,7 @@ body.markers-hidden .item.has-marker::before {
 }
 
 .item .en {
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 1.2;
   color: var(--muted);
   margin-top: 0.5rem;

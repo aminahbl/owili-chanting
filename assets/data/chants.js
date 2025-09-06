@@ -20,4 +20,9 @@ export const chants = [
     title: "Verses on the Sharing of Merit",
     description: "Sharing merit verses",
   },
+  {
+    id: "five-frequent-recollections",
+    title: "Five Subjects for Frequent Recollection",
+    description: "Five Subjects for Frequent Recollection",
+  },
 ];
