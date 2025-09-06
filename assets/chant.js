@@ -103,7 +103,30 @@ function initControlsDrawer() {
   // Intentionally no outside-click close handler
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePop();
+    // Ignore if focused in editable fields or when modifiers are pressed
+    const t = e.target;
+    const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+    const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+    if (inFormField) return;
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+
+    if (e.key === 'Escape') { closePop(); return; }
+
+
+    if (e.key === 'w' || e.key === 'W') {
+      e.preventDefault();
+      const isOpen = pop.classList.contains('open');
+      if (isOpen) { closePop(); return; }
+      openPop();
+      return;
+    }
+
+    if (e.key === 'q' || e.key === 'Q') {
+      e.preventDefault();
+      const link = document.querySelector('header.site-header a[aria-label="Home"]');
+      const href = link && link.getAttribute('href') ? link.getAttribute('href') : 'index.html';
+      if (href) window.location.href = href;
+    }
   });
 
   // Backdrop remains non-interactive in non-modal mode
@@ -638,28 +661,71 @@ function initScrollControls(chantId) {
 
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
+      if (mode === 'highlight') {
+        const t = e.target;
+        const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+        const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+        if (inFormField) return;
+        e.preventDefault();
+        if (audio) { audio.paused ? audio.play() : audio.pause(); }
+        return;
+      }
+      return;
+    }
+    if (e.key === 's' || e.key === 'S') {
       if (mode === 'scroll') {
         e.preventDefault();
         scrolling ? stop() : start();
       }
       return;
     }
-    if (e.key === 'ArrowUp') {
-      if (mode === 'scroll') {
-        e.preventDefault();
-        const v = Math.min(120, Number(range.value) + 2);
-        range.value = String(v);
-        range.dispatchEvent(new Event('input'));
+    if (e.key === 'l' || e.key === 'L') {
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      e.preventDefault();
+      if (followActiveEl) {
+        followActiveEl.checked = !followActiveEl.checked;
+        followActiveEl.dispatchEvent(new Event('change'));
       }
       return;
     }
-    if (e.key === 'ArrowDown') {
-      if (mode === 'scroll') {
-        e.preventDefault();
-        const v = Math.max(0, Number(range.value) - 2);
-        range.value = String(v);
-        range.dispatchEvent(new Event('input'));
-      }
+    if (e.altKey && (e.key === '1' || e.code === 'Digit1')) {
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      e.preventDefault();
+      const nextMode = mode === 'highlight' ? 'scroll' : 'highlight';
+      setMode(nextMode);
+      return;
+    }
+    // Home: jump to top of chant text
+    if (e.key === 'h' || e.key === 'H') {
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      e.preventDefault();
+      if (mode === 'highlight' && followActive) suppressFollow(1200);
+      root.scrollTop = 0;
+      return;
+    }
+    // Arrow keys: scroll the chant text up/down
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      e.preventDefault();
+      const baseStep = 60;
+      const step = e.shiftKey ? baseStep * 3 : baseStep;
+      const dir = e.key === 'ArrowUp' ? -1 : 1;
+      const before = root.scrollTop || 0;
+      if (mode === 'highlight' && followActive) suppressFollow(1200);
+      root.scrollTop = before + dir * step;
+      return;
     }
     if (e.key === 'm' || e.key === 'M') {
       e.preventDefault();
