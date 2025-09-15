@@ -34,7 +34,7 @@ export const chant = {
                 { pali: "Yampidaṃ cakkhusamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from eye contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
 
                 { pali: "Sotaṃ ādittaṃ,", en: "The ear is burning," },
                 { pali: "Saddā ādittā,", en: "Sounds are burning," },
@@ -43,7 +43,7 @@ export const chant = {
                 { pali: "Yampidaṃ sotasamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from ear contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
 
                 { pali: "Ghānaṃ ādittaṃ,", en: "The nose is burning," },
                 { pali: "Gandhā ādittā,", en: "Odours are burning," },
@@ -52,7 +52,7 @@ export const chant = {
                 { pali: "Yampidaṃ ghānasamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from nose contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
 
                 { pali: "Jivhā ādittā,", en: "The tongue is burning," },
                 { pali: "Rasā ādittā,", en: "Tastes are burning," },
@@ -61,7 +61,7 @@ export const chant = {
                 { pali: "Yampidaṃ jivhāsamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from tongue contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
 
                 { pali: "Kāyo āditto,", en: "The body is burning," },
                 { pali: "Phoṭṭhabbā ādittā,", en: "Tangible objects are burning," },
@@ -70,7 +70,7 @@ export const chant = {
                 { pali: "Yampidaṃ kāyasamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from body contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." },
 
                 { pali: "Mano āditto,", en: "The mind is burning," },
                 { pali: "Dhammā ādittā,", en: "Mental states are burning," },
@@ -79,7 +79,7 @@ export const chant = {
                 { pali: "Yampidaṃ manosamphassapaccayā uppajjati vedayitaṃ sukhaṃ vā dukkhaṃ vā adukkhamasukhaṃ vā tam pi ādittaṃ.", en: "The feeling that arises from mind contact, whether pleasant, painful, or neutral, that too is burning." },
                 { pali: "Kena ādittaṃ?", en: "With what is it burning?" },
                 { pali: "Ādittaṃ rāgagginā dosagginā mohagginā,", en: "I declare that it is burning with the fires of passion, hatred, and delusion;" },
-                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." }
+                { pali: "Ādittaṃ jātiyā jarāmaraṇena sokehi paridevehi dukkhehi domanassehi upāyāsehi ādittan’ti vadāmi.", en: "It is burning with birth, ageing, and death, with sorrow, lamentation, pain, grief, and despair." }
             ]
         },
         {

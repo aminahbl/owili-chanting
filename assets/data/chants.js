@@ -26,6 +26,11 @@ export const chants = [
     description: "Five Subjects for Frequent Recollection",
   },
   {
+    id: "ten-paramis",
+    title: "The Ten Paramis",
+    description: "The Ten Paramis",
+  },
+  {
     id: "fire-sermon",
     title: "The Fire Sermon (Āditta-pariyāya Sutta)",
     description: "The Fire Sermon (Āditta-pariyāya Sutta)",
