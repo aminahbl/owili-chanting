@@ -64,7 +64,8 @@
   --accent: #ca6b12;
   --border: #e5e7eb;
   --drawer-w: min(560px, 92vw);
-  --gutter-w: 1.75rem;
+  --text-gutter-w: 1.75rem;
+  --gutter-w: 1rem;
 }
 
 * {
@@ -74,6 +75,7 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -135,9 +137,13 @@ body.drawer-open .site-footer {
 }
 
 .container {
-  width: clamp(300px, 80%, 900px);
+  width: 100%;
+  max-width: 900px;
   margin: 1rem auto;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .clean-button {
@@ -148,7 +154,6 @@ body.drawer-open .site-footer {
   padding: 0;
   cursor: pointer;
 }
-
 
 /* Index page */
 .chant-list {
@@ -179,8 +184,11 @@ body.drawer-open .site-footer {
 /* Scrollable chant area: keeps header pinned */
 .scroll-area {
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
-  padding: 0 1rem 50vh;
+  -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  padding: 0 var(--gutter-w) 35vh;
 }
 
 .controls .row,
@@ -254,7 +262,8 @@ body.drawer-open .site-footer {
 
 .item {
   margin: 0.5rem 0 1.5rem;
-  padding-left: var(--gutter-w);
+  padding-left: var(--text-gutter-w);
+  overflow-wrap: anywhere;
 }
 
 /* Marker ticks gutter */
@@ -267,7 +276,7 @@ body.drawer-open .site-footer {
   position: absolute;
   left: 0;
   top: 0.45rem;
-  width: calc(var(--gutter-w) - 0.35rem);
+  width: calc(var(--text-gutter-w) - 0.35rem);
   padding-right: 0.15rem;
   font-size: 0.68rem;
   line-height: 1;
@@ -432,4 +441,47 @@ body.mode-highlight .controls-drawer .row-scroll .range {
 
 body.mode-highlight .controls-drawer .row-scroll .kbd-tip {
   visibility: hidden;
+}
+
+/* Prevent page scroll and horizontal overflow when drawer is open */
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  :root {
+    --gutter-w: 0;
+    --text-gutter-w: 1rem;
+  }
+
+  .chant-title {
+    font-size: 1.25rem;
+  }
+
+  .item .pali {
+    font-size: clamp(1.35rem, 7vw, 1.85rem);
+    line-height: 1.2;
+  }
+
+  .item .en {
+    font-size: clamp(1rem, 5.2vw, 1.25rem);
+    margin-left: 1rem;
+  }
+
+  .section {
+    border-radius: 10px;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+  }
+
+  .chant-list a {
+    padding: 0.85rem;
+  }
+
+  /* Do not reserve drawer space on mobile; overlay instead */
+  body.drawer-open .site-header,
+  body.drawer-open .container,
+  body.drawer-open .site-footer {
+    margin-right: 0;
+  }
 }

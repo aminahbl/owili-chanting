@@ -1,6 +1,11 @@
 // List of available chants
 export const chants = [
   {
+    id: "verses-on-the-sharing-of-merit",
+    title: "Verses on the Sharing of Merit",
+    description: "Sharing merit verses",
+  },
+  {
     id: "invitation-to-the-devas",
     title: "Invitation to the Devas",
     description: "Invitation to the Devas",
@@ -34,10 +39,5 @@ export const chants = [
     id: "divine-abidings",
     title: "Suffusion With the Divine Abidings",
     description: "Suffusion With the Divine Abidings",
-  },
-  {
-    id: "verses-on-the-sharing-of-merit",
-    title: "Verses on the Sharing of Merit",
-    description: "Sharing merit verses",
   },
 ];
