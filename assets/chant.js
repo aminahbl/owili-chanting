@@ -442,6 +442,7 @@ function initScrollControls(chantId) {
   const undoBtn = byId('undo-marker');
   const exportBtn = byId('export-markers');
   const importBtn = byId('import-markers');
+  const loadBtn = byId('load-markers');
   const importFile = byId('import-file');
 
   if (markBtn) markBtn.addEventListener('click', addMarker);
@@ -463,6 +464,17 @@ function initScrollControls(chantId) {
     // eslint-disable-next-line no-console
     console.log({ action: 'marker_export', count: markers.length });
   }
+  function applyImportedMarkers(arr) {
+    const incoming = (arr || [])
+      .filter(m => m && typeof m.t === 'number' && typeof m.idx === 'number')
+      .sort((a, b) => a.t - b.t);
+    markersHistory.push(JSON.stringify(markers));
+    markers = incoming;
+    saveMarkers();
+    updateMarkersCount();
+    updateHighlightForAudioTime();
+    refreshMarkerDecorations();
+  }
   function importMarkersFromFile(file) {
     if (!file) return;
     const reader = new FileReader();
@@ -470,14 +482,7 @@ function initScrollControls(chantId) {
       try {
         const json = JSON.parse(String(reader.result || ''));
         const arr = Array.isArray(json) ? json : json && Array.isArray(json.markers) ? json.markers : [];
-        const incoming = arr.filter(m => m && typeof m.t === 'number' && typeof m.idx === 'number')
-          .sort((a, b) => a.t - b.t);
-        markersHistory.push(JSON.stringify(markers));
-        markers = incoming;
-        saveMarkers();
-        updateMarkersCount();
-        updateHighlightForAudioTime();
-        refreshMarkerDecorations();
+        applyImportedMarkers(arr);
         // eslint-disable-next-line no-console
         console.log({ action: 'marker_import', count: markers.length });
       } catch (e) {
@@ -490,6 +495,34 @@ function initScrollControls(chantId) {
   if (exportBtn) exportBtn.addEventListener('click', exportMarkers);
   if (importBtn) importBtn.addEventListener('click', () => { if (importFile) importFile.click(); });
   if (importFile) importFile.addEventListener('change', () => { const f = importFile.files && importFile.files[0]; importMarkersFromFile(f); importFile.value = ''; });
+
+  async function loadMarkersFromPreset() {
+    try {
+      const res = await fetch('assets/data/markers/index.json', { cache: 'no-cache' });
+      if (!res.ok) { console.warn({ action: 'marker_load_manifest_error', status: res.status }); return; }
+      const manifest = await res.json();
+      if (!Array.isArray(manifest) || !manifest.length) { console.warn({ action: 'marker_load_manifest_empty' }); return; }
+      const options = manifest.map((m, i) => `${i + 1}. ${m.label || m.file}`).join('\n');
+      const answer = window.prompt(`Load markers from:\n\n${options}\n\nEnter a number:`, '1');
+      const choice = Number(answer);
+      if (!Number.isFinite(choice)) return;
+      const idx = Math.max(1, Math.min(manifest.length, Math.floor(choice))) - 1;
+      const selected = manifest[idx];
+      if (!selected || !selected.file) return;
+      const filePath = `assets/data/markers/${selected.file}`;
+      const fileRes = await fetch(filePath, { cache: 'no-cache' });
+      if (!fileRes.ok) { console.warn({ action: 'marker_load_file_error', status: fileRes.status, file: selected.file }); return; }
+      const json = await fileRes.json();
+      const arr = Array.isArray(json) ? json : json && Array.isArray(json.markers) ? json.markers : [];
+      applyImportedMarkers(arr);
+      // eslint-disable-next-line no-console
+      console.log({ action: 'marker_load_preset', file: selected.file, count: markers.length });
+    } catch (_) {
+      // eslint-disable-next-line no-console
+      console.warn({ action: 'marker_load_error' });
+    }
+  }
+  if (loadBtn) loadBtn.addEventListener('click', () => { loadMarkersFromPreset(); });
 
   let lastActiveIdx = -1;
   function setActiveIndex(idx) {
