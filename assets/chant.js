@@ -142,6 +142,7 @@ function initScrollControls(chantId) {
   const markBtn = byId('mark-line');
   const clearMarkersBtn = byId('clear-markers');
   const markersCountEl = byId('markers-count');
+  const audioTimeEl = byId('audio-time');
   const modeAudioRadio = byId('mode-audio');
   const modeSyncedRadio = byId('mode-synced');
   const modeFreeRadio = byId('mode-free');
@@ -163,6 +164,22 @@ function initScrollControls(chantId) {
   if (Number.isNaN(speed)) speed = 15;
   range.value = String(speed);
   setText(readout, `${speed} px/s`);
+
+  function updateAudioTime() {
+    if (!audioTimeEl) return;
+    const t = audio && typeof audio.currentTime === 'number' ? Number(audio.currentTime) : 0;
+    const v = Number.isFinite(t) ? t.toFixed(4) : '0.0000';
+    setText(audioTimeEl, v);
+  }
+  updateAudioTime();
+  if (audio) {
+    audio.addEventListener('timeupdate', updateAudioTime);
+    audio.addEventListener('loadedmetadata', updateAudioTime);
+    audio.addEventListener('seeking', updateAudioTime);
+    audio.addEventListener('seeked', updateAudioTime);
+    audio.addEventListener('play', updateAudioTime);
+    audio.addEventListener('pause', updateAudioTime);
+  }
 
   let scrolling = false;
   let rafId = 0;
@@ -186,17 +203,8 @@ function initScrollControls(chantId) {
         console.log({ action: 'markers_idx_normalized', fromBase: 1, toBase: 0, count: converted.length });
         return converted;
       }
-      const hasZero = valid.some(m => m.idx === 0);
-      const allWithin1Based = valid.length > 0 && valid.every(m => m.idx >= 1 && m.idx <= count);
-      if (!hasZero && allWithin1Based) {
-        const converted = valid.map(m => ({ t: m.t, idx: Math.max(0, Math.min(count - 1, Math.floor(m.idx) - 1)) }));
-        // eslint-disable-next-line no-console
-        console.log({ action: 'markers_idx_normalized', fromBase: 1, toBase: 0, count: converted.length });
-        return converted;
-      }
-      // Clamp to valid range defensively
-      const clamped = valid.map(m => ({ t: m.t, idx: Math.max(0, Math.min(count - 1, Math.floor(m.idx))) }));
-      return clamped;
+      // No base specified: treat as already 0-based; clamp only
+      return valid.map(m => ({ t: m.t, idx: Math.max(0, Math.min(count - 1, Math.floor(m.idx))) }));
     } catch (_) {
       return Array.isArray(arr) ? arr : [];
     }
@@ -208,11 +216,7 @@ function initScrollControls(chantId) {
       if (!Array.isArray(arr)) return [];
       const filtered = arr.filter(m => m && typeof m.t === 'number' && typeof m.idx === 'number')
         .sort((a, b) => a.t - b.t);
-      const norm = normalizeMarkerIdxArray(filtered);
-      if (norm.length && typeof norm[0].idx === 'number' && norm[0].idx > 0) {
-        norm.unshift({ t: 0, idx: 0 });
-      }
-      return norm;
+      return normalizeMarkerIdxArray(filtered);
     } catch (_) {
       return [];
     }
@@ -237,10 +241,10 @@ function initScrollControls(chantId) {
       const el = byId(`line-${m.idx}`);
       if (!el) continue;
       el.classList.add('has-marker');
-      // Show 1-based marker order to match Go To numbering
-      const orderLabel = String(i + 1);
-      el.setAttribute('data-marker-n', orderLabel);
-      el.setAttribute('title', `Marker #${orderLabel}`);
+      // Show 1-based line index (matches marker files' idxBase=1)
+      const label = String((typeof m.idx === 'number' ? m.idx : 0) + 1);
+      el.setAttribute('data-marker-n', label);
+      el.setAttribute('title', `Line #${label}`);
     }
   }
   updateMarkersCount();
@@ -618,26 +622,12 @@ function initScrollControls(chantId) {
     // eslint-disable-next-line no-console
     console.log({ action: 'marker_export', count: markers.length });
   }
-  function detectOrPromptIdxBase(arr, hintedBase) {
-    if (typeof hintedBase === 'number') return hintedBase;
-    const idxs = (arr || []).map(m => (m && typeof m.idx === 'number') ? m.idx : null).filter(v => v !== null);
-    if (!idxs.length) return undefined;
-    const min = Math.min(...idxs);
-    if (min === 0) return 0;
-    if (min >= 1) return 1;
-    return undefined;
-  }
-
   function applyImportedMarkers(arr, opts = {}) {
-    let base = opts && typeof opts.idxBase === 'number' ? opts.idxBase : undefined;
-    base = detectOrPromptIdxBase(arr, base);
+    const base = opts && typeof opts.idxBase === 'number' ? opts.idxBase : 0;
     const incoming = (arr || [])
       .filter(m => m && typeof m.t === 'number' && typeof m.idx === 'number')
       .sort((a, b) => a.t - b.t);
     const normalized = normalizeMarkerIdxArray(incoming, base);
-    if (normalized.length && typeof normalized[0].idx === 'number' && normalized[0].idx > 0) {
-      normalized.unshift({ t: 0, idx: 0 });
-    }
     markersHistory.push(JSON.stringify(markers));
     markers = normalized;
     saveMarkers();
