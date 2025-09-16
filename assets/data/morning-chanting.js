@@ -146,7 +146,7 @@ export const chant = {
                 { pali: "Te mayam otiņņāmha jātiyā jarā-maraņena", en: "All of us are bound by birth, ageing, and death," },
                 { pali: "Sokehi paridevehi dukkhehi domanassehi upāyāsehi", en: "By sorrow, lamentation, pain, grief, and despair," },
                 { pali: "Dukkhotiņņā dukkha-paretā", en: "Bound by dukkha and obstructed by dukkha." },
-                { pali: "Appeva nāmimassa kevalassa dukkha-kkhandhassa antakiriyā paññāyethā'ti", en: "Let us all aspire to complete freedom from suffering." },
+                { pali: "Appeva nāmimassa kevalassa dukkha-kkhandhassa antakiriyā paññāyethā'ti", en: "Perhaps an end to this entire mass of suffering might be perceived!" },
             ]
         }
     ]
