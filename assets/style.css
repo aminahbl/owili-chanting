@@ -452,10 +452,12 @@ body.mode-synced .controls-drawer .row-scroll {
   opacity: 0.45;
   filter: grayscale(0.2);
 }
+
 body.mode-synced .controls-drawer .row-scroll .button,
 body.mode-synced .controls-drawer .row-scroll .range {
   pointer-events: none;
 }
+
 body.mode-synced .controls-drawer .row-scroll .kbd-tip {
   visibility: hidden;
 }
@@ -465,10 +467,12 @@ body.mode-free .controls-drawer .row-synced {
   opacity: 0.45;
   filter: grayscale(0.2);
 }
+
 body.mode-free .controls-drawer .row-synced .button,
 body.mode-free .controls-drawer .row-synced .range {
   pointer-events: none;
 }
+
 body.mode-free .controls-drawer .row-synced .kbd-tip {
   visibility: hidden;
 }
@@ -478,6 +482,7 @@ body.visual-highlight-off .item.active {
   background: transparent !important;
   box-shadow: none !important;
 }
+
 /* Also neutralize gutter accent on active when visual highlight is off */
 body.visual-highlight-off .item.active.has-marker::before {
   color: var(--muted) !important;
