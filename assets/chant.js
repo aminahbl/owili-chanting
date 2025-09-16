@@ -134,6 +134,7 @@ function initControlsDrawer() {
 
 function initScrollControls(chantId) {
   const btn = byId('toggle-scroll');
+  const syncBtn = byId('toggle-sync');
   const range = byId('speed');
   const readout = byId('speedValue');
   const root = byId('scroll-area') || document.scrollingElement || document.documentElement;
@@ -141,10 +142,12 @@ function initScrollControls(chantId) {
   const markBtn = byId('mark-line');
   const clearMarkersBtn = byId('clear-markers');
   const markersCountEl = byId('markers-count');
-  const modeHighlightRadio = byId('mode-highlight');
-  const modeScrollRadio = byId('mode-scroll');
+  const modeAudioRadio = byId('mode-audio');
+  const modeSyncedRadio = byId('mode-synced');
+  const modeFreeRadio = byId('mode-free');
   const followActiveEl = byId('follow-active');
   const showMarkersEl = byId('show-markers');
+  const visualHighlightEl = byId('visual-highlight');
   const followOffsetInput = byId('follow-offset');
   const followOffsetReadout = byId('followOffsetValue');
   const followSpeedInput = byId('follow-speed');
@@ -208,11 +211,15 @@ function initScrollControls(chantId) {
   updateMarkersCount();
   refreshMarkerDecorations();
 
-  // Mode handling: 'highlight' or 'scroll'
+  // Mode handling: 'audio' (synced audio), 'synced' (synced scroll), or 'free' (free scroll)
   const MODE_KEY = storageKey(chantId, 'mode');
-  let mode = (localStorage.getItem(MODE_KEY) === 'highlight') ? 'highlight' : 'scroll';
-  if (modeHighlightRadio) modeHighlightRadio.checked = mode === 'highlight';
-  if (modeScrollRadio) modeScrollRadio.checked = mode === 'scroll';
+  let savedMode = localStorage.getItem(MODE_KEY);
+  if (savedMode === 'highlight') savedMode = 'audio';
+  if (savedMode === 'scroll') savedMode = 'free';
+  let mode = (savedMode === 'audio' || savedMode === 'synced' || savedMode === 'free') ? savedMode : 'free';
+  if (modeAudioRadio) modeAudioRadio.checked = mode === 'audio';
+  if (modeSyncedRadio) modeSyncedRadio.checked = mode === 'synced';
+  if (modeFreeRadio) modeFreeRadio.checked = mode === 'free';
 
   // Follow active line (gentle snap) preference
   const FOLLOW_KEY = storageKey(chantId, 'followActive');
@@ -226,6 +233,15 @@ function initScrollControls(chantId) {
   function applyMarkersVisibility() {
     if (!document || !document.body) return;
     document.body.classList.toggle('markers-hidden', !showMarkers);
+  }
+
+  // Visual highlight preference (decoupled)
+  const VISUAL_HL_KEY = storageKey(chantId, 'visualHighlight');
+  let visualHighlight = localStorage.getItem(VISUAL_HL_KEY) !== '0';
+  if (visualHighlightEl) visualHighlightEl.checked = visualHighlight;
+  function applyVisualHighlightClass() {
+    if (!document || !document.body) return;
+    document.body.classList.toggle('visual-highlight-off', !visualHighlight);
   }
 
   // Follow tuning: offset ratio and max speed
@@ -247,54 +263,84 @@ function initScrollControls(chantId) {
 
   function updateBodyModeClass() {
     if (!document || !document.body) return;
-    document.body.classList.remove('mode-highlight', 'mode-scroll');
-    document.body.classList.add(mode === 'highlight' ? 'mode-highlight' : 'mode-scroll');
+    document.body.classList.remove('mode-highlight', 'mode-scroll', 'mode-audio', 'mode-synced', 'mode-free');
+    // remove legacy classes, then add new ones
+    const cls = mode === 'audio' ? 'mode-audio' : mode === 'synced' ? 'mode-synced' : 'mode-free';
+    document.body.classList.add(cls);
   }
 
   function applyModeUI() {
-    const isScroll = mode === 'scroll';
+    const isFree = mode === 'free';
+    const isSynced = mode === 'synced';
+    const isAudio = mode === 'audio';
+    // Free scroll controls
     if (btn) {
-      btn.disabled = !isScroll;
-      btn.setAttribute('aria-disabled', String(!isScroll));
-      if (!isScroll && scrolling) {
-        // Stop any ongoing scroll when leaving scroll mode
+      btn.disabled = !isFree;
+      btn.setAttribute('aria-disabled', String(!isFree));
+      if (!isFree && scrolling) {
         scrolling = false;
         cancelAnimationFrame(rafId);
         btn.textContent = 'Start Scroll';
       }
     }
     if (range) {
-      range.disabled = !isScroll;
-      range.setAttribute('aria-disabled', String(!isScroll));
+      range.disabled = !isFree;
+      range.setAttribute('aria-disabled', String(!isFree));
     }
-    // When entering scroll mode, clear any visual highlight
-    if (isScroll) setActiveIndex(-1);
-    // When entering highlight mode, sync immediately
-    if (!isScroll) updateHighlightForAudioTime();
+    // Synced controls
+    if (syncBtn) {
+      syncBtn.disabled = !isSynced;
+      syncBtn.setAttribute('aria-disabled', String(!isSynced));
+      if (!isSynced && syncedPlaying) stopSynced();
+    }
+    // Active index handling
+    if (isFree) setActiveIndex(-1);
+    if (isAudio) updateActiveFromAudioTime();
+    if (isSynced) updateActiveFromSyncedTime();
     updateBodyModeClass();
     updateFollowLoopState();
   }
 
   function setMode(next) {
-    if (next !== 'highlight' && next !== 'scroll') return;
+    if (next !== 'audio' && next !== 'synced' && next !== 'free') return;
     if (mode === next) return;
     mode = next;
     localStorage.setItem(MODE_KEY, mode);
-    if (modeHighlightRadio) modeHighlightRadio.checked = mode === 'highlight';
-    if (modeScrollRadio) modeScrollRadio.checked = mode === 'scroll';
+    if (modeAudioRadio) modeAudioRadio.checked = mode === 'audio';
+    if (modeSyncedRadio) modeSyncedRadio.checked = mode === 'synced';
+    if (modeFreeRadio) modeFreeRadio.checked = mode === 'free';
     applyModeUI();
     // eslint-disable-next-line no-console
     console.log({ action: 'mode_change', mode });
   }
 
-  if (modeHighlightRadio) modeHighlightRadio.addEventListener('change', () => { if (modeHighlightRadio.checked) setMode('highlight'); });
-  if (modeScrollRadio) modeScrollRadio.addEventListener('change', () => { if (modeScrollRadio.checked) setMode('scroll'); });
+  if (modeAudioRadio) modeAudioRadio.addEventListener('change', () => { if (modeAudioRadio.checked) setMode('audio'); });
+  if (modeSyncedRadio) modeSyncedRadio.addEventListener('change', () => { if (modeSyncedRadio.checked) setMode('synced'); });
+  if (modeFreeRadio) modeFreeRadio.addEventListener('change', () => { if (modeFreeRadio.checked) setMode('free'); });
   if (followActiveEl) followActiveEl.addEventListener('change', () => {
     followActive = !!followActiveEl.checked;
     try { localStorage.setItem(FOLLOW_KEY, followActive ? '1' : '0'); } catch (_) { }
     updateFollowLoopState();
     // eslint-disable-next-line no-console
     console.log({ action: 'follow_toggle', followActive });
+  });
+
+  if (visualHighlightEl) visualHighlightEl.addEventListener('change', () => {
+    visualHighlight = !!visualHighlightEl.checked;
+    try { localStorage.setItem(VISUAL_HL_KEY, visualHighlight ? '1' : '0'); } catch (_) { }
+    // Re-apply classes for current active index
+    if (!visualHighlight) {
+      const items = getItems();
+      for (const el of items) el.classList.remove('active');
+    } else {
+      // restore highlight if we have an active idx
+      if (lastActiveIdx >= 0) {
+        const items = getItems();
+        if (lastActiveIdx < items.length) items[lastActiveIdx].classList.add('active');
+      }
+    }
+    applyVisualHighlightClass();
+    console.log({ action: 'visual_highlight', visualHighlight });
   });
 
   if (showMarkersEl) showMarkersEl.addEventListener('change', () => {
@@ -344,14 +390,60 @@ function initScrollControls(chantId) {
     }
     return bestIdx;
   }
-  function updateHighlightForAudioTime() {
-    if (mode !== 'highlight') { return; }
+  function updateActiveFromAudioTime() {
+    if (mode !== 'audio') { return; }
     if (!audio || !markers.length) { setActiveIndex(-1); return; }
     const tNow = Number(audio.currentTime || 0);
     const idx = findActiveIdxForTime(tNow);
     setActiveIndex(idx >= 0 ? idx : -1);
     // Ensure follow loop can wake up if needed even when idx doesn't change
     updateFollowLoopState();
+  }
+
+  // Virtual timeline for Synced scroll
+  let syncedPlaying = false;
+  let syncedStartMs = 0;
+  let syncedOffset = 0; // seconds
+  let syncedRAF = 0;
+  function currentSyncedTime() {
+    if (!syncedPlaying) return syncedOffset;
+    const now = performance.now();
+    return syncedOffset + Math.max(0, (now - syncedStartMs) / 1000);
+  }
+  function updateActiveFromSyncedTime() {
+    if (mode !== 'synced') { return; }
+    if (!markers.length) { setActiveIndex(-1); return; }
+    const tNow = currentSyncedTime();
+    const idx = findActiveIdxForTime(tNow);
+    setActiveIndex(idx >= 0 ? idx : -1);
+  }
+  function syncedLoop() {
+    if (!syncedPlaying) { syncedRAF = 0; return; }
+    updateActiveFromSyncedTime();
+    syncedRAF = requestAnimationFrame(syncedLoop);
+  }
+  function startSynced() {
+    if (syncedPlaying) return;
+    if (!markers.length) return;
+    syncedPlaying = true;
+    syncedStartMs = performance.now();
+    syncedRAF = requestAnimationFrame(syncedLoop);
+    if (syncBtn) syncBtn.textContent = 'Pause Synced';
+    console.log({ action: 'synced_start' });
+  }
+  function stopSynced() {
+    if (!syncedPlaying) return;
+    syncedPlaying = false;
+    if (syncedRAF) cancelAnimationFrame(syncedRAF);
+    syncedRAF = 0;
+    // keep offset so resume continues from same position
+    syncedOffset = currentSyncedTime();
+    if (syncBtn) syncBtn.textContent = 'Start Synced';
+    console.log({ action: 'synced_stop' });
+  }
+  function resetSynced() {
+    syncedOffset = 0;
+    syncedStartMs = performance.now();
   }
 
   function addMarker() {
@@ -366,7 +458,8 @@ function initScrollControls(chantId) {
     markers.sort((a, b) => a.t - b.t);
     saveMarkers();
     updateMarkersCount();
-    updateHighlightForAudioTime();
+    updateActiveFromAudioTime();
+    updateActiveFromSyncedTime();
     refreshMarkerDecorations();
     // eslint-disable-next-line no-console
     console.log({ action: 'marker_add', t, idx, count: markers.length });
@@ -377,7 +470,8 @@ function initScrollControls(chantId) {
     markers = [];
     saveMarkers();
     updateMarkersCount();
-    updateHighlightForAudioTime();
+    updateActiveFromAudioTime();
+    updateActiveFromSyncedTime();
     refreshMarkerDecorations();
     // eslint-disable-next-line no-console
     console.log({ action: 'marker_clear' });
@@ -388,7 +482,8 @@ function initScrollControls(chantId) {
     try { markers = JSON.parse(prev) || []; } catch (_) { markers = []; }
     saveMarkers();
     updateMarkersCount();
-    updateHighlightForAudioTime();
+    updateActiveFromAudioTime();
+    updateActiveFromSyncedTime();
     refreshMarkerDecorations();
     // eslint-disable-next-line no-console
     console.log({ action: 'marker_undo', count: markers.length });
@@ -396,8 +491,14 @@ function initScrollControls(chantId) {
 
   function findCurrentMarkerIndex() {
     if (!markers.length) return -1;
-    if (audio && typeof audio.currentTime === 'number') {
+    if (mode === 'audio' && audio && typeof audio.currentTime === 'number') {
       const t = Number(audio.currentTime || 0);
+      let i = 0;
+      while (i < markers.length && markers[i].t <= t) i += 1;
+      return Math.max(0, Math.min(markers.length - 1, i - 1));
+    }
+    if (mode === 'synced') {
+      const t = currentSyncedTime();
       let i = 0;
       while (i < markers.length && markers[i].t <= t) i += 1;
       return Math.max(0, Math.min(markers.length - 1, i - 1));
@@ -416,7 +517,8 @@ function initScrollControls(chantId) {
     if (!markers.length) return;
     const clamped = Math.max(0, Math.min(i, markers.length - 1));
     const m = markers[clamped];
-    if (audio && typeof audio.currentTime === 'number') audio.currentTime = m.t;
+    if (mode === 'audio' && audio && typeof audio.currentTime === 'number') audio.currentTime = m.t;
+    if (mode === 'synced') { syncedOffset = m.t; syncedStartMs = performance.now(); updateActiveFromSyncedTime(); }
     setActiveIndex(m.idx);
     const vh = root.clientHeight || window.innerHeight || 0;
     const offset = Math.max(0, Math.floor(vh * followOffset));
@@ -450,6 +552,7 @@ function initScrollControls(chantId) {
   if (prevBtn) prevBtn.addEventListener('click', gotoPrevMarker);
   if (nextBtn) nextBtn.addEventListener('click', gotoNextMarker);
   if (undoBtn) undoBtn.addEventListener('click', undoLastMarkerChange);
+  if (syncBtn) syncBtn.addEventListener('click', () => { syncedPlaying ? stopSynced() : startSynced(); });
 
   function exportMarkers() {
     const payload = { id: chantId, markers };
@@ -472,7 +575,8 @@ function initScrollControls(chantId) {
     markers = incoming;
     saveMarkers();
     updateMarkersCount();
-    updateHighlightForAudioTime();
+    updateActiveFromAudioTime();
+    updateActiveFromSyncedTime();
     refreshMarkerDecorations();
   }
   function importMarkersFromFile(file) {
@@ -528,8 +632,10 @@ function initScrollControls(chantId) {
   function setActiveIndex(idx) {
     if (idx === lastActiveIdx) return;
     const items = getItems();
+    // clear existing visual
     if (lastActiveIdx >= 0 && lastActiveIdx < items.length) items[lastActiveIdx].classList.remove('active');
-    if (idx >= 0 && idx < items.length) items[idx].classList.add('active');
+    // apply new visual if enabled
+    if (visualHighlight && idx >= 0 && idx < items.length) items[idx].classList.add('active');
     lastActiveIdx = idx;
     updateFollowLoopState();
     // Reset follow velocity to avoid carrying momentum across segment switches
@@ -571,7 +677,7 @@ function initScrollControls(chantId) {
     }, ms + 30);
   }
   function followLoop(ts) {
-    if (mode !== 'highlight' || !followActive || lastActiveIdx < 0) { followRAF = 0; return; }
+    if ((mode !== 'audio' && mode !== 'synced') || !followActive || lastActiveIdx < 0) { followRAF = 0; return; }
     if (!lastFollowTs) lastFollowTs = ts;
     const dt = Math.max(0.001, (ts - lastFollowTs) / 1000);
     lastFollowTs = ts;
@@ -601,7 +707,7 @@ function initScrollControls(chantId) {
   }
   function ensureFollowLoop() {
     if (followRAF) return;
-    if (mode !== 'highlight') return;
+    if (mode !== 'audio' && mode !== 'synced') return;
     if (!followActive) return;
     if (lastActiveIdx < 0) return;
     lastFollowTs = 0;
@@ -615,12 +721,12 @@ function initScrollControls(chantId) {
     followVel = 0;
   }
   function updateFollowLoopState() {
-    if (mode === 'highlight' && followActive && lastActiveIdx >= 0) { ensureFollowLoop(); return; }
+    if ((mode === 'audio' || mode === 'synced') && followActive && lastActiveIdx >= 0) { ensureFollowLoop(); return; }
     stopFollowLoop();
   }
 
   // Pause follow on user-driven scroll interactions to make initial marker placement easier
-  const onUserScrollIntent = () => { if (mode === 'highlight' && followActive) suppressFollow(1600); };
+  const onUserScrollIntent = () => { if ((mode === 'audio' || mode === 'synced') && followActive) suppressFollow(1600); };
   root.addEventListener('wheel', onUserScrollIntent, { passive: true });
   root.addEventListener('touchstart', onUserScrollIntent, { passive: true });
   root.addEventListener('touchmove', onUserScrollIntent, { passive: true });
@@ -694,7 +800,7 @@ function initScrollControls(chantId) {
 
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
-      if (mode === 'highlight') {
+      if (mode === 'audio') {
         const t = e.target;
         const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
         const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
@@ -703,13 +809,25 @@ function initScrollControls(chantId) {
         if (audio) { audio.paused ? audio.play() : audio.pause(); }
         return;
       }
+      if (mode === 'free') {
+        e.preventDefault();
+        scrolling ? stop() : start();
+        return;
+      }
+      if (mode === 'synced') {
+        e.preventDefault();
+        syncedPlaying ? stopSynced() : startSynced();
+      }
       return;
     }
     if (e.key === 's' || e.key === 'S') {
-      if (mode === 'scroll') {
-        e.preventDefault();
-        scrolling ? stop() : start();
-      }
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      if (mode !== 'free') return;
+      e.preventDefault();
+      scrolling ? stop() : start();
       return;
     }
     if (e.key === 'l' || e.key === 'L') {
@@ -730,18 +848,33 @@ function initScrollControls(chantId) {
       const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
       if (inFormField) return;
       e.preventDefault();
-      const nextMode = mode === 'highlight' ? 'scroll' : 'highlight';
+      const order = ['audio', 'synced', 'free'];
+      const i = order.indexOf(mode);
+      const nextMode = order[(i + 1) % order.length];
       setMode(nextMode);
       return;
     }
-    // Home: jump to top of chant text
+    // Toggle visual highlight colors
     if (e.key === 'h' || e.key === 'H') {
       const t = e.target;
       const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
       const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
       if (inFormField) return;
       e.preventDefault();
-      if (mode === 'highlight' && followActive) suppressFollow(1200);
+      if (visualHighlightEl) {
+        visualHighlightEl.checked = !visualHighlightEl.checked;
+        visualHighlightEl.dispatchEvent(new Event('change'));
+      }
+      return;
+    }
+    // Home: jump to top of chant text
+    if (e.key === 'Home') {
+      const t = e.target;
+      const tag = t && t.tagName ? String(t.tagName).toUpperCase() : '';
+      const inFormField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable);
+      if (inFormField) return;
+      e.preventDefault();
+      if ((mode === 'audio' || mode === 'synced') && followActive) suppressFollow(1200);
       root.scrollTop = 0;
       return;
     }
@@ -756,7 +889,7 @@ function initScrollControls(chantId) {
       const step = e.shiftKey ? baseStep * 3 : baseStep;
       const dir = e.key === 'ArrowUp' ? -1 : 1;
       const before = root.scrollTop || 0;
-      if (mode === 'highlight' && followActive) suppressFollow(1200);
+      if ((mode === 'audio' || mode === 'synced') && followActive) suppressFollow(1200);
       root.scrollTop = before + dir * step;
       return;
     }
@@ -785,17 +918,18 @@ function initScrollControls(chantId) {
     }
   });
 
-  // Drive highlighting from audio time in highlight mode
+  // Drive active line from audio time in audio mode
   if (audio) {
-    audio.addEventListener('timeupdate', updateHighlightForAudioTime);
-    audio.addEventListener('seeked', updateHighlightForAudioTime);
-    audio.addEventListener('play', updateHighlightForAudioTime);
+    audio.addEventListener('timeupdate', updateActiveFromAudioTime);
+    audio.addEventListener('seeked', () => { if (mode === 'audio') updateActiveFromAudioTime(); });
+    audio.addEventListener('play', () => { if (mode === 'audio') updateActiveFromAudioTime(); });
   }
 
   // Apply initial mode state
   applyModeUI();
-  updateHighlightForAudioTime();
+  updateActiveFromAudioTime();
   applyMarkersVisibility();
+  applyVisualHighlightClass();
   refreshMarkerDecorations();
 }
 

@@ -73,27 +73,33 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <button id="toggle-scroll" class="button">Start</button>
+                        <div class="kbd-tip"><kbd>Space</kbd></div>
+                    </div>
+
                     <div class="setting-group">
                         <h2>Mode</h2>
                         <div class="row">
                             <div>
                                 <label>
-                                    <input type="radio" name="mode" id="mode-highlight" value="highlight"> Highlight
+                                    <input type="radio" name="mode" id="mode-audio" value="audio"> Synced audio
                                 </label>
                                 <label style="margin-left:1rem">
-                                    <input type="radio" name="mode" id="mode-scroll" value="scroll"> Scroll
+                                    <input type="radio" name="mode" id="mode-synced" value="synced"> Synced scroll
+                                </label>
+                                <label style="margin-left:1rem">
+                                    <input type="radio" name="mode" id="mode-free" value="free"> Free scroll
                                 </label>
                             </div>
                             <div class="kbd-tip"><kbd>Alt</kbd>+<kbd>1</kbd></div>
                         </div>
+
                     </div>
 
                     <div class="setting-group">
-                        <h2>Scroll</h2>
-                        <div class="row row-scroll">
-                            <button id="toggle-scroll" class="button">Start Scroll</button>
-                            <div class="kbd-tip"><kbd>S</kbd></div>
-                        </div>
+                        <h2>Free scroll</h2>
+
                         <div class="row row-scroll">
                             <div>
                                 <input id="speed" class="range" type="range" min="0" max="120" value="15" />
@@ -104,7 +110,7 @@
                     </div>
 
                     <div class="setting-group">
-                        <h2>Highlight</h2>
+                        <h2>Synced</h2>
                         <div class="row" style="margin-top:0.5rem">
                             <div>
                                 <label>
@@ -112,13 +118,6 @@
                                 </label>
                             </div>
                             <div class="kbd-tip"><kbd>L</kbd></div>
-                        </div>
-                        <div class="row" style="margin-top:0.5rem">
-                            <div>
-                                <label>
-                                    <input type="checkbox" id="show-markers" checked> Show markers
-                                </label>
-                            </div>
                         </div>
                         <div class="row" style="margin-top:0.5rem">
                             <div>
@@ -160,6 +159,24 @@
                                 <input id="import-file" type="file" accept="application/json,.json" style="display:none" />
                             </div>
                             <div class="kbd-tip small">JSON</div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h2>Visuals</h2>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="visual-highlight" checked> Apply highlight colors
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="show-markers" checked> Show markers
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>

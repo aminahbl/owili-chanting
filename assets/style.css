@@ -428,19 +428,60 @@ kbd {
 }
 
 /* Mode-based UI polish */
-/* Dim and disable scroll controls while in Highlight mode */
-body.mode-highlight .controls-drawer .row-scroll {
+/* In audio mode, dim and disable both synced and free scroll control rows */
+body.mode-audio .controls-drawer .row-scroll,
+body.mode-audio .controls-drawer .row-synced {
   opacity: 0.45;
   filter: grayscale(0.2);
 }
 
-body.mode-highlight .controls-drawer .row-scroll .button,
-body.mode-highlight .controls-drawer .row-scroll .range {
+body.mode-audio .controls-drawer .row-scroll .button,
+body.mode-audio .controls-drawer .row-scroll .range,
+body.mode-audio .controls-drawer .row-synced .button,
+body.mode-audio .controls-drawer .row-synced .range {
   pointer-events: none;
 }
 
-body.mode-highlight .controls-drawer .row-scroll .kbd-tip {
+body.mode-audio .controls-drawer .row-scroll .kbd-tip,
+body.mode-audio .controls-drawer .row-synced .kbd-tip {
   visibility: hidden;
+}
+
+/* In synced mode, dim and disable free scroll controls */
+body.mode-synced .controls-drawer .row-scroll {
+  opacity: 0.45;
+  filter: grayscale(0.2);
+}
+body.mode-synced .controls-drawer .row-scroll .button,
+body.mode-synced .controls-drawer .row-scroll .range {
+  pointer-events: none;
+}
+body.mode-synced .controls-drawer .row-scroll .kbd-tip {
+  visibility: hidden;
+}
+
+/* In free mode, dim and disable synced row */
+body.mode-free .controls-drawer .row-synced {
+  opacity: 0.45;
+  filter: grayscale(0.2);
+}
+body.mode-free .controls-drawer .row-synced .button,
+body.mode-free .controls-drawer .row-synced .range {
+  pointer-events: none;
+}
+body.mode-free .controls-drawer .row-synced .kbd-tip {
+  visibility: hidden;
+}
+
+/* Optional: when visual highlight is off, ensure any stray .active styles are neutralized */
+body.visual-highlight-off .item.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+/* Also neutralize gutter accent on active when visual highlight is off */
+body.visual-highlight-off .item.active.has-marker::before {
+  color: var(--muted) !important;
+  opacity: 0.75 !important;
 }
 
 /* Prevent page scroll and horizontal overflow when drawer is open */
