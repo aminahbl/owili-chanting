@@ -546,6 +546,8 @@ function initScrollControls(chantId) {
   const importBtn = byId('import-markers');
   const loadBtn = byId('load-markers');
   const importFile = byId('import-file');
+  const gotoBtn = byId('goto-marker');
+  const gotoInput = byId('goto-marker-input');
 
   if (markBtn) markBtn.addEventListener('click', addMarker);
   if (clearMarkersBtn) clearMarkersBtn.addEventListener('click', clearMarkers);
@@ -553,6 +555,19 @@ function initScrollControls(chantId) {
   if (nextBtn) nextBtn.addEventListener('click', gotoNextMarker);
   if (undoBtn) undoBtn.addEventListener('click', undoLastMarkerChange);
   if (syncBtn) syncBtn.addEventListener('click', () => { syncedPlaying ? stopSynced() : startSynced(); });
+
+  function gotoByInput() {
+    if (!gotoInput) return;
+    const n = Number(gotoInput.value);
+    if (!Number.isFinite(n)) return;
+    if (!markers.length) return;
+    const i = Math.max(0, Math.min(markers.length - 1, Math.floor(n) - 1));
+    gotoMarkerAt(i);
+    // eslint-disable-next-line no-console
+    console.log({ action: 'marker_goto', input: n, targetIndex: i });
+  }
+  if (gotoBtn) gotoBtn.addEventListener('click', gotoByInput);
+  if (gotoInput) gotoInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); gotoByInput(); } });
 
   function exportMarkers() {
     const payload = { id: chantId, markers };

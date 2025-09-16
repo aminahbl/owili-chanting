@@ -147,9 +147,16 @@
                             <div>
                                 <button id="prev-marker" class="button">Prev</button>
                                 <button id="next-marker" class="button" style="margin-left:0.5rem">Next</button>
-                                <button id="undo-marker" class="button" style="margin-left:0.5rem">Undo last</button>
+                                <input id="goto-marker-input" type="number" min="1" step="1" inputmode="numeric" placeholder="Go to #" aria-label="Go to marker number" style="margin-left:0.5rem; width:6rem" />
+                                <button id="goto-marker" class="button" style="margin-left:0.5rem">Go</button>
                             </div>
-                            <div class="kbd-tip"><kbd>J</kbd> <kbd>K</kbd> <kbd>Z</kbd></div>
+                            <div class="kbd-tip"><kbd>J</kbd> <kbd>K</kbd></div>
+                        </div>
+                        <div class="row" style="margin-top:0.5rem">
+                            <div>
+                                <button id="undo-marker" class="button">Undo last</button>
+                            </div>
+                            <div class="kbd-tip"><kbd>Z</kbd></div>
                         </div>
                         <div class="row" style="margin-top:0.5rem">
                             <div>
@@ -163,7 +170,7 @@
                     </div>
 
                     <div class="setting-group">
-                        <h2>Visuals</h2>
+                        <h2>Display</h2>
                         <div class="row" style="margin-top:0.5rem">
                             <div>
                                 <label>
