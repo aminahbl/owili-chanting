@@ -149,6 +149,7 @@ function initScrollControls(chantId) {
   const followActiveEl = byId('follow-active');
   const showMarkersEl = byId('show-markers');
   const visualHighlightEl = byId('visual-highlight');
+  const highlightActiveAreaEl = byId('highlight-active-area');
   const followOffsetInput = byId('follow-offset');
   const followOffsetReadout = byId('followOffsetValue');
   const followSpeedInput = byId('follow-speed');
@@ -283,6 +284,50 @@ function initScrollControls(chantId) {
     document.body.classList.toggle('visual-highlight-off', !visualHighlight);
   }
 
+  // Active area overlay preference
+  const ACTIVE_AREA_KEY = storageKey(chantId, 'highlightActiveArea');
+  let highlightActiveArea = localStorage.getItem(ACTIVE_AREA_KEY) === '1';
+  if (highlightActiveAreaEl) highlightActiveAreaEl.checked = highlightActiveArea;
+  function applyActiveAreaClass() {
+    if (!document || !document.body) return;
+    document.body.classList.toggle('active-area-on', !!highlightActiveArea);
+  }
+
+  // Active area overlay elements and updater
+  let activeAreaOverlay = null;
+  let activeAreaBand = null;
+  function ensureActiveAreaOverlay() {
+    if (activeAreaOverlay) {
+      if (root && root.firstChild !== activeAreaOverlay) root.insertBefore(activeAreaOverlay, root.firstChild);
+      return;
+    }
+    const el = document.createElement('div');
+    el.className = 'active-area-overlay';
+    const band = document.createElement('div');
+    band.className = 'band';
+    el.appendChild(band);
+    if (root && root.firstChild) root.insertBefore(el, root.firstChild);
+    if (root && !root.firstChild) root.appendChild(el);
+    activeAreaOverlay = el;
+    activeAreaBand = band;
+  }
+  function updateActiveAreaOverlay() {
+    if (!root) return;
+    if (!activeAreaOverlay || !activeAreaBand) ensureActiveAreaOverlay();
+    const vh = root.clientHeight || window.innerHeight || 0;
+    if (vh <= 0) return;
+    // Keep overlay height at 0 so it doesn't push content; band is absolutely positioned
+    activeAreaOverlay.style.height = '0px';
+    // Use band height from current style, fallback to 120
+    let bandH = activeAreaBand.offsetHeight || 0;
+    if (!bandH) {
+      const parsed = Number.parseFloat(getComputedStyle(activeAreaBand).height);
+      bandH = Number.isFinite(parsed) ? parsed : 120;
+    }
+    const y = Math.max(0, Math.min(vh - bandH, Math.floor(vh * followOffset - bandH * 0.5)));
+    activeAreaBand.style.top = `${y}px`;
+  }
+
   // Follow tuning: offset ratio and max speed
   const FOLLOW_OFFSET_KEY = storageKey(chantId, 'followOffset');
   const FOLLOW_SPEED_KEY = storageKey(chantId, 'followMaxSpeed');
@@ -382,6 +427,15 @@ function initScrollControls(chantId) {
     console.log({ action: 'visual_highlight', visualHighlight });
   });
 
+  if (highlightActiveAreaEl) highlightActiveAreaEl.addEventListener('change', () => {
+    highlightActiveArea = !!highlightActiveAreaEl.checked;
+    try { localStorage.setItem(ACTIVE_AREA_KEY, highlightActiveArea ? '1' : '0'); } catch (_) { }
+    applyActiveAreaClass();
+    ensureActiveAreaOverlay();
+    updateActiveAreaOverlay();
+    console.log({ action: 'active_area_toggle', highlightActiveArea });
+  });
+
   if (showMarkersEl) showMarkersEl.addEventListener('change', () => {
     showMarkers = !!showMarkersEl.checked;
     try { localStorage.setItem(SHOW_MARKERS_KEY, showMarkers ? '1' : '0'); } catch (_) { }
@@ -399,6 +453,7 @@ function initScrollControls(chantId) {
     updateFollowLoopState();
     // eslint-disable-next-line no-console
     console.log({ action: 'follow_offset', followOffset });
+    updateActiveAreaOverlay();
   });
   if (followSpeedInput) followSpeedInput.addEventListener('input', () => {
     followMaxSpeed = Number(followSpeedInput.value) || 160;
@@ -989,7 +1044,19 @@ function initScrollControls(chantId) {
   updateActiveFromAudioTime();
   applyMarkersVisibility();
   applyVisualHighlightClass();
+  applyActiveAreaClass();
   refreshMarkerDecorations();
+
+  // Initialize and keep overlay updated
+  ensureActiveAreaOverlay();
+  updateActiveAreaOverlay();
+  window.addEventListener('resize', updateActiveAreaOverlay);
+  if ('ResizeObserver' in window) {
+    try {
+      const ro = new ResizeObserver(() => { updateActiveAreaOverlay(); });
+      ro.observe(root);
+    } catch (_) { /* noop */ }
+  }
 }
 
 function supportsFS() {

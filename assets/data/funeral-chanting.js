@@ -1,0 +1,253 @@
+export const chant = {
+    id: "funeral-chanting",
+    title: "Funeral Chanting",
+    sections: [
+        {
+            title: "Homage",
+            items: [
+                { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
+                { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
+                { pali: "Namo tassa bhagavato arahato sammāsambuddhassa", en: "Homage to the Blessed, Noble, and Perfectly Enlightened One." },
+            ]
+        },
+        {
+            title: "Dhamma-saṅgaṇī-mātikā (Matrix of the Enumeration of Phenomena)",
+            items: [
+                { pali: "Kusalā dhammā", en: "Phenomena which are wholesome," },
+                { pali: "Akusalā dhammā", en: "Phenomena which are unwholesome," },
+                { pali: "Abyākatā dhammā", en: "Phenomena which are undetermined;" },
+                { pali: "Sukhāya vedanāya sampayuttā dhammā", en: "Phenomena associated with pleasant feeling," },
+                { pali: "Dukkhāya vedanāya sampayuttā dhammā", en: "Phenomena associated with unpleasant feeling," },
+                { pali: "Adukkhamasukhāya vedanāya sampayuttā dhammā", en: "Phenomena associated with neither pleasant nor unpleasant feeling;" },
+                { pali: "Vipākā dhammā", en: "Phenomena which are results," },
+                { pali: "Vipāka-dhamma-dhammā", en: "Phenomena which produce results," },
+                { pali: "N’eva vipāka na vipāka-dhamma-dhammā", en: "Phenomena which neither are results nor produce results;" },
+                { pali: "Upādinn’upādāniyā dhammā", en: "Phenomena kammically acquired and subject to clinging," },
+                { pali: "Anupādinn’upādāniyā dhammā", en: "Phenomena not kammically acquired but subject to clinging," },
+                { pali: "Anupādinnānupādāniyā dhammā", en: "Phenomena neither kammically acquired nor subject to clinging;" },
+                { pali: "Saṅkiliṭṭha-saṅkilesikā dhammā", en: "Phenomena which are defiled and subject to defilements," },
+                { pali: "Asaṅkiliṭṭha-saṅkilesikā dhammā", en: "Phenomena which are undefiled but subject to defilements," },
+                { pali: "Asaṅkiliṭṭhāsaṅkilesikā dhammā", en: "Phenomena which are neither defiled nor subject to defilements;" },
+                { pali: "Savitakka-savicārā dhammā", en: "Phenomena with initial and sustained application," },
+                { pali: "Avitakka-vicāra-mattā dhammā", en: "Phenomena without initial application, but with sustained application," },
+                { pali: "Avitakkāvicārā dhammā", en: "Phenomena with neither initial nor sustained application;" },
+                { pali: "Pīti-saha-gatā dhammā", en: "Phenomena which are accompanied by rapture," },
+                { pali: "Sukha-saha-gatā dhammā", en: "Phenomena which are accompanied by happiness," },
+                { pali: "Upekkhā-saha-gatā dhammā", en: "Phenomena which are accompanied by equanimity;" },
+                { pali: "Dassanena pahātabbā dhammā", en: "Phenomena to be abandoned by insight," },
+                { pali: "Bhāvanāya pahātabbā dhammā", en: "Phenomena to be abandoned by development," },
+                { pali: "N’eva dassanena na bhāvanāya pahātabbā dhammā", en: "Phenomena to be abandoned neither by insight nor development;" },
+                { pali: "Dassanena pahātabba-hetukā dhammā", en: "Phenomena with causes that are to be abandoned by seeing," },
+                { pali: "Bhāvanāya pahātabba-hetukā dhammā", en: "Phenomena with causes that are to be abandoned by development," },
+                { pali: "N’eva dassanena na bhāvanāya pahātabba-hetukā dhammā", en: "Phenomena with causes that are to be abandoned neither by seeing nor by development," },
+                { pali: "Ācaya-gāmino dhammā", en: "Phenomena leading to accumulation," },
+                { pali: "Apacaya-gāmino dhammā", en: "Phenomena leading to diminution," },
+                { pali: "N’evācaya-gāmino nāpacaya-gāmino dhammā", en: "Phenomena leading neither to accumulation nor to diminution," },
+                { pali: "Sekkhā dhammā", en: "Phenomena of one in the training," },
+                { pali: "Asekkhā dhammā", en: "Phenomena of one who has completed the training," },
+                { pali: "N’eva sekkhā nāsekkhā dhammā", en: "Phenomena of one neither in the training nor one who has completed the training," },
+                { pali: "Parittā dhammā", en: "Phenomena which are limited," },
+                { pali: "Mahaggatā dhammā", en: "Phenomena which are exalted," },
+                { pali: "Appamāṇā dhammā", en: "Phenomena which are immeasurable," },
+                { pali: "Paritt’ārammaṇā dhammā", en: "Phenomena having limited objects," },
+                { pali: "Mahaggat’ārammaṇā dhammā", en: "Phenomena having exalted objects," },
+                { pali: "Appamāṇ’ārammaṇā dhammā", en: "Phenomena having immeasurable objects," },
+                { pali: "Hīnā dhammā", en: "Phenomena which are inferior," },
+                { pali: "Majjhimā dhammā", en: "Phenomena which are medium," },
+                { pali: "Paṇītā dhammā", en: "Phenomena which are superior," },
+                { pali: "Micchatta-niyatā dhammā", en: "Phenomena certain with wrong," },
+                { pali: "Sammatta-niyatā dhammā", en: "Phenomena certain with right," },
+                { pali: "Aniyatā dhammā", en: "Phenomena uncertain," },
+                { pali: "Magg’ārammaṇā dhammā", en: "Phenomena with the path as object," },
+                { pali: "Magga-hetukā dhammā", en: "Phenomena with the path as root," },
+                { pali: "Maggādhipatino dhammā", en: "Phenomena with the path as predominant factor." },
+                { pali: "Uppannā dhammā", en: "Phenomena which have arisen," },
+                { pali: "Anuppannā dhammā", en: "Phenomena which have not arisen," },
+                { pali: "Uppādino dhammā", en: "Phenomena which are bound to arise," },
+                { pali: "Atītā dhammā", en: "Phenomena which are past," },
+                { pali: "Anāgatā dhammā", en: "Phenomena which are future," },
+                { pali: "Paccuppannā dhammā", en: "Phenomena which are present," },
+                { pali: "Atīt’ārammaṇā dhammā", en: "Phenomena having past objects," },
+                { pali: "Anāgat’ārammaṇā dhammā", en: "Phenomena having future objects," },
+                { pali: "Paccuppann’ārammaṇā dhammā", en: "Phenomena having present objects," },
+                { pali: "Ajjhattā dhammā", en: "Phenomena which are internal," },
+                { pali: "Bahiddhā dhammā", en: "Phenomena which are external," },
+                { pali: "Ajjhatta-bahiddhā dhammā", en: "Phenomena which are internal and external," },
+                { pali: "Ajjhatt’ārammaṇā dhammā", en: "Phenomena having internal objects," },
+                { pali: "Bahiddh’ārammaṇā dhammā", en: "Phenomena having external objects," },
+                { pali: "Ajjhatta-bahiddh’ārammaṇā dhammā", en: "Phenomena having internal and external objects," },
+                { pali: "Sanidassana-sappaṭighā dhammā", en: "Phenomena which are manifest and reactive," },
+                { pali: "Anidassana-sappaṭighā dhammā", en: "Phenomena which are non-manifest and reactive," },
+                { pali: "Anidassanāppaṭighā dhammā", en: "Phenomena which are non-manifest and non-reactive." }
+            ]
+        },
+        {
+            title: "Paṭṭhāna-mātikā-pāṭho (The Recitation of the Matrix of the Paṭṭhāna)",
+            items: [
+                { pali: "Hetu-paccayo", en: "Root condition" },
+                { pali: "Ārammaṇa-paccayo", en: "Object condition" },
+                { pali: "Adhipati-paccayo", en: "Predominance condition" },
+                { pali: "Anantara-paccayo", en: "Preceding condition" },
+                { pali: "Samanantara-paccayo", en: "Prior condition" },
+                { pali: "Saha-jāta-paccayo", en: "Co-nascent condition" },
+                { pali: "Aññam-añña-paccayo", en: "Reciprocal condition" },
+                { pali: "Nissaya-paccayo", en: "Support condition" },
+                { pali: "Upanissaya-paccayo", en: "Decisive support condition" },
+                { pali: "Pure-jāta-paccayo", en: "Arising before condition" },
+                { pali: "Pacchā-jāta-paccayo", en: "Arising later condition" },
+                { pali: "Āsevana-paccayo", en: "Habitual condition" },
+                { pali: "Kamma-paccayo", en: "Karma condition" },
+                { pali: "Vipāka-paccayo", en: "Result condition" },
+                { pali: "Āhāra-paccayo", en: "Nutriment condition" },
+                { pali: "Indriya-paccayo", en: "Faculty condition" },
+                { pali: "Jhāna-paccayo", en: "Absorption condition" },
+                { pali: "Magga-paccayo", en: "Path condition" },
+                { pali: "Sampayutta-paccayo", en: "Associated condition" },
+                { pali: "Vippayutta-paccayo", en: "Dissociated condition" },
+                { pali: "Atthi-paccayo", en: "Presence condition" },
+                { pali: "N’atthi-paccayo", en: "Absence condition" },
+                { pali: "Vigata-paccayo", en: "Disappearance condition" },
+                { pali: "Avigata-paccayo", en: "Non-disappearance condition" }
+            ]
+        },
+        {
+            title: "Vipassanā-bhūmi-pāṭho (The Reading on the Grounds of Insight Meditation)",
+            items: [
+                { pali: "Pañcakkhandhā:", en: "The five aggregates:" },
+                { pali: "Rūpakkhandho, vedanākkhandho, saññākkhandho, saṅkhārakkhandho, viññāṇakkhandho", en: "the form aggregate, the feeling aggregate, the perception aggregate, the fabrication aggregate, the consciousness aggregate" },
+
+
+                { pali: "Dvā-das’āyatanāni:", en: "The twelve sense bases:" },
+                { pali: "Cakkhv-āyatanaṃ rūp’āyatanaṃ, sot’āyatanaṃ sadd’āyatanaṃ,", en: "the eye base, the form base, the ear base, the sound base," },
+                { pali: "Ghān’āyatanaṃ gandh’āyatanaṃ, jivh’āyatanaṃ ras’āyatanaṃ,", en: "the nose base, the odor base, the tongue base, the taste base," },
+                { pali: "Kāy’āyatanaṃ phoṭṭhabb’āyatanaṃ, man’āyatanaṃ dhamm’āyatanaṃ", en: "the body base, the touch base, the mind base, the mental phenomena base" },
+
+                { pali: "Aṭṭhārasa dhātuyo:", en: "The eighteen elements:" },
+                { pali: "Cakkhu-dhātu rūpa-dhātu cakkhu-viññāṇa-dhātu,", en: "the eye element, the form element, the eye-consciousness element," },
+                { pali: "Sota-dhātu sadda-dhātu sota-viññāṇa-dhātu,", en: "the ear element, the sound element, the ear-consciousness element," },
+                { pali: "Ghāna-dhātu gandha-dhātu ghāna-viññāṇa-dhātu,", en: "the nose element, the odor element, the nose-consciousness element," },
+                { pali: "Jivhā-dhātu rasa-dhātu jivhā-viññāṇa-dhātu,", en: "the tongue element, the taste element, the tongue-consciousness element," },
+                { pali: "Kāya-dhātu phoṭṭhabba-dhātu kāya-viññāṇa-dhātu,", en: "the body element, the touch element, the body-consciousness element," },
+                { pali: "Mano-dhātu dhamma-dhātu mano-viññāṇa-dhātu", en: "the mind element, the mental phenomena element, the mind-consciousness element" },
+
+                { pali: "Bā-vīsat’indriyāni:", en: "The twenty-two faculties:" },
+                { pali: "Cakkhu’ndriyaṃ sot’indriyaṃ ghān’indriyaṃ jivh’indriyaṃ,", en: "the eye faculty, the ear faculty, the nose faculty, the tongue faculty," },
+                { pali: "Kāy’indriyaṃ man’indriyaṃ, itth’indriyaṃ puris’indriyaṃ,", en: "the body faculty, the mind faculty, the female faculty, the male faculty," },
+                { pali: "Jīvit’indriyaṃ, sukh’indriyaṃ dukkh’indriyaṃ,", en: "the life faculty, the pleasure faculty, the pain faculty," },
+                { pali: "Somanass’indriyaṃ domanass’indriyaṃ upekkh’indriyaṃ,", en: "the joy faculty, the grief faculty, the equanimity faculty," },
+                { pali: "Saddh’indriyaṃ viriy’indriyaṃ sat’indriyaṃ samādh’indriyaṃ paññ’indriyaṃ,", en: "the faith faculty, the energy faculty, the mindfulness faculty, the concentration faculty, the wisdom faculty," },
+                { pali: "Anaññātañ-ñassāmī-t’indriyaṃ aññ’indriyaṃ aññātāv’indriyaṃ", en: "the 'I-will-know-the-unknown' faculty, the final-knowledge faculty, the one-who-has-final-knowledge faculty" },
+
+                { pali: "Cattāri ariya-saccāni:", en: "The four noble truths:" },
+                { pali: "Dukkhaṃ ariya-saccaṃ, dukkha-samudayo ariya-saccaṃ,", en: "suffering, the noble truth; the origin of suffering, the noble truth;" },
+                { pali: "Dukkha-nirodho ariya-saccaṃ, dukkha-nirodha-gāminī paṭipadā ariya-saccaṃ", en: "the cessation of suffering, the noble truth; the path leading to the cessation of suffering, the noble truth" },
+
+                { pali: "Avijjā-paccayā saṅkhārā, saṅkhāra-paccayā viññāṇaṃ,", en: "With ignorance as condition, formations; with formations as condition, consciousness;" },
+                { pali: "Viññāṇa-paccayā nāma-rūpaṃ, nāma-rūpa-paccayā saḷ-āyatanaṃ,", en: "with consciousness as condition, name-and-form; with name-and-form as condition, the six sense bases;" },
+                { pali: "Saḷ-āyatana-paccayā phasso, phassa-paccayā vedanā,", en: "with the six sense bases as condition, contact; with contact as condition, feeling;" },
+                { pali: "Vedanā-paccayā taṇhā, taṇhā-paccayā upādānaṃ,", en: "with feeling as condition, craving; with craving as condition, clinging;" },
+                { pali: "Upādāna-paccayā bhavo, bhava-paccayā jāti,", en: "with clinging as condition, becoming; with becoming as condition, birth;" },
+                { pali: "Jāti-paccayā jarā-maraṇaṃ soka-parideva-dukkha-domanass’upāyāsā sambhavanti", en: "with birth as condition, aging-and-death, sorrow, lamentation, pain, displeasure, and despair come to be." },
+
+                { pali: "Avijjāya tv-eva asesa-virāga-nirodhā saṅkhāra-nirodho,", en: "But with the remainderless fading away and cessation of ignorance comes cessation of formations;" },
+                { pali: "Saṅkhāra-nirodhā viññāṇa-nirodho,", en: "with the cessation of formations, cessation of consciousness;" },
+                { pali: "Viññāṇa-nirodhā nāma-rūpa-nirodho,", en: "with the cessation of consciousness, cessation of name-and-form;" },
+                { pali: "Nāma-rūpa-nirodhā saḷ-āyatana-nirodho,", en: "with the cessation of name-and-form, cessation of the six sense bases;" },
+                { pali: "Saḷ-āyatana-nirodhā phassa-nirodho,", en: "with the cessation of the six sense bases, cessation of contact;" },
+                { pali: "Phassa-nirodhā vedanā-nirodho,", en: "with the cessation of contact, cessation of feeling;" },
+                { pali: "Vedanā-nirodhā taṇhā-nirodho,", en: "with the cessation of feeling, cessation of craving;" },
+                { pali: "Taṇhā-nirodhā upādāna-nirodho,", en: "with the cessation of craving, cessation of clinging;" },
+                { pali: "Upādāna-nirodhā bhava-nirodho,", en: "with the cessation of clinging, cessation of becoming;" },
+                { pali: "Bhava-nirodhā jāti-nirodho,", en: "with the cessation of becoming, cessation of birth;" },
+                { pali: "Jāti-nirodhā jarā-maraṇaṃ soka-parideva-dukkha-domanass’upāyāsā nirujjhanti", en: "from the cessation of birth comes the cessation of old age and death; grief, lamentation, pain, sorrow, and despair cease." },
+                { pali: "Evam-etassa kevalassa dukkhakkhandhassa nirodho hoti", en: "Thus there is a cessation of this whole mass of suffering." }
+            ]
+        }
+        ,
+        {
+            title: "The Discourse on Love (Metta Sutta)",
+            items: [
+                { pali: "Karaṇīyamatthakusalena", en: "Those who are skilled in the meaning of scripture “Karaṇīyamatthakusalena,”" },
+
+                { pali: "Yanta santaṁ padaṁ abhisamecca", en: "should practice as follows to realize the state of peace: Let them be capable and upright, very upright." },
+                { pali: "Sakko ujū ca suhujū ca", en: "Let them be capable and upright, very upright;" },
+                { pali: "Sūvaco cassa mudu anatimānī", en: "easy to speak to, gentle and humble;" },
+
+                { pali: "Santussako ca subharo ca", en: "content and unburdensome, unbusied, living lightly;" },
+                { pali: "Appakicco ca sallahukavutti", en: "with little to do and easy in conduct;" },
+                { pali: "Santindriyo ca nipako ca", en: "alert, with senses calmed and skillful;" },
+                { pali: "Appagabbho kulesvananugiddho", en: "courteous, not fawning on families." },
+
+                { pali: "Na ca khuddamācare kiñci", en: "Let them not do the slightest thing" },
+                { pali: "Yena viññū pare upavadeyyuṁ", en: "that others who are wise would blame." },
+                { pali: "Sukhino va khemino hontu", en: "May they be happy and safe!" },
+                { pali: "Sabbasattā bhavantu sukhitattā", en: "May all beings be happy!" },
+
+                { pali: "Ye keci pāṇabhūtatthi", en: "Whatever living creatures there are," },
+                { pali: "Tasā vā thāvarā vanavasesā", en: "frail or firm, fixed or roaming in the forest;" },
+                { pali: "Dīghā vā ye va mahantā", en: "long or large," },
+                { pali: "Majjhimā rassakā aṇukathūlā", en: "medium, small, tiny or round." },
+
+                { pali: "Diṭṭhā vā ye va adiṭṭhā", en: "seen or unseen," },
+                { pali: "Ye va dūre vasanti avidūre", en: "living far or near;" },
+                { pali: "Bhūtā va sambhavesī va", en: "those who have been born and those about to be born—" },
+                { pali: "Sabbasattā bhavantu sukhitattā", en: "may all beings be happy!" },
+
+                { pali: "Na paro paraṁ nikubbetha", en: "Let none deceive another," },
+                { pali: "Nātimaññetha katthaci na kañci", en: "nor look down on anyone anywhere." },
+                { pali: "Byārosanā paṭighasañña", en: "Though provoked or aggrieved," },
+                { pali: "Nāññamaññassa dukkhamiccheyya", en: "let them not wish pain on each other." },
+
+                { pali: "Mātā yathā niyaṁ puttam", en: "Even as a mother would protect with her life her child," },
+                { pali: "Āyusā ekaputtamanurakkhe", en: "her only child," },
+                { pali: "Evampi sabbabhūtesu", en: "so too for all creatures," },
+                { pali: "Mānasaṁ bhāvaye aparimāṇaṁ", en: "unfold a boundless heart." },
+
+                { pali: "Mettañca sabbalokasmi", en: "With love for the whole world," },
+                { pali: "Mānasaṁ bhāvaye aparimāṇaṁ", en: "unfold a boundless heart:" },
+                { pali: "Uddhaṁ adho ca tiriyañca", en: "above, below, all round;" },
+                { pali: "Asambādhaṁ averamasapattaṁ", en: "unconstricted, without enmity or foe." },
+
+                { pali: "Tiṭṭhaṁ caraṁ nisinno va", en: "When standing, walking, sitting," },
+                { pali: "Sayāno yāvatāssa vitamiddho", en: "or lying down while yet unweary," },
+                { pali: "Etaṁ satiṁ adhiṭṭheyya", en: "keep this ever in mind;" },
+                { pali: "Brahmametaṁ vihāramidhamāhu", en: "for this, they say, is a divine meditation in this life." },
+
+                { pali: "Diṭṭhiñca anupaggamma", en: "Avoiding harmful views," },
+                { pali: "Sīlavā dassanena sampanno", en: "virtuous, accomplished in insight;" },
+                { pali: "Kāmesu vinaya gedhaṁ", en: "with desire for sensual pleasures dispelled," },
+                { pali: "Na hi jātuggabbhaseyya punaretī”ti", en: "they never return to a womb again." }
+            ]
+        },
+        {
+            title: "Paṃsu-kūla for the Dead",
+            items: [
+                { pali: "Aniccā vata saṅkhārā", en: "All conditioned things are impermanent," },
+                { pali: "Uppāda-vaya-dhammino", en: "Their nature is to arising and passing away." },
+                { pali: "Uppajjitvā nirujjhanti", en: "Having arisen, they cease to be;" },
+                { pali: "Tesaṃ vūpasamo sukho", en: "Their stilling is true happiness." },
+                { pali: "Aniccā vata saṅkhārā", en: "All conditioned things are impermanent," },
+                { pali: "Uppāda-vaya-dhammino", en: "Their nature is to arising and passing away." },
+                { pali: "Uppajjitvā nirujjhanti", en: "Having arisen, they cease to be;" },
+                { pali: "Tesaṃ vūpasamo sukho", en: "Their stilling is true happiness." },
+                { pali: "Aniccā vata saṅkhārā", en: "All conditioned things are impermanent," },
+                { pali: "Uppāda-vaya-dhammino", en: "Their nature is to arising and passing away." },
+                { pali: "Uppajjitvā nirujjhanti", en: "Having arisen, they cease to be;" },
+                { pali: "Tesaṃ vūpasamo sukho", en: "Their stilling is true happiness." },
+            ]
+        },
+        {
+            title: "Paṃsu-kūla for the Living",
+            items: [
+                { pali: "Sabbe sattā maranti ca", en: "All beings die," },
+                { pali: "Mariṃsu ca marissare", en: "Have died, and will die." },
+                { pali: "Tath’evāhaṃ marissāmi", en: "In the same way, I too shall die;" },
+                { pali: "N’atthi me ettha saṃsayo", en: "Of this I have no doubt." },
+                { pali: "Aciraṃ vat’ayaṃ kāyo", en: "Before long, this body" },
+                { pali: "Paṭhaviṃ adhisessati", en: "Will lie upon the earth, cast aside," },
+                { pali: "Chuddho apeta-viññāṇo", en: "Devoid of consciousness," },
+                { pali: "Niratthaṃ va kaliṅgaraṃ", en: "Like a useless scrap of wood." }
+            ]
+        }
+    ]
+};

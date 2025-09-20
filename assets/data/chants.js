@@ -1,14 +1,19 @@
 // List of available chants
 export const chants = [
   {
-    id: "verses-on-the-sharing-of-merit",
-    title: "Verses on the Sharing of Merit",
-    description: "Sharing merit verses",
+    id: "divine-abidings",
+    title: "Suffusion With the Divine Abidings",
+    description: "Suffusion With the Divine Abidings",
   },
   {
     id: "invitation-to-the-devas",
     title: "Invitation to the Devas",
     description: "Invitation to the Devas",
+  },
+  {
+    id: "verses-on-the-sharing-of-merit",
+    title: "Verses on the Sharing of Merit",
+    description: "Sharing merit verses",
   },
   {
     id: "morning-chanting",
@@ -36,13 +41,13 @@ export const chants = [
     description: "The Fire Sermon (Āditta-pariyāya Sutta)",
   },
   {
+    id: "funeral-chanting",
+    title: "Funeral Chanting",
+    description: "Funeral Chanting",
+  },
+  {
     id: "universal-well-being",
     title: "Reflection on Universal Well-Being",
     description: "Reflection on Universal Well-Being",
-  },
-  {
-    id: "divine-abidings",
-    title: "Suffusion With the Divine Abidings",
-    description: "Suffusion With the Divine Abidings",
   },
 ];

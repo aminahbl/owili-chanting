@@ -189,6 +189,7 @@ body.drawer-open .site-footer {
   min-height: 0;
   max-height: none;
   padding: 0 var(--gutter-w) 35vh;
+  position: relative;
 }
 
 .controls .row,
@@ -487,6 +488,47 @@ body.visual-highlight-off .item.active {
 body.visual-highlight-off .item.active.has-marker::before {
   color: var(--muted) !important;
   opacity: 0.75 !important;
+}
+
+/* Highlight active area overlay */
+.active-area-overlay {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  /* minimal height to ensure sticky paints */
+  pointer-events: none;
+  z-index: 20;
+  display: none;
+  /* toggled on via body.active-area-on */
+}
+
+.active-area-overlay .band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  /* default, updated via JS */
+  background: rgba(180, 180, 180, 0.12);
+  outline: 2px dashed rgba(180, 180, 180, 0.2);
+  /* border-left: 3px solid rgba(180, 180, 180, 0.2);
+  border-right: 3px solid rgba(180, 180, 180, 0.2); */
+  border-radius: 6px;
+}
+
+/* .active-area-overlay .band::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 2px dotted rgba(180, 180, 180, 0.4);
+} */
+
+body.active-area-on .active-area-overlay {
+  display: block;
 }
 
 /* Prevent page scroll and horizontal overflow when drawer is open */
