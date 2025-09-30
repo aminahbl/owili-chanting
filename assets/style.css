@@ -160,6 +160,10 @@ body.drawer-open .site-footer {
   list-style: none;
   padding: 0;
   margin: 1rem 0;
+  /* Make long lists scrollable within the viewport */
+  max-height: min(70vh, 48rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chant-list li {
@@ -174,6 +178,7 @@ body.drawer-open .site-footer {
   padding: 1rem;
   color: inherit;
   text-decoration: none;
+  font-size: 1.3rem;
 }
 
 .chant-list a:hover {
@@ -564,6 +569,12 @@ body.drawer-open {
 
   .chant-list a {
     padding: 0.85rem;
+    font-size: 1.04rem;
+  }
+
+  /* Slightly more viewport space for the list on small screens */
+  .chant-list {
+    max-height: 72vh;
   }
 
   /* Do not reserve drawer space on mobile; overlay instead */
