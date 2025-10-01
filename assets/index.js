@@ -1,3 +1,4 @@
+import './components/icons/info.js';
 import './components/footer.js';
 import { chants } from './data/chants.js';
 

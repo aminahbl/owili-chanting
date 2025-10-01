@@ -185,6 +185,19 @@ body.drawer-open .site-footer {
   background: #f8fafc;
 }
 
+/* About page: top-level links list (per-chant sections) */
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.link-list > li {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
 /* Chant page layout */
 /* Scrollable chant area: keeps header pinned */
 .scroll-area {

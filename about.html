@@ -4,21 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chanting for shared happiness</title>
+    <title>About</title>
     <meta name="application-name" content="Chanting for shared happiness" />
     <meta name="apple-mobile-web-app-title" content="Chanting for shared happiness" />
     <meta name="description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
     <meta name="theme-color" content="#f9fafb" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Chanting for shared happiness" />
+    <meta property="og:title" content="About" />
     <meta property="og:site_name" content="Chanting for shared happiness" />
     <meta property="og:description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
     <meta property="og:image" content="assets/socials/social-1200x630.jpg" />
     <meta property="og:image:alt" content="Chanting for shared happiness" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Chanting for shared happiness" />
+    <meta name="twitter:title" content="About" />
     <meta name="twitter:description" content="Practice Pāli chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy." />
     <meta name="twitter:image" content="assets/socials/social-1200x630.jpg" />
     <meta name="twitter:image:alt" content="Chanting for shared happiness" />
@@ -34,23 +34,24 @@
 
 <body>
     <header class="site-header">
-        <h1>Chanting for shared happiness</h1>
-        <a href="about.html" class="button" style="display:grid; place-items:center;min-height:39px;" aria-label="About">
-            <icon-info size="20"></icon-info>
-            <span class="sr-only">About</span>
-        </a>
+        <div style="display:flex; align-items:center; gap:1rem">
+            <a href="index.html" class="button" style="display:grid; place-items:center;min-height:39px;" aria-label="Home">
+                <icon-home size="20"></icon-home>
+                <span class="sr-only">Home</span>
+            </a>
+
+            <h1>About</h1>
+        </div>
     </header>
 
     <main class="container">
         <section>
-            <h2>Chants</h2>
-            <ul id="chant-list" class="chant-list" aria-live="polite"></ul>
+            <h2>Links</h2>
+            <ul id="link-list" class="link-list" aria-live="polite"></ul>
         </section>
     </main>
 
     <site-footer></site-footer>
 
-    <script type="module" src="assets/index.js"></script>
+    <script type="module" src="assets/about.js"></script>
 </body>
-
-</html>

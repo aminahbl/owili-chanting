@@ -126,7 +126,7 @@ export const chant = {
                 { pali: "Rūpūpādānakkhandho", en: "Attachment to form," },
                 { pali: "Vedanūpādānakkhāndho", en: "Attachment to feeling," },
                 { pali: "Saññūpādānakkhandho", en: "Attachment to perception," },
-                { pali: "Sankharūpādānakkhan", en: "Attachment to mental formations," },
+                { pali: "Sankharūpādānakkhando", en: "Attachment to mental formations," },
                 { pali: "Viññāņūpādānakkhandho", en: "Attachment to sense-consciousness." },
                 { pali: "Yesam pariññāya", en: "For the complete understanding of this," },
                 { pali: "Dharamāno so bhagavā evam bahulam savake vineti", en: "The Blessed One in his lifetime frequently instructed his disciples in just this way." },

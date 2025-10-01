@@ -4,3 +4,4 @@ import './home.js';
 import './tune.js';
 import './close.js';
 import './folder.js';
+import './info.js';
