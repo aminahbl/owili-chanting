@@ -28,7 +28,9 @@ export const chants = [
     id: "evening-chanting",
     title: "Evening Chanting",
     description: "Dedication, Recollections, Supreme Praise",
-    links: [],
+    links: [
+      { text: "Abhayagiri Monastery Chanting mp3", href: "https://www.abhayagiri.org/talks/5330-evening-chanting-pali" },
+    ],
   },
   {
     id: "five-frequent-recollections",

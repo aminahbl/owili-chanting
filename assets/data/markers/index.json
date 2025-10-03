@@ -4,12 +4,12 @@
     "label": "Invitation to the devas"
   },
   {
-    "file": "morning-chanting-markers.json",
-    "label": "Morning chanting"
+    "file": "morning-chanting-markers-amaravati.json",
+    "label": "Morning chanting (Amaravati)"
   },
   {
-    "file": "evening-chanting-markers.json",
-    "label": "Evening chanting"
+    "file": "evening-chanting-markers-abhayagiri.json",
+    "label": "Evening chanting (Abhayagiri)"
   },
   {
     "file": "verses-on-the-sharing-of-merit-markers.json",
@@ -17,10 +17,10 @@
   },
   {
     "file": "just-as-rivers-markers-amaravati.json",
-    "label": "Just as rivers"
+    "label": "Just as rivers (Amaravati)"
   },
   {
-    "file": "funeral-chanting-markers.json",
-    "label": "Funeral chanting"
+    "file": "funeral-chanting-markers-abhayagiri.json",
+    "label": "Funeral chanting (Abhayagiri)"
   }
 ]
