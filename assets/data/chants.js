@@ -25,11 +25,22 @@ export const chants = [
     links: [],
   },
   {
-    id: "evening-chanting",
-    title: "Evening Chanting",
+    id: "evening-chanting-amaravati-book",
+    title: "Evening Chanting (Amaravati Book)",
     description: "Dedication, Recollections, Supreme Praise",
     links: [
       { text: "Abhayagiri Monastery Chanting mp3", href: "https://www.abhayagiri.org/talks/5330-evening-chanting-pali" },
+    ],
+  },
+  {
+    id: "evening-chanting-lbv-veneration",
+    title: "Evening Chanting (LBV) – Veneration",
+    description: "Homages, Recollections, Offering",
+    links: [
+      { text: "London Buddhist Vihara Chanting stream", href: "https://www.youtube.com/watch?v=5330-evening-chanting-pali" },
+      { text: "Bhikkhu Manual - Chants Used in Sri Lanka: offering flowers", href: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#flowers" },
+      { text: "Mahamevnawa Chanting Book", href: "https://banaenglish.org/wp-content/uploads/2021/05/Trilinnear-A5-Vandana-Kotte-August2020.pdf" },
+      { text: "Gandhajāta Sutta (AN 3.79)", href: "https://suttacentral.net/an3.79/en/sujato", notes: "Fragrant petals of virtue" },
     ],
   },
   {

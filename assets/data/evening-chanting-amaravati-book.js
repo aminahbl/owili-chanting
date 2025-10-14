@@ -1,6 +1,6 @@
 export const chant = {
-  id: "evening-chanting",
-  title: "Evening Chanting",
+  id: "evening-chanting-amaravati-book",
+  title: "Evening Chanting (Amaravati Book)",
   sections: [
     {
       title: "Dedication of Offerings",
