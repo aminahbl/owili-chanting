@@ -17,8 +17,14 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 .
 ├── index.html                # List of available chants
 ├── chant.html                # Individual chant page
+├── about.html                # Links and resources
+├── scripts/
+│   └── build.ts              # Writes the site to dist/
+├── package.json              # Build and type-check scripts
+├── tsconfig.json
 ├── assets/
 │   ├── style.css             # Minimal site styles
+│   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pāli letters
 │   ├── index.js              # Index page script
 │   ├── chant.js              # Chant page logic (render, scroll, audio)
 │   ├── lib/
@@ -31,10 +37,12 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 
 ## Quick start
 
-- Option A: Python static server
-  - `python3 -m http.server 8000`
-  - Open http://127.0.0.1:8000
-- Any static server will work. A server is recommended because ES modules and some browser APIs don’t work over `file://`.
+Requires Node 24.22.1 or later, the earliest release with current security fixes. `npm install` refuses older versions.
+
+- `npm install`
+- `npm run build` writes the site to `dist/`.
+- `python3 -m http.server 8000 -d dist`, then open http://127.0.0.1:8000. Any static server works. A server is needed because ES modules and some browser APIs don’t work over `file://`.
+- `npm run check` type-checks the TypeScript files.
 
 ## Usage
 
@@ -69,8 +77,8 @@ The chant page auto‑loads `./data/${id}.js` based on the `?id=` query param.
 
 ## Deployment
 
-- Host the directory on any static host (Netlify, GitHub Pages, Vercel static, S3/CloudFront, nginx). No build step required.
-- Ensure the site is served from the project root so relative paths resolve (`index.html`, `assets/...`).
+- Netlify runs `npm run build` and publishes `dist/` ([netlify.toml](netlify.toml)).
+- Any static host works with the same two steps: build, then serve `dist/` as the site root so relative paths resolve (`index.html`, `assets/...`).
 
 ## Privacy
 
