@@ -9,6 +9,7 @@ export const chant = {
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-12-10/" }],
   editorial: [
+    { status: "changed", lines: [18], note: "The manual prints this line in brackets, and the import read it as a leader line. The cue at the end says some monasteries include the last line in brackets, so the brackets mark an optional line; it is no longer marked as a leader line." },
     { status: "open", lines: [18], note: "English to review: *dasa-puñña* is read as the ten kinds of goodness (*dasa puñña-kiriya-vatthu*), not the ten perfections." },
   ],
   sections: [
@@ -35,7 +36,7 @@ export const chant = {
         { id: 15, pali: "Buddhādhipavaro nātho dhammo nātho varuttamo", en: "The Buddha is my excellent protector, the Dhamma my supreme protector," },
         { id: 16, pali: "Nātho paccekabuddho ca saṅgho nāthottaro mamaṁ", en: "the solitary Buddha is a protector, and the Saṅgha my highest protector." },
         { id: 17, pali: "Tesottamānubhāvena mārokāsaṁ labhantu mā", en: "By their supreme power, may Māras find no opportunity." },
-        { id: 18, pali: "Dasapuññānubhāvena mārokāsaṁ labhantu mā", en: "By the power of the ten kinds of goodness, may Māras find no opportunity.", leader: true },
+        { id: 18, pali: "Dasapuññānubhāvena mārokāsaṁ labhantu mā", en: "By the power of the ten kinds of goodness, may Māras find no opportunity." },
       ],
     },
     {
