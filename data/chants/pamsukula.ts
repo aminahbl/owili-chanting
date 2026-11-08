@@ -1,0 +1,57 @@
+import type { Chant } from '../types.ts';
+
+export const chant = {
+  id: "pamsukula",
+  title: "Verses for the Rag-robe Offering",
+  paliTitle: "Paṁsukūla",
+  groups: [{ group: "funeral", order: 10 }],
+  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#pamsukula" },
+  translation: "draft",
+  notes: [
+    "The following verses are often repeated three times. (For the dead)",
+  ],
+  editorial: [
+    { status: "kept", lines: [17], note: "Dhp 41 has *Pathaviṁ* where the manual has *Paṭhaviṁ*. Kept as the manual prints it." },
+    { status: "kept", lines: [18], note: "Dhp 41 has *Chuddho* where the manual has *Chuḍḍho*. Kept as the manual prints it." },
+  ],
+  sections: [
+    {
+      lines: [
+        { id: 1, pali: "Aniccā vata saṅkhārā", en: "Impermanent indeed are conditioned things," },
+        { id: 2, pali: "Uppāda-vaya-dhammino", en: "their nature is to arise and pass away." },
+        { id: 3, pali: "Uppajjitvā nirujjhanti", en: "Having arisen, they cease." },
+        { id: 4, pali: "Tesaṁ vūpasamo sukho.", en: "Their stilling is happiness." },
+      ],
+    },
+    {
+      lines: [
+        { id: 5, pali: "Sabbe sattā maranti ca", en: "All beings die," },
+        { id: 6, pali: "Mariṁsu ca marissare", en: "have died and will die." },
+        { id: 7, pali: "Tath'evāhaṁ marissāmi", en: "In the same way I will die;" },
+        { id: 8, pali: "N'atthi me ettha saṁsayo.", en: "of this I have no doubt." },
+      ],
+      refs: [{ label: "DN 16", uid: "dn16" }, { label: "SN 1.11", uid: "sn1.11" }],
+    },
+    {
+      lines: [
+        { id: 9, pali: "Addhuvaṁ jīvitaṁ", en: "Life is uncertain." },
+        { id: 10, pali: "Dhuvaṁ maraṇaṁ", en: "Death is certain." },
+        { id: 11, pali: "Avassaṁ mayā maritabbaṁ", en: "I will surely die." },
+        { id: 12, pali: "Maraṇapariyosānaṁ me jīvitaṁ", en: "My life ends in death." },
+        { id: 13, pali: "Jīvitaṁ me aniyataṁ", en: "My life is uncertain." },
+        { id: 14, pali: "Maraṇaṁ me niyataṁ.", en: "My death is certain." },
+      ],
+      refs: [{ label: "Dhp-a III 170" }],
+    },
+    {
+      lines: [
+        { id: 15, cue: "For the living" },
+        { id: 16, pali: "Aciraṁ vat'ayaṁ kāyo", en: "Before long, alas, this body" },
+        { id: 17, pali: "Paṭhaviṁ adhisessati", en: "will lie on the earth," },
+        { id: 18, pali: "Chuḍḍho apeta-viññāṇo", en: "cast aside, without consciousness," },
+        { id: 19, pali: "Niratthaṁ va kaliṅgaraṁ.", en: "useless, like a log." },
+      ],
+      refs: [{ label: "Dhp 41", uid: "dhp33-43" }],
+    },
+  ],
+} satisfies Chant;
