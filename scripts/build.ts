@@ -2,7 +2,7 @@
 // search index and redirects, plus the current about page until it is rebuilt.
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
-import { chantPage } from './chant-page.ts';
+import { chantPage, type NextChant } from './chant-page.ts';
 import { entries, loadChants, searchIndex, type Entry, type Group } from './chant-list.ts';
 import { listPage, notFoundPage, pageHref } from './templates.ts';
 
@@ -46,7 +46,14 @@ await writeList(null, all, shown);
 for (const group of shown) await writeList(group, all.filter((e) => e.group.id === group.id), shown);
 
 const groupsById = new Map<string, Group>(shown.map((g) => [g.id, g]));
-for (const chant of chants) await write(`${chantHref(chant.id)}/index.html`, chantPage(chant, groupsById));
+// The next chant in a chant's first group, by that group's order.
+function nextChant(id: string): NextChant | undefined {
+  const first = chants.find((c) => c.id === id)?.groups[0];
+  const list = all.filter((e) => e.group.id === first?.group);
+  const after = list[list.findIndex((e) => e.card.id === id) + 1];
+  return after && { id: after.card.id, title: after.card.title, groupTitle: after.group.title };
+}
+for (const chant of chants) await write(`${chantHref(chant.id)}/index.html`, chantPage(chant, groupsById, nextChant(chant.id)));
 
 await write('/search.json', JSON.stringify(searchIndex(chants, all)));
 await write('/404.html', notFoundPage());

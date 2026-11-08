@@ -6,16 +6,16 @@ import type { Entry, Group } from './chant-list.ts';
 const SITE = 'Chanting for shared happiness';
 const DESCRIPTION =
   'Practice Pali chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy.';
-const FOOTER =
-  'Set your heart on reciting these verses. Keep your mindfulness with the chanting, offering it to the Buddha, Dhamma and Sangha and for the happiness of all beings.';
 
 const SITE_HEADER = `<header class="site-header">
   <nav aria-label="Site"><a href="/about.html">About</a></nav>
 </header>`;
 
 // Applies the stored display settings before the page is drawn, so it does not
-// change after loading (src/settings.ts).
-const APPLY_SETTINGS = `<script>try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])document.documentElement.dataset[k]=s[k]})}catch(e){}</script>`;
+// change after loading (src/settings.ts). The text view's size is also set as
+// a CSS variable. A view named in the URL, as in ?view=slides, takes
+// precedence over the stored view.
+const APPLY_SETTINGS = `<script>try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v</script>`;
 
 export function layout(title: string, body: string, scripts = '', header = SITE_HEADER): string {
   const full = title === SITE ? SITE : `${title} · ${SITE}`;
@@ -48,7 +48,6 @@ ${header}
 <main class="page">
 ${body}
 </main>
-<footer class="site-footer"><p>${FOOTER}</p></footer>
 </body>
 </html>
 `;
