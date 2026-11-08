@@ -56,8 +56,8 @@ Where the forms differ only in grammatical gender (for example "anatīto" and "a
 
 ## Pali words in the English
 
-- **Kept, with diacritics as in the Pali text:** Buddha, Dhamma, Saṅgha, Tathāgata, deva, and the names of people and places.
-- **Kept, in their English dictionary spelling without diacritics:** samadhi, jhana, nibbana, bhikkhu, bhikkhuni.
+- **Kept, with diacritics as in the Pali text:** Buddha, Dhamma, Saṅgha, Tathāgata, the kinds of non-human beings that have no English equivalent (deva, brahmā, yakkha, nāga, gandhabba, asura), and the names of people and places. They take an English plural: devas, nāgas.
+- **Kept, in their English dictionary spelling without diacritics:** Pali, samadhi, jhana, nibbana, bhikkhu, bhikkhuni. A proper name keeps its own spelling, as in the Digital Pāli Dictionary.
 - **Translated:** every other word, following the renderings below.
 
 ## Fixed renderings
@@ -71,8 +71,35 @@ The same Pali is translated the same way in every chant, so that a user who know
 | *buddha*, *sambuddha*, *bodhi* | awakened, awakening |
 | *dukkha* | suffering |
 | *puñña* | goodness |
+| *puññakkhetta* | field of goodness |
+| *brahma-cariya* | the holy life |
+| *parinibbuta* | of the Buddha's death, passed into final nibbana; of a living person, fully quenched |
+| *samaṇa-brāhmaṇa* | ascetics and brahmins |
+| *khandha*, *upādānakkhandha* | aggregate, aggregate of clinging |
+| *rūpa*, *vedanā*, *saññā*, *saṅkhārā*, *viññāṇa* (the aggregates) | form, feeling, perception, formations, consciousness |
+| *sabbe saṅkhārā* | all conditioned things |
+| *sabbe dhammā* | all things |
+| *anicca*, *anattā* | impermanent, not-self |
+| *sīla*, *paññā*, *sati* | virtue, wisdom, mindfulness |
+| *taṇhā*, *avijjā* | craving, ignorance |
+| *kamma* | action; *kammassaka*, owner of one's actions |
+| *ariya*, *ariya-sacca* | noble, noble truth |
+| *kusala*, *akusala* | skilful, unskilful |
+| *arahant* | worthy one |
+| *saṁsāra* | the round of births |
+| *pāramī* | perfection |
+| *bojjhaṅga* | factor of awakening |
+| *saddhamma* | the true Dhamma |
+| *sāsana* | teaching; *satthu-sāsana*, the Teacher's way |
+| *dhammā* in the Abhidhamma lists | states |
+| *appamāda* | heedfulness |
+| *pīti* | joy |
+| *āsava* | taint |
+| *nātha* | protector; as a title, the Protector |
+| *amata* | the Deathless |
+| *paccekabuddha* | solitary Buddha |
 
-"Awakened" follows the root meaning of *budh*, to wake up, and is used by many recent translators. "Suffering" is the most familiar rendering of *dukkha*. "Goodness" is used for *puñña* because it is warmer and clearer than the established "merit".
+"Awakened" follows the root meaning of *budh*, to wake up, and is used by many recent translators. "Suffering" is the most familiar rendering of *dukkha*. "Goodness" is used for *puñña* because it is warmer and clearer than the established "merit". *Saṅkhārā* has two renderings because it has two senses: one of the five aggregates ("formations"), and everything that is conditioned ("all conditioned things").
 
 **Qualities of the Buddha** (Iti pi so):
 
@@ -82,7 +109,7 @@ The same Pali is translated the same way in every chant, so that a user who know
 | *arahaṁ* | worthy |
 | *sammā-sambuddho* | perfectly self-awakened |
 | *vijjā-caraṇa-sampanno* | accomplished in knowledge and conduct |
-| *sugato* | well-gone |
+| *sugato* | well-gone; as a title, the Well-gone One |
 | *lokavidū* | knower of the worlds |
 | *anuttaro purisa-damma-sārathi* | unsurpassed guide of those ready to be trained |
 | *satthā deva-manussānaṁ* | teacher of devas and humans |
@@ -104,8 +131,16 @@ The formula as lines:
 | *sandiṭṭhiko* | visible here and now |
 | *akāliko* | timeless |
 | *ehipassiko* | inviting all to come and see |
+| *opanayiko* | leading onward |
+| *paccattaṁ veditabbo viññūhi* | to be known by the wise for themselves |
 | *supaṭipanno* | practising well |
-| *sāvaka-saṅgho* | the Saṅgha of disciples |
+| *ujupaṭipanno* | practising straightforwardly |
+| *ñāyapaṭipanno* | practising the true way |
+| *sāmīcipaṭipanno* | practising properly |
+| *bhagavato sāvaka-saṅgho* | the Gracious One's Saṅgha of disciples |
+| *cattāri purisayugāni aṭṭha purisapuggalā* | the four pairs of persons, the eight kinds of individuals |
+| *āhuneyyo, pāhuneyyo, dakkhiṇeyyo, añjali-karaṇīyo* | worthy of gifts, of hospitality, of offerings, of reverence with joined palms |
+| *anuttaraṁ puññakkhettaṁ lokassa* | the unsurpassed field of goodness for the world |
 
 **Homage and devotion:**
 
@@ -115,6 +150,11 @@ The formula as lines:
 | *namāmi* | I bow to |
 | *abhivādemi* | I pay respect to |
 | *vandāmi* | I revere |
+| *namassāmi* | I pay homage to |
+| *abhipūjayāmi* | I honour |
+| *sirasā namāmi* | I bow my head to |
+| *vandāmi taṁ siren'ahaṁ* | I revere with bowed head |
+| *(buddho) paṭiggaṇhātu accayaṁ* | may (the Buddha) pardon this fault |
 | *handa mayaṁ … karomase* / *bhaṇāmase* | Now let us … |
 | *bhante* | Venerable Sir; with *bhagavā*, Venerable Lord |
 
@@ -129,10 +169,42 @@ The formula as lines:
 | *anukampā* | care |
 | *sabbe sattā* | all beings |
 | *hitāya sukhāya* | for welfare and happiness |
+| *averā*, *abyāpajjhā*, *anīghā* | free from enmity, free from ill will, free from distress |
+| *sukhī attānaṁ pariharantu* | may they look after themselves with ease |
+
+**Blessing, protection and sharing goodness:**
+
+| Pali | English |
+|---|---|
+| *maṅgala* | blessing |
+| *sotthi* | safety |
+| *paritta* | protection |
+| *ānubhāva*, *tejas* | power |
+| *patti*, *patti-dāna* | goodness shared, sharing of goodness |
+| *anumodati* | rejoices (in) |
+| *dakkhiṇā* | offering |
+| *peta*, *ñāti* | the departed, relatives |
+
+**Forms of address:**
+
+| Pali | English |
+|---|---|
+| *bhikkhave* | bhikkhus |
+| *āvuso* | friend |
+| *upāsaka*, *upāsikā* | lay follower |
+
+**Ceremonies:**
+
+| Pali | English |
+|---|---|
+| *sādhu* | excellent |
+| *okāsa* | with your leave |
+| *khamatu*, *khama* | may (he) pardon, pardon |
+| *sikkhā-padaṁ samādiyāmi* | I undertake the training rule |
 
 ## Making and reviewing a translation
 
 1. Each chant is translated line by line from the Pali, using this guide. Other translations and dictionaries, such as the [Digital Pāli Dictionary](https://dpdict.net/), may be consulted for meaning; the wording is our own.
 2. Recurring terms take their rendering from the tables above. A new recurring term is added to the tables first.
-3. Lines where the translation is uncertain (a rare word, a disputed reading, or a choice that may lean too far towards warmth) are listed with the reason when the chant is handed over for review, so review can start there.
+3. Lines where the translation is uncertain (a rare word, a disputed reading, or a choice that may lean too far towards warmth) are recorded with the reason as open editorial notes in the chant's data (`editorial`), so review can start there.
 4. A new translation is marked `translation: "draft"` in the chant's data. After review it is marked `"reviewed"`.
