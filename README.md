@@ -16,14 +16,17 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 
 ```
 .
-├── chant.html                # Individual chant page
 ├── about.html                # Links and resources
 ├── scripts/
 │   ├── build.ts              # Writes the site to dist/
 │   ├── chant-list.ts         # Chant data in list order, cards and search index
-│   └── templates.ts          # HTML for the list pages
+│   ├── chant-page.ts         # HTML for the chant pages
+│   └── templates.ts          # Page layout and HTML for the list pages
 ├── src/                      # Browser code, compiled to dist/assets/js/
 │   ├── search.ts             # Search on the list pages
+│   ├── chant-page.ts         # Settings and keyboard shortcuts on the chant pages
+│   ├── settings.ts           # Stored display settings, shared with the build
+│   ├── icons/                # Icons as custom elements
 │   ├── card.ts               # Card markup, shared with the build
 │   ├── normalise.ts          # Search text normalisation, shared with the build
 │   └── html.ts               # HTML escaping
@@ -37,14 +40,13 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 ├── tsconfig.browser.json     # Compiles src/ for the browser
 ├── assets/
 │   ├── site.css              # Styles for the generated pages
-│   ├── style.css             # Styles for the chant and about pages
+│   ├── style.css             # Styles for the about page
 │   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pali letters
-│   ├── chant.js              # Chant page logic (render, scroll, audio)
 │   ├── lib/
 │   │   └── storage.js        # IndexedDB helpers for audio handles
 │   └── data/
-│       ├── chants.js         # Registry of chants (id, title)
-│       └── morning-chanting.js  # Data for Morning Chanting
+│       ├── chants.js         # Previous chant registry, read by the about page
+│       └── markers/          # Timing files for recordings
 └── README.md
 ```
 
@@ -60,27 +62,12 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 ## Usage
 
 - On the home page, search or choose a group, then open a chant.
-- Use the Start/Pause button to toggle auto‑scroll.
-- Adjust speed with the slider, or use keys:
-  - Space: toggle scroll
-  - Arrow Up/Down: increase/decrease speed
-- Click “Select audio (remembered)” to pick a local file via the File System Access API (Chromium/Edge/Opera), or use “Choose audio…” (file input) in other browsers.
-- Audio is remembered per chant (via IndexedDB when using FS Access; filename remembered when using file input fallback). Nothing is uploaded.
+- On a chant page, the info button shows the chant's source, references and notes. The settings button sets the theme, text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
+- Keys on a chant page: T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover.
 
 ## Adding a new chant
 
-1. Register the chant in `assets/data/chants.js`:
-   - `{ id: "your-id", title: "Your Title", description?: "..." }`
-2. Create `assets/data/your-id.js` that exports `chant` with:
-   - `id`: string
-   - `title`: string
-   - `sections`: array of sections
-     - Each section: `{ title?: string, items: Array<Item> }`
-     - Item can be one of:
-       - `{ pali: string, en?: string }` (a chanting line)
-       - `{ note: string }` (an instructional note)
-
-The chant page auto‑loads `./data/${id}.js` based on the `?id=` query param.
+Add a module to `data/chants/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts), and give it a place in one or more groups from [data/groups.ts](data/groups.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<id>`.
 
 ## Browser support
 
@@ -91,7 +78,7 @@ The chant page auto‑loads `./data/${id}.js` based on the `?id=` query param.
 ## Deployment
 
 - Netlify runs `npm run build` and publishes `dist/` ([netlify.toml](netlify.toml)).
-- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs; other hosts need the same redirects.
+- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs and the previous `chant.html?id=<id>` links; other hosts need the same redirects.
 
 ## Privacy
 

@@ -1,5 +1,6 @@
 import { cardHtml } from '../src/card.ts';
 import { escapeHtml } from '../src/html.ts';
+import { SETTING_NAMES, SETTINGS_KEY } from '../src/settings.ts';
 import type { Entry, Group } from './chant-list.ts';
 
 const SITE = 'Chanting for shared happiness';
@@ -8,7 +9,15 @@ const DESCRIPTION =
 const FOOTER =
   'Set your heart on reciting these verses. Keep your mindfulness with the chanting, offering it to the Buddha, Dhamma and Sangha and for the happiness of all beings.';
 
-function layout(title: string, body: string, scripts = ''): string {
+const SITE_HEADER = `<header class="site-header">
+  <nav aria-label="Site"><a href="/about.html">About</a></nav>
+</header>`;
+
+// Applies the stored display settings before the page is drawn, so it does not
+// change after loading (src/settings.ts).
+const APPLY_SETTINGS = `<script>try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])document.documentElement.dataset[k]=s[k]})}catch(e){}</script>`;
+
+export function layout(title: string, body: string, scripts = '', header = SITE_HEADER): string {
   const full = title === SITE ? SITE : `${title} · ${SITE}`;
   return `<!doctype html>
 <html lang="en">
@@ -16,6 +25,7 @@ function layout(title: string, body: string, scripts = ''): string {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(full)}</title>
+${APPLY_SETTINGS}
 <meta name="description" content="${DESCRIPTION}">
 <meta name="theme-color" content="#f1eee9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#292c3c" media="(prefers-color-scheme: dark)">
@@ -34,9 +44,7 @@ function layout(title: string, body: string, scripts = ''): string {
 ${scripts}
 </head>
 <body>
-<header class="site-header">
-  <nav aria-label="Site"><a href="/about.html">About</a></nav>
-</header>
+${header}
 <main class="page">
 ${body}
 </main>

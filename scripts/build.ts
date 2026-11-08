@@ -1,13 +1,22 @@
-// Writes the site to dist/: the chant list pages, the search index and
-// redirects, plus the current chant and about pages until they are rebuilt.
+// Writes the site to dist/: the chant list pages, a page for each chant, the
+// search index and redirects, plus the current about page until it is rebuilt.
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { chantHref } from '../src/card.ts';
+import { chantPage } from './chant-page.ts';
 import { entries, loadChants, searchIndex, type Entry, type Group } from './chant-list.ts';
 import { listPage, notFoundPage, pageHref } from './templates.ts';
 
 const PAGE_SIZE = 24;
 const root = new URL('../', import.meta.url);
 const dist = new URL('dist/', root);
-const COPIED = ['chant.html', 'about.html', 'assets'];
+const COPIED = ['about.html', 'assets'];
+// IDs on the previous chant page, chant.html?id=<id>. Links to those that are
+// still chants redirect to them; the others, mostly whole services, go home.
+const OLD_IDS = [
+  'divine-abidings', 'invitation-to-the-devas', 'verses-on-the-sharing-of-merit', 'morning-chanting',
+  'evening-chanting-amaravati-book', 'evening-chanting-lbv-veneration', 'five-frequent-recollections',
+  'ten-paramis', 'fire-sermon', 'just-as-rivers', 'funeral-chanting', 'universal-well-being',
+];
 
 async function write(path: string, content: string) {
   const url = new URL(path.replace(/^\//, ''), dist);
@@ -36,11 +45,22 @@ const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values()];
 await writeList(null, all, shown);
 for (const group of shown) await writeList(group, all.filter((e) => e.group.id === group.id), shown);
 
+const groupsById = new Map<string, Group>(shown.map((g) => [g.id, g]));
+for (const chant of chants) await write(`${chantHref(chant.id)}/index.html`, chantPage(chant, groupsById));
+
 await write('/search.json', JSON.stringify(searchIndex(chants, all)));
 await write('/404.html', notFoundPage());
 
 // The first page of a list has no number, so the numbered form redirects to it.
-const redirects = ['/list / 301', '/list/1 / 301', ...shown.map((g) => `/list/${g.id}/1 /list/${g.id} 301`)];
+// Old chant links are matched by their id parameter, and the last rule catches the rest.
+const ids = new Set(chants.map((c) => c.id));
+const redirects = [
+  '/list / 301',
+  '/list/1 / 301',
+  ...shown.map((g) => `/list/${g.id}/1 /list/${g.id} 301`),
+  ...OLD_IDS.filter((id) => ids.has(id)).map((id) => `/chant.html id=${id} ${chantHref(id)} 301`),
+  '/chant.html / 301',
+];
 await write('/_redirects', `${redirects.join('\n')}\n`);
 
 console.log(`Built ${chants.length} chants, ${shown.length} groups into dist/`);

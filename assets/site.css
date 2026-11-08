@@ -1,4 +1,4 @@
-/* Styles for the generated pages. The current chant and about pages keep style.css until they are rebuilt. */
+/* Styles for the generated pages. The current about page keeps style.css until it is rebuilt. */
 
 @font-face {
   font-family: "Noto Sans";
@@ -26,29 +26,34 @@
 
 :root {
   color-scheme: light dark;
-  --bg: hsl(38, 24%, 93%);
-  --surface: hsl(38, 30%, 97%);
-  --border: hsl(38, 14%, 82%);
-  --fg: hsl(30, 12%, 16%);
-  --muted: hsl(30, 8%, 38%);
-  --accent: #9c510c;
-  --hover: hsl(30, 14.3%, 56.1%);
-  --excerpt: hsl(30, 50%, 98.4%);
+  /* light-dark() picks the first colour in light mode and the second, Catppuccin Frappé, in dark mode. */
+  --bg: light-dark(hsl(38, 24%, 93%), #292c3c);
+  --surface: light-dark(hsl(38, 30%, 97%), #303446);
+  --border: light-dark(hsl(38, 14%, 82%), #414559);
+  --fg: light-dark(hsl(30, 12%, 16%), #c6d0f5);
+  --muted: light-dark(hsl(30, 8%, 38%), #949cbb);
+  --accent: light-dark(#9c510c, #ef9f76);
+  --hover: light-dark(hsl(30, 14.3%, 56.1%), #737994);
+  --excerpt: light-dark(hsl(30, 50%, 98.4%), #292c3c);
   --radius: 0.75rem;
+  --pali-size: 1.375rem;
 }
 
-/* Dark theme: Catppuccin Frappé colours. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #292c3c;
-    --surface: #303446;
-    --border: #414559;
-    --fg: #c6d0f5;
-    --muted: #949cbb;
-    --accent: #ef9f76;
-    --hover: #737994;
-    --excerpt: #292c3c;
-  }
+/* The theme follows the system unless the user chooses one in settings. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-size="small"] {
+  --pali-size: 1.125rem;
+}
+
+:root[data-size="large"] {
+  --pali-size: 1.75rem;
 }
 
 * {
@@ -73,6 +78,7 @@ a {
 }
 
 a:focus-visible,
+button:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -345,4 +351,280 @@ input:focus-visible {
   text-align: center;
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+/* Chant page */
+
+.chant-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 3.25rem;
+  padding: 0 0.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.chant-header-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted);
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  color: var(--fg);
+  background: var(--surface);
+}
+
+/* Icons keep their size before their script has drawn them. */
+icon-home,
+icon-info,
+icon-tune,
+icon-close {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.chant {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+
+.chant h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.3;
+}
+
+.chant-pali-title {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.chant-notes {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.chant-notes p {
+  margin: 0.25rem 0;
+}
+
+.chant-section {
+  margin: 2rem 0;
+}
+
+.chant-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.line {
+  margin: 0 0 0.9rem;
+}
+
+.pali {
+  margin: 0;
+  font-size: var(--pali-size);
+  line-height: 1.5;
+}
+
+.en {
+  margin: 0.1rem 0 0;
+  font-size: calc(var(--pali-size) * 0.8);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+:root[data-translation="off"] .en,
+:root[data-translation="off"] .draft-notice {
+  display: none;
+}
+
+:root:not([data-form="women"]) .form-women,
+:root[data-form="women"] .form-men {
+  display: none;
+}
+
+.leader-label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.leader-words {
+  color: var(--muted);
+}
+
+.repeat {
+  font-size: 0.8em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.cue {
+  margin: 0 0 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.refs,
+.draft-notice {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.draft-notice {
+  margin-top: 2.5rem;
+}
+
+/* Popovers open under the header at its right edge, below their buttons; on phones as a sheet from the bottom. */
+.popover {
+  position: fixed;
+  inset: 3.5rem 0.5rem auto auto;
+  width: min(24rem, calc(100vw - 1rem));
+  max-height: calc(100dvh - 4.5rem);
+  margin: 0;
+  padding: 0.5rem 1.25rem 1.25rem;
+  overflow-y: auto;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 0.5rem 1.5rem hsl(0 0% 0% / 0.15);
+}
+
+@media (max-width: 40rem) {
+  .popover {
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 80dvh;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .popover::backdrop {
+    background: hsl(0 0% 0% / 0.25);
+  }
+}
+
+.popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.popover h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.popover h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.info-pali-title {
+  margin: 0;
+  color: var(--muted);
+}
+
+.popover dt {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.popover dd {
+  margin: 0.15rem 0 0;
+}
+
+.settings fieldset {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.settings legend {
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.settings label {
+  cursor: pointer;
+}
+
+.settings input {
+  accent-color: var(--accent);
+}
+
+.toggle {
+  display: block;
+  margin-top: 1rem;
+}
+
+.shortcuts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+}
+
+.shortcuts dt,
+.shortcuts dd {
+  margin: 0;
+}
+
+.shortcuts dt {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.6rem;
+  padding: 0 0.35rem;
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
 }
