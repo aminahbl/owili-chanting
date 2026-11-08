@@ -1,6 +1,6 @@
 # Noto Sans subset
 
-Regular, italic and bold Noto Sans, reduced to the Latin range and the Pāli letters with diacritics (Ā ā Ī ī Ū ū Ḍ ḍ Ḷ ḷ Ṁ ṁ Ṃ ṃ Ṅ ṅ Ṇ ṇ Ṭ ṭ). Licensed under the SIL Open Font License 1.1 ([OFL.txt](OFL.txt)).
+Regular, italic and bold Noto Sans, reduced to the Latin range and the Pali letters with diacritics (Ā ā Ī ī Ū ū Ḍ ḍ Ḷ ḷ Ṁ ṁ Ṃ ṃ Ṅ ṅ Ṇ ṇ Ṭ ṭ). Licensed under the SIL Open Font License 1.1 ([OFL.txt](OFL.txt)).
 
 Made with [fontTools](https://github.com/fonttools/fonttools) (`pip install fonttools brotli`) from the variable fonts in [google/fonts](https://github.com/google/fonts/tree/main/ofl/notosans):
 
@@ -15,4 +15,4 @@ for s in regular bold italic; do
 done
 ```
 
-The first part of `UNICODES` is Google Fonts' Latin subset range; the rest are the Pāli letters. To support a new character, add it to `UNICODES` and run the commands again.
+The first part of `UNICODES` is Google Fonts' Latin subset range; the rest are the Pali letters. To support a new character, add it to `UNICODES` and run the commands again.

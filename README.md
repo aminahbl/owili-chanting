@@ -26,7 +26,7 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 ├── tsconfig.json
 ├── assets/
 │   ├── style.css             # Minimal site styles
-│   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pāli letters
+│   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pali letters
 │   ├── index.js              # Index page script
 │   ├── chant.js              # Chant page logic (render, scroll, audio)
 │   ├── lib/

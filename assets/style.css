@@ -1,5 +1,5 @@
 /* Light, minimal typography-first layout */
-/* Noto Sans, subset to Latin and the Pāli letters (see assets/fonts/noto-sans) */
+/* Noto Sans, subset to Latin and the Pali letters (see assets/fonts/noto-sans) */
 @font-face {
   font-family: "Noto Sans";
   src: url("./fonts/noto-sans/noto-sans-regular.woff2") format("woff2");
@@ -48,7 +48,16 @@ body {
 
 body {
   margin: 0;
-  font-family: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    "Noto Sans",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
@@ -377,7 +386,9 @@ audio {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: transform 220ms ease, opacity 220ms ease;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease;
   z-index: 1000;
 }
 
