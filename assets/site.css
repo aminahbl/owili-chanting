@@ -1,0 +1,348 @@
+/* Styles for the generated pages. The current chant and about pages keep style.css until they are rebuilt. */
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/noto-sans/noto-sans-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/noto-sans/noto-sans-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/noto-sans/noto-sans-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: hsl(38, 24%, 93%);
+  --surface: hsl(38, 30%, 97%);
+  --border: hsl(38, 14%, 82%);
+  --fg: hsl(30, 12%, 16%);
+  --muted: hsl(30, 8%, 38%);
+  --accent: #9c510c;
+  --hover: hsl(30, 14.3%, 56.1%);
+  --excerpt: hsl(30, 50%, 98.4%);
+  --radius: 0.75rem;
+}
+
+/* Dark theme: Catppuccin Frappé colours. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #292c3c;
+    --surface: #303446;
+    --border: #414559;
+    --fg: #c6d0f5;
+    --muted: #949cbb;
+    --accent: #ef9f76;
+    --hover: #737994;
+    --excerpt: #292c3c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* The footer stays at the bottom of the viewport when the content is short. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  font-family: "Noto Sans", system-ui, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.site-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem 1rem;
+}
+
+.site-header nav {
+  text-transform: uppercase;
+}
+
+.site-header a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-header a:hover {
+  color: var(--fg);
+}
+
+.page {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+.site-title {
+  margin: 0.5rem 0 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+}
+
+.site-title a {
+  text-decoration: none;
+}
+
+/* Search */
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.search input {
+  width: min(100%, 32rem);
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* One line of height is always kept, so the cards do not move when it fills. */
+.search-status {
+  min-height: 1.6em;
+  margin: 0.5rem 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Group chips */
+
+.chips ul,
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips a {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.chips ul {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.chips a:hover {
+  border-color: var(--hover);
+}
+
+.chips a[aria-current="page"] {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Cards */
+
+.group h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.continued {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+#search-results {
+  margin-top: 1rem;
+}
+
+/* Cards in a row share the height of the tallest; the excerpt band sits at the foot of each, so the bands line up. */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.card:hover {
+  border-color: var(--hover);
+}
+
+.card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card-head {
+  flex: 1 0 auto;
+  padding: 0.95rem 1.1rem 0.8rem;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.card-title a {
+  text-decoration: none;
+}
+
+/* The title link covers the whole card. */
+.card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card-title a:focus-visible {
+  outline: none;
+}
+
+.card-pali-title {
+  margin: 0.15rem 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* The excerpt is set apart from the titles as a band at the foot of the card.
+   Each line is clamped to one row. */
+.card-lines {
+  margin: 0;
+  padding: 0.6rem 1.1rem 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+  background: var(--excerpt);
+}
+
+.card-lines span {
+  display: block;
+  min-height: 1.6em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Pagination */
+
+.pagination {
+  margin-top: 2rem;
+}
+
+.pagination a,
+.pagination .gap {
+  display: inline-block;
+  min-width: 2.25rem;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.pagination a:hover {
+  background: var(--surface);
+}
+
+.pagination a[aria-current="page"] {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+.not-found {
+  text-align: center;
+}
+
+.site-footer {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}

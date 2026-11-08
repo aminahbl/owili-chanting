@@ -6,8 +6,8 @@
     "node": ">=24.22.1"
   },
   "scripts": {
-    "build": "node scripts/build.ts",
-    "check": "tsc"
+    "build": "node scripts/build.ts && tsc -p tsconfig.browser.json",
+    "check": "tsc && tsc -p tsconfig.browser.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

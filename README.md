@@ -5,6 +5,7 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 ## Features
 
 - Minimal, typography‑first layout focussed on the text
+- Chant list with search, groups and pages
 - Pali text with secondary English line‑by‑line
 - Auto‑scroll with Start/Pause and adjustable speed (+ keyboard controls)
 - Bring‑your‑own audio via File System Access API (or file picker fallback)
@@ -15,22 +16,29 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 
 ```
 .
-├── index.html                # List of available chants
 ├── chant.html                # Individual chant page
 ├── about.html                # Links and resources
 ├── scripts/
-│   └── build.ts              # Writes the site to dist/
+│   ├── build.ts              # Writes the site to dist/
+│   ├── chant-list.ts         # Chant data in list order, cards and search index
+│   └── templates.ts          # HTML for the list pages
+├── src/                      # Browser code, compiled to dist/assets/js/
+│   ├── search.ts             # Search on the list pages
+│   ├── card.ts               # Card markup, shared with the build
+│   ├── normalise.ts          # Search text normalisation, shared with the build
+│   └── html.ts               # HTML escaping
 ├── data/
 │   ├── chants/               # One typed module per chant
 │   ├── groups.ts             # Chant groups in display order
 │   ├── types.ts              # The Chant type
 │   └── translation-guide.md  # Principles and fixed renderings for the English
 ├── package.json              # Build and type-check scripts
-├── tsconfig.json
+├── tsconfig.json             # Type-check for build scripts and data
+├── tsconfig.browser.json     # Compiles src/ for the browser
 ├── assets/
-│   ├── style.css             # Minimal site styles
+│   ├── site.css              # Styles for the generated pages
+│   ├── style.css             # Styles for the chant and about pages
 │   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pali letters
-│   ├── index.js              # Index page script
 │   ├── chant.js              # Chant page logic (render, scroll, audio)
 │   ├── lib/
 │   │   └── storage.js        # IndexedDB helpers for audio handles
@@ -45,13 +53,13 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 Requires Node 24.22.1 or later, the earliest release with current security fixes. `npm install` refuses older versions.
 
 - `npm install`
-- `npm run build` writes the site to `dist/`.
+- `npm run build` writes the site to `dist/` and compiles the browser code.
 - `python3 -m http.server 8000 -d dist`, then open http://127.0.0.1:8000. Any static server works. A server is needed because ES modules and some browser APIs don’t work over `file://`.
 - `npm run check` type-checks the TypeScript files.
 
 ## Usage
 
-- From `index.html`, open a chant.
+- On the home page, search or choose a group, then open a chant.
 - Use the Start/Pause button to toggle auto‑scroll.
 - Adjust speed with the slider, or use keys:
   - Space: toggle scroll
@@ -83,7 +91,7 @@ The chant page auto‑loads `./data/${id}.js` based on the `?id=` query param.
 ## Deployment
 
 - Netlify runs `npm run build` and publishes `dist/` ([netlify.toml](netlify.toml)).
-- Any static host works with the same two steps: build, then serve `dist/` as the site root so relative paths resolve (`index.html`, `assets/...`).
+- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs; other hosts need the same redirects.
 
 ## Privacy
 
