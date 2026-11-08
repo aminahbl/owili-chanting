@@ -16,7 +16,7 @@ export interface Entry {
 }
 
 export async function loadChants(): Promise<Chant[]> {
-  const dir = new URL('../data/chants/', import.meta.url);
+  const dir = new URL('../data/chants/texts/', import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
   return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
 }
