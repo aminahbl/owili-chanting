@@ -1,9 +1,10 @@
 // The line clock (spec 05, T1) holds the current step and moves it. A step is
 // one chanting of a line, so a line chanted three times has three steps. The
 // clock is driven by the user (manual) or by a timer over each step's
-// duration, scaled by a tempo (auto). The views only display its state.
+// duration, scaled by a tempo (auto), or by a timer over durations from a
+// timing file (timed). The views only display its state.
 
-export type Method = 'manual' | 'auto';
+export type Method = 'manual' | 'auto' | 'timed';
 export type Status = 'idle' | 'countin' | 'running' | 'paused' | 'ended';
 
 export class LineClock {
@@ -17,7 +18,7 @@ export class LineClock {
   /** Seconds by which a line changes early (T12). */
   lead = 0.3;
   countInSeconds = 3;
-  /** Each step's duration in seconds at a tempo of 1, for auto advance. */
+  /** Each step's duration in seconds at a tempo of 1, for auto and timed advance. */
   durations: number[] = [];
   private onChange: (clock: LineClock) => void;
   private elapsed = 0;
@@ -43,13 +44,18 @@ export class LineClock {
     this.emit();
   }
 
+  /** The tempo in use: a timing file sets its own pace. */
+  private get rate(): number {
+    return this.method === 'timed' ? 1 : this.tempo;
+  }
+
   /** Seconds until the timer moves on, at the current tempo. */
   get timeLeft(): number {
     const duration = this.durations[this.index] ?? 1;
-    return (duration - this.lead * this.tempo - this.elapsed) / this.tempo;
+    return (duration - this.lead * this.rate - this.elapsed) / this.rate;
   }
 
-  /** Starts from the current step. Auto advance begins with a count-in (T13). */
+  /** Starts from the current step. Auto and timed advance begin with a count-in (T13). */
   start() {
     if (this.status === 'ended') this.index = 0;
     this.elapsed = 0;
@@ -137,7 +143,7 @@ export class LineClock {
       return;
     }
     if (this.status !== 'running') return;
-    this.elapsed += seconds * this.tempo;
+    this.elapsed += seconds * this.rate;
     const duration = this.durations[this.index] ?? 1;
     if (this.index >= this.count - 1) {
       if (this.elapsed >= duration) {
@@ -148,7 +154,7 @@ export class LineClock {
     }
     // The line changes `lead` seconds early, and the next step's timer starts
     // that much below zero, so the total time is unchanged.
-    if (this.elapsed >= duration - this.lead * this.tempo) {
+    if (this.elapsed >= duration - this.lead * this.rate) {
       this.index += 1;
       this.elapsed -= duration;
       this.emit();

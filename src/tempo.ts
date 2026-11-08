@@ -7,6 +7,11 @@ import { endsSection, visibleText, type Step } from './text-view.ts';
 
 const clamp = (tempo: number) => Math.min(TEMPO_RANGE.max, Math.max(TEMPO_RANGE.min, tempo));
 
+/** Each step's duration from the text, in the form in use, at a tempo of 1. */
+export function rhythmDurations(steps: Step[]): number[] {
+  return steps.map((s) => lineSeconds(visibleText(s.line.querySelector('.pali') ?? s.line), endsSection(s)));
+}
+
 export class Tempo {
   private clock: LineClock;
   private steps: Step[];
@@ -22,7 +27,7 @@ export class Tempo {
 
   /** Sets each step's duration from the text, in the form in use. */
   measure() {
-    this.clock.durations = this.steps.map((s) => lineSeconds(visibleText(s.line.querySelector('.pali') ?? s.line), endsSection(s)));
+    this.clock.durations = rhythmDurations(this.steps);
   }
 
   setTempo(tempo: number) {

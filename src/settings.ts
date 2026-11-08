@@ -49,6 +49,8 @@ export interface ChantSettings {
   position?: { line: number; repeat: number };
   /** Auto-advance tempo, 1 being the rhythm model's natural speed. */
   tempo?: number;
+  /** An imported timing file (LRC), as imported, and its file name. */
+  timing?: { name: string; lrc: string };
 }
 
 const chantKey = (id: string) => `chant:${id}`;
