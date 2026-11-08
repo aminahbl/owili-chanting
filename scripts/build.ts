@@ -3,7 +3,7 @@
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
 import { chantPage, type NextChant } from './chant-page.ts';
-import { entries, loadChants, searchIndex, type Entry, type Group } from './chant-list.ts';
+import { entries, loadChants, loadTiming, searchIndex, type Entry, type Group } from './chant-list.ts';
 import { listPage, notFoundPage, pageHref } from './templates.ts';
 
 const PAGE_SIZE = 24;
@@ -53,7 +53,9 @@ function nextChant(id: string): NextChant | undefined {
   const after = list[list.findIndex((e) => e.card.id === id) + 1];
   return after && { id: after.card.id, title: after.card.title, groupTitle: after.group.title };
 }
-for (const chant of chants) await write(`${chantHref(chant.id)}/index.html`, chantPage(chant, groupsById, nextChant(chant.id)));
+for (const chant of chants) {
+  await write(`${chantHref(chant.id)}/index.html`, chantPage(chant, groupsById, nextChant(chant.id), await loadTiming(chant)));
+}
 
 await write('/search.json', JSON.stringify(searchIndex(chants, all)));
 await write('/404.html', notFoundPage());

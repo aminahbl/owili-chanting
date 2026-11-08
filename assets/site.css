@@ -1006,3 +1006,39 @@ kbd {
   display: block;
   margin-top: 0.75rem;
 }
+
+/* Timed advance: the timing in use, with its export and import (spec 09, F6). */
+.timed-options {
+  display: none;
+}
+
+:root[data-advance="timed"] .timed-options {
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.timing-name {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.timing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.timing-actions .outline-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.timing-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+.timing-error:empty {
+  display: none;
+}

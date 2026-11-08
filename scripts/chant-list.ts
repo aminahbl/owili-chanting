@@ -1,5 +1,6 @@
-import { readdir } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import type { CardData, SearchEntry } from '../src/card.ts';
+import { readLrc } from '../src/lrc.ts';
 import { normalise } from '../src/normalise.ts';
 import { groups, type GroupId } from '../data/groups.ts';
 import type { Chant, ChantingLine, Section, Text } from '../data/types.ts';
@@ -19,6 +20,28 @@ export async function loadChants(): Promise<Chant[]> {
   const dir = new URL('../data/chants/texts/', import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
   return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
+}
+
+/**
+ * The timing of a recording of the chant, from `data/chants/markers/<id>.lrc`,
+ * if there is one. It is checked against the chant's lines, so the build stops
+ * on a timing that no longer fits.
+ */
+export async function loadTiming(chant: Chant): Promise<string | null> {
+  let lrc: string;
+  try {
+    lrc = await readFile(new URL(`../data/chants/markers/${chant.id}.lrc`, import.meta.url), 'utf8');
+  } catch {
+    return null;
+  }
+  const lines = chant.sections.flatMap((s) => s.lines);
+  const lineIds = lines.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
+  const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
+  const read = readLrc(lrc, chant.id, lineIds, cueIds, lineIds.map(() => 0));
+  if (typeof read === 'string') throw new Error(`data/chants/markers/${chant.id}.lrc: ${read}`);
+  // The timing is bundled inside a script element, which this would end.
+  if (/<\/script/i.test(lrc)) throw new Error(`data/chants/markers/${chant.id}.lrc: contains "</script".`);
+  return lrc;
 }
 
 // Cards use the men's form until the site has a setting for the form.

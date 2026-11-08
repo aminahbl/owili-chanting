@@ -5,11 +5,12 @@ import './icons/close.ts';
 import './icons/home.ts';
 import './icons/info.ts';
 import './icons/tune.ts';
-import { LineClock } from './clock.ts';
+import { LineClock, type Method } from './clock.ts';
 import { SETTING_NAMES, writeChantSettings, writeSetting, type SettingName } from './settings.ts';
 import { SlideView } from './slide-view.ts';
 import { Tempo } from './tempo.ts';
 import { readSteps, TextView } from './text-view.ts';
+import { Timing } from './timing.ts';
 import { keepScreenOn } from './wake-lock.ts';
 
 const root = document.documentElement;
@@ -79,10 +80,29 @@ if (form) {
 
 const inSlides = () => root.dataset.view === 'slides';
 
+const METHOD_LABELS: Record<Method, string> = { manual: 'Manual', auto: 'Auto', timed: 'Timed' };
+
+// The text view has manual advance only.
+function chosenMethod(): Method {
+  if (!inSlides()) return 'manual';
+  if (root.dataset.advance === 'auto') return 'auto';
+  if (root.dataset.advance === 'timed') return 'timed';
+  return 'manual';
+}
+
+function download(name: string, text: string) {
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+  link.download = name;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
 function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLElement) {
   const steps = readSteps(chant);
   const textView = new TextView(steps, backButton, document.querySelector('.chant-header'));
-  const slideView = new SlideView(slidesEl, steps, chant.querySelector('h1')?.textContent ?? '');
+  const title = chant.querySelector('h1')?.textContent ?? '';
+  const slideView = new SlideView(slidesEl, steps, title);
   const startButton = document.querySelector<HTMLButtonElement>('#slide-start');
   const trackButton = document.querySelector<HTMLButtonElement>('#track');
   const methodLabel = document.querySelector<HTMLElement>('.method-label');
@@ -110,6 +130,9 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     }
   });
   const tempo = new Tempo(clock, steps, chantId);
+  const cueIds = new Set([...chant.querySelectorAll<HTMLElement>('.cue[data-cue]')].map((cue) => Number(cue.dataset.cue)));
+  const recorded = document.querySelector('#recording-timing')?.textContent ?? null;
+  const timing = new Timing(steps, chantId, title, cueIds, recorded);
 
   function startLabel(c: LineClock): string {
     if (c.status === 'countin') return String(c.countIn);
@@ -117,15 +140,15 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   }
 
   function showMethod() {
-    if (methodLabel) methodLabel.textContent = clock.method === 'auto' ? 'Auto' : 'Manual';
+    if (methodLabel) methodLabel.textContent = METHOD_LABELS[clock.method];
     if (tempoInput) tempoInput.value = String(clock.tempo);
   }
 
-  // The text view has manual advance only.
   function useSettings() {
-    tempo.measure();
-    const method = inSlides() && root.dataset.advance === 'auto' ? 'auto' : 'manual';
+    const method = chosenMethod();
     if (method !== clock.method) clock.setMethod(method);
+    if (method === 'timed') clock.durations = timing.durations();
+    else tempo.measure();
     slideView.refresh();
     showMethod();
   }
@@ -199,6 +222,31 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   document.querySelector('#slide-next')?.addEventListener('click', () => move(1));
   document.querySelector('#back-to-start')?.addEventListener('click', () => clock.reset());
 
+  // Timed advance follows the imported timing, or the default from the rhythm model (spec 09, F6).
+  const timingName = document.querySelector<HTMLElement>('.timing-name');
+  const timingError = document.querySelector<HTMLElement>('.timing-error');
+  const timingImport = document.querySelector<HTMLInputElement>('#timing-import');
+  const useDefaultButton = document.querySelector<HTMLButtonElement>('#timing-default');
+  function showTiming(error = '') {
+    if (timingName) timingName.textContent = `Timing: ${timing.name}`;
+    if (useDefaultButton) useDefaultButton.hidden = !timing.isImported;
+    if (timingError) timingError.textContent = error;
+    useSettings();
+  }
+  showTiming();
+  document.querySelector('#timing-export')?.addEventListener('click', () => download(`${chantId}.lrc`, timing.lrc()));
+  document.querySelector('#timing-import-button')?.addEventListener('click', () => timingImport?.click());
+  timingImport?.addEventListener('change', async () => {
+    const file = timingImport.files?.[0];
+    timingImport.value = '';
+    if (!file) return;
+    showTiming(timing.import(file.name, await file.text()) ?? '');
+  });
+  useDefaultButton?.addEventListener('click', () => {
+    timing.useDefault();
+    showTiming();
+  });
+
   // A click on a line makes it current, unless lines are moving on by themselves or text is being selected.
   chant.addEventListener('click', (event) => {
     const line = (event.target as Element).closest<HTMLElement>('.line');
@@ -238,8 +286,8 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     else if (event.key === 'ArrowRight' || event.key === 'PageDown') move(1);
     else if (event.key === 'ArrowLeft' || event.key === 'PageUp') move(-1);
     else if (event.key.toLowerCase() === 'v') setView(inSlides() ? 'text' : 'slides');
-    else if (inSlides() && ['+', '='].includes(event.key)) changeTempo(true);
-    else if (inSlides() && ['-', '−'].includes(event.key)) changeTempo(false);
+    else if (inSlides() && clock.method === 'auto' && ['+', '='].includes(event.key)) changeTempo(true);
+    else if (inSlides() && clock.method === 'auto' && ['-', '−'].includes(event.key)) changeTempo(false);
     else if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
       textView.stopFollowing();
       return false;

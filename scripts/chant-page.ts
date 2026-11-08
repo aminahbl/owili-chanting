@@ -54,7 +54,7 @@ function chantingLine(line: ChantingLine, labelled: boolean): string {
 function lines(list: Line[]): string {
   return list
     .map((line, i) => {
-      if ('cue' in line) return `<p class="cue">${escapeHtml(line.cue)}</p>`;
+      if ('cue' in line) return `<p class="cue" data-cue="${line.id}">${escapeHtml(line.cue)}</p>`;
       const before = list[i - 1];
       const labelled = Boolean(line.leader) && !(before && 'pali' in before && before.leader);
       return chantingLine(line, labelled);
@@ -137,10 +137,21 @@ function settingsPopover(chant: Chant): string {
 <fieldset><legend>Advance</legend><div class="choices">
   <label><input type="radio" name="advance" value=""> Manual</label>
   <label><input type="radio" name="advance" value="auto"> Auto</label>
+  <label><input type="radio" name="advance" value="timed"> Timed</label>
 </div></fieldset>
 <div class="auto-options">
   ${slider('id="tempo" list="tempo-marks"', 'Speed', TEMPO_RANGE, ['Slower', 'Faster'])}
   <datalist id="tempo-marks"><option value="${TEMPO_RANGE.default}"></option></datalist>
+</div>
+<div class="timed-options">
+  <p class="timing-name"></p>
+  <div class="timing-actions">
+    <button type="button" class="outline-button" id="timing-export">Export timing</button>
+    <button type="button" class="outline-button" id="timing-import-button">Import timing</button>
+    <input type="file" id="timing-import" accept=".lrc,.txt,text/plain" hidden>
+    <button type="button" class="outline-button" id="timing-default">Use default</button>
+  </div>
+  <p class="timing-error" role="alert"></p>
 </div>
 </div>
 ${choice('theme', 'Theme', [['', 'System'], ['light', 'Light'], ['dark', 'Dark']])}
@@ -205,7 +216,8 @@ function slides(next: NextChant | undefined): string {
 </section>`;
 }
 
-export function chantPage(chant: Chant, groups: Map<string, Group>, next?: NextChant): string {
+// A recording's timing is bundled with the page as the default for Timed advance (spec 09, F8).
+export function chantPage(chant: Chant, groups: Map<string, Group>, next?: NextChant, timing?: string | null): string {
   const paliTitle =
     chant.paliTitle && chant.paliTitle !== chant.title ? `<p class="chant-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
   const body = `<article class="chant" data-chant="${chant.id}">
@@ -217,6 +229,6 @@ ${chant.sections.map(section).join('\n')}
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
 ${slides(next)}
 ${infoPopover(chant, groups)}
-${settingsPopover(chant)}`;
+${settingsPopover(chant)}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant));
 }

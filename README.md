@@ -67,7 +67,9 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Adding a new chant
 
-Add a module to `data/chants/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts), and give it a place in one or more groups from [data/groups.ts](data/groups.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<id>`.
+Add a module to `data/chants/texts/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts), and give it a place in one or more groups from [data/groups.ts](data/groups.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<id>`.
+
+The timing of a recording of the chant goes in `data/chants/markers/<id>.lrc`, an LRC file with one row per line chanted, in the format the chant page exports. The build checks it against the chant's lines and includes it in the chant's page as the default timing for Timed advance.
 
 ## Browser support
 
