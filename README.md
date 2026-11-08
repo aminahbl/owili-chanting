@@ -20,6 +20,8 @@ A lightweight, static, karaoke‑style website to help users chant Pali texts wi
 ├── about.html                # Links and resources
 ├── scripts/
 │   └── build.ts              # Writes the site to dist/
+├── data/
+│   └── translation-guide.md  # Principles and fixed renderings for the English
 ├── package.json              # Build and type-check scripts
 ├── tsconfig.json
 ├── assets/
