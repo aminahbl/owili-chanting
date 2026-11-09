@@ -1,7 +1,7 @@
 // The chant's timing for Timed advance (spec 09). The default is the timing of
-// a recording, where the chant has a marker file, and otherwise the rhythm
+// a recording, where a marker file covers the chant, and otherwise the rhythm
 // model's. The user can export the timing in use, edit it and import it again.
-import { formatTime, lrcTags, readLrc } from './lrc.ts';
+import { chantPart, formatTime, lrcTags, readLrc, type Schedule } from './lrc.ts';
 import { readChantSettings, writeChantSettings } from './settings.ts';
 import { rhythmDurations } from './tempo.ts';
 import { visibleText, type Step } from './text-view.ts';
@@ -50,7 +50,7 @@ export class Timing {
     if (this.imported) return this.imported.name;
     if (!this.recorded) return 'Default (rhythm model)';
     const tags = lrcTags(this.recorded);
-    const by = tags.place ?? tags.ar;
+    const by = tags.place ?? tags.performers;
     return by ? `Default (${by} recording)` : 'Default (recording)';
   }
 
@@ -58,27 +58,50 @@ export class Timing {
     return this.imported !== undefined;
   }
 
-  private read(lrc: string): number[] | string {
+  private read(lrc: string): Schedule | string {
     const lineIds = this.steps.map((s) => Number(s.line.dataset.line));
-    return readLrc(lrc, this.chantId, lineIds, this.cueIds, rhythmDurations(this.steps));
+    return readLrc(lrc, this.chantId, lineIds, this.cueIds);
   }
 
-  // The build checks the bundled timing, so only a stored file can fail to fit,
-  // for example after the chant's text changed; it then gives way to the default.
-  durations(): number[] {
+  // The file in use, read. The build checks the bundled timing, so only a stored
+  // file can fail to fit, for example after the chant's text changed; it then
+  // gives way to the default. Null means the rhythm model.
+  private inUse(): { lrc: string; schedule: Schedule } | null {
     for (const lrc of [this.imported?.lrc, this.recorded]) {
-      const read = lrc ? this.read(lrc) : null;
-      if (Array.isArray(read)) return read;
+      if (!lrc) continue;
+      const read = this.read(lrc);
+      if (typeof read !== 'string') return { lrc, schedule: read };
     }
-    return rhythmDurations(this.steps);
+    return null;
+  }
+
+  /** The timing in use, step by step; the rhythm model's runs from 0 with no pauses. */
+  schedule(): Schedule {
+    const file = this.inUse();
+    if (file) return file.schedule;
+    const durations = rhythmDurations(this.steps);
+    let time = 0;
+    const starts = durations.map((d) => {
+      const start = time;
+      time += d;
+      return start;
+    });
+    return { starts, ends: durations.map(() => undefined), cues: durations.map(() => null) };
+  }
+
+  /** True when the timing in use comes from a file, so it can follow the user's audio. */
+  get fromFile(): boolean {
+    return this.inUse() !== null;
   }
 
   lrc(): string {
     return this.imported?.lrc ?? this.recorded ?? rhythmLrc(this.title, this.chantId, this.steps);
   }
 
-  /** Stores the file if it fits the chant; otherwise returns the reason it does not. */
-  import(name: string, lrc: string): string | null {
+  /** Stores the chant's part of the file if it fits the chant; otherwise returns the reason it does not. */
+  import(name: string, text: string): string | null {
+    const lrc = chantPart(text, this.chantId);
+    if (lrc === null) return 'This timing has no rows for this chant.';
     const read = this.read(lrc);
     if (typeof read === 'string') return read;
     writeChantSettings(this.chantId, { timing: { name, lrc } });

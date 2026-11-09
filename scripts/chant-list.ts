@@ -1,6 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import type { CardData, SearchEntry } from '../src/card.ts';
-import { readLrc } from '../src/lrc.ts';
+import { chantPart, lrcChants, lrcTags, readLrc } from '../src/lrc.ts';
 import { normalise } from '../src/normalise.ts';
 import { groups, type GroupId } from '../data/groups.ts';
 import type { Chant, ChantingLine, Section, Text } from '../data/types.ts';
@@ -22,26 +22,57 @@ export async function loadChants(): Promise<Chant[]> {
   return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
 }
 
+/** A recording that covers a chant: its marker file and the details at the top of it. */
+export interface RecordingInfo {
+  file: string;
+  tags: Record<string, string>;
+}
+
+export interface Timings {
+  /** Each chant's default timing, as the chant's part of a marker file. */
+  defaults: Map<string, string>;
+  /** The recordings that cover each chant, in file-name order. */
+  recordings: Map<string, RecordingInfo[]>;
+}
+
 /**
- * The timing of a recording of the chant, from `data/chants/markers/<id>.lrc`,
- * if there is one. It is checked against the chant's lines, so the build stops
- * on a timing that no longer fits.
+ * The timings in the marker files in `data/chants/markers/`. A marker file
+ * follows one recording and can cover several chants; each chant's part is
+ * checked against its lines, so the build stops on a timing that no longer
+ * fits. Where several files cover a chant, a file tagged `[default:yes]` is
+ * the default, and otherwise the first by file name.
  */
-export async function loadTiming(chant: Chant): Promise<string | null> {
-  let lrc: string;
-  try {
-    lrc = await readFile(new URL(`../data/chants/markers/${chant.id}.lrc`, import.meta.url), 'utf8');
-  } catch {
-    return null;
+export async function loadTimings(chants: Chant[]): Promise<Timings> {
+  const dir = new URL('../data/chants/markers/', import.meta.url);
+  const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith('.lrc')).sort();
+  const byId = new Map(chants.map((c) => [c.id, c]));
+  const found = new Map<string, { part: string; preferred: boolean; recording: RecordingInfo }[]>();
+  for (const file of files) {
+    const text = await readFile(new URL(file, dir), 'utf8');
+    const fail = (reason: string) => new Error(`data/chants/markers/${file}: ${reason}`);
+    // A timing is bundled inside a script element, which this would end.
+    if (/<\/script/i.test(text)) throw fail('contains "</script".');
+    const ids = lrcChants(text);
+    if (ids.length === 0) throw fail('names no chant.');
+    const tags = lrcTags(text);
+    for (const id of ids) {
+      const chant = byId.get(id);
+      if (!chant) throw fail(`names an unknown chant (${id}).`);
+      const part = chantPart(text, id) ?? '';
+      const lines = chant.sections.flatMap((s) => s.lines);
+      const lineIds = lines.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
+      const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
+      const read = readLrc(part, id, lineIds, cueIds);
+      if (typeof read === 'string') throw fail(`${id}: ${read}`);
+      const list = found.get(id) ?? [];
+      list.push({ part, preferred: tags.default === 'yes', recording: { file, tags } });
+      found.set(id, list);
+    }
   }
-  const lines = chant.sections.flatMap((s) => s.lines);
-  const lineIds = lines.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
-  const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
-  const read = readLrc(lrc, chant.id, lineIds, cueIds, lineIds.map(() => 0));
-  if (typeof read === 'string') throw new Error(`data/chants/markers/${chant.id}.lrc: ${read}`);
-  // The timing is bundled inside a script element, which this would end.
-  if (/<\/script/i.test(lrc)) throw new Error(`data/chants/markers/${chant.id}.lrc: contains "</script".`);
-  return lrc;
+  return {
+    defaults: new Map([...found].map(([id, list]) => [id, (list.find((t) => t.preferred) ?? list[0]).part])),
+    recordings: new Map([...found].map(([id, list]) => [id, list.map((t) => t.recording)])),
+  };
 }
 
 // Cards use the men's form until the site has a setting for the form.

@@ -2,7 +2,8 @@
 // one chanting of a line, so a line chanted three times has three steps. The
 // clock is driven by the user (manual) or by a timer over each step's
 // duration, scaled by a tempo (auto), or by a timer over durations from a
-// timing file (timed). The views only display its state.
+// timing file (timed). In timed advance the user's audio can drive it instead
+// (spec 09, F11). The views only display its state.
 
 export type Method = 'manual' | 'auto' | 'timed';
 export type Status = 'idle' | 'countin' | 'running' | 'paused' | 'ended';
@@ -20,6 +21,14 @@ export class LineClock {
   countInSeconds = 3;
   /** Each step's duration in seconds at a tempo of 1, for auto and timed advance. */
   durations: number[] = [];
+  /** How much of each step's duration is a pause after its line, for timed advance (spec 09, F5). */
+  pauses: number[] = [];
+  /** The cue timed in each step's pause, if any. */
+  cues: (number | null)[] = [];
+  /** True during the pause after the current line. */
+  resting = false;
+  /** True while a recording drives the clock, so its own timer does not run. */
+  driven = false;
   private onChange: (clock: LineClock) => void;
   private elapsed = 0;
   private countInLeft = 0;
@@ -29,6 +38,11 @@ export class LineClock {
   constructor(count: number, onChange: (clock: LineClock) => void) {
     this.count = count;
     this.onChange = onChange;
+  }
+
+  /** The cue to mark during the current pause, if any. */
+  get restCue(): number | null {
+    return this.resting ? (this.cues[this.index] ?? null) : null;
   }
 
   /** True while lines are moving on, or about to. */
@@ -55,14 +69,19 @@ export class LineClock {
     return (duration - this.lead * this.rate - this.elapsed) / this.rate;
   }
 
-  /** Starts from the current step. Auto and timed advance begin with a count-in (T13). */
-  start() {
+  /**
+   * Starts from the current step. Auto and timed advance begin with a count-in
+   * (T13), also when a recording drives the clock; the recording starts when it
+   * ends. `countIn` false leaves it out.
+   */
+  start(countIn = true) {
     if (this.status === 'ended') this.index = 0;
     this.elapsed = 0;
+    this.resting = false;
     if (this.method === 'manual') {
       this.status = 'running';
     } else {
-      this.status = this.countInSeconds > 0 ? 'countin' : 'running';
+      this.status = countIn && this.countInSeconds > 0 ? 'countin' : 'running';
       this.countInLeft = this.countInSeconds;
       this.countIn = Math.ceil(this.countInLeft);
       this.loop();
@@ -102,6 +121,7 @@ export class LineClock {
     this.status = 'idle';
     this.index = 0;
     this.elapsed = 0;
+    this.resting = false;
     this.emit();
   }
 
@@ -109,7 +129,23 @@ export class LineClock {
   goTo(target: number) {
     this.index = Math.max(0, Math.min(this.count - 1, target));
     this.elapsed = 0;
+    this.resting = false;
     if (this.status === 'ended' || this.status === 'idle') this.status = 'paused';
+    this.emit();
+  }
+
+  /** Moves to the step and pause a recording has reached, or to the end, running while it plays. */
+  follow(index: number | 'end', resting: boolean, playing: boolean) {
+    if (index === 'end') {
+      this.status = 'ended';
+      this.resting = false;
+    } else {
+      const status = playing ? 'running' : 'paused';
+      if (index === this.index && resting === this.resting && this.status === status) return;
+      this.index = index;
+      this.resting = resting;
+      this.status = status;
+    }
     this.emit();
   }
 
@@ -120,8 +156,9 @@ export class LineClock {
       const seconds = this.lastTime ? (time - this.lastTime) / 1000 : 0;
       this.lastTime = time;
       this.advanceTimer(seconds);
-      if (this.isRunning) this.frame = requestAnimationFrame(tick);
-      else this.frame = 0;
+      // A driven clock needs its own timer for the count-in only.
+      const timing = this.status === 'countin' || (this.status === 'running' && !this.driven);
+      this.frame = timing ? requestAnimationFrame(tick) : 0;
     };
     this.frame = requestAnimationFrame(tick);
   }
@@ -142,9 +179,15 @@ export class LineClock {
       }
       return;
     }
-    if (this.status !== 'running') return;
+    if (this.status !== 'running' || this.driven) return;
     this.elapsed += seconds * this.rate;
     const duration = this.durations[this.index] ?? 1;
+    const pause = this.pauses[this.index] ?? 0;
+    const resting = pause > 0 && this.elapsed >= duration - pause - this.lead * this.rate;
+    if (resting !== this.resting) {
+      this.resting = resting;
+      this.emit();
+    }
     if (this.index >= this.count - 1) {
       if (this.elapsed >= duration) {
         this.status = 'ended';
@@ -157,6 +200,9 @@ export class LineClock {
     if (this.elapsed >= duration - this.lead * this.rate) {
       this.index += 1;
       this.elapsed -= duration;
+      this.resting = false;
+      // A line the timing leaves out lasts 0 seconds and is passed over.
+      while (this.durations[this.index] === 0 && this.index < this.count - 1) this.index += 1;
       this.emit();
     }
   }
