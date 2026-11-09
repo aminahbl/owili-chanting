@@ -4,7 +4,7 @@
 // each page's head that sets the attributes before the page is drawn.
 
 export const SETTINGS_KEY = 'settings';
-export const SETTING_NAMES = ['theme', 'translation', 'size', 'slideSize', 'form', 'view', 'advance'] as const;
+export const SETTING_NAMES = ['theme', 'translation', 'size', 'slideSize', 'form', 'view', 'advance', 'link'] as const;
 export type SettingName = (typeof SETTING_NAMES)[number];
 export type Settings = Partial<Record<SettingName, string>>;
 

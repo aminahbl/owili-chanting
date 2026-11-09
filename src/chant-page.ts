@@ -2,13 +2,21 @@
 // popover and keyboard shortcuts. The popovers open and close through the HTML popover
 // attribute, without this script.
 import './icons/close.ts';
+import './icons/forward.ts';
 import './icons/home.ts';
 import './icons/info.ts';
+import './icons/pause.ts';
+import './icons/play.ts';
+import './icons/rewind.ts';
+import './icons/stop.ts';
 import './icons/tune.ts';
 import { LineClock, type Method } from './clock.ts';
 import { SETTING_NAMES, writeChantSettings, writeSetting, type SettingName } from './settings.ts';
 import { SlideView } from './slide-view.ts';
-import { Tempo } from './tempo.ts';
+import { stepDurations, stepPauses } from './lrc.ts';
+import { forgetAudio, keepsHandles, pickAudio, readAudio, saveAudio, type AudioHandle, type SavedAudio } from './audio-store.ts';
+import { Recording, type Link } from './recording.ts';
+import { rhythmDurations, Tempo } from './tempo.ts';
 import { readSteps, TextView } from './text-view.ts';
 import { Timing } from './timing.ts';
 import { keepScreenOn } from './wake-lock.ts';
@@ -111,6 +119,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   let savedIndex = -1;
 
   const clock = new LineClock(steps.length, (c) => {
+    recording.sync(c);
     textView.show(c);
     slideView.show(c);
     if (startButton) {
@@ -133,6 +142,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const cueIds = new Set([...chant.querySelectorAll<HTMLElement>('.cue[data-cue]')].map((cue) => Number(cue.dataset.cue)));
   const recorded = document.querySelector('#recording-timing')?.textContent ?? null;
   const timing = new Timing(steps, chantId, title, cueIds, recorded);
+  const recording = new Recording(clock, () => showAudio());
 
   function startLabel(c: LineClock): string {
     if (c.status === 'countin') return String(c.countIn);
@@ -144,13 +154,42 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     if (tempoInput) tempoInput.value = String(clock.tempo);
   }
 
+  function useTiming() {
+    const schedule = timing.schedule();
+    const fallback = rhythmDurations(steps);
+    clock.durations = stepDurations(schedule, fallback);
+    clock.pauses = stepPauses(schedule);
+    clock.cues = schedule.cues;
+    recording.use(schedule, fallback);
+  }
+
+  // In the slide view with Auto or Timed advance, Link (on unless turned off)
+  // ties the audio to the slides: in Timed advance with a timing from a file the
+  // slides follow it, and otherwise Start and Pause also play and pause it.
+  // Manual advance has no Start, so nothing to link.
+  function linkFor(method: Method): Link {
+    if (!inSlides() || method === 'manual' || root.dataset.link === 'off') return 'off';
+    return method === 'timed' && timing.fromFile ? 'follow' : 'start';
+  }
+
+  // Set once the audio controls are ready.
+  let showAudioControls = () => {};
+
+  // The link is undone before the method changes, so the change leaves the audio playing.
   function useSettings() {
     const method = chosenMethod();
+    recording.setLink('off');
     if (method !== clock.method) clock.setMethod(method);
-    if (method === 'timed') clock.durations = timing.durations();
-    else tempo.measure();
+    if (method === 'timed') useTiming();
+    else {
+      tempo.measure();
+      clock.pauses = [];
+      clock.cues = [];
+    }
+    recording.setLink(linkFor(method));
     slideView.refresh();
     showMethod();
+    showAudioControls();
   }
   useSettings();
   slideView.show(clock);
@@ -222,7 +261,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   document.querySelector('#slide-next')?.addEventListener('click', () => move(1));
   document.querySelector('#back-to-start')?.addEventListener('click', () => clock.reset());
 
-  // Timed advance follows the imported timing, or the default from the rhythm model (spec 09, F6).
+  // Timed advance follows the imported timing, or the default (spec 09, F6).
   const timingName = document.querySelector<HTMLElement>('.timing-name');
   const timingError = document.querySelector<HTMLElement>('.timing-error');
   const timingImport = document.querySelector<HTMLInputElement>('#timing-import');
@@ -246,6 +285,152 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     timing.useDefault();
     showTiming();
   });
+
+  // The user's audio file, in either view (F11). While it is linked to the
+  // slides, Play does what Start does, and Stop also goes back to the title.
+  const audioName = document.querySelector<HTMLElement>('.audio-name');
+  const audioError = document.querySelector<HTMLElement>('.audio-error');
+  const audioInput = document.querySelector<HTMLInputElement>('#audio-file');
+  const audioChoose = document.querySelector<HTMLButtonElement>('#audio-choose');
+  const audioRestore = document.querySelector<HTMLButtonElement>('#audio-restore');
+  const audioRemove = document.querySelector<HTMLButtonElement>('#audio-remove');
+  const audioButtons = (action: string) => [...document.querySelectorAll<HTMLButtonElement>(`[data-audio="${action}"]`)];
+  /** A remembered file the browser needs permission to read again. */
+  let waiting: AudioHandle | null = null;
+  let copied = false;
+  function showAudio() {
+    if (audioName) {
+      audioName.hidden = !recording.active;
+      audioName.textContent = copied ? `${recording.name} (a copy is kept in this browser)` : recording.name;
+    }
+    if (audioChoose) audioChoose.hidden = recording.active;
+    if (audioRestore) {
+      audioRestore.hidden = recording.active || !waiting;
+      audioRestore.textContent = `Use ${waiting?.name ?? ''} again`;
+    }
+    if (audioRemove) audioRemove.hidden = !recording.active;
+    for (const group of document.querySelectorAll<HTMLElement>('.audio-controls')) group.hidden = !recording.active;
+    const label = recording.playing ? 'Pause' : 'Play';
+    const linked = root.dataset.link !== 'off';
+    for (const button of audioButtons('play')) {
+      button.classList.toggle('on', recording.playing);
+      button.disabled = linkedToClock() && button.closest('.slide-bar') !== null;
+      button.title = button.disabled ? 'Linked: Start plays and pauses the audio' : label;
+      const text = button.querySelector('.sr-only');
+      if (text) text.textContent = label;
+    }
+    for (const button of audioButtons('link')) {
+      button.classList.toggle('on', linked);
+      button.setAttribute('aria-pressed', String(linked));
+    }
+  }
+  showAudioControls = showAudio;
+  const linkedToClock = () => clock.driven || recording.startsWithClock;
+  const audioActions: Record<string, () => void> = {
+    play: () => (linkedToClock() ? startOrPause() : recording.toggle()),
+    stop: () => {
+      if (linkedToClock()) clock.reset();
+      if (!clock.driven) recording.stop();
+    },
+    link: () => {
+      apply('link', root.dataset.link === 'off' ? '' : 'off');
+      showAudio();
+    },
+  };
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-audio]')) {
+    button.addEventListener('click', () => audioActions[button.dataset.audio ?? '']?.());
+  }
+
+  // A press on back or forward moves 3 seconds; holding it moves through the
+  // audio until it is released. A click from the keyboard also moves 3 seconds.
+  function holdToScan(button: HTMLButtonElement, direction: 1 | -1) {
+    let timer = 0;
+    let scanned = false;
+    button.addEventListener('pointerdown', () => {
+      scanned = false;
+      timer = window.setTimeout(() => {
+        scanned = true;
+        recording.startScan(direction);
+      }, 400);
+    });
+    for (const type of ['pointerup', 'pointerleave', 'pointercancel']) {
+      button.addEventListener(type, () => {
+        clearTimeout(timer);
+        recording.stopScan();
+      });
+    }
+    button.addEventListener('click', () => {
+      if (!scanned) recording.skip(3 * direction);
+      scanned = false;
+    });
+    button.addEventListener('contextmenu', (event) => event.preventDefault());
+  }
+  for (const button of audioButtons('back')) holdToScan(button, -1);
+  for (const button of audioButtons('forward')) holdToScan(button, 1);
+
+  // The file is remembered for the chant (src/audio-store.ts).
+  async function useAudio(file: File, saved: SavedAudio) {
+    clock.pause();
+    const error = await recording.load(file);
+    if (audioError) audioError.textContent = error ?? '';
+    if (!error) {
+      waiting = null;
+      copied = 'file' in saved;
+      await saveAudio(chantId, saved);
+    }
+    useSettings();
+    showAudio();
+  }
+  async function useHandle(handle: AudioHandle) {
+    try {
+      await useAudio(await handle.getFile(), { handle });
+    } catch {
+      waiting = null;
+      await forgetAudio(chantId);
+      if (audioError) audioError.textContent = `${handle.name} can no longer be found. Please add it again.`;
+      showAudio();
+    }
+  }
+  async function restoreAudio() {
+    const saved = await readAudio(chantId);
+    if (!saved) return;
+    if ('file' in saved) {
+      await useAudio(saved.file, saved);
+      return;
+    }
+    if ((await saved.handle.queryPermission?.({ mode: 'read' })) === 'granted') {
+      await useHandle(saved.handle);
+      return;
+    }
+    waiting = saved.handle;
+    showAudio();
+  }
+  audioChoose?.addEventListener('click', async () => {
+    if (!keepsHandles) {
+      audioInput?.click();
+      return;
+    }
+    const handle = await pickAudio();
+    if (handle) await useHandle(handle);
+  });
+  audioInput?.addEventListener('change', async () => {
+    const file = audioInput.files?.[0];
+    audioInput.value = '';
+    if (file) await useAudio(file, { file });
+  });
+  audioRestore?.addEventListener('click', async () => {
+    if (!waiting) return;
+    if ((await waiting.requestPermission?.({ mode: 'read' })) === 'granted') await useHandle(waiting);
+  });
+  audioRemove?.addEventListener('click', async () => {
+    recording.unload();
+    copied = false;
+    await forgetAudio(chantId);
+    useSettings();
+    showAudio();
+  });
+  showAudio();
+  void restoreAudio();
 
   // A click on a line makes it current, unless lines are moving on by themselves or text is being selected.
   chant.addEventListener('click', (event) => {
@@ -281,7 +466,8 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
 
   return (event: KeyboardEvent): boolean => {
     if (keepsKey(event.target, event.key)) return false;
-    if (event.key === ' ' && inSlides()) startOrPause();
+    if (event.key === ' ' && inSlides() && clock.method === 'manual') move(1);
+    else if (event.key === ' ' && inSlides()) startOrPause();
     else if (event.key === ' ') toggleTracking();
     else if (event.key === 'ArrowRight' || event.key === 'PageDown') move(1);
     else if (event.key === 'ArrowLeft' || event.key === 'PageUp') move(-1);

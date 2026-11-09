@@ -375,7 +375,8 @@ input:focus-visible {
 
 /* A fixed width, so Start, Pause and the count-in do not move the buttons beside it. */
 .start,
-.track {
+.track,
+.audio-link {
   min-width: 5.25rem;
   font: inherit;
   font-weight: 700;
@@ -390,17 +391,25 @@ input:focus-visible {
   background: var(--accent);
 }
 
-.track {
+/* Manual advance moves by next and previous only, so the slide bar has no
+   Start, and no Link to tie the audio to it. */
+:root:not([data-advance]) .slide-bar :is(.start, .audio-link) {
+  display: none;
+}
+
+.track,
+.audio-link {
   padding: 0.25rem 0.75rem;
   color: var(--muted);
   background: none;
   box-shadow: inset 0 0 0 2px var(--border);
 }
 
-/* While lines advance, Start reads "Pause" and is outlined, as is Track while
-   it is on. An inset shadow draws the outline without changing the button's size. */
+/* While lines advance, Start reads "Pause" and is outlined, as are Track and
+   Link while they are on. An inset shadow draws the outline without changing the button's size. */
 .start.on,
 .track.on,
+.audio-link.on,
 .outline-button {
   color: var(--accent);
   background: none;
@@ -437,10 +446,31 @@ input:focus-visible {
 icon-home,
 icon-info,
 icon-tune,
-icon-close {
+icon-close,
+icon-play,
+icon-pause,
+icon-stop,
+icon-rewind,
+icon-forward {
   display: block;
   width: 20px;
   height: 20px;
+}
+
+/* A block, so a large font around the icon does not move it down to the text baseline. */
+:is(
+    icon-home,
+    icon-info,
+    icon-tune,
+    icon-close,
+    icon-play,
+    icon-pause,
+    icon-stop,
+    icon-rewind,
+    icon-forward
+  )
+  svg {
+  display: block;
 }
 
 .chant {
@@ -482,16 +512,16 @@ icon-close {
 .line {
   margin: 0 0 0.9rem;
   /* Room for the current line's bar and tint, without moving the text. */
-  margin-inline: calc(-0.75rem - 3px);
+  margin-inline: calc(-0.75rem - 2px);
   padding: 0.2rem 0.75rem;
-  border-left: 3px solid transparent;
+  border-left: 2px solid transparent;
   border-radius: 0 0.5rem 0.5rem 0;
   cursor: pointer;
   scroll-margin-top: 4rem;
 }
 
 .line.current {
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
   border-left-color: var(--accent);
 }
 
@@ -720,7 +750,7 @@ kbd {
 
 .slides {
   --slide-indent: clamp(1.25rem, 4vw, 3.5rem);
-  --slide-bar: 1.5px;
+  --slide-bar: 2px;
   display: none;
 }
 
@@ -873,6 +903,17 @@ kbd {
   margin-top: 0.5em;
 }
 
+/* During a timed pause the line just chanted is dimmed with its bar, and a
+   cue that the pause times, such as a bow, takes the accent colour. */
+.slide-page.resting .slide-page-line.current,
+.slide-page.resting .slide-page-bar {
+  opacity: 0.4;
+}
+
+.slide-page-cue.current {
+  color: var(--accent);
+}
+
 /* The current line is marked by a thin accent bar with rounded ends. */
 .slide-page-bar {
   position: absolute;
@@ -882,7 +923,8 @@ kbd {
   background: var(--accent);
   transition:
     top 0.45s ease,
-    height 0.45s ease;
+    height 0.45s ease,
+    opacity 0.45s ease;
 }
 
 .slide-page-count {
@@ -915,7 +957,7 @@ kbd {
 }
 
 .slide-dedication {
-  max-width: 32rem;
+  max-width: 38rem;
   text-wrap: balance;
   font-size: 1.1rem;
   color: var(--muted);
@@ -928,11 +970,13 @@ kbd {
   gap: 0.75rem;
 }
 
+/* On narrow screens the audio controls wrap to a second row. */
 .slide-bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.25rem 0.5rem;
   padding: 0.75rem 0 1rem;
 }
 
@@ -971,6 +1015,72 @@ kbd {
 }
 
 :root:not([data-advance="auto"]) .auto-only {
+  display: none;
+}
+
+/* The audio controls (spec 09, F11). Play shows the pause icon while the audio
+   plays. Linked to the slides, Start plays and pauses the audio, so the slide
+   bar's Play is disabled and greyed out. */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.slide-bar .audio-controls {
+  margin-left: 0.5rem;
+}
+
+[data-audio="play"]:not(.on) icon-pause,
+[data-audio="play"].on icon-play {
+  display: none;
+}
+
+.audio-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Back and forward are held to move through the audio, so a long press must
+   not select text or open a menu. */
+.audio-skip {
+  touch-action: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.audio-link {
+  min-width: 0;
+  margin-left: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* In the text view the controls sit in a bar of their own at the foot of the
+   screen, and "Back to current line" moves up above them. */
+.audio-bar {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  translate: -50% 0;
+}
+
+.audio-bar .audio-controls {
+  padding: 0.25rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 0.25rem 1rem hsl(0 0% 0% / 0.15);
+}
+
+:root:has(.audio-bar .audio-controls:not([hidden])) .back-to-line {
+  bottom: 5rem;
+}
+
+:root:has(.audio-bar .audio-controls:not([hidden])) .chant {
+  padding-bottom: 5rem;
+}
+
+:root[data-view="slides"]:has(#slides) .audio-bar {
   display: none;
 }
 
@@ -1017,28 +1127,33 @@ kbd {
   margin-top: 0.75rem;
 }
 
-.timing-name {
+/* Notes, buttons and errors in the Timed and Audio settings. */
+.option-note {
   margin: 0 0 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
-.timing-actions {
+.option-note:last-child {
+  margin: 0.5rem 0 0;
+}
+
+.option-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.timing-actions .outline-button {
+.option-actions .outline-button {
   padding: 0.25rem 0.75rem;
   font-size: 0.85rem;
 }
 
-.timing-error {
+.option-error {
   margin: 0.5rem 0 0;
   font-size: 0.85rem;
 }
 
-.timing-error:empty {
+.option-error:empty {
   display: none;
 }

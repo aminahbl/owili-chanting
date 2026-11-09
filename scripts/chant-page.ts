@@ -1,15 +1,16 @@
 import { escapeHtml } from '../src/html.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
 import type { Chant, ChantingLine, Line, Ref, Section, Text } from '../data/types.ts';
-import type { Group } from './chant-list.ts';
+import type { Group, RecordingInfo } from './chant-list.ts';
 import { layout } from './templates.ts';
 
 const TRANSLATION_NOTE = 'LLM translation as a guide only. Please consult a published translation and report mistakes.';
+const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
 const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';
 
 const SHORTCUTS = [
-  ['Space', 'Start or pause; in the text view, tracking on or off'],
+  ['Space', 'Start or pause; next line in Manual advance; in the text view, tracking on or off'],
   ['→ or Page Down', 'Next line'],
   ['← or Page Up', 'Previous line'],
   ['+ and −', 'Faster or slower (Auto advance on slides)'],
@@ -84,7 +85,17 @@ ${body}
 </div>`;
 }
 
-function infoPopover(chant: Chant, groups: Map<string, Group>): string {
+// Each recording that a marker file follows, with its details, its page and the file (spec 09, F8).
+function recording({ file, tags }: RecordingInfo): string {
+  const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
+  const links = [
+    tags.source ? `<a href="${escapeHtml(tags.source)}">Recording page</a>` : '',
+    `<a href="${MARKER_FILES}/${encodeURIComponent(file)}">Timing file</a>`,
+  ];
+  return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
+}
+
+function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: RecordingInfo[]): string {
   const groupLinks = chant.groups
     .map((m) => groups.get(m.group))
     .filter((g): g is Group => g !== undefined)
@@ -98,6 +109,7 @@ function infoPopover(chant: Chant, groups: Map<string, Group>): string {
     `<dt>Groups</dt><dd>${groupLinks}</dd>`,
     `<dt>Pali source</dt><dd>${source}</dd>`,
     chant.translation ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
+    recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     refs.length ? `<dt>References</dt><dd>${refs.map(suttaCentral).join(', ')}</dd>` : '',
     chant.notes?.length ? `<dt>Notes</dt>${chant.notes.map((n) => `<dd>${escapeHtml(n)}</dd>`).join('')}` : '',
     chant.links?.length
@@ -127,12 +139,23 @@ function textSize(name: 'size' | 'slideSize', view: string): string {
   return `<fieldset class="${view}-only"><legend>Text size</legend>${slider(`name="${name}"`, 'Text size', SIZE_RANGES[name], ends)}</fieldset>`;
 }
 
-function settingsPopover(chant: Chant): string {
+function settingsPopover(chant: Chant, recorded: boolean): string {
   const chantLines = chant.sections.flatMap((s) => s.lines).filter((l): l is ChantingLine => 'pali' in l);
   const twoForms = chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
   const translated = chantLines.some((l) => l.en);
   const shortcuts = SHORTCUTS.map(([key, action]) => `<dt><kbd>${escapeHtml(key)}</kbd></dt><dd>${action}</dd>`).join('');
   const body = `<form class="settings">
+  <fieldset><legend>Audio</legend>
+  <p class="option-note">The file stays on this device and is remembered on each visit.${recorded ? ' Recordings of this chant are listed under Info.' : ''}</p>
+  <p class="audio-name option-note" hidden></p>
+  <div class="option-actions">
+    <button type="button" class="outline-button" id="audio-restore" hidden></button>
+    <button type="button" class="outline-button" id="audio-choose">Add audio file</button>
+    <input type="file" id="audio-file" accept="audio/*" hidden>
+    <button type="button" class="outline-button" id="audio-remove" hidden>Remove</button>
+  </div>
+  <p class="audio-error option-error" role="alert"></p>
+</fieldset>
 <div class="slides-only">
 <fieldset><legend>Advance</legend><div class="choices">
   <label><input type="radio" name="advance" value=""> Manual</label>
@@ -144,14 +167,14 @@ function settingsPopover(chant: Chant): string {
   <datalist id="tempo-marks"><option value="${TEMPO_RANGE.default}"></option></datalist>
 </div>
 <div class="timed-options">
-  <p class="timing-name"></p>
-  <div class="timing-actions">
-    <button type="button" class="outline-button" id="timing-export">Export timing</button>
+  <p class="timing-name option-note"></p>
+  <div class="option-actions">
+    <button type="button" class="outline-button" id="timing-default">Use default</button>
     <button type="button" class="outline-button" id="timing-import-button">Import timing</button>
     <input type="file" id="timing-import" accept=".lrc,.txt,text/plain" hidden>
-    <button type="button" class="outline-button" id="timing-default">Use default</button>
+    <button type="button" class="outline-button" id="timing-export">Export timing</button>
   </div>
-  <p class="timing-error" role="alert"></p>
+  <p class="timing-error option-error" role="alert"></p>
 </div>
 </div>
 ${choice('theme', 'Theme', [['', 'System'], ['light', 'Light'], ['dark', 'Dark']])}
@@ -186,6 +209,23 @@ export interface NextChant {
   groupTitle: string;
 }
 
+// The audio controls, shown once the user adds an audio file (spec 09, F11): in
+// the slide bar, beside Start and the advance method, and in a bar of their own
+// at the foot of the text view. Link is in the slide view only.
+function audioControls(view: 'text' | 'slides'): string {
+  const link =
+    view === 'slides'
+      ? '<button class="audio-link" data-audio="link" aria-pressed="true" title="Start and Pause also play and pause the audio">Link</button>'
+      : '';
+  return `<div class="audio-controls" hidden>
+  <button class="icon-button audio-skip" data-audio="back" title="Back 3 seconds; hold to rewind"><icon-rewind></icon-rewind><span class="sr-only">Back 3 seconds</span></button>
+  <button class="icon-button" data-audio="play" title="Play"><icon-play></icon-play><icon-pause></icon-pause><span class="sr-only">Play</span></button>
+  <button class="icon-button audio-skip" data-audio="forward" title="Forward 3 seconds; hold to fast-forward"><icon-forward></icon-forward><span class="sr-only">Forward 3 seconds</span></button>
+  <button class="icon-button" data-audio="stop" title="Stop"><icon-stop></icon-stop><span class="sr-only">Stop</span></button>
+  ${link}
+</div>`;
+}
+
 // The slide view is filled from the text view's lines by src/slide-view.ts.
 function slides(next: NextChant | undefined): string {
   const nextLink = next
@@ -211,13 +251,20 @@ function slides(next: NextChant | undefined): string {
   <button class="icon-button slower auto-only" title="Slower (−)"><span aria-hidden="true">−</span><span class="sr-only">Slower</span></button>
   <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
   <button class="icon-button faster auto-only" title="Faster (+)"><span aria-hidden="true">+</span><span class="sr-only">Faster</span></button>
+  ${audioControls('slides')}
   <p class="slide-position"></p>
 </div>
 </section>`;
 }
 
 // A recording's timing is bundled with the page as the default for Timed advance (spec 09, F8).
-export function chantPage(chant: Chant, groups: Map<string, Group>, next?: NextChant, timing?: string | null): string {
+export function chantPage(
+  chant: Chant,
+  groups: Map<string, Group>,
+  next?: NextChant,
+  timing?: string,
+  recordings: RecordingInfo[] = [],
+): string {
   const paliTitle =
     chant.paliTitle && chant.paliTitle !== chant.title ? `<p class="chant-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
   const body = `<article class="chant" data-chant="${chant.id}">
@@ -227,8 +274,9 @@ ${notes(chant)}
 ${chant.sections.map(section).join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
+<div class="audio-bar">${audioControls('text')}</div>
 ${slides(next)}
-${infoPopover(chant, groups)}
-${settingsPopover(chant)}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
+${infoPopover(chant, groups, recordings)}
+${settingsPopover(chant, recordings.length > 0)}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant));
 }

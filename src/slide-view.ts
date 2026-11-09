@@ -5,7 +5,9 @@
 // Before the chant starts, the page shows the title and the chant's notes,
 // with the first line as the preview. The lines, section titles, cues and
 // leader labels are copied from the text view, so forms and translation
-// follow the same settings.
+// follow the same settings. During a timed pause after a line (spec 09, F5),
+// the line is dimmed; a pause with a cue, such as a bow, shows the next line's
+// block with the cue marked, since the cue stands above the line it comes before.
 import type { LineClock } from './clock.ts';
 import { escapeHtml } from './html.ts';
 import { SIZE_RANGES } from './settings.ts';
@@ -18,6 +20,11 @@ const NOTHING = -2;
 const TURN_MS = 300;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
+interface Cue {
+  id: string;
+  html: string;
+}
+
 interface PageLine {
   /** The Pali and translation. */
   html: string;
@@ -25,7 +32,7 @@ interface PageLine {
   pali: string;
   section: string;
   /** The cues between the line before and this one. */
-  cues: string[];
+  cues: Cue[];
   leader: boolean;
 }
 
@@ -52,7 +59,7 @@ function sectionTitle(line: HTMLElement): string {
 }
 
 const lineHtml = (html: string) => `<div class="slide-page-line"><div class="slide-page-text">${html}</div></div>`;
-const cueHtml = (html: string) => `<p class="cue slide-page-cue">${html}</p>`;
+const cueHtml = (cue: Cue) => `<p class="cue slide-page-cue" data-cue="${cue.id}">${cue.html}</p>`;
 
 // Whether the line is the first of a titled section.
 function opensSection(lines: PageLine[], i: number): boolean {
@@ -76,7 +83,9 @@ export class SlideView {
   private starts: number[] = [];
   private shownBlock: number | null = null;
   /** Cues after the last line, shown below it. */
-  private trailingCues: string[] = [];
+  private trailingCues: Cue[] = [];
+  /** During a timed pause: the cue it times, or null for a pause without one. */
+  private rest: number | null | undefined;
   private resizeFrame = 0;
 
   constructor(root: HTMLElement, steps: Step[], title: string) {
@@ -104,9 +113,11 @@ export class SlideView {
   show(clock: LineClock) {
     this.root.classList.toggle('ended', clock.status === 'ended');
     const target = clock.status === 'idle' ? TITLE : clock.index;
-    if (target === this.shown) return;
+    const rest = clock.resting ? clock.restCue : undefined;
+    if (target === this.shown && rest === this.rest) return;
     const animate = this.shown !== NOTHING && !reducedMotion.matches;
     this.shown = target;
+    this.rest = rest;
     this.render(animate);
   }
 
@@ -129,7 +140,10 @@ export class SlideView {
       this.fit(lines);
       this.shownBlock = null;
     }
-    const block = this.blockOf(number);
+    // A pause with a cue shows the block of the next line, where the cue stands.
+    const cue = typeof this.rest === 'number' ? this.rest : null;
+    const nextLine = step && cue !== null ? this.steps[this.shown + 1]?.line : undefined;
+    const block = this.blockOf(nextLine ? this.lines.indexOf(nextLine) : number);
     // The row names the section only when the block does not start with its title.
     this.section.textContent = step && !opensSection(lines, this.starts[block]) ? sectionTitle(step.line) : '';
     if (block !== this.shownBlock) {
@@ -138,14 +152,17 @@ export class SlideView {
       this.shownBlock = block;
     }
     const count = step && step.of > 1 ? `${step.repeat} of ${step.of}` : '';
-    this.mark(block === TITLE ? 0 : number - this.starts[block], block !== TITLE, count);
+    this.page.classList.toggle('resting', this.rest !== undefined);
+    for (const el of this.page.querySelectorAll<HTMLElement>('.slide-page-cue')) el.classList.toggle('current', el.dataset.cue === String(cue));
+    if (nextLine) this.mark(-1, false, '');
+    else this.mark(block === TITLE ? 0 : number - this.starts[block], block !== TITLE, count);
   }
 
   private pageLines(): PageLine[] {
-    const cuesBefore = new Map<HTMLElement, string[]>();
-    let cues: string[] = [];
+    const cuesBefore = new Map<HTMLElement, Cue[]>();
+    let cues: Cue[] = [];
     for (const el of document.querySelectorAll<HTMLElement>('.chant .cue, .chant .line')) {
-      if (el.matches('.cue')) cues.push(el.innerHTML);
+      if (el.matches('.cue')) cues.push({ id: el.dataset.cue ?? '', html: el.innerHTML });
       else if (this.lines.includes(el)) {
         cuesBefore.set(el, cues);
         cues = [];
@@ -262,8 +279,10 @@ export class SlideView {
     const line = lines[index];
     const bar = this.page.querySelector<HTMLElement>('.slide-page-bar');
     const label = this.page.querySelector<HTMLElement>('.slide-page-count');
-    if (!line || !bar || !label) return;
-    bar.hidden = !isLine;
+    if (!bar || !label) return;
+    bar.hidden = !isLine || !line;
+    label.textContent = '';
+    if (!line) return;
     bar.style.top = `${line.offsetTop}px`;
     bar.style.height = `${line.querySelector('.slide-page-text')?.clientHeight ?? line.offsetHeight}px`;
     label.textContent = count;
