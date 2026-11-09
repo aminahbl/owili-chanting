@@ -442,24 +442,18 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     textView.follow();
   });
 
-  // On a slide, a swipe moves a line. A tap moves forward on the right two thirds and
-  // back on the left third in manual advance, and pauses or resumes otherwise (P7).
+  // On a touch screen, a swipe across a slide moves a line. A click or tap does
+  // nothing, so the text can be selected.
   let down: { x: number; y: number } | null = null;
   slideView.stage.addEventListener('pointerdown', (event) => {
-    down = { x: event.clientX, y: event.clientY };
+    down = event.pointerType === 'touch' ? { x: event.clientX, y: event.clientY } : null;
   });
   slideView.stage.addEventListener('pointerup', (event) => {
-    if (!down || (event.target as Element).closest('a, button')) return;
+    if (!down) return;
     const dx = event.clientX - down.x;
     const dy = event.clientY - down.y;
     down = null;
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
-    else if (Math.abs(dx) > 10 || Math.abs(dy) > 10) return;
-    else if (clock.method !== 'manual') startOrPause();
-    else {
-      const box = slideView.stage.getBoundingClientRect();
-      move(event.clientX - box.left > box.width / 3 ? 1 : -1);
-    }
   });
 
   addEventListener('wheel', () => textView.stopFollowing(), { passive: true });

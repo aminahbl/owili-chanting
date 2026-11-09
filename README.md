@@ -77,7 +77,7 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 - On the home page, search or choose a group, then open a chant.
 - On a chant page, the info button shows the chant's source, the recordings that have a timing file, references and notes. The settings button sets the theme, text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
-- Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed.
+- Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
 - With Timed, the settings show the timing in use, with Export timing and Import timing.
 - Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
 - In the slide view with Auto or Timed advance, Link ties the audio to the slides. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With Link off, the audio and the slides run separately. Manual advance has no Start and no Link: next and previous move the lines, and the audio controls work on their own.
