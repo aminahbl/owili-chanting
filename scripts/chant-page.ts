@@ -245,6 +245,7 @@ function slides(next: NextChant | undefined): string {
   </div>
 </div>
 <div class="slide-bar" id="slide-bar">
+<div class="slide-controls">
   <button class="icon-button" id="slide-previous" title="Previous line (←)"><span aria-hidden="true">‹</span><span class="sr-only">Previous line</span></button>
   <button class="start" id="slide-start">Start</button>
   <button class="icon-button" id="slide-next" title="Next line (→)"><span aria-hidden="true">›</span><span class="sr-only">Next line</span></button>
@@ -252,7 +253,8 @@ function slides(next: NextChant | undefined): string {
   <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
   <button class="icon-button faster auto-only" title="Faster (+)"><span aria-hidden="true">+</span><span class="sr-only">Faster</span></button>
   ${audioControls('slides')}
-  <p class="slide-position"></p>
+</div>
+<p class="slide-position"></p>
 </div>
 </section>`;
 }
