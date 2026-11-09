@@ -5,6 +5,7 @@ import './icons/close.ts';
 import './icons/forward.ts';
 import './icons/home.ts';
 import './icons/info.ts';
+import './icons/command.ts';
 import './icons/pause.ts';
 import './icons/play.ts';
 import './icons/rewind.ts';
@@ -26,6 +27,7 @@ const article = document.querySelector<HTMLElement>('article.chant');
 const form = document.querySelector<HTMLFormElement>('form.settings');
 const info = document.querySelector<HTMLElement>('#info');
 const settings = document.querySelector<HTMLElement>('#settings');
+const shortcuts = document.querySelector<HTMLElement>('#shortcuts');
 const slidesRoot = document.querySelector<HTMLElement>('#slides');
 const back = document.querySelector<HTMLElement>('#back-to-line');
 let afterSettingChange = () => {};
@@ -68,11 +70,6 @@ function keepsKey(target: EventTarget | null, key: string): boolean {
   if (!(target instanceof Element)) return false;
   if (target.closest('[popover]')) return true;
   return key === ' ' && target.closest('button, a, input') !== null;
-}
-
-function openShortcuts(popover: HTMLElement) {
-  if (!popover.matches(':popover-open')) popover.showPopover();
-  popover.querySelector('#shortcuts')?.scrollIntoView({ block: 'nearest' });
 }
 
 if (form) {
@@ -489,7 +486,7 @@ document.addEventListener('keydown', (event) => {
   if (key === 't' && form?.querySelector('[name="translation"]')) toggleTranslation();
   else if (key === 'i') info?.togglePopover();
   else if (key === 's') settings?.togglePopover();
-  else if (key === '?' && settings) openShortcuts(settings);
+  else if (key === '?') shortcuts?.togglePopover();
   else return;
   event.preventDefault();
 });

@@ -143,7 +143,6 @@ function settingsPopover(chant: Chant, recorded: boolean): string {
   const chantLines = chant.sections.flatMap((s) => s.lines).filter((l): l is ChantingLine => 'pali' in l);
   const twoForms = chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
   const translated = chantLines.some((l) => l.en);
-  const shortcuts = SHORTCUTS.map(([key, action]) => `<dt><kbd>${escapeHtml(key)}</kbd></dt><dd>${action}</dd>`).join('');
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
   <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Sources for available recordings are given in the info panel.' : ''}</p>
@@ -182,10 +181,13 @@ ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
 ${translated ? '<label class="toggle"><input type="checkbox" name="translation" value="" data-unchecked="off"> Show translation</label>' : ''}
 ${twoForms ? choice('form', 'Form', [['', 'Men’s form'], ['women', 'Women’s form']]) : ''}
-</form>
-<h3 id="shortcuts">Keyboard shortcuts</h3>
-<dl class="shortcuts">${shortcuts}</dl>`;
+</form>`;
   return popover('settings', 'Settings', body);
+}
+
+function shortcutsPopover(): string {
+  const shortcuts = SHORTCUTS.map(([key, action]) => `<dt><kbd>${escapeHtml(key)}</kbd></dt><dd>${action}</dd>`).join('');
+  return popover('shortcuts', 'Keyboard shortcuts', `<dl class="shortcuts">${shortcuts}</dl>`);
 }
 
 function header(chant: Chant): string {
@@ -199,6 +201,7 @@ function header(chant: Chant): string {
   <button class="track" id="track" aria-pressed="false" title="Mark the current line (Space)">Track</button>
   <button class="icon-button" popovertarget="settings" title="Settings (S)"><icon-tune></icon-tune><span class="sr-only">Settings</span></button>
   <button class="icon-button" popovertarget="info" title="Info (I)"><icon-info></icon-info><span class="sr-only">Info</span></button>
+  <button class="icon-button shortcuts-button" popovertarget="shortcuts" title="Keyboard shortcuts (?)"><icon-command></icon-command><span class="sr-only">Keyboard shortcuts</span></button>
 </header>`;
 }
 
@@ -279,6 +282,7 @@ ${chant.sections.map(section).join('\n')}
 <div class="audio-bar">${audioControls('text')}</div>
 ${slides(next)}
 ${infoPopover(chant, groups, recordings)}
-${settingsPopover(chant, recordings.length > 0)}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
+${settingsPopover(chant, recordings.length > 0)}
+${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant));
 }

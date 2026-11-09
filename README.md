@@ -81,7 +81,7 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 - With Timed, the settings show the timing in use, with Export timing and Import timing.
 - Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
 - In the slide view with Auto or Timed advance, Link ties the audio to the slides. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With Link off, the audio and the slides run separately. Manual advance has no Start and no Link: next and previous move the lines, and the audio controls work on their own.
-- Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover.
+- Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
 
 ## Adding a new chant
 

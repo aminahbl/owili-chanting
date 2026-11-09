@@ -379,6 +379,13 @@ input:focus-visible {
   background: var(--surface);
 }
 
+/* There is no keyboard on a touch-only device. */
+@media (any-hover: none) {
+  .shortcuts-button {
+    display: none;
+  }
+}
+
 /* A fixed width, so Start, Pause and the count-in do not move the buttons beside it. */
 .start,
 .track,
@@ -452,6 +459,7 @@ input:focus-visible {
 icon-home,
 icon-info,
 icon-tune,
+icon-command,
 icon-close,
 icon-play,
 icon-pause,
@@ -632,11 +640,6 @@ icon-forward {
 .popover h2 {
   margin: 0;
   font-size: 1.1rem;
-}
-
-.popover h3 {
-  margin: 1.5rem 0 0.5rem;
-  font-size: 0.95rem;
 }
 
 .info-pali-title {
