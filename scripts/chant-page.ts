@@ -146,7 +146,7 @@ function settingsPopover(chant: Chant, recorded: boolean): string {
   const shortcuts = SHORTCUTS.map(([key, action]) => `<dt><kbd>${escapeHtml(key)}</kbd></dt><dd>${action}</dd>`).join('');
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
-  <p class="option-note">The file stays on this device and is remembered on each visit.${recorded ? ' Recordings of this chant are listed under Info.' : ''}</p>
+  <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Sources for available recordings are given in the info panel.' : ''}</p>
   <p class="audio-name option-note" hidden></p>
   <div class="option-actions">
     <button type="button" class="outline-button" id="audio-restore" hidden></button>

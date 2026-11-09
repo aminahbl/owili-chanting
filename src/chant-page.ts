@@ -14,7 +14,7 @@ import { LineClock, type Method } from './clock.ts';
 import { SETTING_NAMES, writeChantSettings, writeSetting, type SettingName } from './settings.ts';
 import { SlideView } from './slide-view.ts';
 import { stepDurations, stepPauses } from './lrc.ts';
-import { forgetAudio, keepsHandles, pickAudio, readAudio, saveAudio, type AudioHandle, type SavedAudio } from './audio-store.ts';
+import { forgetAudio, keepsHandles, pickAudio, readAudio, saveAudio, type AudioHandle } from './audio-store.ts';
 import { Recording, type Link } from './recording.ts';
 import { rhythmDurations, Tempo } from './tempo.ts';
 import { readSteps, TextView } from './text-view.ts';
@@ -288,6 +288,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
 
   // The user's audio file, in either view (F11). While it is linked to the
   // slides, Play does what Start does, and Stop also goes back to the title.
+  const audioNote = document.querySelector<HTMLElement>('.audio-note');
   const audioName = document.querySelector<HTMLElement>('.audio-name');
   const audioError = document.querySelector<HTMLElement>('.audio-error');
   const audioInput = document.querySelector<HTMLInputElement>('#audio-file');
@@ -297,11 +298,11 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const audioButtons = (action: string) => [...document.querySelectorAll<HTMLButtonElement>(`[data-audio="${action}"]`)];
   /** A remembered file the browser needs permission to read again. */
   let waiting: AudioHandle | null = null;
-  let copied = false;
   function showAudio() {
+    if (audioNote) audioNote.hidden = recording.active;
     if (audioName) {
       audioName.hidden = !recording.active;
-      audioName.textContent = copied ? `${recording.name} (a copy is kept in this browser)` : recording.name;
+      audioName.textContent = recording.name;
     }
     if (audioChoose) audioChoose.hidden = recording.active;
     if (audioRestore) {
@@ -368,34 +369,35 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   for (const button of audioButtons('back')) holdToScan(button, -1);
   for (const button of audioButtons('forward')) holdToScan(button, 1);
 
-  // The file is remembered for the chant (src/audio-store.ts).
-  async function useAudio(file: File, saved: SavedAudio) {
+  // Resolves with whether the file plays.
+  async function useAudio(file: File): Promise<boolean> {
     clock.pause();
     const error = await recording.load(file);
     if (audioError) audioError.textContent = error ?? '';
-    if (!error) {
-      waiting = null;
-      copied = 'file' in saved;
-      await saveAudio(chantId, saved);
-    }
+    if (!error) waiting = null;
     useSettings();
     showAudio();
+    return !error;
   }
-  async function useHandle(handle: AudioHandle) {
+  async function useHandle(handle: AudioHandle): Promise<boolean> {
     try {
-      await useAudio(await handle.getFile(), { handle });
+      return await useAudio(await handle.getFile());
     } catch {
       waiting = null;
       await forgetAudio(chantId);
       if (audioError) audioError.textContent = `${handle.name} can no longer be found. Please add it again.`;
       showAudio();
+      return false;
     }
   }
+  // A file the user chooses is remembered for the chant (src/audio-store.ts).
+  // A restored file is not saved again: in Firefox, saving a kept copy again
+  // while it is loaded makes the audio end as soon as it starts.
   async function restoreAudio() {
     const saved = await readAudio(chantId);
     if (!saved) return;
     if ('file' in saved) {
-      await useAudio(saved.file, saved);
+      await useAudio(saved.file);
       return;
     }
     if ((await saved.handle.queryPermission?.({ mode: 'read' })) === 'granted') {
@@ -411,12 +413,12 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
       return;
     }
     const handle = await pickAudio();
-    if (handle) await useHandle(handle);
+    if (handle && (await useHandle(handle))) await saveAudio(chantId, { handle });
   });
   audioInput?.addEventListener('change', async () => {
     const file = audioInput.files?.[0];
     audioInput.value = '';
-    if (file) await useAudio(file, { file });
+    if (file && (await useAudio(file))) await saveAudio(chantId, { file });
   });
   audioRestore?.addEventListener('click', async () => {
     if (!waiting) return;
@@ -424,7 +426,6 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   });
   audioRemove?.addEventListener('click', async () => {
     recording.unload();
-    copied = false;
     await forgetAudio(chantId);
     useSettings();
     showAudio();
