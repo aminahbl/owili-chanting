@@ -3,9 +3,9 @@
 // syllable is two beats. A line takes its beats times the beat length, plus a
 // fixed time for the breath at the line end.
 
-export const BEAT_SECONDS = 0.3;
-export const LINE_SECONDS = 0.6;
-export const SECTION_END_SECONDS = 1.2;
+const BEAT_SECONDS = 0.3;
+const LINE_SECONDS = 0.6;
+const SECTION_END_SECONDS = 1.2;
 
 const VOWELS = new Set(['a', 'ā', 'i', 'ī', 'u', 'ū', 'e', 'o']);
 const LONG_VOWELS = new Set(['ā', 'ī', 'ū', 'e', 'o']);

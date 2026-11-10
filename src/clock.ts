@@ -6,7 +6,7 @@
 // (spec 09, F11). The views only display its state.
 
 export type Method = 'manual' | 'auto' | 'timed';
-export type Status = 'idle' | 'countin' | 'running' | 'paused' | 'ended';
+type Status = 'idle' | 'countin' | 'running' | 'paused' | 'ended';
 
 export class LineClock {
   method: Method = 'manual';

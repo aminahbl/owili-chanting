@@ -4,7 +4,7 @@ import type { Chant, ChantingLine, Line, Ref, Section, Text } from '../data/type
 import type { Group, RecordingInfo } from './chant-list.ts';
 import { layout } from './templates.ts';
 
-const TRANSLATION_NOTE = 'LLM translation as a guide only. Please consult a published translation and report mistakes.';
+const TRANSLATION_NOTE = 'LLM generated as a provisional guide only. Please find a reliable published translation.';
 const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
 const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';

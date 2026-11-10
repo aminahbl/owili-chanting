@@ -24,7 +24,7 @@ export const SIZE_RANGES: Record<'size' | 'slideSize', Range> = {
 /** The Auto tempo, 1 being the rhythm model's natural speed, in the middle of the range. */
 export const TEMPO_RANGE: Range = { min: 0.5, max: 1.5, step: 0.05, default: 1 };
 
-export function readSettings(): Settings {
+function readSettings(): Settings {
   try {
     return JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? '{}') as Settings;
   } catch {
@@ -45,7 +45,7 @@ export function writeSetting(name: SettingName, value: string) {
 }
 
 /** Settings for one chant, such as its last position, stored as one entry per chant. */
-export interface ChantSettings {
+interface ChantSettings {
   position?: { line: number; repeat: number };
   /** Auto-advance tempo, 1 being the rhythm model's natural speed. */
   tempo?: number;

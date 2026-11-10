@@ -11,7 +11,7 @@ export interface AudioHandle {
   requestPermission?(options: { mode: 'read' }): Promise<PermissionState>;
 }
 
-export type SavedAudio = { handle: AudioHandle } | { file: File };
+type SavedAudio = { handle: AudioHandle } | { file: File };
 
 interface FilePickerWindow {
   showOpenFilePicker?(options: object): Promise<AudioHandle[]>;

@@ -14,7 +14,7 @@ export interface ChantingLine {
 }
 
 /** An instruction shown as a cue, not chanted. */
-export interface CueLine {
+interface CueLine {
   id: number;
   cue: string;
 }
@@ -34,7 +34,7 @@ export interface Section {
   refs?: Ref[];
 }
 
-export interface Membership {
+interface Membership {
   group: GroupId;
   subgroup?: string;
   /**
@@ -49,10 +49,10 @@ export interface Membership {
  * changed: the text differs from the Pali source, and the note says how.
  * kept: a possible problem was checked and the text left as it is.
  */
-export type EditorialStatus = 'open' | 'changed' | 'kept';
+type EditorialStatus = 'open' | 'changed' | 'kept';
 
 /** A record of editorial work on the chant. Not shown on the site. */
-export interface EditorialNote {
+interface EditorialNote {
   status: EditorialStatus;
   /** Line IDs the note applies to; absent when it applies to the whole chant. */
   lines?: number[];

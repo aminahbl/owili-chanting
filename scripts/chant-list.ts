@@ -28,7 +28,7 @@ export interface RecordingInfo {
   tags: Record<string, string>;
 }
 
-export interface Timings {
+interface Timings {
   /** Each chant's default timing, as the chant's part of a marker file. */
   defaults: Map<string, string>;
   /** The recordings that cover each chant, in file-name order. */
