@@ -16,5 +16,5 @@ export const set = {
     "0014", // recollection-of-the-sangha
     "0015", // supreme-praise-of-the-sangha
   ],
-  source: { label: "Abhayagiri recording of evening chanting", url: "https://www.abhayagiri.org/talks/5330-evening-chanting-pali" },
+  anchorRecording: { label: "Abhayagiri recording of evening chanting", url: "https://www.abhayagiri.org/talks/5330-evening-chanting-pali" },
 } satisfies ChantSet;

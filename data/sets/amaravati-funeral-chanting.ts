@@ -12,5 +12,5 @@ export const set = {
     "0123", // vipassana-bhumi-patha
     "0124", // pamsukula
   ],
-  source: { label: "Amaravati Chanting Book Volume Two", url: "https://amaravati.org/dhamma-books/chanting-book-volume-two/" },
+  anchorRecording: { label: "To be confirmed" },
 } satisfies ChantSet;

@@ -90,7 +90,7 @@ ${body}
 function recording({ file, tags }: RecordingInfo): string {
   const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
   const links = [
-    tags.source ? `<a href="${escapeHtml(tags.source)}">Recording page</a>` : '',
+    tags.page ? `<a href="${escapeHtml(tags.page)}">Recording page</a>` : '',
     `<a href="${MARKER_FILES}/${encodeURIComponent(file)}">Timing file</a>`,
   ];
   return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
@@ -110,18 +110,18 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
     .map((g) => `<a href="/list/${g.id}">${escapeHtml(g.title)}</a>`)
     .join(', ');
   const { label, url, categories } = chant.paliSource;
-  const sourceName = url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label);
+  const paliSourceName = url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label);
   const placing = (categories ?? [])
     .map((c) => escapeHtml([c.category, c.subcategory].filter(Boolean).join(', ')))
     .join('; ');
-  const source = placing ? `${sourceName}: ${placing}` : sourceName;
+  const paliSource = placing ? `${paliSourceName}: ${placing}` : paliSourceName;
   const refs = chant.sections.flatMap((s) => s.refs ?? []);
   const items = [
     `<dt>Categories</dt><dd>${groupLinks}</dd>`,
     sets.length
       ? `<dt>Sangha sets</dt>${sets.map((s) => `<dd><a href="/sets/${s.slug}">${escapeHtml(s.title)}</a>, ${escapeHtml(s.placeTitle)}</dd>`).join('')}`
       : '',
-    `<dt>Pali source</dt><dd>${source}</dd>`,
+    `<dt>Pali source</dt><dd>${paliSource}</dd>`,
     chant.translation ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     refs.length ? `<dt>References</dt><dd>${refs.map(suttaCentral).join(', ')}</dd>` : '',
@@ -131,7 +131,7 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
       : '',
   ];
   const pali = chant.paliTitle ? `<p class="info-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
-  const number = `<p class="info-number">Chant ${chant.id}</p>`;
+  const number = `<p class="info-number">#${chant.id}</p>`;
   return popover('info', escapeHtml(chant.title), `${pali}<dl>${items.join('')}</dl>${number}`);
 }
 
@@ -160,7 +160,7 @@ function settingsPopover(chants: Chant[], recorded: boolean): string {
   const translated = chantLines.some((l) => l.en);
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
-  <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Sources for available recordings are given in the info panel.' : ''}</p>
+  <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Details of the available recordings, with links to their pages, are given in the info panel.' : ''}</p>
   <p class="audio-name option-note" hidden></p>
   <div class="option-actions">
     <button type="button" class="outline-button" id="audio-restore" hidden></button>
@@ -310,20 +310,21 @@ export interface SetPlace {
 }
 
 function setInfoPopover(set: ChantSet, chants: Chant[], place: SetPlace, recordings: RecordingInfo[]): string {
-  const source = set.source?.url
-    ? `<a href="${escapeHtml(set.source.url)}">${escapeHtml(set.source.label)}</a>`
-    : escapeHtml(set.source?.label ?? '');
+  const anchor = set.anchorRecording;
+  const anchorLabel = anchor.url ? `<a href="${escapeHtml(anchor.url)}">${escapeHtml(anchor.label)}</a>` : escapeHtml(anchor.label);
+  const anchorDetails = [anchor.performers, anchor.date].filter(Boolean).map((t) => escapeHtml(t!));
+  const anchorName = [anchorLabel, ...anchorDetails].join(', ');
   const items = [
     `<dt>Place</dt><dd>${escapeHtml([place.title, place.lineageTitle].filter(Boolean).join(', '))}</dd>`,
     `<dt>Chants</dt>${chants.map((c) => `<dd><a href="/chants/${c.slug}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
-    source ? `<dt>Source</dt><dd>${source}</dd>` : '',
+    `<dt>Anchor recording</dt><dd>${anchorName}</dd>`,
     chants.some((c) => c.translation) ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     set.links?.length
       ? `<dt>Links</dt>${set.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`
       : '',
   ];
-  const number = `<p class="info-number">Set ${set.id}</p>`;
+  const number = `<p class="info-number">#${set.id}</p>`;
   return popover('info', escapeHtml(set.title), `<dl>${items.join('')}</dl>${number}`);
 }
 

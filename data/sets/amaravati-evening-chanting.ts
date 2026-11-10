@@ -17,5 +17,5 @@ export const set = {
     "0015", // supreme-praise-of-the-sangha
     "0009", // closing-homage
   ],
-  source: { label: "Amaravati Chanting Book", url: "https://amaravati.org/dhamma-books/chanting-book/" },
+  anchorRecording: { label: "To be confirmed" },
 } satisfies ChantSet;

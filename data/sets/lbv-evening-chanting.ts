@@ -9,4 +9,5 @@ export const set = {
   chants: [
     "0027", // evening-chanting-lbv-veneration
   ],
+  anchorRecording: { label: "To be confirmed" },
 } satisfies ChantSet;

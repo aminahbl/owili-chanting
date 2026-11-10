@@ -216,6 +216,7 @@ ${cards.join('\n')}
   const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
 ${chips(groups, group)}
 <section class="group sets">
+<p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording.</p>
 ${out.join('\n')}
 </section>`;
   return layout(group.title, body);

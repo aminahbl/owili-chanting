@@ -45,13 +45,13 @@ interface Membership {
 }
 
 /**
- * Where the source places the chant, kept as a record of the source's own
+ * Where the Pali source places the chant, kept as a record of its own
  * arrangement. The site's categories are in `groups`.
  */
-interface SourceCategory {
+interface PaliSourceCategory {
   category: string;
   subcategory?: string;
-  /** Position within the category in the source. */
+  /** Position within the category in the Pali source. */
   order: number;
 }
 
@@ -80,7 +80,7 @@ export interface Chant {
   paliTitle?: string;
   groups: Membership[];
   /** Where the Pali text was taken from. The English is our own. */
-  paliSource: { label: string; url?: string; categories?: SourceCategory[] };
+  paliSource: { label: string; url?: string; categories?: PaliSourceCategory[] };
   translation?: 'draft' | 'reviewed';
   notes?: string[];
   links?: { text: string; href: string }[];
@@ -100,7 +100,7 @@ export interface ChantSet {
   order: number;
   /** Chant numbers, in the order chanted. */
   chants: string[];
-  /** Where the set's contents were taken from. */
-  source?: { label: string; url?: string };
+  /** The recording whose chants, order and wording the set follows. */
+  anchorRecording: { label: string; url?: string; performers?: string; date?: string };
   links?: { text: string; href: string }[];
 }

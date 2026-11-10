@@ -13,4 +13,5 @@ export const set = {
     "0123", // vipassana-bhumi-patha
     "0053", // karaniya-metta-sutta
   ],
+  anchorRecording: { label: "To be confirmed" },
 } satisfies ChantSet;

@@ -7,6 +7,8 @@ export const set = {
   place: "amaravati",
   order: 30,
   chants: [
+    "0001", // pubba-bhaga-nama-kara-patha
+    "0002", // sarana-gamana-patha
     "0017", // nama-kara-siddhi-gatha
     "0018", // namo-kara-atthaka
     "0051", // mangala-sutta
@@ -20,5 +22,5 @@ export const set = {
     "0066", // jaya-mangala-attha-gatha
     "0067", // jaya-paritta
   ],
-  source: { label: "Amaravati recording, Twelve Parittas", url: "https://amaravati.org/audio/twelve-parittas/" },
+  anchorRecording: { label: "Amaravati recording, Twelve Parittas", url: "https://amaravati.org/audio/twelve-parittas/" },
 } satisfies ChantSet;
