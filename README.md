@@ -18,12 +18,12 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 
 ```
 .
-├── about.html                # Links and resources
+├── pages/                    # Body HTML of the about, guide and resources pages
 ├── scripts/
 │   ├── build.ts              # Writes the site to dist/
 │   ├── chant-list.ts         # Chant data in list order, cards and search index
 │   ├── chant-page.ts         # HTML for the chant pages
-│   └── templates.ts          # Page layout and HTML for the list pages
+│   └── templates.ts          # Page layout, the site header, and HTML for the list pages
 ├── src/                      # Browser code, compiled to dist/assets/js/
 │   ├── search.ts             # Search on the list pages
 │   ├── chant-page.ts         # Connects the chant page's views, controls and keys
@@ -38,6 +38,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── recording.ts          # The user's audio file, which the slides can follow
 │   ├── wake-lock.ts          # Keeps the screen on while lines move on
 │   ├── settings.ts           # Stored display settings, shared with the build
+│   ├── theme.ts              # The theme button in every page's header
 │   ├── icons/                # Icons as custom elements
 │   ├── card.ts               # Card markup, shared with the build
 │   ├── normalise.ts          # Search text normalisation, shared with the build
@@ -53,14 +54,8 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 ├── tsconfig.json             # Type-check for build scripts and data
 ├── tsconfig.browser.json     # Compiles src/ for the browser
 ├── assets/
-│   ├── site.css              # Styles for the generated pages
-│   ├── style.css             # Styles for the about page
-│   ├── fonts/noto-sans/      # Noto Sans subset to Latin and Pali letters
-│   ├── lib/
-│   │   └── storage.js        # Audio storage of the previous chant page, no longer used
-│   └── data/
-│       ├── chants.js         # Previous chant registry, read by the about page
-│       └── markers/          # Timing files of the previous chant page
+│   ├── site.css              # Styles for all pages
+│   └── fonts/noto-sans/      # Noto Sans subset to Latin and Pali letters
 └── README.md
 ```
 
@@ -75,8 +70,9 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Usage
 
-- On the home page, search or choose a group, then open a chant.
-- On a chant page, the info button shows the chant's source, the recordings that have a timing file, references and notes. The settings button sets the theme, text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
+- On the home page, search or choose a group, then open a chant. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
+- The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
+- On a chant page, the info button shows the chant's source, the recordings that have a timing file, references and notes. The settings button sets the text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
 - Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
 - With Timed, the settings show the timing in use, with Export timing and Import timing.
 - Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
@@ -89,6 +85,10 @@ Add a module to `data/chants/texts/` that exports `chant`, typed with `satisfies
 
 The timing of a recording goes in `data/chants/markers/<recording>.lrc`, an LRC file in the format the chant page exports. It follows the recording: tags at the top give its details (`ti`, `place`, `performers`, `date`, `source`), a comment lists the chants it covers in order, and a `[chant:<id>]` tag starts each chant's rows, one row per line chanted. A chant chanted in two parts, with another chant between them, has its tag twice. The build checks each chant's part against the chant's lines and includes it in the chant's page as the default timing for Timed advance; the chant's info panel lists the recording. Where several recordings cover a chant, a file tagged `[default:yes]` is used, otherwise the first by file name.
 
+## Editing the about, guide and resources pages
+
+Each page's body is plain HTML in `pages/<slug>.html`, starting with its `<h1>`. The build wraps it in the site layout and writes it to `/<slug>`. The pages and their order in the site header are listed in `PAGES` in [scripts/templates.ts](scripts/templates.ts). A list of named entries, each with a note under it, is written as `<dl class="entries">`. The guide's keyboard shortcuts repeat the list in [scripts/chant-page.ts](scripts/chant-page.ts), so a change to one needs the same change in the other.
+
 ## Browser support
 
 - An audio file plays if the browser can play its format; MP3 and AAC play in all current browsers.
@@ -99,7 +99,7 @@ The timing of a recording goes in `data/chants/markers/<recording>.lrc`, an LRC 
 ## Deployment
 
 - Netlify runs `npm run build` and publishes `dist/` ([netlify.toml](netlify.toml)).
-- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs and the previous `chant.html?id=<id>` links; other hosts need the same redirects.
+- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs and the previous site's `chant.html?id=<id>` and `about.html` links; other hosts need the same redirects.
 
 ## Privacy
 

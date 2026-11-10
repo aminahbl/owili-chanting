@@ -1,15 +1,14 @@
 // Writes the site to dist/: the chant list pages, a page for each chant, the
-// search index and redirects, plus the current about page until it is rebuilt.
-import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+// about, guide and resources pages, the search index and redirects.
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
 import { chantPage, type NextChant } from './chant-page.ts';
 import { entries, loadChants, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
-import { listPage, notFoundPage, pageHref } from './templates.ts';
+import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES } from './templates.ts';
 
 const PAGE_SIZE = 24;
 const root = new URL('../', import.meta.url);
 const dist = new URL('dist/', root);
-const COPIED = ['about.html', 'assets'];
 // IDs on the previous chant page, chant.html?id=<id>. Links to those that are
 // still chants redirect to them; the others, mostly whole services, go home.
 const OLD_IDS = [
@@ -35,7 +34,7 @@ async function writeList(group: Group | null, list: Entry[], groupsShown: Group[
 
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist);
-for (const path of COPIED) await cp(new URL(path, root), new URL(path, dist), { recursive: true });
+await cp(new URL('assets', root), new URL('assets', dist), { recursive: true });
 
 const chants = await loadChants();
 const all = entries(chants);
@@ -59,6 +58,11 @@ for (const chant of chants) {
   await write(`${chantHref(chant.id)}/index.html`, page);
 }
 
+for (const page of PAGES) {
+  const body = await readFile(new URL(`pages/${page.slug}.html`, root), 'utf8');
+  await write(`/${page.slug}/index.html`, handWrittenPage(page, body));
+}
+
 await write('/search.json', JSON.stringify(searchIndex(chants, all)));
 await write('/404.html', notFoundPage());
 
@@ -71,6 +75,7 @@ const redirects = [
   ...shown.map((g) => `/list/${g.id}/1 /list/${g.id} 301`),
   ...OLD_IDS.filter((id) => ids.has(id)).map((id) => `/chant.html id=${id} ${chantHref(id)} 301`),
   '/chant.html / 301',
+  '/about.html /about 301',
 ];
 await write('/_redirects', `${redirects.join('\n')}\n`);
 

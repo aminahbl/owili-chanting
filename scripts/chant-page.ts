@@ -2,7 +2,7 @@ import { escapeHtml } from '../src/html.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
 import type { Chant, ChantingLine, Line, Ref, Section, Text } from '../data/types.ts';
 import type { Group, RecordingInfo } from './chant-list.ts';
-import { layout } from './templates.ts';
+import { layout, THEME_BUTTON } from './templates.ts';
 
 const TRANSLATION_NOTE = 'LLM generated as a provisional guide only. Please find a reliable published translation.';
 const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
@@ -176,7 +176,6 @@ function settingsPopover(chant: Chant, recorded: boolean): string {
   <p class="timing-error option-error" role="alert"></p>
 </div>
 </div>
-${choice('theme', 'Theme', [['', 'System'], ['light', 'Light'], ['dark', 'Dark']])}
 ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
 ${translated ? '<label class="toggle"><input type="checkbox" name="translation" value="" data-unchecked="off"> Show translation</label>' : ''}
@@ -202,6 +201,7 @@ function header(chant: Chant): string {
   <button class="icon-button" popovertarget="settings" title="Settings (S)"><icon-tune></icon-tune><span class="sr-only">Settings</span></button>
   <button class="icon-button" popovertarget="info" title="Info (I)"><icon-info></icon-info><span class="sr-only">Info</span></button>
   <button class="icon-button shortcuts-button" popovertarget="shortcuts" title="Keyboard shortcuts (?)"><icon-command></icon-command><span class="sr-only">Keyboard shortcuts</span></button>
+  ${THEME_BUTTON}
 </header>`;
 }
 

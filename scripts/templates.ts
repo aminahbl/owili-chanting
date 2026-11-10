@@ -7,9 +7,38 @@ const SITE = 'Chanting for shared happiness';
 const DESCRIPTION =
   'Practice Pali chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy.';
 
-const SITE_HEADER = `<header class="site-header">
-  <nav aria-label="Site"><a href="/about.html">About</a></nav>
+/** A page written by hand, at /<slug>, with its body in pages/<slug>.html. */
+export interface Page {
+  slug: string;
+  title: string;
+}
+
+// In the order of the site header's links.
+export const PAGES: Page[] = [
+  { slug: 'about', title: 'About' },
+  { slug: 'guide', title: 'Guide' },
+  { slug: 'resources', title: 'Resources' },
+];
+
+// The last button in the header of every page; src/theme.ts sets its label.
+export const THEME_BUTTON = `<button class="icon-button theme-button" id="theme-button" title="Theme"><icon-sun></icon-sun><icon-moon></icon-moon><span class="sr-only">Theme</span></button>`;
+
+// The header of every page but the chant pages. Away from the list pages, it
+// also links back to the chants, with the site's name.
+function siteHeader(current?: Page): string {
+  const home = current
+    ? `<a class="site-home" href="/"><span class="icon-button"><icon-home></icon-home></span>${SITE}</a>`
+    : '';
+  const links = PAGES.map((p) => {
+    const here = p === current ? ' aria-current="page"' : '';
+    return `<li><a href="/${p.slug}"${here}>${p.title}</a></li>`;
+  });
+  return `<header class="site-header">
+  ${home}
+  <nav aria-label="Site"><ul>${links.join('')}</ul></nav>
+  ${THEME_BUTTON}
 </header>`;
+}
 
 // Applies the stored display settings before the page is drawn, so it does not
 // change after loading (src/settings.ts). The text view's size is also set as
@@ -17,7 +46,7 @@ const SITE_HEADER = `<header class="site-header">
 // precedence over the stored view.
 const APPLY_SETTINGS = `<script>try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v</script>`;
 
-export function layout(title: string, body: string, scripts = '', header = SITE_HEADER): string {
+export function layout(title: string, body: string, scripts = '', header = siteHeader()): string {
   const full = title === SITE ? SITE : `${title} · ${SITE}`;
   return `<!doctype html>
 <html lang="en">
@@ -41,6 +70,7 @@ ${APPLY_SETTINGS}
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
 <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
 <link rel="stylesheet" href="/assets/site.css">
+<script type="module" src="/assets/js/theme.js"></script>
 ${scripts}
 </head>
 <body>
@@ -111,7 +141,7 @@ ${cards}
   return out.join('\n');
 }
 
-export interface ListPage {
+interface ListPage {
   /** The group shown, or null for all chants. */
   group: Group | null;
   groups: Group[];
@@ -144,6 +174,11 @@ ${blocks(pageEntries, first, entries)}
 ${pagination(base, page, count)}
 </div>`;
   return layout(title, body, '<script type="module" src="/assets/js/search.js"></script>');
+}
+
+export function handWrittenPage(page: Page, body: string): string {
+  const script = '<script type="module" src="/assets/js/icons/home.js"></script>';
+  return layout(page.title, `<article class="prose">\n${body}</article>`, script, siteHeader(page));
 }
 
 export function notFoundPage(): string {

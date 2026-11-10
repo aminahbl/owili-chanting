@@ -1,4 +1,4 @@
-/* Styles for the generated pages. The current about page keeps style.css until it is rebuilt. */
+/* Styles for the generated pages. */
 
 @font-face {
   font-family: "Noto Sans";
@@ -86,12 +86,70 @@ input:focus-visible {
 
 .site-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  padding: 0.75rem 1rem;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  min-height: 3.25rem;
+  padding: 0 1rem;
 }
 
-.site-header nav {
+/* The home button sits where it does on a chant page, followed by the site name. */
+.site-header .site-home {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: auto;
+  margin-left: -0.5rem;
+  color: var(--fg);
+}
+
+.site-home:hover .icon-button {
+  background: var(--surface);
+}
+
+/* On a narrow screen, the page links go on a line of their own. */
+@media (max-width: 40rem) {
+  .site-home ~ nav {
+    order: 1;
+    flex-basis: 100%;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.site-header .theme-button {
+  margin-right: -0.5rem;
+}
+
+/* The theme button shows the icon of the theme in use: the system's, until the user chooses one. */
+:root:not([data-theme="dark"]) .theme-button icon-moon,
+:root[data-theme="dark"] .theme-button icon-sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-button icon-sun {
+    display: none;
+  }
+
+  :root:not([data-theme]) .theme-button icon-moon {
+    display: inline;
+  }
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.site-header a[aria-current="page"] {
+  color: var(--fg);
 }
 
 .site-header a {
@@ -330,6 +388,74 @@ input:focus-visible {
   text-align: center;
 }
 
+/* About, guide and resources: text in the same column as a chant. */
+
+.prose {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+
+.prose h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  line-height: 1.25;
+}
+
+/* Each section starts with a rule above its heading. */
+.prose h2 {
+  margin: 2.5rem 0 0.75rem;
+  padding-top: 1.75rem;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  border-top: 1px solid var(--border);
+}
+
+.prose a {
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+.prose a:hover {
+  color: var(--accent);
+}
+
+.prose li + li {
+  margin-top: 0.35rem;
+}
+
+/* A name with a short note under it. A name that links elsewhere is in the accent colour. */
+.entries {
+  margin: 1rem 0;
+}
+
+.entries dt {
+  font-weight: 700;
+}
+
+.entries dt:not(:first-child) {
+  margin-top: 1.25rem;
+}
+
+.entries dt a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.entries dt a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.entries dd {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
+
+.prose .shortcuts {
+  margin: 1rem 0;
+}
+
 /* Chant page */
 
 .chant-header {
@@ -359,6 +485,35 @@ input:focus-visible {
    after them stand evenly apart. */
 .chant-header :is(.view-switch, .track) {
   margin-right: 0.5rem;
+}
+
+.chant-header > :not(.chant-header-title) {
+  flex-shrink: 0;
+}
+
+/* On a phone the header's buttons fill the width, so they are made a little
+   smaller, and the title, which would have no room, gives way to a spacer. */
+@media (max-width: 40rem) {
+  .chant-header-title {
+    visibility: hidden;
+    margin: 0;
+  }
+
+  .chant-header .icon-button {
+    width: 2.25rem;
+  }
+
+  .chant-header :is(.view-switch, .track) {
+    margin-right: 0.25rem;
+  }
+
+  .chant-header .view-switch button {
+    padding-inline: 0.5rem;
+  }
+
+  .chant-header .track {
+    min-width: 4.5rem;
+  }
 }
 
 .icon-button {
@@ -657,6 +812,8 @@ icon-forward {
 
 .popover dd {
   margin: 0.15rem 0 0;
+  line-height: 1.35;
+  font-size: 0.9rem;
 }
 
 .settings fieldset {
