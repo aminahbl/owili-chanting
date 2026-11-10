@@ -4,8 +4,8 @@ export const groups = [
   { id: 'reflections', title: 'Reflections' },
   { id: 'parittas', title: 'Parittas' },
   { id: 'suttas', title: 'Suttas' },
-  { id: 'joy-and-ceremony', title: 'Joy and ceremony' },
   { id: 'funeral', title: 'Funeral chants' },
+  { id: 'joy-and-ceremony', title: 'Joy and ceremony' },
   { id: 'other', title: 'Other chants' },
   { id: 'sangha-sets', title: 'Sangha sets' },
 ] as const;
