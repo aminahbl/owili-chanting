@@ -44,9 +44,10 @@ export function writeSetting(name: SettingName, value: string) {
   }
 }
 
-/** Settings for one chant, such as its last position, stored as one entry per chant. */
+/** Settings for one chant or set, such as its last position, stored as one entry for each. */
 interface ChantSettings {
-  position?: { line: number; repeat: number };
+  /** The line and the number of the chant it belongs to, which on a set page is one of several. */
+  position?: { chant: string; line: number; repeat: number };
   /** Auto-advance tempo, 1 being the rhythm model's natural speed. */
   tempo?: number;
   /** An imported timing file (LRC), as imported, and its file name. */

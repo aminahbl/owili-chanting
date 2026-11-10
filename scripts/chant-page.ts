@@ -1,6 +1,6 @@
 import { escapeHtml } from '../src/html.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
-import type { Chant, ChantingLine, Line, Ref, Section, Text } from '../data/types.ts';
+import type { Chant, ChantingLine, ChantSet, Line, Ref, Section, Text } from '../data/types.ts';
 import type { Group, RecordingInfo } from './chant-list.ts';
 import { layout, THEME_BUTTON } from './templates.ts';
 
@@ -63,8 +63,9 @@ function lines(list: Line[]): string {
     .join('\n');
 }
 
-function section(s: Section): string {
-  const title = s.title ? `<h2>${escapeHtml(s.title)}</h2>\n` : '';
+// On a set page, each chant's title is an h2, so its section titles are h3.
+function section(s: Section, heading: 'h2' | 'h3' = 'h2'): string {
+  const title = s.title ? `<${heading}>${escapeHtml(s.title)}</${heading}>\n` : '';
   return `<section class="chant-section">
 ${title}${lines(s.lines)}
 </section>`;
@@ -95,7 +96,14 @@ function recording({ file, tags }: RecordingInfo): string {
   return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
 }
 
-function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: RecordingInfo[]): string {
+/** A set that a chant is part of, for its info panel. */
+export interface SetLink {
+  slug: string;
+  title: string;
+  placeTitle: string;
+}
+
+function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: RecordingInfo[], sets: SetLink[]): string {
   const groupLinks = chant.groups
     .map((m) => groups.get(m.group))
     .filter((g): g is Group => g !== undefined)
@@ -110,6 +118,9 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
   const refs = chant.sections.flatMap((s) => s.refs ?? []);
   const items = [
     `<dt>Groups</dt><dd>${groupLinks}</dd>`,
+    sets.length
+      ? `<dt>Sangha sets</dt>${sets.map((s) => `<dd><a href="/sets/${s.slug}">${escapeHtml(s.title)}</a>, ${escapeHtml(s.placeTitle)}</dd>`).join('')}`
+      : '',
     `<dt>Pali source</dt><dd>${source}</dd>`,
     chant.translation ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
@@ -143,8 +154,22 @@ function textSize(name: 'size' | 'slideSize', view: string): string {
   return `<fieldset class="${view}-only"><legend>Text size</legend>${slider(`name="${name}"`, 'Text size', SIZE_RANGES[name], ends)}</fieldset>`;
 }
 
-function settingsPopover(chant: Chant, recorded: boolean): string {
-  const chantLines = chant.sections.flatMap((s) => s.lines).filter((l): l is ChantingLine => 'pali' in l);
+function timedOptions(): string {
+  return `<div class="timed-options">
+  <p class="timing-name option-note"></p>
+  <div class="option-actions">
+    <button type="button" class="outline-button" id="timing-default">Use default</button>
+    <button type="button" class="outline-button" id="timing-import-button">Import timing</button>
+    <input type="file" id="timing-import" accept=".lrc,.txt,text/plain" hidden>
+    <button type="button" class="outline-button" id="timing-export">Export timing</button>
+  </div>
+  <p class="timing-error option-error" role="alert"></p>
+</div>`;
+}
+
+// A set page offers no Timed advance yet, as timing files cover one chant at a time.
+function settingsPopover(chants: Chant[], recorded: boolean, timed: boolean): string {
+  const chantLines = chants.flatMap((c) => c.sections.flatMap((s) => s.lines)).filter((l): l is ChantingLine => 'pali' in l);
   const twoForms = chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
   const translated = chantLines.some((l) => l.en);
   const body = `<form class="settings">
@@ -163,22 +188,13 @@ function settingsPopover(chant: Chant, recorded: boolean): string {
 <fieldset><legend>Advance</legend><div class="choices">
   <label><input type="radio" name="advance" value=""> Manual</label>
   <label><input type="radio" name="advance" value="auto"> Auto</label>
-  <label><input type="radio" name="advance" value="timed"> Timed</label>
+  ${timed ? '<label><input type="radio" name="advance" value="timed"> Timed</label>' : ''}
 </div></fieldset>
 <div class="auto-options">
   ${slider('id="tempo" list="tempo-marks"', 'Speed', TEMPO_RANGE, ['Slower', 'Faster'])}
   <datalist id="tempo-marks"><option value="${TEMPO_RANGE.default}"></option></datalist>
 </div>
-<div class="timed-options">
-  <p class="timing-name option-note"></p>
-  <div class="option-actions">
-    <button type="button" class="outline-button" id="timing-default">Use default</button>
-    <button type="button" class="outline-button" id="timing-import-button">Import timing</button>
-    <input type="file" id="timing-import" accept=".lrc,.txt,text/plain" hidden>
-    <button type="button" class="outline-button" id="timing-export">Export timing</button>
-  </div>
-  <p class="timing-error option-error" role="alert"></p>
-</div>
+${timed ? timedOptions() : ''}
 </div>
 ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
@@ -193,10 +209,10 @@ function shortcutsPopover(): string {
   return popover('shortcuts', 'Keyboard shortcuts', `<dl class="shortcuts">${shortcuts}</dl>`);
 }
 
-function header(chant: Chant): string {
+function header(title: string): string {
   return `<header class="chant-header">
   <a class="icon-button" href="/" title="All chants"><icon-home></icon-home><span class="sr-only">All chants</span></a>
-  <p class="chant-header-title">${escapeHtml(chant.title)}</p>
+  <p class="chant-header-title">${escapeHtml(title)}</p>
   <div class="view-switch" role="group" aria-label="View">
     <button data-view="text" title="Text (V)">Text</button>
     <button data-view="slides" title="Slides (V)">Slides</button>
@@ -273,6 +289,7 @@ export function chantPage(
   next?: NextChant,
   timing?: string,
   recordings: RecordingInfo[] = [],
+  sets: SetLink[] = [],
 ): string {
   const paliTitle =
     chant.paliTitle && chant.paliTitle !== chant.title ? `<p class="chant-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
@@ -280,13 +297,60 @@ export function chantPage(
 <h1>${escapeHtml(chant.title)}</h1>
 ${paliTitle}
 ${notes(chant)}
-${chant.sections.map(section).join('\n')}
+${chant.sections.map((s) => section(s)).join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
 <div class="audio-bar">${audioControls('text')}</div>
 ${slides(next)}
-${infoPopover(chant, groups, recordings)}
-${settingsPopover(chant, recordings.length > 0)}
+${infoPopover(chant, groups, recordings, sets)}
+${settingsPopover([chant], recordings.length > 0, true)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
-  return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant));
+  return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant.title));
+}
+
+/** Where a set is chanted, for its page. */
+export interface SetPlace {
+  title: string;
+  lineageTitle?: string;
+}
+
+function setInfoPopover(set: ChantSet, chants: Chant[], place: SetPlace): string {
+  const source = set.source?.url
+    ? `<a href="${escapeHtml(set.source.url)}">${escapeHtml(set.source.label)}</a>`
+    : escapeHtml(set.source?.label ?? '');
+  const items = [
+    `<dt>Place</dt><dd>${escapeHtml([place.title, place.lineageTitle].filter(Boolean).join(', '))}</dd>`,
+    `<dt>Chants</dt>${chants.map((c) => `<dd><a href="/chants/${c.slug}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
+    source ? `<dt>Source</dt><dd>${source}</dd>` : '',
+    chants.some((c) => c.translation) ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
+    set.links?.length
+      ? `<dt>Links</dt>${set.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`
+      : '',
+  ];
+  const number = `<p class="info-number">Set ${set.id}</p>`;
+  return popover('info', escapeHtml(set.title), `<dl>${items.join('')}</dl>${number}`);
+}
+
+// A set is one continuous text: each chant is a block with its title as a
+// heading. The article carries the set's number, for its kept settings, and
+// each block the chant's number.
+export function setPage(set: ChantSet, chants: Chant[], place: SetPlace): string {
+  const blocks = chants.map((chant) => `<section class="set-chant" data-chant="${chant.id}">
+<h2 class="set-chant-title">${escapeHtml(chant.title)}</h2>
+${notes(chant)}
+${chant.sections.map((s) => section(s, 'h3')).join('\n')}
+</section>`);
+  const body = `<article class="chant" data-chant="${set.id}" data-slug="${set.slug}">
+<h1>${escapeHtml(set.title)}</h1>
+<p class="set-place">${escapeHtml(place.title)}</p>
+${blocks.join('\n')}
+</article>
+<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
+<div class="audio-bar">${audioControls('text')}</div>
+${slides(undefined)}
+${setInfoPopover(set, chants, place)}
+${settingsPopover(chants, false, false)}
+${shortcutsPopover()}`;
+  const title = `${set.title}, ${place.title}`;
+  return layout(title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(title));
 }

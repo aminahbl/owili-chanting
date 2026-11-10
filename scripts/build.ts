@@ -2,11 +2,13 @@
 // about, guide and resources pages, the search index and redirects.
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
-import { chantPage, type NextChant } from './chant-page.ts';
+import { chantPage, setPage, type NextChant, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
 import { entries, loadChants, loadSets, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
 import type { Chant } from '../data/types.ts';
-import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES } from './templates.ts';
+import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES, setsPage } from './templates.ts';
+import { groups } from '../data/groups.ts';
+import { lineages, places } from '../data/places.ts';
 
 const PAGE_SIZE = 24;
 const root = new URL('../', import.meta.url);
@@ -42,11 +44,15 @@ const chants = await loadChants();
 const sets = await loadSets(chants);
 checkIds([...chants, ...sets]);
 const all = entries(chants);
-// Groups without chants, such as Services for now, get no chip and no page.
-const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values()];
+// Categories without chants get no chip and no page. Sangha sets holds sets
+// rather than chants, and is shown when there are sets.
+const setsGroup: Group = groups.find((g) => g.id === 'sangha-sets')!;
+const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values(), ...(sets.length ? [setsGroup] : [])];
 
 await writeList(null, all, shown);
-for (const group of shown) await writeList(group, all.filter((e) => e.group.id === group.id), shown);
+for (const group of shown) {
+  if (group !== setsGroup) await writeList(group, all.filter((e) => e.group.id === group.id), shown);
+}
 
 const groupsById = new Map<string, Group>(shown.map((g) => [g.id, g]));
 // The next chant in a chant's first group, by that group's order.
@@ -56,9 +62,28 @@ function nextChant(chant: Chant): NextChant | undefined {
   const after = list[list.findIndex((e) => e.card.slug === chant.slug) + 1];
   return after && { slug: after.card.slug, title: after.card.title, groupTitle: after.group.title };
 }
+// Sets by place, places in the order of data/places.ts, sets by their order.
+const byNumber = new Map(chants.map((c) => [c.id, c]));
+const setPlaces = places.map((place) => ({
+  title: place.title,
+  lineageTitle: 'lineage' in place ? lineages.find((l) => l.id === place.lineage)?.title : undefined,
+  sets: sets.filter((s) => s.place === place.id).sort((a, b) => a.order - b.order),
+}));
+if (sets.length) {
+  const list = setPlaces
+    .filter((p) => p.sets.length)
+    .map((p) => ({ ...p, sets: p.sets.map((set) => ({ set, chantTitles: set.chants.map((id) => byNumber.get(id)!.title) })) }));
+  await write(`/list/${setsGroup.id}/index.html`, setsPage(setsGroup, shown, list));
+}
+for (const place of setPlaces) {
+  for (const set of place.sets) await write(`/sets/${set.slug}/index.html`, setPage(set, set.chants.map((id) => byNumber.get(id)!), place));
+}
+const setLinks = (chant: Chant): SetLink[] =>
+  setPlaces.flatMap((p) => p.sets.filter((s) => s.chants.includes(chant.id)).map((s) => ({ slug: s.slug, title: s.title, placeTitle: p.title })));
+
 const timings = await loadTimings(chants);
 for (const chant of chants) {
-  const page = chantPage(chant, groupsById, nextChant(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id));
+  const page = chantPage(chant, groupsById, nextChant(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
   await write(`${chantHref(chant.slug)}/index.html`, page);
 }
 
@@ -83,4 +108,4 @@ const redirects = [
 ];
 await write('/_redirects', `${redirects.join('\n')}\n`);
 
-console.log(`Built ${chants.length} chants, ${shown.length} groups into dist/`);
+console.log(`Built ${chants.length} chants, ${sets.length} sets, ${shown.length} groups into dist/`);

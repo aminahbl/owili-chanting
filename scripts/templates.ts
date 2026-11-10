@@ -1,6 +1,7 @@
 import { cardHtml } from '../src/card.ts';
 import { escapeHtml } from '../src/html.ts';
 import { SETTING_NAMES, SETTINGS_KEY } from '../src/settings.ts';
+import type { ChantSet } from '../data/types.ts';
 import type { Entry, Group } from './chant-list.ts';
 
 const SITE = 'Chanting for shared happiness';
@@ -174,6 +175,50 @@ ${blocks(pageEntries, first, entries)}
 ${pagination(base, page, count)}
 </div>`;
   return layout(title, body, '<script type="module" src="/assets/js/search.js"></script>');
+}
+
+/** The sets of one place, with the titles of their chants, for the Sangha sets page. */
+export interface PlaceSets {
+  title: string;
+  lineageTitle?: string;
+  sets: { set: ChantSet; chantTitles: string[] }[];
+}
+
+// A set's card shows the titles of its first two chants, and how many follow.
+function setCard(set: ChantSet, chantTitles: string[], heading: 'h3' | 'h4'): string {
+  const more = chantTitles.length - 2;
+  const lines = [...chantTitles.slice(0, 2), more > 0 ? `and ${more} more` : '']
+    .filter(Boolean)
+    .map((t) => `<span>${escapeHtml(t)}</span>`)
+    .join('');
+  return `<li class="card">
+<div class="card-head"><${heading} class="card-title"><a href="/sets/${set.slug}">${escapeHtml(set.title)}</a></${heading}></div>
+<p class="card-lines">${lines}</p>
+</li>`;
+}
+
+// Places are grouped under their lineage, each with its own heading; a place
+// with no lineage has its heading at the lineage's level. The page has no
+// search box, as it lists only a few sets.
+export function setsPage(group: Group, groups: Group[], places: PlaceSets[]): string {
+  const out: string[] = [];
+  let lineage: string | undefined;
+  for (const place of places) {
+    if (place.lineageTitle && place.lineageTitle !== lineage) out.push(`<h2>${escapeHtml(place.lineageTitle)}</h2>`);
+    lineage = place.lineageTitle;
+    const placeHeading = place.lineageTitle ? 'h3' : 'h2';
+    const cards = place.sets.map(({ set, chantTitles }) => setCard(set, chantTitles, place.lineageTitle ? 'h4' : 'h3'));
+    out.push(`<${placeHeading}>${escapeHtml(place.title)}</${placeHeading}>
+<ul class="cards">
+${cards.join('\n')}
+</ul>`);
+  }
+  const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
+${chips(groups, group)}
+<section class="group sets">
+${out.join('\n')}
+</section>`;
+  return layout(group.title, body);
 }
 
 export function handWrittenPage(page: Page, body: string): string {

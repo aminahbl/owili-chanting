@@ -49,13 +49,16 @@ function paliHtml(line: HTMLElement): string {
   return pali?.innerHTML ?? '';
 }
 
-// A section without a title continues the titled section before it.
+// A section without a title continues the titled section before it. On a set
+// page, the chant's title comes first, so each chant opens with its title.
 function sectionTitle(line: HTMLElement): string {
-  for (let section = line.closest('.chant-section'); section; section = section.previousElementSibling) {
-    const title = section.matches('.chant-section') ? section.querySelector('h2') : null;
-    if (title) return title.textContent ?? '';
+  let title = '';
+  for (let section = line.closest('.chant-section'); section && !title; section = section.previousElementSibling) {
+    const heading = section.matches('.chant-section') ? section.querySelector('h2, h3') : null;
+    title = heading?.textContent ?? '';
   }
-  return '';
+  const chant = line.closest('.set-chant')?.querySelector('.set-chant-title')?.textContent ?? '';
+  return [chant, title].filter(Boolean).join(' · ');
 }
 
 const lineHtml = (html: string) => `<div class="slide-page-line"><div class="slide-page-text">${html}</div></div>`;
@@ -92,7 +95,8 @@ export class SlideView {
     this.root = root;
     this.steps = steps;
     this.lines = [...new Set(steps.map((s) => s.line))];
-    const notes = document.querySelector('.chant-notes');
+    // A set's chants keep their notes in their own blocks.
+    const notes = document.querySelector('article.chant > .chant-notes');
     this.titleHtml = `<p class="pali">${escapeHtml(title)}</p>${notes ? `<div class="slide-page-notes">${notes.innerHTML}</div>` : ''}`;
     this.stage = part(root, '.slide-stage');
     this.page = part(root, '.slide-page');

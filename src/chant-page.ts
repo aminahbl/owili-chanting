@@ -43,6 +43,12 @@ function apply(name: SettingName, value: string) {
   afterSettingChange();
 }
 
+// A set page has no Timed advance yet (scripts/chant-page.ts). Auto takes its
+// place on the page, and the stored choice is kept for chant pages.
+if (root.dataset.advance === 'timed' && !form?.querySelector('input[name="advance"][value="timed"]')) {
+  root.dataset.advance = 'auto';
+}
+
 // A checkbox stores its value when checked and its data-unchecked value when
 // cleared. A slider stores nothing at its default value.
 function showCurrent(controls: HTMLFormElement) {
@@ -133,7 +139,8 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     if (c.status !== 'idle' && c.index !== savedIndex) {
       savedIndex = c.index;
       const step = steps[c.index];
-      writeChantSettings(chantId, { position: { line: Number(step.line.dataset.line), repeat: step.repeat } });
+      const chantOfLine = step.line.closest<HTMLElement>('[data-chant]')?.dataset.chant ?? chantId;
+      writeChantSettings(chantId, { position: { chant: chantOfLine, line: Number(step.line.dataset.line), repeat: step.repeat } });
     }
   });
   const tempo = new Tempo(clock, steps, chantId);
