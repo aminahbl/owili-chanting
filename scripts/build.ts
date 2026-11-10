@@ -4,7 +4,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
 import { chantPage, type NextChant } from './chant-page.ts';
 import { checkIds } from './ids.ts';
-import { entries, loadChants, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
+import { entries, loadChants, loadSets, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
 import type { Chant } from '../data/types.ts';
 import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES } from './templates.ts';
 
@@ -39,7 +39,8 @@ await mkdir(dist);
 await cp(new URL('assets', root), new URL('assets', dist), { recursive: true });
 
 const chants = await loadChants();
-checkIds(chants);
+const sets = await loadSets(chants);
+checkIds([...chants, ...sets]);
 const all = entries(chants);
 // Groups without chants, such as Services for now, get no chip and no page.
 const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values()];

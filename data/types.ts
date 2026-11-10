@@ -1,4 +1,5 @@
 import type { GroupId } from './groups.ts';
+import type { PlaceId } from './places.ts';
 
 /** Text that differs by the chanter's gender carries both forms. */
 export type Text = string | { men: string; women: string };
@@ -85,4 +86,21 @@ export interface Chant {
   links?: { text: string; href: string }[];
   editorial?: EditorialNote[];
   sections: Section[];
+}
+
+/** A sequence of whole chants as a monastery or centre chants it, shown as one page. */
+export interface ChantSet {
+  /** Four digits, from the same ledger as chants (data/ids.ts). */
+  id: string;
+  /** The page address, /sets/<slug>. */
+  slug: string;
+  title: string;
+  place: PlaceId;
+  /** Position among the place's sets, ascending; gaps are allowed. */
+  order: number;
+  /** Chant numbers, in the order chanted. */
+  chants: string[];
+  /** Where the set's contents were taken from. */
+  source?: { label: string; url?: string };
+  links?: { text: string; href: string }[];
 }

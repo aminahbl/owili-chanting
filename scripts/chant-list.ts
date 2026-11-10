@@ -3,7 +3,7 @@ import type { CardData, SearchEntry } from '../src/card.ts';
 import { chantPart, lrcChants, lrcTags, readLrc } from '../src/lrc.ts';
 import { normalise } from '../src/normalise.ts';
 import { groups, type GroupId } from '../data/groups.ts';
-import type { Chant, ChantingLine, Section, Text } from '../data/types.ts';
+import type { Chant, ChantingLine, ChantSet, Section, Text } from '../data/types.ts';
 
 export interface Group {
   id: GroupId;
@@ -20,6 +20,20 @@ export async function loadChants(): Promise<Chant[]> {
   const dir = new URL('../data/chants/texts/', import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
   return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
+}
+
+/** The sets in data/sets/. The build stops on a set with no chants or an unknown chant number. */
+export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
+  const dir = new URL('../data/sets/', import.meta.url);
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
+  const sets = await Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { set: ChantSet }).set));
+  const numbers = new Set(chants.map((c) => c.id));
+  for (const set of sets) {
+    const unknown = set.chants.filter((id) => !numbers.has(id));
+    if (set.chants.length === 0) throw new Error(`data/sets/${set.slug}: has no chants.`);
+    if (unknown.length) throw new Error(`data/sets/${set.slug}: names unknown chants (${unknown.join(', ')}).`);
+  }
+  return sets;
 }
 
 /** A recording that covers a chant: its marker file and the details at the top of it. */

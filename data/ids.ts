@@ -129,4 +129,11 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0122', slug: 'patthana-matika-patha' },
   { id: '0123', slug: 'vipassana-bhumi-patha' },
   { id: '0124', slug: 'pamsukula' },
+  { id: '0125', slug: 'amaravati-morning-chanting' },
+  { id: '0126', slug: 'amaravati-evening-chanting' },
+  { id: '0127', slug: 'amaravati-twelve-parittas' },
+  { id: '0128', slug: 'amaravati-funeral-chanting' },
+  { id: '0129', slug: 'abhayagiri-evening-chanting' },
+  { id: '0130', slug: 'abhayagiri-funeral-chanting' },
+  { id: '0131', slug: 'lbv-evening-chanting' },
 ];
