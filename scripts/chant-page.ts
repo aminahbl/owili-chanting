@@ -117,7 +117,7 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
   const source = placing ? `${sourceName}: ${placing}` : sourceName;
   const refs = chant.sections.flatMap((s) => s.refs ?? []);
   const items = [
-    `<dt>Groups</dt><dd>${groupLinks}</dd>`,
+    `<dt>Categories</dt><dd>${groupLinks}</dd>`,
     sets.length
       ? `<dt>Sangha sets</dt>${sets.map((s) => `<dd><a href="/sets/${s.slug}">${escapeHtml(s.title)}</a>, ${escapeHtml(s.placeTitle)}</dd>`).join('')}`
       : '',

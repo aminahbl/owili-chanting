@@ -117,7 +117,7 @@ function chips(list: Group[], current: Group | null): string {
   const chip = (href: string, label: string, here: boolean) =>
     `<li><a href="${href}"${here ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a></li>`;
   const items = [chip('/', 'All', current === null), ...list.map((g) => chip(`/list/${g.id}`, g.title, g.id === current?.id))];
-  return `<nav class="chips" aria-label="Groups"><ul>${items.join('')}</ul></nav>`;
+  return `<nav class="chips" aria-label="Categories"><ul>${items.join('')}</ul></nav>`;
 }
 
 // Consecutive entries of one group form a block. A block whose first entry is
