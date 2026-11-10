@@ -29,9 +29,9 @@ export interface RecordingInfo {
 }
 
 interface Timings {
-  /** Each chant's default timing, as the chant's part of a marker file. */
+  /** Each chant's default timing, as the chant's part of a marker file, by chant number. */
   defaults: Map<string, string>;
-  /** The recordings that cover each chant, in file-name order. */
+  /** The recordings that cover each chant, in file-name order, by chant number. */
   recordings: Map<string, RecordingInfo[]>;
 }
 
@@ -52,18 +52,19 @@ export async function loadTimings(chants: Chant[]): Promise<Timings> {
     const fail = (reason: string) => new Error(`data/chants/markers/${file}: ${reason}`);
     // A timing is bundled inside a script element, which this would end.
     if (/<\/script/i.test(text)) throw fail('contains "</script".');
-    const ids = lrcChants(text);
-    if (ids.length === 0) throw fail('names no chant.');
+    const named = lrcChants(text);
+    if (named.length === 0) throw fail('names no chant.');
     const tags = lrcTags(text);
-    for (const id of ids) {
+    for (const { id, slug } of named) {
       const chant = byId.get(id);
       if (!chant) throw fail(`names an unknown chant (${id}).`);
+      if (slug !== chant.slug) throw fail(`gives ${id} the slug ${slug ?? '(none)'}, but the chant's slug is ${chant.slug}.`);
       const part = chantPart(text, id) ?? '';
       const lines = chant.sections.flatMap((s) => s.lines);
       const lineIds = lines.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
       const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
       const read = readLrc(part, id, lineIds, cueIds);
-      if (typeof read === 'string') throw fail(`${id}: ${read}`);
+      if (typeof read === 'string') throw fail(`${slug}: ${read}`);
       const list = found.get(id) ?? [];
       list.push({ part, preferred: tags.default === 'yes', recording: { file, tags } });
       found.set(id, list);
@@ -94,7 +95,7 @@ function card(chant: Chant): CardData {
   // A Pali title that only repeats the first line adds nothing to the card.
   const repeatsLine = chant.paliTitle && normalise(lines[0] ?? '').startsWith(normalise(chant.paliTitle));
   const paliTitle = chant.paliTitle && chant.paliTitle !== chant.title && !repeatsLine ? chant.paliTitle : undefined;
-  return { id: chant.id, title: chant.title, ...(paliTitle ? { paliTitle } : {}), lines };
+  return { slug: chant.slug, title: chant.title, ...(paliTitle ? { paliTitle } : {}), lines };
 }
 
 /** Entries in display order: groups as listed in data/groups.ts, chants by their order in each. */
@@ -109,12 +110,12 @@ export function entries(chants: Chant[]): Entry[] {
 
 /** Search entries: each chant once, in the order of the list of all chants. */
 export function searchIndex(chants: Chant[], list: Entry[]): SearchEntry[] {
-  const byId = new Map(chants.map((c) => [c.id, c]));
+  const bySlug = new Map(chants.map((c) => [c.slug, c]));
   const seen = new Set<string>();
   return list.flatMap(({ card }) => {
-    if (seen.has(card.id)) return [];
-    seen.add(card.id);
-    const chant = byId.get(card.id)!;
+    if (seen.has(card.slug)) return [];
+    seen.add(card.slug);
+    const chant = bySlug.get(card.slug)!;
     const pali = chant.sections
       .flatMap((s) => s.lines)
       .flatMap((l) => ('pali' in l ? (typeof l.pali === 'string' ? [l.pali] : [l.pali.men, l.pali.women]) : []));

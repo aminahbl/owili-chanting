@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "homage-to-the-dhamma",
+  id: "0006",
+  slug: "homage-to-the-dhamma",
   title: "Homage to the Dhamma",
   groups: [{ group: "reverence", order: 60 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#dhamma-pali", categories: [{ category: "Morning Chanting", order: 4 }] },

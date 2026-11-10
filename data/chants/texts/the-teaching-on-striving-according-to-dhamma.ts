@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "the-teaching-on-striving-according-to-dhamma",
+  id: "0041",
+  slug: "the-teaching-on-striving-according-to-dhamma",
   title: "The Teaching on Striving According to Dhamma",
   groups: [{ group: "reflections", order: 140 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#striving", categories: [{ category: "Reflections", order: 14 }] },

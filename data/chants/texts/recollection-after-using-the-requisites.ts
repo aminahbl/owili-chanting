@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "recollection-after-using-the-requisites",
+  id: "0032",
+  slug: "recollection-after-using-the-requisites",
   title: "Recollection After Using the Requisites",
   groups: [{ group: "reflections", order: 50 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#recollection-after", categories: [{ category: "Reflections", order: 5 }] },

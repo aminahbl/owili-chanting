@@ -7,11 +7,11 @@ import { rhythmDurations } from './tempo.ts';
 import { visibleText, type Step } from './text-view.ts';
 
 /** The rhythm model's timing, as LRC. */
-function rhythmLrc(title: string, chantId: string, steps: Step[]): string {
+function rhythmLrc(title: string, chantId: string, slug: string, steps: Step[]): string {
   const durations = rhythmDurations(steps);
   const rows = [
     `[ti:${title}]`,
-    `[chant:${chantId}]`,
+    `[chant:${chantId} ${slug}]`,
     '# Default timing from the rhythm model at the natural speed.',
     '# Each row: [minutes:seconds] when the line starts, its ID, then its Pali, which is not read on import.',
     '# A row with a time and no text ends the line before it.',
@@ -29,14 +29,16 @@ function rhythmLrc(title: string, chantId: string, steps: Step[]): string {
 export class Timing {
   private steps: Step[];
   private chantId: string;
+  private slug: string;
   private title: string;
   private cueIds: Set<number>;
   /** The recording's timing bundled with the page, if the chant has one. */
   private recorded: string | null;
 
-  constructor(steps: Step[], chantId: string, title: string, cueIds: Set<number>, recorded: string | null) {
+  constructor(steps: Step[], chantId: string, slug: string, title: string, cueIds: Set<number>, recorded: string | null) {
     this.steps = steps;
     this.chantId = chantId;
+    this.slug = slug;
     this.title = title;
     this.cueIds = cueIds;
     this.recorded = recorded;
@@ -95,7 +97,7 @@ export class Timing {
   }
 
   lrc(): string {
-    return this.imported?.lrc ?? this.recorded ?? rhythmLrc(this.title, this.chantId, this.steps);
+    return this.imported?.lrc ?? this.recorded ?? rhythmLrc(this.title, this.chantId, this.slug, this.steps);
   }
 
   /** Stores the chant's part of the file if it fits the chant; otherwise returns the reason it does not. */

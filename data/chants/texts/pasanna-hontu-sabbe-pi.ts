@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "pasanna-hontu-sabbe-pi",
+  id: "0043",
+  slug: "pasanna-hontu-sabbe-pi",
   title: "May All Beings Have Faith",
   paliTitle: "Pasannā hontu sabbe pi",
   groups: [{ group: "reflections", order: 160 }, { group: "joy-and-ceremony", order: 290 }],

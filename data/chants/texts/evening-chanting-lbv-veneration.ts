@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "evening-chanting-lbv-veneration",
+  id: "0027",
+  slug: "evening-chanting-lbv-veneration",
   title: "Evening Chanting (LBV) – Veneration",
   groups: [{ group: "reverence", order: 270 }],
   paliSource: { label: "London Buddhist Vihara" },

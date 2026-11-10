@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "uddissanadhitthana-gatha",
+  id: "0038",
+  slug: "uddissanadhitthana-gatha",
   title: "Verses of Sharing and Aspiration",
   paliTitle: "Uddissanādhiṭṭhāna-gāthā",
   groups: [{ group: "reflections", order: 110 }, { group: "joy-and-ceremony", order: 250 }],

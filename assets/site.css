@@ -802,6 +802,12 @@ icon-forward {
   color: var(--muted);
 }
 
+.info-number {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.8em;
+}
+
 .popover dt {
   margin-top: 0.9rem;
   font-size: 0.8rem;

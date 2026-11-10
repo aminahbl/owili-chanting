@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "devat-adissa-dakkhina-numodana-gatha",
+  id: "0114",
+  slug: "devat-adissa-dakkhina-numodana-gatha",
   title: "Dedicating Offerings to the Devas",
   paliTitle: "Devat'ādissa-dakkhiṇā'numodanā-gāthā",
   groups: [{ group: "joy-and-ceremony", order: 230 }],

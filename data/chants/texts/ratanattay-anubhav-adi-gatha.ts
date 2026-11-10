@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "ratanattay-anubhav-adi-gatha",
+  id: "0107",
+  slug: "ratanattay-anubhav-adi-gatha",
   title: "By the Power of the Triple Gem",
   paliTitle: "Ratanattay'ānubhāv'ādi-gāthā",
   groups: [{ group: "joy-and-ceremony", order: 160 }],

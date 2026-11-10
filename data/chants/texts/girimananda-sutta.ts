@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "girimananda-sutta",
+  id: "0091",
+  slug: "girimananda-sutta",
   title: "The Discourse to Girimānanda",
   paliTitle: "Girimānanda-sutta",
   groups: [{ group: "suttas", order: 60 }],

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "ti-lakkhan-adi-gatha",
+  id: "0078",
+  slug: "ti-lakkhan-adi-gatha",
   title: "Verses on the Three Characteristics",
   paliTitle: "Ti-lakkhaṇ'ādi-gāthā",
   groups: [{ group: "parittas", order: 370 }],

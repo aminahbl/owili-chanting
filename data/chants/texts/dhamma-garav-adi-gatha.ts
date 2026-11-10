@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "dhamma-garav-adi-gatha",
+  id: "0079",
+  slug: "dhamma-garav-adi-gatha",
   title: "Verses on Respect for the Dhamma",
   paliTitle: "Dhamma-gārav'ādi-gāthā",
   groups: [{ group: "parittas", order: 380 }],

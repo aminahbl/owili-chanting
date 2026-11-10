@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "the-guardian-meditations",
+  id: "0046",
+  slug: "the-guardian-meditations",
   title: "The Guardian Meditations",
   groups: [{ group: "reflections", order: 190 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#guardian", categories: [{ category: "Reflections", order: 19 }] },

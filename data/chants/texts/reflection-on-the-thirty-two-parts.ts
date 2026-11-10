@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "reflection-on-the-thirty-two-parts",
+  id: "0036",
+  slug: "reflection-on-the-thirty-two-parts",
   title: "Reflection on the Thirty-Two Parts",
   groups: [{ group: "reflections", order: 90 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#thirty-two", categories: [{ category: "Reflections", order: 9 }] },

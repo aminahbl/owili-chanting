@@ -10,7 +10,7 @@
 #   homage-to-the-sangha
 # Old rows not matched to a chant: 61-111.
 
-[chant:dedication-of-offerings]
+[chant:0003 dedication-of-offerings]
 [00:00.00]1 [Yo so] bhagavā arahaṁ sammāsambuddho
 [00:12.89]2 Svākkhāto yena bhagavatā dhammo
 [00:21.05]3 Supaṭipanno yassa bhagavato sāvakasaṅgho
@@ -27,13 +27,13 @@
 [01:59.78]14 [Supaṭipanno] bhagavato sāvakasaṅgho
 [02:10.50]15 Saṅghaṁ namāmi
 
-[chant:preliminary-homage]
+[chant:0004 preliminary-homage]
 [02:15.17]1 Handa mayaṁ buddhassa bhagavato pubbabhāga-namakāraṁ karomase
 [02:26.21]2 Namo tassa bhagavato arahato sammāsambuddhassa
 [02:38.22]2 Namo tassa bhagavato arahato sammāsambuddhassa
 [02:49.54]2 Namo tassa bhagavato arahato sammāsambuddhassa
 
-[chant:homage-to-the-buddha]
+[chant:0005 homage-to-the-buddha]
 [03:01.16]1 Handa mayaṁ buddhābhitthutiṁ karomase
 [03:08.03]2 Yo so tathāgato arahaṁ sammāsambuddho
 [03:18.79]3 Vijjācaraṇa-sampanno, sugato, lokavidū
@@ -45,14 +45,14 @@
 [04:21.37]9 Sātthaṁ sabyañjanaṁ kevala-paripuṇṇaṁ parisuddhaṁ brahma-cariyaṁ pakāsesi
 [04:34.67]10 Tam-ahaṁ bhagavantaṁ abhipūjayāmi tam-ahaṁ bhagavantaṁ sirasā namāmi
 
-[chant:homage-to-the-dhamma]
+[chant:0006 homage-to-the-dhamma]
 [04:48.82]1 Handa mayaṁ dhammābhitthutiṁ karomase
 [04:55.23]2 Yo so svākkhāto bhagavatā dhammo
 [05:04.46]3 Sandiṭṭhiko, akāliko, ehipassiko, opanayiko
 [05:13.81]4 Paccattaṁ veditabbo viññūhi
 [05:20.78]5 Tam-ahaṁ dhammaṁ abhipūjayāmi tam-ahaṁ dhammaṁ sirasā namāmi
 
-[chant:homage-to-the-sangha]
+[chant:0007 homage-to-the-sangha]
 [05:35.02]1 Handa mayaṁ saṅghābhitthutiṁ karomase
 [05:41.02]2 Yo so supaṭipanno bhagavato sāvakasaṅgho
 [05:51.37]3 Ujupaṭipanno bhagavato sāvakasaṅgho

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "atanatiya-paritta-long",
+  id: "0073",
+  slug: "atanatiya-paritta-long",
   title: "The Āṭānāṭiya Protection (long)",
   paliTitle: "Āṭānāṭiya-paritta (long)",
   groups: [{ group: "parittas", order: 320 }],

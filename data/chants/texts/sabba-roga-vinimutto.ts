@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "sabba-roga-vinimutto",
+  id: "0102",
+  slug: "sabba-roga-vinimutto",
   title: "Freed from Every Illness",
   paliTitle: "Sabba-roga-vinimutto",
   groups: [{ group: "joy-and-ceremony", order: 110 }],

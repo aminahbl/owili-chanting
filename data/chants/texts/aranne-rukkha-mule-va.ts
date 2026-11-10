@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "aranne-rukkha-mule-va",
+  id: "0058",
+  slug: "aranne-rukkha-mule-va",
   title: "In the Forest, at the Foot of a Tree",
   paliTitle: "Araññe rukkha-mūle vā",
   groups: [{ group: "parittas", order: 160 }],

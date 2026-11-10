@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "atanatiya-paritta-short",
+  id: "0020",
+  slug: "atanatiya-paritta-short",
   title: "Homage to the Seven Past Buddhas",
   paliTitle: "Āṭānāṭiya-paritta (short)",
   groups: [{ group: "parittas", order: 170 }, { group: "reverence", order: 200 }],

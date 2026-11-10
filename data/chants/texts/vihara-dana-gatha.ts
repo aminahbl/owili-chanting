@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "vihara-dana-gatha",
+  id: "0110",
+  slug: "vihara-dana-gatha",
   title: "Verses on Giving a Dwelling",
   paliTitle: "Vihāra-dāna-gāthā",
   groups: [{ group: "joy-and-ceremony", order: 190 }],

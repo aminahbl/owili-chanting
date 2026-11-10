@@ -11,12 +11,12 @@
 # Old rows not matched to a chant: 175-194.
 # vipassana-bhumi-patha: estimated from the rhythm model, to be checked by ear: 5, 7, 9, 19, 20, 21, 24, 26, 29, 31, 33, 35, 37, 39, 41, 43.
 
-[chant:pubba-bhaga-nama-kara-patha]
+[chant:0001 pubba-bhaga-nama-kara-patha]
 [00:00.00]1 Namo tassa bhagavato arahato sammā-sambuddhassa
 [00:09.08]2 Namo tassa bhagavato arahato sammā-sambuddhassa
 [00:17.42]3 Namo tassa bhagavato arahato sammā-sambuddhassa
 
-[chant:dhamma-sangani-matika]
+[chant:0115 dhamma-sangani-matika]
 [00:26.05]1 Kusalā dhammā.
 [00:28.49]2 Akusalā dhammā.
 [00:31.12]3 Abyākatā dhammā.
@@ -84,7 +84,7 @@
 [04:44.21]65 Anidassana-sappaṭighā dhammā.
 [04:48.52]66 Anidassanāppaṭighā dhammā.
 
-[chant:patthana-matika-patha]
+[chant:0122 patthana-matika-patha]
 [04:53.44]1 Hetu-paccayo, ārammaṇa-paccayo,
 [04:58.68]2 adhipati-paccayo, anantara-paccayo,
 [05:03.63]3 samanantara-paccayo, saha-jāta-paccayo,
@@ -98,7 +98,7 @@
 [05:46.11]11 atthi-paccayo, n'atthi-paccayo,
 [05:50.46]12 vigata-paccayo, avigata-paccayo.
 
-[chant:vipassana-bhumi-patha]
+[chant:0123 vipassana-bhumi-patha]
 [05:55.82]1 Pañcakkhandhā:
 [05:57.85]2 Rūpakkhandho, vedanākkhandho, saññākkhandho, saṅkhārakkhandho, viññāṇakkhandho.
 [06:10.11]3 Dvā-das'āyatanāni:
@@ -155,7 +155,7 @@
 [10:21.29]54 Jāti-nirodhā jarā-maraṇaṁ soka-parideva-dukkha-domanass'upāyāsā nirujjhanti.
 [10:32.64]55 Evam-etassa kevalassa dukkhakkhandhassa nirodho hoti.
 
-[chant:karaniya-metta-sutta]
+[chant:0053 karaniya-metta-sutta]
 [10:42.53]1 Karaṇīyam-attha-kusalena
 [10:45.98]2 Yan-taṁ santaṁ padaṁ abhisamecca
 [10:50.32]3 Sakko ujū ca suhujū ca

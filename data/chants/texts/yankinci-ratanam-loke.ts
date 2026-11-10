@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "yankinci-ratanam-loke",
+  id: "0060",
+  slug: "yankinci-ratanam-loke",
   title: "Whatever Treasure There Is",
   paliTitle: "Yaṅkiñci ratanaṁ loke",
   groups: [{ group: "parittas", order: 190 }],

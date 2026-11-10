@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "bhavatu-sabba-mangalam",
+  id: "0071",
+  slug: "bhavatu-sabba-mangalam",
   title: "May There Be Every Blessing",
   paliTitle: "Bhavatu sabba-maṅgalaṁ",
   groups: [{ group: "parittas", order: 300 }],

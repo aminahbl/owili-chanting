@@ -3,7 +3,9 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
 import { chantPage, type NextChant } from './chant-page.ts';
+import { checkIds } from './ids.ts';
 import { entries, loadChants, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
+import type { Chant } from '../data/types.ts';
 import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES } from './templates.ts';
 
 const PAGE_SIZE = 24;
@@ -37,6 +39,7 @@ await mkdir(dist);
 await cp(new URL('assets', root), new URL('assets', dist), { recursive: true });
 
 const chants = await loadChants();
+checkIds(chants);
 const all = entries(chants);
 // Groups without chants, such as Services for now, get no chip and no page.
 const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values()];
@@ -46,16 +49,16 @@ for (const group of shown) await writeList(group, all.filter((e) => e.group.id =
 
 const groupsById = new Map<string, Group>(shown.map((g) => [g.id, g]));
 // The next chant in a chant's first group, by that group's order.
-function nextChant(id: string): NextChant | undefined {
-  const first = chants.find((c) => c.id === id)?.groups[0];
+function nextChant(chant: Chant): NextChant | undefined {
+  const first = chant.groups[0];
   const list = all.filter((e) => e.group.id === first?.group);
-  const after = list[list.findIndex((e) => e.card.id === id) + 1];
-  return after && { id: after.card.id, title: after.card.title, groupTitle: after.group.title };
+  const after = list[list.findIndex((e) => e.card.slug === chant.slug) + 1];
+  return after && { slug: after.card.slug, title: after.card.title, groupTitle: after.group.title };
 }
 const timings = await loadTimings(chants);
 for (const chant of chants) {
-  const page = chantPage(chant, groupsById, nextChant(chant.id), timings.defaults.get(chant.id), timings.recordings.get(chant.id));
-  await write(`${chantHref(chant.id)}/index.html`, page);
+  const page = chantPage(chant, groupsById, nextChant(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id));
+  await write(`${chantHref(chant.slug)}/index.html`, page);
 }
 
 for (const page of PAGES) {
@@ -68,12 +71,12 @@ await write('/404.html', notFoundPage());
 
 // The first page of a list has no number, so the numbered form redirects to it.
 // Old chant links are matched by their id parameter, and the last rule catches the rest.
-const ids = new Set(chants.map((c) => c.id));
+const slugs = new Set(chants.map((c) => c.slug));
 const redirects = [
   '/list / 301',
   '/list/1 / 301',
   ...shown.map((g) => `/list/${g.id}/1 /list/${g.id} 301`),
-  ...OLD_IDS.filter((id) => ids.has(id)).map((id) => `/chant.html id=${id} ${chantHref(id)} 301`),
+  ...OLD_IDS.filter((id) => slugs.has(id)).map((id) => `/chant.html id=${id} ${chantHref(id)} 301`),
   '/chant.html / 301',
   '/about.html /about 301',
 ];

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "ti-loka-vijaya-raja-patti-dana-gatha",
+  id: "0040",
+  slug: "ti-loka-vijaya-raja-patti-dana-gatha",
   title: "Verses on Sharing Goodness of the Conqueror of the Three Worlds",
   paliTitle: "Ti-loka-vijaya-rāja-patti-dāna-gāthā",
   groups: [{ group: "reflections", order: 130 }, { group: "joy-and-ceremony", order: 270 }],

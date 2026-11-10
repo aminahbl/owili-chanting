@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "salutation-to-the-triple-gem",
+  id: "0008",
+  slug: "salutation-to-the-triple-gem",
   title: "Salutation to the Triple Gem",
   groups: [{ group: "reverence", order: 80 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddho-susuddho", categories: [{ category: "Morning Chanting", order: 6 }] },

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "karaniya-metta-sutta",
+  id: "0053",
+  slug: "karaniya-metta-sutta",
   title: "The Buddha's Words on Love",
   paliTitle: "Karaṇīya-metta-sutta",
   groups: [{ group: "parittas", order: 100 }, { group: "suttas", order: 90 }],

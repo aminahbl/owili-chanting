@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "caturappamanna-obhasana",
+  id: "0031",
+  slug: "caturappamanna-obhasana",
   title: "Suffusion With the Divine Abidings",
   paliTitle: "Caturappamaññā-obhāsana",
   groups: [{ group: "reflections", order: 40 }],

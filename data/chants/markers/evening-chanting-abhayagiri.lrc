@@ -15,7 +15,7 @@
 # supreme-praise-of-the-dhamma: estimated from the rhythm model, to be checked by ear: 18, 20.
 # supreme-praise-of-the-sangha: estimated from the rhythm model, to be checked by ear: 18, 20.
 
-[chant:dedication-of-offerings]
+[chant:0003 dedication-of-offerings]
 [00:00.00]1 [Yo so] bhagavā arahaṁ sammāsambuddho
 [00:11.40]2 Svākkhāto yena bhagavatā dhammo
 [00:18.60]3 Supaṭipanno yassa bhagavato sāvakasaṅgho
@@ -32,20 +32,20 @@
 [01:46.43]14 [Supaṭipanno] bhagavato sāvakasaṅgho
 [01:55.41]15 Saṅghaṁ namāmi
 
-[chant:preliminary-homage]
+[chant:0004 preliminary-homage]
 [02:00.17]1 Handa mayaṁ buddhassa bhagavato pubbabhāga-namakāraṁ karomase
 [02:09.84]2 Namo tassa bhagavato arahato sammāsambuddhassa
 [02:20.08]2 Namo tassa bhagavato arahato sammāsambuddhassa
 [02:29.48]2 Namo tassa bhagavato arahato sammāsambuddhassa
 
-[chant:recollection-of-the-buddha]
+[chant:0010 recollection-of-the-buddha]
 [02:39.19]1 Handa mayaṁ buddhānussatinayaṁ karomase
 [02:45.92]2 Taṁ kho pana bhagavantaṁ evaṁ kalyāṇo kittisaddo abbhuggato
 [02:58.24]3 Itipi so bhagavā arahaṁ sammāsambuddho
 [03:05.60]4 Vijjācaraṇa-sampanno sugato lokavidū
 [03:12.51]5 Anuttaro purisadamma-sārathi satthā deva-manussānaṁ buddho bhagavā'ti
 
-[chant:supreme-praise-of-the-buddha]
+[chant:0011 supreme-praise-of-the-buddha]
 [03:26.44]1 Handa mayaṁ buddhābhigītiṁ karomase
 [03:34.25]2 Buddh'vārahanta-varatādiguṇābhiyutto
 [03:42.13]3 Suddhābhiñāṇa-karuṇāhi samāgatatto
@@ -66,13 +66,13 @@
 [05:31.01]19 Buddho paṭiggaṇhātu accayantaṁ
 [05:36.29]20 Kālantare saṁvarituṁ va buddhe
 
-[chant:recollection-of-the-dhamma]
+[chant:0012 recollection-of-the-dhamma]
 [05:41.29]1 Handa mayaṁ dhammānussatinayaṁ karomase
 [05:48.52]2 Svākkhāto bhagavatā dhammo
 [05:54.81]3 Sandiṭṭhiko akāliko ehipassiko
 [06:01.20]4 Opanayiko paccattaṁ veditabbo viññūhī'ti
 
-[chant:supreme-praise-of-the-dhamma]
+[chant:0013 supreme-praise-of-the-dhamma]
 [06:08.36]1 Handa mayaṁ dhammābhigītiṁ karomase
 [06:15.25]2 Svākkhātat'ādiguṇa-yoga-vasena seyyo
 [06:22.97]3 Yo magga-pāka-pariyatti-vimokkha-bhedo
@@ -93,7 +93,7 @@
 [08:08.11]19 Dhammo paṭiggaṇhātu accayantaṁ
 [08:14.04]20 Kālantare saṁvarituṁ va dhamme
 
-[chant:recollection-of-the-sangha]
+[chant:0014 recollection-of-the-sangha]
 [08:19.66]1 Handa mayaṁ saṅghānussatinayaṁ karomase
 [08:26.76]2 Supaṭipanno bhagavato sāvakasaṅgho
 [08:34.33]3 Ujupaṭipanno bhagavato sāvakasaṅgho
@@ -104,7 +104,7 @@
 [09:08.86]8 Āhuneyyo pāhuneyyo dakkhiṇeyyo añjali-karaṇīyo
 [09:17.88]9 Anuttaraṁ puññakkhettaṁ lokassā'ti
 
-[chant:supreme-praise-of-the-sangha]
+[chant:0015 supreme-praise-of-the-sangha]
 [09:25.67]1 Handa mayaṁ saṅghābhigītiṁ karomase
 [09:32.31]2 Saddhammajo supaṭipatti-guṇādiyutto
 [09:39.06]3 Yo'ṭṭhabbidho ariyapuggala-saṅgha-seṭṭho

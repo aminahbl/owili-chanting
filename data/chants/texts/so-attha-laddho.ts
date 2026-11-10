@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "so-attha-laddho",
+  id: "0068",
+  slug: "so-attha-laddho",
   title: "Blessing for a Man",
   paliTitle: "So attha-laddho",
   groups: [{ group: "parittas", order: 270 }],

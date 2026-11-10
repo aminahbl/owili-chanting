@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "reflection-on-the-four-requisites",
+  id: "0028",
+  slug: "reflection-on-the-four-requisites",
   title: "Reflection on the Four Requisites",
   groups: [{ group: "reflections", order: 10 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#patisankha-yoniso", categories: [{ category: "Reflections", order: 1 }] },

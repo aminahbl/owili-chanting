@@ -113,6 +113,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const methodLabel = document.querySelector<HTMLElement>('.method-label');
   const tempoInput = document.querySelector<HTMLInputElement>('#tempo');
   const chantId = chant.dataset.chant ?? '';
+  const slug = chant.dataset.slug ?? '';
   let savedIndex = -1;
 
   const clock = new LineClock(steps.length, (c) => {
@@ -138,7 +139,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const tempo = new Tempo(clock, steps, chantId);
   const cueIds = new Set([...chant.querySelectorAll<HTMLElement>('.cue[data-cue]')].map((cue) => Number(cue.dataset.cue)));
   const recorded = document.querySelector('#recording-timing')?.textContent ?? null;
-  const timing = new Timing(steps, chantId, title, cueIds, recorded);
+  const timing = new Timing(steps, chantId, slug, title, cueIds, recorded);
   const recording = new Recording(clock, () => showAudio());
 
   function startLabel(c: LineClock): string {
@@ -270,7 +271,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     useSettings();
   }
   showTiming();
-  document.querySelector('#timing-export')?.addEventListener('click', () => download(`${chantId}.lrc`, timing.lrc()));
+  document.querySelector('#timing-export')?.addEventListener('click', () => download(`${slug}.lrc`, timing.lrc()));
   document.querySelector('#timing-import-button')?.addEventListener('click', () => timingImport?.click());
   timingImport?.addEventListener('change', async () => {
     const file = timingImport.files?.[0];

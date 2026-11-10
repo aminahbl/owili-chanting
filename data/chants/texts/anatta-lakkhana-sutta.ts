@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "anatta-lakkhana-sutta",
+  id: "0087",
+  slug: "anatta-lakkhana-sutta",
   title: "The Characteristic of Not-Self",
   paliTitle: "Anatta-lakkhaṇa-sutta",
   groups: [{ group: "suttas", order: 20 }],

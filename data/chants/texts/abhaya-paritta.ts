@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "abhaya-paritta",
+  id: "0064",
+  slug: "abhaya-paritta",
   title: "The Danger-free Protection",
   paliTitle: "Abhaya-paritta",
   groups: [{ group: "parittas", order: 230 }],

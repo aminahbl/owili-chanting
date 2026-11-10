@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "dhamma-sangani-matika",
+  id: "0115",
+  slug: "dhamma-sangani-matika",
   title: "The Matrix of the Dhammasaṅgaṇī",
   paliTitle: "Dhamma-saṅgaṇī-mātikā",
   groups: [{ group: "funeral", order: 10 }],

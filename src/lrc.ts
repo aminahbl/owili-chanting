@@ -1,7 +1,8 @@
 // Timing files in LRC, the plain text format for timed lyrics (spec 09). A
-// file follows one recording, which can hold several chants: a `[chant:<id>]`
-// tag starts each chant's rows. A row is "[minutes:seconds]" followed by a
-// line ID and the line's Pali, which is there for the reader and not read
+// file follows one recording, which can hold several chants: a
+// `[chant:<number> <slug>]` tag starts each chant's rows. The number names the
+// chant; the slug is there for the reader and may be left out. A row is
+// "[minutes:seconds]" followed by a line ID and the line's Pali, which is there for the reader and not read
 // back. A row with a cue's ID or no text marks a pause, which is added to the
 // line before it. A row with a line ID and no time marks a line the recording
 // leaves out. This module has no browser dependencies, so the build uses it too.
@@ -39,13 +40,27 @@ export function lrcTags(text: string): Record<string, string> {
   return tags;
 }
 
-/** The IDs of the chants a file names, in order of first appearance. */
-export function lrcChants(text: string): string[] {
-  const ids = text.split(/\r?\n/).flatMap((raw) => {
+/** A chant tag's value: the chant's number, then its slug, which may be left out. */
+export interface ChantTag {
+  id: string;
+  slug?: string;
+}
+
+function chantTag(value: string): ChantTag {
+  const [id, slug] = value.trim().split(/\s+/);
+  return slug ? { id, slug } : { id };
+}
+
+/** The chants a file names, in order of first appearance. */
+export function lrcChants(text: string): ChantTag[] {
+  const named = new Map<string, ChantTag>();
+  for (const raw of text.split(/\r?\n/)) {
     const tag = tagOf(raw.trim());
-    return tag?.[1].toLowerCase() === 'chant' ? [tag[2].trim()] : [];
-  });
-  return [...new Set(ids)];
+    if (tag?.[1].toLowerCase() !== 'chant') continue;
+    const chant = chantTag(tag[2]);
+    if (!named.has(chant.id)) named.set(chant.id, chant);
+  }
+  return [...named.values()];
 }
 
 /**
@@ -66,7 +81,7 @@ export function chantPart(text: string, chantId: string): string | null {
     const row = raw.trim();
     const tag = tagOf(row);
     if (tag?.[1].toLowerCase() === 'chant') {
-      current = tag[2].trim();
+      current = chantTag(tag[2]).id;
       if (current === chantId) out.push(row);
       continue;
     }
@@ -105,8 +120,9 @@ export interface Schedule {
  */
 export function readLrc(text: string, chantId: string, lineIds: number[], cueIds: Set<number>): Schedule | string {
   const named = lrcChants(text);
-  if (named.length > 1) return `This timing has more than one chant (${named.join(', ')}).`;
-  if (named.length === 1 && named[0] !== chantId) return `This timing is for another chant (${named[0]}).`;
+  const name = (c: ChantTag) => c.slug ?? c.id;
+  if (named.length > 1) return `This timing has more than one chant (${named.map(name).join(', ')}).`;
+  if (named.length === 1 && named[0].id !== chantId) return `This timing is for another chant (${name(named[0])}).`;
   const rows: Row[] = [];
   for (const [i, raw] of text.split(/\r?\n/).entries()) {
     const row = raw.trim();

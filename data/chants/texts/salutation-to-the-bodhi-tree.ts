@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "salutation-to-the-bodhi-tree",
+  id: "0022",
+  slug: "salutation-to-the-bodhi-tree",
   title: "Salutation to the Bodhi-Tree",
   groups: [{ group: "reverence", order: 220 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bodhi-tree", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 2 }] },

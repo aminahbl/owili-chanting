@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "maha-mangala-cakka-vala",
+  id: "0109",
+  slug: "maha-mangala-cakka-vala",
   title: "The Greater Circle of Blessings",
   paliTitle: "Mahā-maṅgala-cakka-vāḷa",
   groups: [{ group: "joy-and-ceremony", order: 180 }],

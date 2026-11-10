@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "vipassana-bhumi-patha",
+  id: "0123",
+  slug: "vipassana-bhumi-patha",
   title: "The Grounds for Insight",
   paliTitle: "Vipassanā-bhūmi-pāṭha",
   groups: [{ group: "funeral", order: 90 }],

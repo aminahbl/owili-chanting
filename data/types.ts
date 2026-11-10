@@ -71,7 +71,10 @@ interface EditorialNote {
 }
 
 export interface Chant {
+  /** Four digits, issued from the ledger in data/ids.ts. It never changes. */
   id: string;
+  /** The page address, /chants/<slug>. */
+  slug: string;
   title: string;
   paliTitle?: string;
   groups: Membership[];

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "nama-kara-siddhi-gatha",
+  id: "0017",
+  slug: "nama-kara-siddhi-gatha",
   title: "The Verses of Success through Homage",
   paliTitle: "Nama-kāra-siddhi-gāthā",
   groups: [{ group: "parittas", order: 60 }, { group: "reverence", order: 170 }],

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "sangaha-vatthu-gatha",
+  id: "0111",
+  slug: "sangaha-vatthu-gatha",
   title: "Verses on the Ways of Supporting Others",
   paliTitle: "Saṅgaha-vatthu-gāthā",
   groups: [{ group: "joy-and-ceremony", order: 200 }],

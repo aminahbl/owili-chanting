@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "anapanassati-sutta",
+  id: "0089",
+  slug: "anapanassati-sutta",
   title: "Mindfulness of Breathing",
   paliTitle: "Ānāpānassati-sutta",
   groups: [{ group: "suttas", order: 40 }],

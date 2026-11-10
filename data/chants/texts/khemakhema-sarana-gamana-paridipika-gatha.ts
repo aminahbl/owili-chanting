@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "khemakhema-sarana-gamana-paridipika-gatha",
+  id: "0076",
+  slug: "khemakhema-sarana-gamana-paridipika-gatha",
   title: "True and False Refuges",
   paliTitle: "Khemākhema-saraṇa-gamana-paridīpikā-gāthā",
   groups: [{ group: "parittas", order: 350 }],

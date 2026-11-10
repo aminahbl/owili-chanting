@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "pathama-buddha-bhasita-gatha",
+  id: "0080",
+  slug: "pathama-buddha-bhasita-gatha",
   title: "Verses on the Buddha's First Exclamation",
   paliTitle: "Paṭhama-buddha-bhāsita-gāthā",
   groups: [{ group: "parittas", order: 390 }],

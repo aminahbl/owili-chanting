@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "aggappasada-sutta-gatha",
+  id: "0104",
+  slug: "aggappasada-sutta-gatha",
   title: "Verses on the Foremost Kinds of Faith",
   paliTitle: "Aggappasāda-sutta-gāthā",
   groups: [{ group: "joy-and-ceremony", order: 130 }],

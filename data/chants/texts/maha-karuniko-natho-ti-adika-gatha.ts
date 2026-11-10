@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "maha-karuniko-natho-ti-adika-gatha",
+  id: "0072",
+  slug: "maha-karuniko-natho-ti-adika-gatha",
   title: "The Great Compassionate Protector",
   paliTitle: "Mahā-kāruṇiko nātho'ti ādikā gāthā",
   groups: [{ group: "parittas", order: 310 }],

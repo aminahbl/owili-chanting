@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "dhammacakkappavattana-sutta",
+  id: "0086",
+  slug: "dhammacakkappavattana-sutta",
   title: "Setting in Motion the Wheel of Dhamma",
   paliTitle: "Dhammacakkappavattana-sutta",
   groups: [{ group: "suttas", order: 10 }],

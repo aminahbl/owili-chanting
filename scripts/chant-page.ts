@@ -120,7 +120,8 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
       : '',
   ];
   const pali = chant.paliTitle ? `<p class="info-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
-  return popover('info', escapeHtml(chant.title), `${pali}<dl>${items.join('')}</dl>`);
+  const number = `<p class="info-number">Chant ${chant.id}</p>`;
+  return popover('info', escapeHtml(chant.title), `${pali}<dl>${items.join('')}</dl>${number}`);
 }
 
 function choice(name: string, legend: string, options: [string, string][]): string {
@@ -210,7 +211,7 @@ function header(chant: Chant): string {
 
 /** The chant after this one in its first group, offered on the end slide. */
 export interface NextChant {
-  id: string;
+  slug: string;
   title: string;
   groupTitle: string;
 }
@@ -235,7 +236,7 @@ function audioControls(view: 'text' | 'slides'): string {
 // The slide view is filled from the text view's lines by src/slide-view.ts.
 function slides(next: NextChant | undefined): string {
   const nextLink = next
-    ? `<a class="slide-next-chant" href="/chants/${next.id}?view=slides">Next in ${escapeHtml(next.groupTitle)}: ${escapeHtml(next.title)}</a>`
+    ? `<a class="slide-next-chant" href="/chants/${next.slug}?view=slides">Next in ${escapeHtml(next.groupTitle)}: ${escapeHtml(next.title)}</a>`
     : '';
   return `<section class="slides" id="slides" aria-label="Slides">
 <p class="slide-section"></p>
@@ -275,7 +276,7 @@ export function chantPage(
 ): string {
   const paliTitle =
     chant.paliTitle && chant.paliTitle !== chant.title ? `<p class="chant-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
-  const body = `<article class="chant" data-chant="${chant.id}">
+  const body = `<article class="chant" data-chant="${chant.id}" data-slug="${chant.slug}">
 <h1>${escapeHtml(chant.title)}</h1>
 ${paliTitle}
 ${notes(chant)}

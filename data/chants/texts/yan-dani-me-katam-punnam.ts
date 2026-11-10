@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "yan-dani-me-katam-punnam",
+  id: "0047",
+  slug: "yan-dani-me-katam-punnam",
   title: "The Goodness I Have Now Done",
   paliTitle: "Yan-dāni me kataṁ puññaṁ",
   groups: [{ group: "reflections", order: 200 }, { group: "joy-and-ceremony", order: 300 }],

@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "culla-mangala-cakka-vala",
+  id: "0108",
+  slug: "culla-mangala-cakka-vala",
   title: "The Lesser Circle of Blessings",
   paliTitle: "Culla-maṅgala-cakka-vāḷa",
   groups: [{ group: "joy-and-ceremony", order: 170 }],

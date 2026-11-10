@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "recollection-of-the-dhamma",
+  id: "0012",
+  slug: "recollection-of-the-dhamma",
   title: "Recollection of the Dhamma",
   groups: [{ group: "reverence", order: 120 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#d-sati-pli", categories: [{ category: "Evening Chanting", order: 5 }] },

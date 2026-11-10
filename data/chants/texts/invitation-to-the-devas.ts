@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "invitation-to-the-devas",
+  id: "0050",
+  slug: "invitation-to-the-devas",
   title: "Invitation to the Devas",
   groups: [{ group: "parittas", order: 20 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#devas", categories: [{ category: "Parittas", subcategory: "Invitations", order: 2 }] },

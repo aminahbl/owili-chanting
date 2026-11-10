@@ -1,7 +1,8 @@
 import type { Chant } from '../../types.ts';
 
 export const chant = {
-  id: "sabba-patti-dana-gatha",
+  id: "0037",
+  slug: "sabba-patti-dana-gatha",
   title: "Verses on the Sharing of Merit",
   paliTitle: "Sabba-patti-dāna-gāthā",
   groups: [{ group: "reflections", order: 100 }, { group: "joy-and-ceremony", order: 240 }],
