@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on Timely Giving",
   paliTitle: "Kāla-dāna-sutta-gāthā",
   groups: [{ group: "anumodana", order: 6 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#kala-dana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#kala-dana", categories: [{ category: "Anumodanā", order: 6 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-09-30/" }],
   sections: [

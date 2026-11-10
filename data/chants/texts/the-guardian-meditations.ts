@@ -4,7 +4,7 @@ export const chant = {
   id: "the-guardian-meditations",
   title: "The Guardian Meditations",
   groups: [{ group: "reflections", order: 19 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#guardian" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#guardian", categories: [{ category: "Reflections", order: 19 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [8], note: "English to review: *yogato ca pabodhā ca* is compressed. The draft reads *pabodha* as awakening others; it may also mean his own awakening." },

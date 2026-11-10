@@ -4,7 +4,7 @@ export const chant = {
   id: "homage-to-the-buddha",
   title: "Homage to the Buddha",
   groups: [{ group: "morning", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Morning Chanting", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddha-pali" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddha-pali", categories: [{ category: "Morning Chanting", order: 3 }] },
   translation: "draft",
   sections: [
     {

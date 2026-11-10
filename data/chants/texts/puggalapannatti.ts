@@ -5,7 +5,7 @@ export const chant = {
   title: "Opening of the Puggalapaññatti",
   paliTitle: "Puggalapaññatti",
   groups: [{ group: "funeral", order: 5 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#puggalapannatti" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#puggalapannatti", categories: [{ category: "Funeral Chants", order: 5 }] },
   translation: "draft",
   sections: [
     {

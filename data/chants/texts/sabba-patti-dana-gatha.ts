@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on the Sharing of Merit",
   paliTitle: "Sabba-patti-dāna-gāthā",
   groups: [{ group: "reflections", order: 10 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#sabba-patti" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#sabba-patti", categories: [{ category: "Reflections", order: 10 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [11], note: "English to review: *bhummā* is read as \"belonging to the planes\" (*bhūmi*)." },

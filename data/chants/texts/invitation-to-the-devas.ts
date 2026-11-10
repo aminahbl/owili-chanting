@@ -4,7 +4,7 @@ export const chant = {
   id: "invitation-to-the-devas",
   title: "Invitation to the Devas",
   groups: [{ group: "parittas", subgroup: "Invitations", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#devas" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#devas", categories: [{ category: "Parittas", subcategory: "Invitations", order: 2 }] },
   translation: "draft",
   notes: [
     "In Thai custom, the third monk in seniority invites the devas, holding his hands in añjali, and lifting up the ceremonial string.",

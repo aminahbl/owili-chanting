@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on the Burden",
   paliTitle: "Bhāra-sutta-gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 34 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhara-sutta" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhara-sutta", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 34 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [7], note: "SN 22.22 has *taṇham* where the manual has *taṇhaṁ*. Kept as the manual prints it." },

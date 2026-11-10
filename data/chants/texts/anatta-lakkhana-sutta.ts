@@ -5,7 +5,7 @@ export const chant = {
   title: "The Characteristic of Not-Self",
   paliTitle: "Anatta-lakkhaṇa-sutta",
   groups: [{ group: "suttas", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Suttas", url: "https://bhikkhu-manual.github.io/chants/suttas.html#anatta-lakkhana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#anatta-lakkhana", categories: [{ category: "Suttas", order: 2 }] },
   translation: "draft",
   notes: [
     "Solo introduction",

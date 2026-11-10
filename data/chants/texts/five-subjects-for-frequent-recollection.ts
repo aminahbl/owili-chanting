@@ -4,7 +4,7 @@ export const chant = {
   id: "five-subjects-for-frequent-recollection",
   title: "Five Subjects for Frequent Recollection",
   groups: [{ group: "reflections", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#jara-dhammomhi" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#jara-dhammomhi", categories: [{ category: "Reflections", order: 2 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [7], note: "AN 5.57 has *bhavissāmī* where the manual has *bhavissāmi*. Kept as the manual prints it." },

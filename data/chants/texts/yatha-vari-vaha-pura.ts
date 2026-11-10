@@ -5,7 +5,7 @@ export const chant = {
   title: "Just as Rivers",
   paliTitle: "Yathā vāri-vahā pūrā",
   groups: [{ group: "anumodana", order: 1 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#yatha" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#yatha", categories: [{ category: "Anumodanā", order: 1 }] },
   translation: "draft",
   sections: [
     {

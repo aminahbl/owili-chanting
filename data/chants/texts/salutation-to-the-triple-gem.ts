@@ -4,7 +4,7 @@ export const chant = {
   id: "salutation-to-the-triple-gem",
   title: "Salutation to the Triple Gem",
   groups: [{ group: "morning", order: 6 }],
-  paliSource: { label: "Bhikkhu Manual, Morning Chanting", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddho-susuddho" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddho-susuddho", categories: [{ category: "Morning Chanting", order: 6 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [57], note: "The manual prints *Bhikkhūnaṁ/Sīladharānaṁ* inline; here it is split into the men's and women's forms." },

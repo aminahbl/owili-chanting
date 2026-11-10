@@ -5,7 +5,7 @@ export const chant = {
   title: "Freed from Every Illness",
   paliTitle: "Sabba-roga-vinimutto",
   groups: [{ group: "anumodana", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#sabba-roga" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#sabba-roga", categories: [{ category: "Anumodanā", order: 2 }] },
   translation: "draft",
   notes: [
     "This shorter form is sometimes used instead of 'Yathā...'",

@@ -4,7 +4,7 @@ export const chant = {
   id: "blessing-and-protection",
   title: "Blessing and Protection",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 10 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#protection" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#protection", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 10 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [11], note: "The manual has *Sabba-dhammānunbhāvena*, a misspelling; corrected to *Sabba-dhammānubhāvena*." },

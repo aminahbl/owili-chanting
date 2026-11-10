@@ -5,7 +5,7 @@ export const chant = {
   title: "May There Be Every Blessing",
   paliTitle: "Bhavatu sabba-maṅgalaṁ",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 30 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhavatu" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhavatu", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 30 }] },
   translation: "draft",
   sections: [
     {

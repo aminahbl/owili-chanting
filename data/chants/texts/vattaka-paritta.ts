@@ -5,7 +5,7 @@ export const chant = {
   title: "The Quail's Protection",
   paliTitle: "Vaṭṭaka-paritta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 14 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atthi-loke" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atthi-loke", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 14 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [15], note: "English to review: a *karīsa* is a measure of land; \"sixteen lengths\" gives the sense without the unit." },

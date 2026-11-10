@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on Sharing Goodness of the Conqueror of the Three Worlds",
   paliTitle: "Ti-loka-vijaya-rāja-patti-dāna-gāthā",
   groups: [{ group: "reflections", order: 13 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#ti-loka" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#ti-loka", categories: [{ category: "Reflections", order: 13 }] },
   translation: "draft",
   editorial: [
     { status: "open", note: "The reference *Apadāna 4* is not confirmed: Therāpadāna 4, the likely text, has none of the chant's lines. It is shown without a link." },

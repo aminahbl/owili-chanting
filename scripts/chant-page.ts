@@ -101,9 +101,12 @@ function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: Recor
     .filter((g): g is Group => g !== undefined)
     .map((g) => `<a href="/list/${g.id}">${escapeHtml(g.title)}</a>`)
     .join(', ');
-  const source = chant.paliSource.url
-    ? `<a href="${escapeHtml(chant.paliSource.url)}">${escapeHtml(chant.paliSource.label)}</a>`
-    : escapeHtml(chant.paliSource.label);
+  const { label, url, categories } = chant.paliSource;
+  const sourceName = url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label);
+  const placing = (categories ?? [])
+    .map((c) => escapeHtml([c.category, c.subcategory].filter(Boolean).join(', ')))
+    .join('; ');
+  const source = placing ? `${sourceName}: ${placing}` : sourceName;
   const refs = chant.sections.flatMap((s) => s.refs ?? []);
   const items = [
     `<dt>Groups</dt><dd>${groupLinks}</dd>`,

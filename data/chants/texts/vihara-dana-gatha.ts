@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on Giving a Dwelling",
   paliTitle: "Vihāra-dāna-gāthā",
   groups: [{ group: "anumodana", order: 10 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#vihara-dana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#vihara-dana", categories: [{ category: "Anumodanā", order: 10 }] },
   translation: "draft",
   sections: [
     {

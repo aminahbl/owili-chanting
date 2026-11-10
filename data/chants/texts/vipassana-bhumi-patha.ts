@@ -5,7 +5,7 @@ export const chant = {
   title: "The Grounds for Insight",
   paliTitle: "Vipassanā-bhūmi-pāṭha",
   groups: [{ group: "funeral", order: 9 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#vipassana-bhumi" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#vipassana-bhumi", categories: [{ category: "Funeral Chants", order: 9 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [42, 54], note: "MN 115 has *soka-parideva-dukkha-domanass'ūpāyāsā* where the manual has *soka-parideva-dukkha-domanass'upāyāsā*. Kept as the manual prints it." },

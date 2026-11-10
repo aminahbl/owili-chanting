@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on Mountains",
   paliTitle: "Pabbatopama-gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 33 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pabbatopama" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pabbatopama", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 33 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [22], note: "SN 3.25 has *pamodatī* where the manual has *pamodati*. Kept as the manual prints it." },

@@ -4,7 +4,7 @@ export const chant = {
   id: "offering-of-lights",
   title: "Offering of Lights",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#lights" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#lights", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 3 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [3], note: "*Tīloka-dīpam*: possibly a misprint for *Tiloka-*, which the [Mahamevnawa chanting book](https://banaenglish.org/wp-content/uploads/2021/05/Trilinnear-A5-Vandana-Kotte-August2020.pdf) has. Needs a second source before any change." },

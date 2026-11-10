@@ -4,7 +4,7 @@ export const chant = {
   id: "transference-of-merit-to-devas",
   title: "Transference of Merit to Devas",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 6 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#merit-to-devas" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#merit-to-devas", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 6 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [9], note: "The alternatives for the people addressed (*devā/ bhūtā/ sattā*) are kept as printed; the chanter picks one. The English follows the first form." },

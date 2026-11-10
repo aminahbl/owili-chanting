@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on the Buddha's First Exclamation",
   paliTitle: "Paṭhama-buddha-bhāsita-gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 39 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pathama-buddha" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pathama-buddha", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 39 }] },
   translation: "draft",
   sections: [
     {

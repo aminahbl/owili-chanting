@@ -4,7 +4,7 @@ export const chant = {
   id: "five-precepts",
   title: "Five Precepts",
   groups: [{ group: "sri-lanka", subgroup: "Uposatha-day for Lay-followers", order: 17 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#five-precepts" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#five-precepts", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Uposatha-day for Lay-followers", order: 17 }] },
   translation: "draft",
   notes: [
     "With hands in añjali, the laypeople recite the following request:",

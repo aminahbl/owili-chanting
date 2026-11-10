@@ -5,7 +5,7 @@ export const chant = {
   title: "Reflection on Universal Well-Being",
   paliTitle: "Mettāpharaṇa",
   groups: [{ group: "reflections", order: 7 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#mettapharana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#mettapharana", categories: [{ category: "Reflections", order: 7 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [2], note: "English to review: *homi* is literally \"I am\"; as in most chanting translations it is read as a wish, \"may I be\"." },

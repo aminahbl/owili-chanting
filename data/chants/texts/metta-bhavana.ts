@@ -5,7 +5,7 @@ export const chant = {
   title: "The Development of Warmth",
   paliTitle: "Mettā Bhāvanā",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 11 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bhavana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bhavana", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 11 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [6], note: "English to review: *ahaṁ niccaṁ ahaṁ viya* is read as \"always; and as for me, so for others\"." },

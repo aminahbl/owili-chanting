@@ -5,7 +5,7 @@ export const chant = {
   title: "Preliminary Homage",
   paliTitle: "Pubba-bhāga-nama-kāra-pāṭha",
   groups: [{ group: "parittas", subgroup: "Introductory Chants", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#namo-tassa" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#namo-tassa", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 3 }] },
   translation: "draft",
   sections: [
     {

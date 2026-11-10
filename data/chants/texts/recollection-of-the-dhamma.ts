@@ -4,7 +4,7 @@ export const chant = {
   id: "recollection-of-the-dhamma",
   title: "Recollection of the Dhamma",
   groups: [{ group: "evening", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Evening Chanting", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#d-sati-pli" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#d-sati-pli", categories: [{ category: "Evening Chanting", order: 5 }] },
   translation: "draft",
   sections: [
     {

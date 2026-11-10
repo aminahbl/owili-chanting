@@ -4,7 +4,7 @@ export const chant = {
   id: "invitation-for-paritta-chanting",
   title: "Invitation for Paritta Chanting",
   groups: [{ group: "parittas", subgroup: "Invitations", order: 1 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#invitation" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#invitation", categories: [{ category: "Parittas", subcategory: "Invitations", order: 1 }] },
   translation: "draft",
   notes: [
     "After bowing three times, with hands joined in añjali, recite the following",

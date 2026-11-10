@@ -5,7 +5,7 @@ export const chant = {
   title: "The Greater Circle of Blessings",
   paliTitle: "Mahā-maṅgala-cakka-vāḷa",
   groups: [{ group: "anumodana", order: 9 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#maha-mangala" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#maha-mangala", categories: [{ category: "Anumodanā", order: 9 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [1], note: "English to review: the Pali is one long compound of qualities; the draft keeps most of them but shortens *mahiddhi-mahāguṇa-aparimita-puñña* to \"power and goodness\"." },

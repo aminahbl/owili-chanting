@@ -5,7 +5,7 @@ export const chant = {
   title: "The Goodness I Have Now Done",
   paliTitle: "Yan-dāni me kataṁ puññaṁ",
   groups: [{ group: "reflections", order: 20 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#yan-dani" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#yan-dani", categories: [{ category: "Reflections", order: 20 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [11], note: "English to review: *liṅga* here is the male sex, which the tradition held to be needed for full ordination as a bhikkhu and for Buddhahood. The draft keeps the meaning." },

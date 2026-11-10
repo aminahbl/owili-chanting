@@ -5,7 +5,7 @@ export const chant = {
   title: "The Great Elephant Protection",
   paliTitle: "Chaddanta-paritta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 12 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vadhissamenanti" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vadhissamenanti", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 12 }] },
   translation: "draft",
   editorial: [
     { status: "open", note: "English to review: the verses tell the story of the elephant Chaddanta, who spared the hunter because he wore the ochre robe. A short note on the story would help users follow lines 1 to 6." },

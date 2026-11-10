@@ -5,7 +5,7 @@ export const chant = {
   title: "Blessing for a Man",
   paliTitle: "So attha-laddho",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 27 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#so-attha-laddho" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#so-attha-laddho", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 27 }] },
   translation: "draft",
   sections: [
     {

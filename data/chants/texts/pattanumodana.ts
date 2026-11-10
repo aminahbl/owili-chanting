@@ -5,7 +5,7 @@ export const chant = {
   title: "Sharing Merits",
   paliTitle: "Pattanumodana",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 12 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#pattanumodana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#pattanumodana", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 12 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [1, 14], note: "The alternatives for the people addressed (*te/vo/no/me*) are kept as printed; the chanter picks one. The English follows the first form." },

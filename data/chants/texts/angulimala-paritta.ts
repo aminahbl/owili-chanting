@@ -5,7 +5,7 @@ export const chant = {
   title: "Aṅgulimāla's Protection",
   paliTitle: "Aṅgulimāla-paritta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 21 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yato-ham-bhagini" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yato-ham-bhagini", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 21 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [3], note: "MN 86 has *gabbhassā* where the manual has *gabbhassa*. Kept as the manual prints it." },

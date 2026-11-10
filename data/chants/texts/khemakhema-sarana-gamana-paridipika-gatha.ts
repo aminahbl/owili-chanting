@@ -5,7 +5,7 @@ export const chant = {
   title: "True and False Refuges",
   paliTitle: "Khemākhema-saraṇa-gamana-paridīpikā-gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 35 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#khemakhema" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#khemakhema", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 35 }] },
   translation: "draft",
   sections: [
     {

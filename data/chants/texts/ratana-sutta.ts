@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses from the Discourse on Treasures",
   paliTitle: "Ratana-sutta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 9 }, { group: "suttas", order: 8 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#ratana-sutta" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#ratana-sutta", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 9 }] },
   translation: "draft",
   notes: [
     "In certain monasteries only the numbered verses are chanted.",

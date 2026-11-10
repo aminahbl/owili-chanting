@@ -4,7 +4,7 @@ export const chant = {
   id: "salutation-to-the-bodhi-tree",
   title: "Salutation to the Bodhi-Tree",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bodhi-tree" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bodhi-tree", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 2 }] },
   translation: "draft",
   sections: [
     {

@@ -5,7 +5,7 @@ export const chant = {
   title: "Opening of the Dhammasaṅgaṇī",
   paliTitle: "Dhammasaṅgaṇī",
   groups: [{ group: "funeral", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#dhammasangani" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#dhammasangani", categories: [{ category: "Funeral Chants", order: 2 }] },
   translation: "draft",
   sections: [
     {

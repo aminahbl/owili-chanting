@@ -5,7 +5,7 @@ export const chant = {
   title: "Dedicating Offerings to the Devas",
   paliTitle: "Devat'ādissa-dakkhiṇā'numodanā-gāthā",
   groups: [{ group: "anumodana", order: 14 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#devat-adissa" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#devat-adissa", categories: [{ category: "Anumodanā", order: 14 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [12], note: "Kd 6 has *passatī* where the manual has *passati*. Kept as the manual prints it." },

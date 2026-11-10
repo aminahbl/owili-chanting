@@ -5,7 +5,7 @@ export const chant = {
   title: "The Act of Truth",
   paliTitle: "Sacca-kiriyā-gāthā",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 18 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#natthi-me" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#natthi-me", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 18 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [2, 4, 6], note: "The alternatives for the people addressed (*te/me*) are kept as printed; the chanter picks one. The English follows the first form." },

@@ -4,7 +4,7 @@ export const chant = {
   id: "the-aspirations",
   title: "The Aspirations",
   groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 9 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#aspirations" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#aspirations", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 9 }] },
   translation: "draft",
   sections: [
     {

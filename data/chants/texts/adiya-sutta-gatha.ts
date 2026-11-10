@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on the Uses of Wealth",
   paliTitle: "Ādiya-sutta-gāthā",
   groups: [{ group: "anumodana", order: 12 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#adiya-sutta" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#adiya-sutta", categories: [{ category: "Anumodanā", order: 12 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [1], note: "The manual has *bhaṭā bhaccā*, a misspelling; corrected to *bhatā bhaccā*." },

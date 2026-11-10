@@ -4,7 +4,7 @@ export const chant = {
   id: "supreme-praise-of-the-buddha",
   title: "Supreme Praise of the Buddha",
   groups: [{ group: "evening", order: 2 }],
-  paliSource: { label: "Bhikkhu Manual, Evening Chanting", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#b-bhi-pli" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#b-bhi-pli", categories: [{ category: "Evening Chanting", order: 4 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [2], note: "Possibly a misprint: other chanting books have *Buddhavārahanta-* for *Buddh'vārahanta-*. Needs a second source before any change; the English of this line depends on the reading." },

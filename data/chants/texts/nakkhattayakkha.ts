@@ -5,7 +5,7 @@ export const chant = {
   title: "Protection from Stars, Yakkhas and Spirits",
   paliTitle: "Nakkhattayakkha",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 42 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#nakkhattayakkha" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#nakkhattayakkha", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 42 }] },
   translation: "draft",
   notes: [
     "The paritta chanting may be closed with the following:",

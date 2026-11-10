@@ -4,7 +4,7 @@ export const chant = {
   id: "the-teaching-on-striving-according-to-dhamma",
   title: "The Teaching on Striving According to Dhamma",
   groups: [{ group: "reflections", order: 14 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#striving" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#striving", categories: [{ category: "Reflections", order: 14 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [32, 33], note: "English to review: the Pali is \"of those whose robes … we use, their acts for us\"; the draft says \"that people give\" to make the sentence read in English." },

@@ -4,7 +4,7 @@ export const chant = {
   id: "supreme-praise-of-the-sangha",
   title: "Supreme Praise of the Saṅgha",
   groups: [{ group: "evening", order: 6 }],
-  paliSource: { label: "Bhikkhu Manual, Evening Chanting", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#s-bhi-pli" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#s-bhi-pli", categories: [{ category: "Evening Chanting", order: 8 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [8, 11, 14], note: "The manual prints the men's and women's forms inline (*dāso/dāsī*, *Vandanto/Vandantī*, *vandamānena/vandamānāya*); here they are split into the two forms." },

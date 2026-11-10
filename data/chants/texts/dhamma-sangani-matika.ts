@@ -5,7 +5,7 @@ export const chant = {
   title: "The Matrix of the Dhammasaṅgaṇī",
   paliTitle: "Dhamma-saṅgaṇī-mātikā",
   groups: [{ group: "funeral", order: 1 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#matika" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#matika", categories: [{ category: "Funeral Chants", order: 1 }] },
   translation: "draft",
   editorial: [
     { status: "open", note: "English to review: the matrix uses technical Abhidhamma terms; the draft follows the usual English renderings. A note explaining that the chant lists the categories of the first book of the Abhidhamma would help users." },

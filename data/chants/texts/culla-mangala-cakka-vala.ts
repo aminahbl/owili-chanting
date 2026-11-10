@@ -5,7 +5,7 @@ export const chant = {
   title: "The Lesser Circle of Blessings",
   paliTitle: "Culla-maṅgala-cakka-vāḷa",
   groups: [{ group: "anumodana", order: 8 }],
-  paliSource: { label: "Bhikkhu Manual, Anumodanā", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#culla-mangala" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#culla-mangala", categories: [{ category: "Anumodanā", order: 8 }] },
   translation: "draft",
   sections: [
     {

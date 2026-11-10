@@ -118,7 +118,8 @@ export function searchIndex(chants: Chant[], list: Entry[]): SearchEntry[] {
     const pali = chant.sections
       .flatMap((s) => s.lines)
       .flatMap((l) => ('pali' in l ? (typeof l.pali === 'string' ? [l.pali] : [l.pali.men, l.pali.women]) : []));
-    const text = normalise([chant.title, chant.paliTitle ?? '', ...pali].join(' '));
+    const sourceCategories = (chant.paliSource.categories ?? []).flatMap((c) => [c.category, c.subcategory ?? '']);
+    const text = normalise([chant.title, chant.paliTitle ?? '', ...sourceCategories, ...pali].join(' '));
     const groups = Object.fromEntries(chant.groups.map((m) => [m.group, m.order]));
     return [{ ...card, groups, text }];
   });

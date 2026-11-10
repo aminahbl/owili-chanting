@@ -5,7 +5,7 @@ export const chant = {
   title: "Opening of the Vibhaṅga",
   paliTitle: "Vibhaṅga",
   groups: [{ group: "funeral", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#vibhanga" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#vibhanga", categories: [{ category: "Funeral Chants", order: 3 }] },
   translation: "draft",
   sections: [
     {

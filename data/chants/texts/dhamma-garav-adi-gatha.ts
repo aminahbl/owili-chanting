@@ -5,7 +5,7 @@ export const chant = {
   title: "Verses on Respect for the Dhamma",
   paliTitle: "Dhamma-gārav'ādi-gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 38 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#dhamma-garav-adi" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#dhamma-garav-adi", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 38 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [18], note: "Thag 4.10 has *sukham-āvahati* where the manual has *sukham-āvahāti*. Kept as the manual prints it." },

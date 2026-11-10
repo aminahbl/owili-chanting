@@ -5,7 +5,7 @@ export const chant = {
   title: "Suffusion With the Divine Abidings",
   paliTitle: "Caturappamaññā-obhāsana",
   groups: [{ group: "reflections", order: 4 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#caturappamanna" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#caturappamanna", categories: [{ category: "Reflections", order: 4 }] },
   translation: "draft",
   sections: [
     {

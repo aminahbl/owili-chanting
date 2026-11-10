@@ -5,7 +5,7 @@ export const chant = {
   title: "The Discourse to Girimānanda",
   paliTitle: "Girimānanda-sutta",
   groups: [{ group: "suttas", order: 6 }],
-  paliSource: { label: "Bhikkhu Manual, Suttas", url: "https://bhikkhu-manual.github.io/chants/suttas.html#girimananda" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#girimananda", categories: [{ category: "Suttas", order: 6 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [46], note: "AN 10.60 has *seyyathidaṁ* where the manual has *seyyathīdaṁ*. Kept as the manual prints it." },

@@ -5,7 +5,7 @@ export const chant = {
   title: "Opening of the Yamaka",
   paliTitle: "Yamaka",
   groups: [{ group: "funeral", order: 7 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#yamaka" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#yamaka", categories: [{ category: "Funeral Chants", order: 7 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [3, 4], note: "English to review: *kusalamūlena ekamūlā* is \"having one root with the skilful root\"; the sense is technical and the draft keeps it literal." },

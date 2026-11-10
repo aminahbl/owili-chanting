@@ -5,7 +5,7 @@ export const chant = {
   title: "Going for Refuge",
   paliTitle: "Saraṇa-gamana-pāṭha",
   groups: [{ group: "parittas", subgroup: "Introductory Chants", order: 4 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#buddham-saranam" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#buddham-saranam", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 4 }] },
   translation: "draft",
   sections: [
     {

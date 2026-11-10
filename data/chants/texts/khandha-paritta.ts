@@ -5,7 +5,7 @@ export const chant = {
   title: "The Group Protection",
   paliTitle: "Khandha-paritta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 11 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#virupakkhehi" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#virupakkhehi", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 11 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [1, 2, 3, 4], note: "English to review: the four names are royal families of snakes. A short note would help users." },

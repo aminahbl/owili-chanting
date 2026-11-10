@@ -5,7 +5,7 @@ export const chant = {
   title: "The Thirty-Eight Highest Blessings",
   paliTitle: "Maṅgala-sutta",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 8 }, { group: "suttas", order: 7 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#asevana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#asevana", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 8 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [1], note: "Snp 2.4 has *Evaṁ-me* where the manual has *Evam-me*. Kept as the manual prints it." },

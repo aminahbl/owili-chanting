@@ -5,7 +5,7 @@ export const chant = {
   title: "In the Forest, at the Foot of a Tree",
   paliTitle: "Araññe rukkha-mūle vā",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 16 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#aranne" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#aranne", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 16 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [13], note: "SN 11.3 has *Evaṁ-buddhaṁ* where the manual has *Evam-buddhaṁ*. Kept as the manual prints it." },

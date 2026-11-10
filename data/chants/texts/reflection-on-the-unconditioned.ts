@@ -4,7 +4,7 @@ export const chant = {
   id: "reflection-on-the-unconditioned",
   title: "Reflection on the Unconditioned",
   groups: [{ group: "reflections", order: 8 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#unconditioned" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#unconditioned", categories: [{ category: "Reflections", order: 8 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [6], note: "Ud 8.3 has *paññāyatī* where the manual has *paññāyati*. Kept as the manual prints it." },

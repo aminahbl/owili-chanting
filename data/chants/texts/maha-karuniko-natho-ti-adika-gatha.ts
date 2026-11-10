@@ -5,7 +5,7 @@ export const chant = {
   title: "The Great Compassionate Protector",
   paliTitle: "Mahā-kāruṇiko nātho'ti ādikā gāthā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 31 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atthaya" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atthaya", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 31 }] },
   translation: "draft",
   sections: [
     {

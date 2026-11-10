@@ -5,7 +5,7 @@ export const chant = {
   title: "Having Revered",
   paliTitle: "Sakkatvā buddharatanaṁ",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 20 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sakkatva" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sakkatva", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 20 }] },
   translation: "draft",
   sections: [
     {

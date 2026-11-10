@@ -5,7 +5,7 @@ export const chant = {
   title: "Blessing for a Group",
   paliTitle: "Te attha-laddhā sukhitā",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 29 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#te-attha-laddha" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#te-attha-laddha", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 29 }] },
   translation: "draft",
   editorial: [
     { status: "kept", lines: [4], note: "AN 3.155 has *ñātibhī* where the manual has *ñātibhi*. Kept as the manual prints it." },

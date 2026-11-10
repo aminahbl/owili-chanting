@@ -5,7 +5,7 @@ export const chant = {
   title: "The Top of the Banner",
   paliTitle: "Dhaj'agga-sutta",
   groups: [{ group: "suttas", order: 5 }],
-  paliSource: { label: "Bhikkhu Manual, Suttas", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhaj-agga" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhaj-agga", categories: [{ category: "Suttas", order: 5 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [22], note: "Possibly a misprint: *dha'jaggaṁ*, where the other paragraphs have *dhaj'aggaṁ*. Needs a second source before any change." },

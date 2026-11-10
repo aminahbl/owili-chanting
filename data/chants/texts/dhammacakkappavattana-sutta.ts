@@ -5,7 +5,7 @@ export const chant = {
   title: "Setting in Motion the Wheel of Dhamma",
   paliTitle: "Dhammacakkappavattana-sutta",
   groups: [{ group: "suttas", order: 1 }],
-  paliSource: { label: "Bhikkhu Manual, Suttas", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhammacakkappavattana" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhammacakkappavattana", categories: [{ category: "Suttas", order: 1 }] },
   translation: "draft",
   notes: [
     "Solo introduction",

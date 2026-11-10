@@ -4,7 +4,7 @@ export const chant = {
   id: "formula-for-same-base-offences",
   title: "Formula for same base offences",
   groups: [{ group: "sri-lanka", subgroup: "Offences", order: 14 }],
-  paliSource: { label: "Bhikkhu Manual, Chants Used in Sri Lanka", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#same-base-offences" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#same-base-offences", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Offences", order: 14 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [4], note: "The manual has *āpaṭṭiṁ*, a misspelling; corrected to *āpattiṁ*." },

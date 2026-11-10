@@ -5,7 +5,7 @@ export const chant = {
   title: "Homage to the Seven Past Buddhas",
   paliTitle: "Āṭānāṭiya-paritta (short)",
   groups: [{ group: "parittas", subgroup: "Core Sequence", order: 17 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vipassissa" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vipassissa", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 17 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-10-15/" }],
   editorial: [

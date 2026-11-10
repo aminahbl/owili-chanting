@@ -5,7 +5,7 @@ export const chant = {
   title: "Opening of the Dhātukathā",
   paliTitle: "Dhātukathā",
   groups: [{ group: "funeral", order: 4 }],
-  paliSource: { label: "Bhikkhu Manual, Funeral Chants", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#dhatukatha" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#dhatukatha", categories: [{ category: "Funeral Chants", order: 4 }] },
   translation: "draft",
   sections: [
     {

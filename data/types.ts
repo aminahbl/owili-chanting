@@ -45,6 +45,17 @@ interface Membership {
 }
 
 /**
+ * Where the source places the chant, kept as a record of the source's own
+ * arrangement. The site's categories are in `groups`.
+ */
+interface SourceCategory {
+  category: string;
+  subcategory?: string;
+  /** Position within the category in the source. */
+  order: number;
+}
+
+/**
  * open: a question or a known problem that needs attention.
  * changed: the text differs from the Pali source, and the note says how.
  * kept: a possible problem was checked and the text left as it is.
@@ -66,7 +77,7 @@ export interface Chant {
   paliTitle?: string;
   groups: Membership[];
   /** Where the Pali text was taken from. The English is our own. */
-  paliSource: { label: string; url?: string };
+  paliSource: { label: string; url?: string; categories?: SourceCategory[] };
   translation?: 'draft' | 'reviewed';
   notes?: string[];
   links?: { text: string; href: string }[];

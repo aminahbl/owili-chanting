@@ -4,7 +4,7 @@ export const chant = {
   id: "ten-subjects-for-frequent-recollection",
   title: "Ten Subjects for Frequent Recollection",
   groups: [{ group: "reflections", order: 3 }],
-  paliSource: { label: "Bhikkhu Manual, Reflections", url: "https://bhikkhu-manual.github.io/chants/reflections.html#dasa-ime-bhikkhave" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#dasa-ime-bhikkhave", categories: [{ category: "Reflections", order: 3 }] },
   translation: "draft",
   editorial: [
     { status: "changed", lines: [3], note: "The manual has *ajjhūpagato*, a misspelling; corrected to *ajjhupagato*." },

@@ -5,7 +5,7 @@ export const chant = {
   title: "The Āṭānāṭiya Protection (long)",
   paliTitle: "Āṭānāṭiya-paritta (long)",
   groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 32 }],
-  paliSource: { label: "Bhikkhu Manual, Parittas", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atanatiya" },
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atanatiya", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 32 }] },
   translation: "draft",
   notes: [
     "Solo introduction",
