@@ -4,7 +4,7 @@ export const chant = {
   id: "bhadd-eka-ratta-gatha",
   title: "Verses on a Shining Night of Prosperity",
   paliTitle: "Bhadd'eka-ratta-gāthā",
-  groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 36 }],
+  groups: [{ group: "parittas", order: 360 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhadd-eka-ratta", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 36 }] },
   translation: "draft",
   editorial: [

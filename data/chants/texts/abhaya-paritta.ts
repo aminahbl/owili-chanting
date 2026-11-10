@@ -4,7 +4,7 @@ export const chant = {
   id: "abhaya-paritta",
   title: "The Danger-free Protection",
   paliTitle: "Abhaya-paritta",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 23 }],
+  groups: [{ group: "parittas", order: 230 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yan-dunnimittam", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 23 }] },
   translation: "draft",
   sections: [

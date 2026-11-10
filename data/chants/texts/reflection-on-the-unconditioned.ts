@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "reflection-on-the-unconditioned",
   title: "Reflection on the Unconditioned",
-  groups: [{ group: "reflections", order: 8 }],
+  groups: [{ group: "reflections", order: 80 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#unconditioned", categories: [{ category: "Reflections", order: 8 }] },
   translation: "draft",
   editorial: [

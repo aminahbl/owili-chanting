@@ -4,7 +4,7 @@ export const chant = {
   id: "bhojana-dananumodana",
   title: "Rejoicing in a Gift of Food",
   paliTitle: "Bhojana-dānānumodanā",
-  groups: [{ group: "anumodana", order: 3 }],
+  groups: [{ group: "joy-and-ceremony", order: 120 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#bhojana", categories: [{ category: "Anumodanā", order: 3 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-02-19/" }],

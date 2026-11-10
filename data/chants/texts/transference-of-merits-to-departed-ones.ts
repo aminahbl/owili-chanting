@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "transference-of-merits-to-departed-ones",
   title: "Transference of Merits to Departed Ones",
-  groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 8 }],
+  groups: [{ group: "joy-and-ceremony", order: 30 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#merits-to-departed", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 8 }] },
   translation: "draft",
   editorial: [

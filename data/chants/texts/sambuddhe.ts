@@ -4,7 +4,7 @@ export const chant = {
   id: "sambuddhe",
   title: "The Buddhas",
   paliTitle: "Sambuddhe",
-  groups: [{ group: "parittas", subgroup: "Introductory Chants", order: 5 }],
+  groups: [{ group: "parittas", order: 50 }, { group: "reverence", order: 160 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sambuddhe", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 5 }] },
   translation: "draft",
   sections: [

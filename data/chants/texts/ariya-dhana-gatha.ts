@@ -4,7 +4,7 @@ export const chant = {
   id: "ariya-dhana-gatha",
   title: "Verses on the Riches of a Noble One",
   paliTitle: "Ariya-dhana-gāthā",
-  groups: [{ group: "anumodana", order: 13 }],
+  groups: [{ group: "joy-and-ceremony", order: 220 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#ariya-dhana", categories: [{ category: "Anumodanā", order: 13 }] },
   translation: "draft",
   sections: [

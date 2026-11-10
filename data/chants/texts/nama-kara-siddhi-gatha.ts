@@ -4,7 +4,7 @@ export const chant = {
   id: "nama-kara-siddhi-gatha",
   title: "The Verses of Success through Homage",
   paliTitle: "Nama-kāra-siddhi-gāthā",
-  groups: [{ group: "parittas", subgroup: "Introductory Chants", order: 6 }],
+  groups: [{ group: "parittas", order: 60 }, { group: "reverence", order: 170 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yo-cakkhuma", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 6 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2026-05-20/" }],

@@ -4,7 +4,7 @@ export const chant = {
   id: "pattanumodana",
   title: "Sharing Merits",
   paliTitle: "Pattanumodana",
-  groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 12 }],
+  groups: [{ group: "joy-and-ceremony", order: 50 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#pattanumodana", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 12 }] },
   translation: "draft",
   editorial: [

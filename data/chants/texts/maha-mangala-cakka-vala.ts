@@ -4,7 +4,7 @@ export const chant = {
   id: "maha-mangala-cakka-vala",
   title: "The Greater Circle of Blessings",
   paliTitle: "Mahā-maṅgala-cakka-vāḷa",
-  groups: [{ group: "anumodana", order: 9 }],
+  groups: [{ group: "joy-and-ceremony", order: 180 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#maha-mangala", categories: [{ category: "Anumodanā", order: 9 }] },
   translation: "draft",
   editorial: [

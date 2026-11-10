@@ -4,7 +4,7 @@ export const chant = {
   id: "ten-paramis",
   title: "The Ten Paramis",
   paliTitle: "Dasa pāramī",
-  groups: [{ group: "other", order: 1 }],
+  groups: [{ group: "reverence", order: 260 }],
   paliSource: { label: "Traditional; source not recorded" },
   translation: "draft",
   editorial: [

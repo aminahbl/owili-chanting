@@ -4,7 +4,7 @@ export const chant = {
   id: "patthana-matika-patha",
   title: "The Matrix of the Paṭṭhāna",
   paliTitle: "Paṭṭhāna-mātikā-pāṭha",
-  groups: [{ group: "funeral", order: 8 }],
+  groups: [{ group: "funeral", order: 80 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#patthana", categories: [{ category: "Funeral Chants", order: 8 }] },
   translation: "draft",
   sections: [

@@ -4,7 +4,7 @@ export const chant = {
   id: "jaya-mangala-attha-gatha",
   title: "Verses on the Buddha's Victories",
   paliTitle: "Jaya-maṅgala-aṭṭha-gāthā",
-  groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 25 }],
+  groups: [{ group: "parittas", order: 250 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bahum", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 25 }] },
   translation: "draft",
   editorial: [

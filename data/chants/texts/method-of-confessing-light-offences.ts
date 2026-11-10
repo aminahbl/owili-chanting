@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "method-of-confessing-light-offences",
   title: "Method of confessing light offences",
-  groups: [{ group: "sri-lanka", subgroup: "Offences", order: 13 }],
+  groups: [{ group: "joy-and-ceremony", order: 60 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#light-offences", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Offences", order: 13 }] },
   translation: "draft",
   notes: [

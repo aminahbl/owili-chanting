@@ -4,7 +4,7 @@ export const chant = {
   id: "bhara-sutta-gatha",
   title: "Verses on the Burden",
   paliTitle: "Bhāra-sutta-gāthā",
-  groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 34 }],
+  groups: [{ group: "parittas", order: 340 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhara-sutta", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 34 }] },
   translation: "draft",
   editorial: [

@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "recollection-of-the-sangha",
   title: "Recollection of the Saṅgha",
-  groups: [{ group: "evening", order: 5 }],
+  groups: [{ group: "reverence", order: 140 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#s-sati-pli", categories: [{ category: "Evening Chanting", order: 7 }] },
   translation: "draft",
   sections: [

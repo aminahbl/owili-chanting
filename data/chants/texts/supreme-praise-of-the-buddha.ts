@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "supreme-praise-of-the-buddha",
   title: "Supreme Praise of the Buddha",
-  groups: [{ group: "evening", order: 2 }],
+  groups: [{ group: "reverence", order: 110 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#b-bhi-pli", categories: [{ category: "Evening Chanting", order: 4 }] },
   translation: "draft",
   editorial: [

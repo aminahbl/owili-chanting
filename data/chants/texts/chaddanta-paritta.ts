@@ -4,7 +4,7 @@ export const chant = {
   id: "chaddanta-paritta",
   title: "The Great Elephant Protection",
   paliTitle: "Chaddanta-paritta",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 12 }],
+  groups: [{ group: "parittas", order: 120 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vadhissamenanti", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 12 }] },
   translation: "draft",
   editorial: [

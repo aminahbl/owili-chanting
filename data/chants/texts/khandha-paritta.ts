@@ -4,7 +4,7 @@ export const chant = {
   id: "khandha-paritta",
   title: "The Group Protection",
   paliTitle: "Khandha-paritta",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 11 }],
+  groups: [{ group: "parittas", order: 110 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#virupakkhehi", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 11 }] },
   translation: "draft",
   editorial: [

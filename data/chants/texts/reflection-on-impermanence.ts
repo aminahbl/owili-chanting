@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "reflection-on-impermanence",
   title: "Reflection on Impermanence",
-  groups: [{ group: "reflections", order: 18 }],
+  groups: [{ group: "reflections", order: 180 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#impermanence", categories: [{ category: "Reflections", order: 18 }] },
   translation: "draft",
   sections: [

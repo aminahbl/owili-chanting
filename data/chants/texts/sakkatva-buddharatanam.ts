@@ -4,7 +4,7 @@ export const chant = {
   id: "sakkatva-buddharatanam",
   title: "Having Revered",
   paliTitle: "Sakkatvā buddharatanaṁ",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 20 }],
+  groups: [{ group: "parittas", order: 200 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sakkatva", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 20 }] },
   translation: "draft",
   sections: [

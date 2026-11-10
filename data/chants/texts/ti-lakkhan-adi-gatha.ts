@@ -4,7 +4,7 @@ export const chant = {
   id: "ti-lakkhan-adi-gatha",
   title: "Verses on the Three Characteristics",
   paliTitle: "Ti-lakkhaṇ'ādi-gāthā",
-  groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 37 }],
+  groups: [{ group: "parittas", order: 370 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#ti-lakkhan-adi", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 37 }] },
   translation: "draft",
   sections: [

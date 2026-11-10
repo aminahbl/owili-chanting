@@ -4,7 +4,7 @@ export const chant = {
   id: "sacca-kiriya-gatha",
   title: "The Act of Truth",
   paliTitle: "Sacca-kiriyā-gāthā",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 18 }],
+  groups: [{ group: "parittas", order: 180 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#natthi-me", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 18 }] },
   translation: "draft",
   editorial: [

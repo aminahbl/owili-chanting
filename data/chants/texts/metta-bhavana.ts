@@ -4,7 +4,7 @@ export const chant = {
   id: "metta-bhavana",
   title: "The Development of Warmth",
   paliTitle: "Mettā Bhāvanā",
-  groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 11 }],
+  groups: [{ group: "reflections", order: 210 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#bhavana", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 11 }] },
   translation: "draft",
   editorial: [

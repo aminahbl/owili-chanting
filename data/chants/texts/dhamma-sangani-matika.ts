@@ -4,7 +4,7 @@ export const chant = {
   id: "dhamma-sangani-matika",
   title: "The Matrix of the Dhammasaṅgaṇī",
   paliTitle: "Dhamma-saṅgaṇī-mātikā",
-  groups: [{ group: "funeral", order: 1 }],
+  groups: [{ group: "funeral", order: 10 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#matika", categories: [{ category: "Funeral Chants", order: 1 }] },
   translation: "draft",
   editorial: [

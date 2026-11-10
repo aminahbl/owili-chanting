@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "offering-of-flowers",
   title: "Offering of Flowers",
-  groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 5 }],
+  groups: [{ group: "reverence", order: 250 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#flowers", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 5 }] },
   translation: "draft",
   sections: [

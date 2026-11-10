@@ -4,7 +4,7 @@ export const chant = {
   id: "aditta-pariyaya-sutta",
   title: "The Fire Sermon",
   paliTitle: "Āditta-pariyāya-sutta",
-  groups: [{ group: "suttas", order: 3 }],
+  groups: [{ group: "suttas", order: 30 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#aditta-pariyaya", categories: [{ category: "Suttas", order: 3 }] },
   translation: "draft",
   notes: [

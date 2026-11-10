@@ -36,7 +36,6 @@ export interface Section {
 
 interface Membership {
   group: GroupId;
-  subgroup?: string;
   /**
    * Position in the group's list, ascending. It is compared only with the
    * other chants in the same group; gaps are allowed.

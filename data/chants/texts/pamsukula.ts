@@ -4,7 +4,7 @@ export const chant = {
   id: "pamsukula",
   title: "Verses for the Rag-robe Offering",
   paliTitle: "Paṁsukūla",
-  groups: [{ group: "funeral", order: 10 }],
+  groups: [{ group: "funeral", order: 100 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#pamsukula", categories: [{ category: "Funeral Chants", order: 10 }] },
   translation: "draft",
   notes: [

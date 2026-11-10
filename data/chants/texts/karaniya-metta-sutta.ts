@@ -4,7 +4,7 @@ export const chant = {
   id: "karaniya-metta-sutta",
   title: "The Buddha's Words on Love",
   paliTitle: "Karaṇīya-metta-sutta",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 10 }, { group: "suttas", order: 9 }],
+  groups: [{ group: "parittas", order: 100 }, { group: "suttas", order: 90 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#karaniyam-attha", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 10 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2026-04-08/" }],

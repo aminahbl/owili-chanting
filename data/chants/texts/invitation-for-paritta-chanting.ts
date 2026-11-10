@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "invitation-for-paritta-chanting",
   title: "Invitation for Paritta Chanting",
-  groups: [{ group: "parittas", subgroup: "Invitations", order: 1 }],
+  groups: [{ group: "parittas", order: 10 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#invitation", categories: [{ category: "Parittas", subcategory: "Invitations", order: 1 }] },
   translation: "draft",
   notes: [

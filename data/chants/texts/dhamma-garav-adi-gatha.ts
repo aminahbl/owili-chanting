@@ -4,7 +4,7 @@ export const chant = {
   id: "dhamma-garav-adi-gatha",
   title: "Verses on Respect for the Dhamma",
   paliTitle: "Dhamma-gārav'ādi-gāthā",
-  groups: [{ group: "parittas", subgroup: "Closing Sequence", order: 38 }],
+  groups: [{ group: "parittas", order: 380 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#dhamma-garav-adi", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 38 }] },
   translation: "draft",
   editorial: [

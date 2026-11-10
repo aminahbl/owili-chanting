@@ -4,7 +4,7 @@ export const chant = {
   id: "aggappasada-sutta-gatha",
   title: "Verses on the Foremost Kinds of Faith",
   paliTitle: "Aggappasāda-sutta-gāthā",
-  groups: [{ group: "anumodana", order: 4 }],
+  groups: [{ group: "joy-and-ceremony", order: 130 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#aggappasada", categories: [{ category: "Anumodanā", order: 4 }] },
   translation: "draft",
   sections: [

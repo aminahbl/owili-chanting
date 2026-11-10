@@ -4,7 +4,7 @@ export const chant = {
   id: "girimananda-sutta",
   title: "The Discourse to Girimānanda",
   paliTitle: "Girimānanda-sutta",
-  groups: [{ group: "suttas", order: 6 }],
+  groups: [{ group: "suttas", order: 60 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#girimananda", categories: [{ category: "Suttas", order: 6 }] },
   translation: "draft",
   editorial: [

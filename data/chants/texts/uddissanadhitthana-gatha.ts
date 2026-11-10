@@ -4,7 +4,7 @@ export const chant = {
   id: "uddissanadhitthana-gatha",
   title: "Verses of Sharing and Aspiration",
   paliTitle: "Uddissanādhiṭṭhāna-gāthā",
-  groups: [{ group: "reflections", order: 11 }],
+  groups: [{ group: "reflections", order: 110 }, { group: "joy-and-ceremony", order: 250 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#imina-punna", categories: [{ category: "Reflections", order: 11 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-12-10/" }],

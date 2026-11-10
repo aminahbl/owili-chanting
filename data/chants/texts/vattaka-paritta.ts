@@ -4,7 +4,7 @@ export const chant = {
   id: "vattaka-paritta",
   title: "The Quail's Protection",
   paliTitle: "Vaṭṭaka-paritta",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 14 }],
+  groups: [{ group: "parittas", order: 140 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atthi-loke", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 14 }] },
   translation: "draft",
   editorial: [

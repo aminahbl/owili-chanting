@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "salutation-to-the-three-main-objects-of-venerations",
   title: "Salutation to the Three Main Objects of Venerations",
-  groups: [{ group: "sri-lanka", subgroup: "Devotional Chants", order: 1 }],
+  groups: [{ group: "reverence", order: 210 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#three-main-objects", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 1 }] },
   translation: "draft",
   editorial: [

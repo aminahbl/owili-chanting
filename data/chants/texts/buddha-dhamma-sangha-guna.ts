@@ -4,7 +4,7 @@ export const chant = {
   id: "buddha-dhamma-sangha-guna",
   title: "The Qualities of the Buddha, the Dhamma and the Saṅgha",
   paliTitle: "Buddha-dhamma-saṅgha-guṇā",
-  groups: [{ group: "parittas", subgroup: "Core Sequence", order: 15 }],
+  groups: [{ group: "parittas", order: 150 }, { group: "reverence", order: 190 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#iti-pi-so", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 15 }] },
   translation: "draft",
   sections: [

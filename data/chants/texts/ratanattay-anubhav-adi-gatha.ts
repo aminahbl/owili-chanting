@@ -4,7 +4,7 @@ export const chant = {
   id: "ratanattay-anubhav-adi-gatha",
   title: "By the Power of the Triple Gem",
   paliTitle: "Ratanattay'ānubhāv'ādi-gāthā",
-  groups: [{ group: "anumodana", order: 7 }],
+  groups: [{ group: "joy-and-ceremony", order: 160 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#ratanattaya", categories: [{ category: "Anumodanā", order: 7 }] },
   translation: "draft",
   sections: [

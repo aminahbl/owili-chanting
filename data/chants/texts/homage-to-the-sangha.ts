@@ -3,7 +3,7 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "homage-to-the-sangha",
   title: "Homage to the Saṅgha",
-  groups: [{ group: "morning", order: 5 }],
+  groups: [{ group: "reverence", order: 70 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#sangha-pali", categories: [{ category: "Morning Chanting", order: 5 }] },
   translation: "draft",
   sections: [
