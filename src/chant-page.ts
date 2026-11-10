@@ -1,15 +1,23 @@
 // The chant page: the line clock, the text and slide views, the settings
 // popover and keyboard shortcuts. The popovers open and close through the HTML popover
 // attribute, without this script.
+import './icons/chevron-left.ts';
+import './icons/chevron-right.ts';
 import './icons/close.ts';
 import './icons/forward.ts';
+import './icons/hare.ts';
 import './icons/home.ts';
 import './icons/info.ts';
+import './icons/lock.ts';
+import './icons/lock-open.ts';
+import './icons/minus.ts';
 import './icons/command.ts';
 import './icons/pause.ts';
 import './icons/play.ts';
+import './icons/plus.ts';
 import './icons/rewind.ts';
 import './icons/stop.ts';
+import './icons/tortoise.ts';
 import './icons/tune.ts';
 import { LineClock, type Method } from './clock.ts';
 import { SETTING_NAMES, writeChantSettings, writeSetting, type SettingName } from './settings.ts';
@@ -169,10 +177,10 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     recording.use(schedule, fallback);
   }
 
-  // In the slide view with Auto or Timed advance, Link (on unless turned off)
+  // In the slide view with Auto or Timed advance, the lock (closed unless opened)
   // ties the audio to the slides: in Timed advance with a timing from a file the
   // slides follow it, and otherwise Start and Pause also play and pause it.
-  // Manual advance has no Start, so nothing to link.
+  // Manual advance has no Start, so nothing to lock to.
   function linkFor(method: Method): Link {
     if (!inSlides() || method === 'manual' || root.dataset.link === 'off') return 'off';
     return method === 'timed' && timing.fromFile ? 'follow' : 'start';
@@ -322,11 +330,12 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     for (const button of audioButtons('play')) {
       button.classList.toggle('on', recording.playing);
       button.disabled = linkedToClock() && button.closest('.slide-bar') !== null;
-      button.title = button.disabled ? 'Linked: Start plays and pauses the audio' : label;
+      button.title = button.disabled ? 'Locked: Start plays and pauses the audio' : label;
       const text = button.querySelector('.sr-only');
       if (text) text.textContent = label;
     }
     for (const button of audioButtons('link')) {
+      button.hidden = !recording.active;
       button.classList.toggle('on', linked);
       button.setAttribute('aria-pressed', String(linked));
     }

@@ -177,7 +177,7 @@ function settingsPopover(chants: Chant[], recorded: boolean): string {
   <label><input type="radio" name="advance" value="timed"> Timed</label>
 </div></fieldset>
 <div class="auto-options">
-  ${slider('id="tempo" list="tempo-marks"', 'Speed', TEMPO_RANGE, ['Slower', 'Faster'])}
+  ${slider('id="tempo" list="tempo-marks"', 'Speed', TEMPO_RANGE, ['<icon-tortoise></icon-tortoise>', '<icon-hare></icon-hare>'])}
   <datalist id="tempo-marks"><option value="${TEMPO_RANGE.default}"></option></datalist>
 </div>
 <div class="timed-options">
@@ -229,18 +229,13 @@ export interface NextChant {
 
 // The audio controls, shown once the user adds an audio file (spec 09, F11): in
 // the slide bar, beside Start and the advance method, and in a bar of their own
-// at the foot of the text view. Link is in the slide view only.
-function audioControls(view: 'text' | 'slides'): string {
-  const link =
-    view === 'slides'
-      ? '<button class="audio-link" data-audio="link" aria-pressed="true" title="Start and Pause also play and pause the audio">Link</button>'
-      : '';
+// at the foot of the text view.
+function audioControls(): string {
   return `<div class="audio-controls" hidden>
   <button class="icon-button audio-skip" data-audio="back" title="Back 3 seconds; hold to rewind"><icon-rewind></icon-rewind><span class="sr-only">Back 3 seconds</span></button>
   <button class="icon-button" data-audio="play" title="Play"><icon-play></icon-play><icon-pause></icon-pause><span class="sr-only">Play</span></button>
   <button class="icon-button audio-skip" data-audio="forward" title="Forward 3 seconds; hold to fast-forward"><icon-forward></icon-forward><span class="sr-only">Forward 3 seconds</span></button>
   <button class="icon-button" data-audio="stop" title="Stop"><icon-stop></icon-stop><span class="sr-only">Stop</span></button>
-  ${link}
 </div>`;
 }
 
@@ -264,13 +259,14 @@ function slides(next: NextChant | undefined): string {
 </div>
 <div class="slide-bar" id="slide-bar">
 <div class="slide-controls">
-  <button class="icon-button" id="slide-previous" title="Previous line (←)"><span aria-hidden="true">‹</span><span class="sr-only">Previous line</span></button>
+  <button class="icon-button audio-link" data-audio="link" aria-pressed="true" title="Lock the audio to the slides" hidden><icon-lock-open size="16"></icon-lock-open><icon-lock size="16"></icon-lock><span class="sr-only">Lock the audio to the slides</span></button>
+  <button class="icon-button" id="slide-previous" title="Previous line (←)"><icon-chevron-left></icon-chevron-left><span class="sr-only">Previous line</span></button>
   <button class="start" id="slide-start">Start</button>
-  <button class="icon-button" id="slide-next" title="Next line (→)"><span aria-hidden="true">›</span><span class="sr-only">Next line</span></button>
-  <button class="icon-button slower auto-only" title="Slower (−)"><span aria-hidden="true">−</span><span class="sr-only">Slower</span></button>
+  <button class="icon-button" id="slide-next" title="Next line (→)"><icon-chevron-right></icon-chevron-right><span class="sr-only">Next line</span></button>
+  <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
   <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
-  <button class="icon-button faster auto-only" title="Faster (+)"><span aria-hidden="true">+</span><span class="sr-only">Faster</span></button>
-  ${audioControls('slides')}
+  <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
+  ${audioControls()}
 </div>
 <p class="slide-position"></p>
 </div>
@@ -295,7 +291,7 @@ ${notes(chant)}
 ${chant.sections.map((s) => section(s)).join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
-<div class="audio-bar">${audioControls('text')}</div>
+<div class="audio-bar">${audioControls()}</div>
 ${slides(next)}
 ${infoPopover(chant, groups, recordings, sets)}
 ${settingsPopover([chant], recordings.length > 0)}
@@ -343,7 +339,7 @@ ${chant.sections.map((s) => section(s, 'h3')).join('\n')}
 ${blocks.join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
-<div class="audio-bar">${audioControls('text')}</div>
+<div class="audio-bar">${audioControls()}</div>
 ${slides(undefined)}
 ${setInfoPopover(set, chants, place, recordings)}
 ${settingsPopover(chants, recordings.length > 0)}

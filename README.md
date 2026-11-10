@@ -11,7 +11,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 - A text view with line tracking, and a slide view that shows a few lines at a time with the current line marked
 - Three ways for lines to move on in the slide view: Manual, Auto (at a pace worked out from the Pali, with a speed control) and Timed (following a timing file)
 - Timing files in LRC, the plain text format for timed lyrics, that can be exported, edited and imported; chants with a recording's timing use it by default
-- The user's own audio file, played in either view; in the slide view it can be linked to the slides, and with Timed advance the lines follow it
+- The user's own audio file, played in either view; in the slide view it can be locked to the slides, and with Timed advance the lines follow it
 - The recordings of each chant and set listed in its info panel, with their timing files
 - 100% static: no backend, nothing uploaded
 
@@ -77,11 +77,11 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 - On the home page, search or choose a category, then open a chant. Sangha sets lists sets by lineage and place; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
 - The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
-- On a chant page, the info button shows the chant's source, the recordings that have a timing file, references and notes. The settings button sets the text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
+- On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
 - Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
 - With Timed, the settings show the timing in use, with Export timing and Import timing.
 - Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
-- In the slide view with Auto or Timed advance, Link ties the audio to the slides. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With Link off, the audio and the slides run separately. Manual advance has no Start and no Link: next and previous move the lines, and the audio controls work on their own.
+- In the slide view with Auto or Timed advance, the lock at the start of the bottom bar locks the audio to the slides. It is closed while the audio is locked. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With the lock open, the audio and the slides run separately. Manual advance has no Start and no lock: next and previous move the lines, and the audio controls work on their own.
 - Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
 
 ## Adding a new chant

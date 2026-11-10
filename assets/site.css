@@ -133,7 +133,7 @@ input:focus-visible {
   }
 
   :root:not([data-theme]) .theme-button icon-moon {
-    display: inline;
+    display: block;
   }
 }
 
@@ -227,7 +227,7 @@ input:focus-visible {
 }
 
 .chips ul {
-  max-width: 48rem;
+  max-width: 38rem;
   margin: 0 auto;
 }
 
@@ -554,8 +554,7 @@ input:focus-visible {
 
 /* A fixed width, so Start, Pause and the count-in do not move the buttons beside it. */
 .start,
-.track,
-.audio-link {
+.track {
   min-width: 5.25rem;
   font: inherit;
   font-weight: 700;
@@ -571,24 +570,23 @@ input:focus-visible {
 }
 
 /* Manual advance moves by next and previous only, so the slide bar has no
-   Start, and no Link to tie the audio to it. */
+   Start, and no lock to tie the audio to it. */
 :root:not([data-advance]) .slide-bar :is(.start, .audio-link) {
   display: none;
 }
 
-.track,
-.audio-link {
+.track {
   padding: 0.25rem 0.75rem;
   color: var(--muted);
   background: none;
   box-shadow: inset 0 0 0 2px var(--border);
 }
 
-/* While lines advance, Start reads "Pause" and is outlined, as are Track and
-   Link while they are on. An inset shadow draws the outline without changing the button's size. */
+/* While lines advance, Start reads "Pause" and is outlined, as are Track while
+   it is on and the lock while it is closed. An inset shadow draws the outline
+   without changing the button's size. */
 .start.on,
 .track.on,
-.audio-link.on,
 .outline-button {
   color: var(--accent);
   background: none;
@@ -631,7 +629,17 @@ icon-play,
 icon-pause,
 icon-stop,
 icon-rewind,
-icon-forward {
+icon-forward,
+icon-chevron-left,
+icon-chevron-right,
+icon-minus,
+icon-plus,
+icon-lock,
+icon-lock-open,
+icon-tortoise,
+icon-hare,
+icon-sun,
+icon-moon {
   display: block;
   width: 20px;
   height: 20px;
@@ -642,12 +650,23 @@ icon-forward {
     icon-home,
     icon-info,
     icon-tune,
+    icon-command,
     icon-close,
     icon-play,
     icon-pause,
     icon-stop,
     icon-rewind,
-    icon-forward
+    icon-forward,
+    icon-chevron-left,
+    icon-chevron-right,
+    icon-minus,
+    icon-plus,
+    icon-lock,
+    icon-lock-open,
+    icon-tortoise,
+    icon-hare,
+    icon-sun,
+    icon-moon
   )
   svg {
   display: block;
@@ -1195,14 +1214,6 @@ kbd {
   color: var(--muted);
 }
 
-.slide-bar .icon-button {
-  font-size: 1.75rem;
-}
-
-.slide-bar .method-label {
-  min-width: 4.5rem;
-}
-
 @media (max-width: 40rem) {
   .slide-bar {
     --slide-side: 3.5rem;
@@ -1224,7 +1235,7 @@ kbd {
 }
 
 /* The audio controls (spec 09, F11). Play shows the pause icon while the audio
-   plays. Linked to the slides, Start plays and pauses the audio, so the slide
+   plays. Locked to the slides, Start plays and pauses the audio, so the slide
    bar's Play is disabled and greyed out. */
 .audio-controls {
   display: flex;
@@ -1254,10 +1265,29 @@ kbd {
   -webkit-touch-callout: none;
 }
 
+/* The lock starts the slide bar, shown with the audio controls. It is closed
+   while the audio is locked to the slides, and has an outline like Track's. */
 .audio-link {
-  min-width: 0;
-  margin-left: 0.25rem;
-  font-size: 0.85rem;
+  width: 1.95rem;
+  height: 1.95rem;
+  margin-right: 0.25rem;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.audio-link :is(icon-lock, icon-lock-open) {
+  width: 16px;
+  height: 16px;
+}
+
+.audio-link.on {
+  color: var(--accent);
+  background: none;
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.audio-link:not(.on) icon-lock,
+.audio-link.on icon-lock-open {
+  display: none;
 }
 
 /* In the text view the controls sit in a bar of their own at the foot of the
@@ -1303,6 +1333,13 @@ kbd {
 .slider input {
   flex: 1;
   min-width: 0;
+}
+
+/* Both sliders' ends have one width, so their tracks are the same length. */
+.slider > span {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
 }
 
 .size-small {
