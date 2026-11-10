@@ -19,7 +19,7 @@ import { forgetAudio, keepsHandles, pickAudio, readAudio, saveAudio, type AudioH
 import { Recording, type Link } from './recording.ts';
 import { rhythmDurations, Tempo } from './tempo.ts';
 import { readSteps, TextView } from './text-view.ts';
-import { Timing } from './timing.ts';
+import { Timing, type TimingPart } from './timing.ts';
 import { keepScreenOn } from './wake-lock.ts';
 
 const root = document.documentElement;
@@ -41,12 +41,6 @@ function apply(name: SettingName, value: string) {
   if (name === 'size') root.style.setProperty('--pali-size', value ? `${value}rem` : '');
   writeSetting(name, value);
   afterSettingChange();
-}
-
-// A set page has no Timed advance yet (scripts/chant-page.ts). Auto takes its
-// place on the page, and the stored choice is kept for chant pages.
-if (root.dataset.advance === 'timed' && !form?.querySelector('input[name="advance"][value="timed"]')) {
-  root.dataset.advance = 'auto';
 }
 
 // A checkbox stores its value when checked and its data-unchecked value when
@@ -144,9 +138,16 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     }
   });
   const tempo = new Tempo(clock, steps, chantId);
-  const cueIds = new Set([...chant.querySelectorAll<HTMLElement>('.cue[data-cue]')].map((cue) => Number(cue.dataset.cue)));
+  // A set page has a block for each chant; a chant page is one block.
+  const blocks = [...chant.querySelectorAll<HTMLElement>('.set-chant')];
+  const parts: TimingPart[] = (blocks.length ? blocks : [chant]).map((block) => ({
+    id: block.dataset.chant ?? '',
+    slug: block.dataset.slug ?? '',
+    steps: steps.filter((s) => block.contains(s.line)),
+    cueIds: new Set([...block.querySelectorAll<HTMLElement>('.cue[data-cue]')].map((cue) => Number(cue.dataset.cue))),
+  }));
   const recorded = document.querySelector('#recording-timing')?.textContent ?? null;
-  const timing = new Timing(steps, chantId, slug, title, cueIds, recorded);
+  const timing = new Timing(chantId, title, parts, recorded);
   const recording = new Recording(clock, () => showAudio());
 
   function startLabel(c: LineClock): string {

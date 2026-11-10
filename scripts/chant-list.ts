@@ -22,7 +22,7 @@ export async function loadChants(): Promise<Chant[]> {
   return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
 }
 
-/** The sets in data/sets/. The build stops on a set with no chants or an unknown chant number. */
+/** The sets in data/sets/. The build stops on a set with no chants, a repeated chant or an unknown chant number. */
 export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
   const dir = new URL('../data/sets/', import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
@@ -31,6 +31,8 @@ export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
   for (const set of sets) {
     const unknown = set.chants.filter((id) => !numbers.has(id));
     if (set.chants.length === 0) throw new Error(`data/sets/${set.slug}: has no chants.`);
+    // A timing file gives each chant one block, found by the chant's number.
+    if (new Set(set.chants).size < set.chants.length) throw new Error(`data/sets/${set.slug}: names a chant twice.`);
     if (unknown.length) throw new Error(`data/sets/${set.slug}: names unknown chants (${unknown.join(', ')}).`);
   }
   return sets;
@@ -47,6 +49,10 @@ interface Timings {
   defaults: Map<string, string>;
   /** The recordings that cover each chant, in file-name order, by chant number. */
   recordings: Map<string, RecordingInfo[]>;
+  /** Each set's default timing, as a whole marker file, by set number. */
+  setDefaults: Map<string, string>;
+  /** The recordings that cover each set, in file-name order, by set number. */
+  setRecordings: Map<string, RecordingInfo[]>;
 }
 
 /**
@@ -54,13 +60,16 @@ interface Timings {
  * follows one recording and can cover several chants; each chant's part is
  * checked against its lines, so the build stops on a timing that no longer
  * fits. Where several files cover a chant, a file tagged `[default:yes]` is
- * the default, and otherwise the first by file name.
+ * the default, and otherwise the first by file name. A file covers a set when
+ * it names the set's chants and no others, in the set's order; the same rule
+ * picks a set's default.
  */
-export async function loadTimings(chants: Chant[]): Promise<Timings> {
+export async function loadTimings(chants: Chant[], sets: ChantSet[]): Promise<Timings> {
   const dir = new URL('../data/chants/markers/', import.meta.url);
   const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith('.lrc')).sort();
   const byId = new Map(chants.map((c) => [c.id, c]));
   const found = new Map<string, { part: string; preferred: boolean; recording: RecordingInfo }[]>();
+  const covers: { text: string; chants: string; preferred: boolean; recording: RecordingInfo }[] = [];
   for (const file of files) {
     const text = await readFile(new URL(file, dir), 'utf8');
     const fail = (reason: string) => new Error(`data/chants/markers/${file}: ${reason}`);
@@ -69,6 +78,7 @@ export async function loadTimings(chants: Chant[]): Promise<Timings> {
     const named = lrcChants(text);
     if (named.length === 0) throw fail('names no chant.');
     const tags = lrcTags(text);
+    covers.push({ text, chants: named.map((c) => c.id).join(), preferred: tags.default === 'yes', recording: { file, tags } });
     for (const { id, slug } of named) {
       const chant = byId.get(id);
       if (!chant) throw fail(`names an unknown chant (${id}).`);
@@ -84,9 +94,15 @@ export async function loadTimings(chants: Chant[]): Promise<Timings> {
       found.set(id, list);
     }
   }
+  const forSets = sets.flatMap((set) => {
+    const list = covers.filter((c) => c.chants === set.chants.join());
+    return list.length ? [[set.id, list] as const] : [];
+  });
   return {
     defaults: new Map([...found].map(([id, list]) => [id, (list.find((t) => t.preferred) ?? list[0]).part])),
     recordings: new Map([...found].map(([id, list]) => [id, list.map((t) => t.recording)])),
+    setDefaults: new Map(forSets.map(([id, list]) => [id, (list.find((c) => c.preferred) ?? list[0]).text])),
+    setRecordings: new Map(forSets.map(([id, list]) => [id, list.map((c) => c.recording)])),
   };
 }
 

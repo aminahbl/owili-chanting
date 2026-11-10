@@ -75,13 +75,16 @@ if (sets.length) {
     .map((p) => ({ ...p, sets: p.sets.map((set) => ({ set, chantTitles: set.chants.map((id) => byNumber.get(id)!.title) })) }));
   await write(`/list/${setsGroup.id}/index.html`, setsPage(setsGroup, shown, list));
 }
+const timings = await loadTimings(chants, sets);
 for (const place of setPlaces) {
-  for (const set of place.sets) await write(`/sets/${set.slug}/index.html`, setPage(set, set.chants.map((id) => byNumber.get(id)!), place));
+  for (const set of place.sets) {
+    const page = setPage(set, set.chants.map((id) => byNumber.get(id)!), place, timings.setDefaults.get(set.id), timings.setRecordings.get(set.id));
+    await write(`/sets/${set.slug}/index.html`, page);
+  }
 }
 const setLinks = (chant: Chant): SetLink[] =>
   setPlaces.flatMap((p) => p.sets.filter((s) => s.chants.includes(chant.id)).map((s) => ({ slug: s.slug, title: s.title, placeTitle: p.title })));
 
-const timings = await loadTimings(chants);
 for (const chant of chants) {
   const page = chantPage(chant, groupsById, nextChant(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
   await write(`${chantHref(chant.slug)}/index.html`, page);
