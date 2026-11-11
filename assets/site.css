@@ -977,7 +977,8 @@ kbd {
    limited to the chant page, the one page with slides. */
 
 .slides {
-  --slide-indent: clamp(1.25rem, 4vw, 3.5rem);
+  --slide-indent: clamp(1.25rem, 4vw, 3rem);
+  --slide-top: clamp(1.25rem, 4vw, 5rem);
   --slide-bar: 2px;
   display: none;
 }
@@ -999,13 +1000,13 @@ kbd {
 
 .slide-section {
   margin: 0;
-  padding: 0.75rem 0 0 var(--slide-indent);
+  padding: var(--slide-top) 0 0 var(--slide-indent);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 0.9rem;
   line-height: 1.5;
-  min-height: calc(0.75rem + 1.5em);
+  min-height: calc(var(--slide-top) + 1.5em);
   color: var(--muted);
 }
 
@@ -1262,7 +1263,7 @@ kbd {
 
   .slide-position {
     position: absolute;
-    top: 0.75rem;
+    top: var(--slide-top);
     right: 0;
   }
 
