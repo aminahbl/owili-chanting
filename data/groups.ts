@@ -1,11 +1,18 @@
 /**
  * Categories in display order, each with its chants in display order, given by
  * chant number with the slug in a comment. A chant can be in more than one
- * category. The id is the URL slug in /list/<id>. Sangha sets lists sets, not
- * chants; their order is in data/sets/.
+ * category. The id is the URL slug in /list/<id>. Sangha sets lists set
+ * numbers instead of chant numbers, in the same way.
  */
 export const groups: { id: string; title: string; chants: string[] }[] = [
-  { id: 'sangha-sets', title: 'Sangha sets', chants: [] },
+  { id: 'sangha-sets', title: 'Sangha sets', chants: [
+    "0130", // lbv-evening-puja
+    "0128", // abhayagiri-evening-chanting
+    "0129", // abhayagiri-funeral-chanting
+    "0125", // amaravati-evening-chanting
+    "0126", // amaravati-twelve-parittas
+    "0127", // amaravati-funeral-chanting
+  ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // pubba-bhaga-nama-kara-patha
     "0002", // sarana-gamana-patha

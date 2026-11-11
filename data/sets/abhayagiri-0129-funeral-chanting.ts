@@ -4,8 +4,7 @@ export const set = {
   id: "0129",
   slug: "abhayagiri-funeral-chanting",
   title: "Funeral chanting",
-  place: "abhayagiri",
-  order: 40,
+  chanter: "abhayagiri",
   chants: [
     "0001", // pubba-bhaga-nama-kara-patha
     "0115", // dhamma-sangani-matika

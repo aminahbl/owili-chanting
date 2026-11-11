@@ -7,6 +7,10 @@ import type { Chant, ChantingLine, ChantSet, Section, Text } from '../data/types
 
 export type Group = (typeof groups)[number];
 
+/** The Sangha sets category, which lists set numbers rather than chant numbers. */
+export const setsGroup: Group = groups.find((g) => g.id === 'sangha-sets')!;
+const chantGroups = groups.filter((g) => g !== setsGroup);
+
 /** One chant in one group. A chant in two groups gives two entries. */
 export interface Entry {
   group: Group;
@@ -34,12 +38,12 @@ async function loadModules<T>(folder: string, name: string, fileName: (item: T) 
 export async function loadChants(): Promise<Chant[]> {
   const chants = await loadModules<Chant>('data/chants/texts', 'chant', (c) => `${c.id}-${c.slug}.ts`);
   const numbers = new Set(chants.map((c) => c.id));
-  for (const group of groups) {
+  for (const group of chantGroups) {
     const unknown = group.chants.filter((id) => !numbers.has(id));
     if (new Set(group.chants).size < group.chants.length) throw new Error(`data/groups.ts: ${group.id} names a chant twice.`);
     if (unknown.length) throw new Error(`data/groups.ts: ${group.id} names unknown chants (${unknown.join(', ')}).`);
   }
-  const listed = new Set(groups.flatMap((g) => g.chants));
+  const listed = new Set(chantGroups.flatMap((g) => g.chants));
   const unlisted = chants.filter((c) => !listed.has(c.id)).map((c) => c.id);
   if (unlisted.length) throw new Error(`data/groups.ts: chants in no category (${unlisted.join(', ')}).`);
   return chants;
@@ -47,17 +51,21 @@ export async function loadChants(): Promise<Chant[]> {
 
 /** The categories that list a chant, in display order. */
 export function groupsOf(chant: Chant): Group[] {
-  return groups.filter((g) => g.chants.includes(chant.id));
+  return chantGroups.filter((g) => g.chants.includes(chant.id));
 }
 
-/** A set's file name, <place>-<id>-<title>.ts, where the title is the slug after its place prefix. */
+/** A set's file name, <chanter>-<id>-<title>.ts, where the title is the slug after its chanter prefix. */
 function setFileName(set: ChantSet): string {
-  const prefix = `${set.place}-`;
+  const prefix = `${set.chanter}-`;
   if (!set.slug.startsWith(prefix)) throw new Error(`data/sets: ${set.id}'s slug ${set.slug} should start with ${prefix}`);
   return `${prefix}${set.id}-${set.slug.slice(prefix.length)}.ts`;
 }
 
-/** The sets in data/sets/. The build stops on a set with no chants, a repeated chant or an unknown chant number. */
+/**
+ * The sets in data/sets/, in the order of the Sangha sets category. The build
+ * stops on a set with no chants, a repeated chant or an unknown chant number,
+ * and on a set that the category leaves out, names twice or does not have.
+ */
 export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
   const sets = await loadModules<ChantSet>('data/sets', 'set', setFileName);
   const numbers = new Set(chants.map((c) => c.id));
@@ -69,7 +77,14 @@ export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
     if (new Set(set.chants).size < set.chants.length) throw new Error(`${file}: names a chant twice.`);
     if (unknown.length) throw new Error(`${file}: names unknown chants (${unknown.join(', ')}).`);
   }
-  return sets;
+  const order = setsGroup.chants;
+  const byNumber = new Map(sets.map((s) => [s.id, s]));
+  const unknown = order.filter((id) => !byNumber.has(id));
+  const unlisted = sets.filter((s) => !order.includes(s.id)).map((s) => s.id);
+  if (new Set(order).size < order.length) throw new Error(`data/groups.ts: ${setsGroup.id} names a set twice.`);
+  if (unknown.length) throw new Error(`data/groups.ts: ${setsGroup.id} names unknown sets (${unknown.join(', ')}).`);
+  if (unlisted.length) throw new Error(`data/groups.ts: sets missing from ${setsGroup.id} (${unlisted.join(', ')}).`);
+  return order.map((id) => byNumber.get(id)!);
 }
 
 /** A recording that covers a chant: its marker file and the details at the top of it. */
@@ -166,7 +181,7 @@ function card(chant: Chant): CardData {
 /** Entries in display order: groups and their chants as listed in data/groups.ts. */
 export function entries(chants: Chant[]): Entry[] {
   const byNumber = new Map(chants.map((c) => [c.id, c]));
-  return groups.flatMap((group) => group.chants.map((id) => ({ group, card: card(byNumber.get(id)!) })));
+  return chantGroups.flatMap((group) => group.chants.map((id) => ({ group, card: card(byNumber.get(id)!) })));
 }
 
 /** Search entries: each chant once, in the order of the list of all chants. */

@@ -4,8 +4,7 @@ export const set = {
   id: "0127",
   slug: "amaravati-funeral-chanting",
   title: "Funeral chanting",
-  place: "amaravati",
-  order: 40,
+  chanter: "amaravati",
   chants: [
     "0001", // preliminary homage
     "0115", // dhamma-sangani-matika

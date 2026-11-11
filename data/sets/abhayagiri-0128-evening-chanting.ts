@@ -4,8 +4,7 @@ export const set = {
   id: "0128",
   slug: "abhayagiri-evening-chanting",
   title: "Evening chanting",
-  place: "abhayagiri",
-  order: 20,
+  chanter: "abhayagiri",
   chants: [
     "0003", // dedication-of-offerings
     "0004", // preliminary-homage

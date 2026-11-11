@@ -66,7 +66,7 @@ async function update(field: HTMLInputElement, out: HTMLElement, rest: HTMLEleme
 }
 
 // On the Sangha sets page a set matches when every word of the query appears
-// in its title, place and lineage, or in the text of its chants.
+// in its title, chanter and lineage, or in the text of its chants.
 function matchingSets(cards: HTMLElement[], entries: SearchEntry[], query: string): HTMLElement[] {
   const textBySlug = new Map(entries.map((e) => [e.slug, e.text]));
   return cards.filter((card) => {

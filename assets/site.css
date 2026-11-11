@@ -256,12 +256,6 @@ input:focus-visible {
   color: var(--muted);
 }
 
-.sets h3 {
-  margin: 1.25rem 0 0.75rem;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
 .continued {
   font-weight: 400;
   color: var(--muted);
@@ -705,7 +699,7 @@ icon-moon {
 }
 
 .chant-pali-title,
-.set-place {
+.set-chanter {
   margin: 0.25rem 0 0;
   color: var(--muted);
 }

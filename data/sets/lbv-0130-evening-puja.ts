@@ -4,8 +4,7 @@ export const set = {
   id: "0130",
   slug: "lbv-evening-puja",
   title: "Daily Evening Puja",
-  place: "lbv",
-  order: 20,
+  chanter: "lbv",
   chants: [
     "0001", // pubba-bhaga-nama-kara-patha
     "0132", // buddha-guna-vandana

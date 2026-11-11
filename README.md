@@ -6,7 +6,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 
 - Minimal, typography‑first layout focussed on the text
 - Chant list with search, categories and pages
-- Sangha sets: sequences of chants as a monastery or centre chants them, each on one page
+- Sangha sets: sequences of chants as a community or an individual chants them, each on one page
 - Pali text with secondary English line‑by‑line
 - Chanting in Pali, in translation, or in both line by line
 - The user's own translation, imported from a plain text file in place of the English
@@ -59,7 +59,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── sets/                 # One typed module per Sangha set; retired ones in retired/
 │   │   └── README.md         # Steps for changing sets
 │   ├── groups.ts             # Categories and their chants, in display order
-│   ├── places.ts             # Lineages and places of the Sangha sets
+│   ├── chanters.ts           # Chanters of the Sangha sets and their lineages
 │   ├── ids.ts                # The ledger of chant and set numbers
 │   ├── types.ts              # The Chant and ChantSet types
 │   └── translation-guide.md  # Principles and fixed renderings for the English
@@ -83,7 +83,7 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Usage
 
-- On the home page, search or choose a category, then open a chant. Sangha sets lists sets by lineage and place; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
+- On the home page, search or choose a category, then open a chant. Sangha sets lists sets in one list, each titled with who chants it; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
 - The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
 - On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, what is chanted (Pali, translation, or both), whether the smaller text under each line is shown and, for chants that have them, men's or women's forms. These settings apply to every chant.
 - Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.

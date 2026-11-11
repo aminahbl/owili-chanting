@@ -13,8 +13,8 @@ Short instructions for common changes are in [chants/README.md](chants/README.md
 | `chants/markers/` | Timing files, one per recording |
 | `sets/` | One module per Sangha set |
 | `sets/retired/` | Modules of retired sets |
-| `groups.ts` | Categories and their chants, in display order |
-| `places.ts` | Lineages and places of the Sangha sets, in display order |
+| `groups.ts` | Categories and their chants, and the Sangha sets, in display order |
+| `chanters.ts` | Chanters of the Sangha sets and their lineages |
 | `ids.ts` | The ledger of chant and set numbers |
 | `types.ts` | The `Chant` and `ChantSet` types |
 | `translation-guide.md` | Principles and fixed renderings for the English |
@@ -43,25 +43,25 @@ A chant is a module in `chants/texts/` named `<id>-<slug>.ts`, for example `0053
 
 [groups.ts](groups.ts) lists the categories in display order, each with its chants in display order. Chants are given by number, with the slug in a comment. A chant can be in more than one category, and every chant must be in at least one. The category's `id` is its address, `/list/<id>`.
 
-The `sangha-sets` entry lists sets, not chants; its `chants` list stays empty. It is shown when there is at least one set. Other categories without chants are not shown.
+The `sangha-sets` entry lists sets in its `chants` field instead of chants, by set number with the slug in a comment, in display order. Every set must be in it once. It is shown when there is at least one set. Other categories without chants are not shown.
 
 The build stops if a category names an unknown chant or names a chant twice, or if a chant is in no category.
 
 ## Sangha sets
 
-A set is a module in `sets/` named `<place>-<id>-<title>.ts`, for example `lbv-0130-evening-puja.ts`. The title part is the slug without its place prefix, so a set's slug must start with its place. The module exports `set`, typed with `satisfies ChantSet` from [types.ts](types.ts). It gives:
+A set is a module in `sets/` named `<chanter>-<id>-<title>.ts`, for example `lbv-0130-evening-puja.ts`. The title part is the slug without its chanter prefix, so a set's slug must start with its chanter. The module exports `set`, typed with `satisfies ChantSet` from [types.ts](types.ts). It gives:
 
 - its number and slug from the ledger;
 - its title;
-- its `place`, from [places.ts](places.ts), and its `order` among the place's sets (ascending, gaps allowed);
+- its `chanter`, from [chanters.ts](chanters.ts): the community or individual whose chanting it follows;
 - its `chants`, as chant numbers in the order chanted, each with its slug in a comment;
 - its `anchorRecording`: the recording whose chants, order and wording the set follows. The field gives the recording's label and, where known, its `url`, `performers` and `date`. The set's info panel shows them.
 
-The build writes the set's page to `/sets/<slug>`. The Sangha sets page lists the sets by place, in the order of `places.ts`; a place with no sets is not shown. Each chant page links to the sets that include the chant.
+The build writes the set's page to `/sets/<slug>`. The Sangha sets page lists the sets in the order of the `sangha-sets` entry in [groups.ts](groups.ts), each card titled with its chanter and its own title, for example "London Buddhist Vihara · Daily Evening Puja". Each chant page links to the sets that include the chant.
 
-A new place or lineage is added to `places.ts` in display order. A place can only be removed once no set names it; otherwise `npm run check` fails.
+A new chanter or lineage is added to `chanters.ts`. A chanter can only be removed once no set names it; otherwise `npm run check` fails.
 
-The build stops if a set's slug does not start with its place, if its file name does not match its place, number and slug, or if the set has no chants, names an unknown chant or names a chant twice.
+The build stops if a set's slug does not start with its chanter, if its file name does not match its chanter, number and slug, if the set has no chants, names an unknown chant or names a chant twice, or if the `sangha-sets` entry leaves out a set, names it twice or names a set that does not exist.
 
 ## Timing files
 
@@ -88,10 +88,10 @@ This data stays in the browser when a chant or set is retired. Because a retired
 
 A retired chant or set is removed from the site. Its module moves into the `retired/` folder beside it, unchanged, and its ledger line is marked `retired: true`. The build does not read `retired/` folders, and `npm run check` leaves them out, so a retired module's import of `types.ts` does not need fixing; it resolves again if the module is moved back.
 
-For a set, nothing else needs editing. On the next build:
+For a set, its number is also removed from the `sangha-sets` entry in `groups.ts`; the build stops until it is. On the next build:
 
 - the set's page is not written, and `/sets/<slug>` shows the site's 404 page;
-- the set leaves the Sangha sets page, and a place with no remaining sets is hidden, as is the Sangha sets category if no sets remain;
+- the set leaves the Sangha sets page, and the Sangha sets category is hidden if no sets remain;
 - chant pages stop linking to the set;
 - the set's chants keep their pages and categories;
 - a timing file that covered the set still gives its chants their timing.

@@ -4,8 +4,7 @@ export const set = {
   id: "0126",
   slug: "amaravati-twelve-parittas",
   title: "Twelve Parittas",
-  place: "amaravati",
-  order: 30,
+  chanter: "amaravati",
   chants: [
     "0001", // pubba-bhaga-nama-kara-patha
     "0002", // sarana-gamana-patha

@@ -189,18 +189,25 @@ function searchOutput(): string {
 <ul id="search-results" class="cards" hidden></ul>`;
 }
 
-/** The sets of one place, with the titles of their chants, for the Sangha sets page. */
-export interface PlaceSets {
+/** Who chants a set: a community or an individual, and their lineage if any. */
+export interface SetChanter {
   title: string;
   lineageTitle?: string;
-  sets: { set: ChantSet; chants: Chant[] }[];
 }
 
-// A set's card shows the titles of its first two chants, and how many follow.
-// Its data attributes are what src/search.ts matches against.
-function setCard(set: ChantSet, chants: Chant[], place: PlaceSets, heading: 'h3' | 'h4'): string {
+/** A set with its chanter and chants, for the Sangha sets page. */
+export interface ListedSet {
+  set: ChantSet;
+  chanter: SetChanter;
+  chants: Chant[];
+}
+
+// A set's card is titled with its chanter and its own title, and shows the
+// titles of its first two chants, and how many follow. Its data attributes are
+// what src/search.ts matches against.
+function setCard({ set, chanter, chants }: ListedSet): string {
   const chantTitles = chants.map((c) => c.title);
-  const text = normalise([set.title, place.title, place.lineageTitle ?? ''].join(' '));
+  const text = normalise([set.title, chanter.title, chanter.lineageTitle ?? ''].join(' '));
   const slugs = chants.map((c) => c.slug).join(' ');
   const more = chantTitles.length - 2;
   const lines = [...chantTitles.slice(0, 2), more > 0 ? `and ${more} more` : '']
@@ -208,26 +215,12 @@ function setCard(set: ChantSet, chants: Chant[], place: PlaceSets, heading: 'h3'
     .map((t) => `<span>${escapeHtml(t)}</span>`)
     .join('');
   return `<li class="card" data-text="${text}" data-chants="${slugs}">
-<div class="card-head"><${heading} class="card-title"><a href="/sets/${set.slug}">${escapeHtml(set.title)}</a></${heading}></div>
+<div class="card-head"><h3 class="card-title"><a href="/sets/${set.slug}">${escapeHtml(`${chanter.title} · ${set.title}`)}</a></h3></div>
 <p class="card-lines">${lines}</p>
 </li>`;
 }
 
-// Places are grouped under their lineage, each with its own heading; a place
-// with no lineage has its heading at the lineage's level.
-export function setsPage(group: Group, groups: Group[], places: PlaceSets[]): string {
-  const out: string[] = [];
-  let lineage: string | undefined;
-  for (const place of places) {
-    if (place.lineageTitle && place.lineageTitle !== lineage) out.push(`<h2>${escapeHtml(place.lineageTitle)}</h2>`);
-    lineage = place.lineageTitle;
-    const placeHeading = place.lineageTitle ? 'h3' : 'h2';
-    const cards = place.sets.map(({ set, chants }) => setCard(set, chants, place, place.lineageTitle ? 'h4' : 'h3'));
-    out.push(`<${placeHeading}>${escapeHtml(place.title)}</${placeHeading}>
-<ul class="cards">
-${cards.join('\n')}
-</ul>`);
-  }
+export function setsPage(group: Group, groups: Group[], sets: ListedSet[]): string {
   const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
 ${searchBox(group)}
 ${chips(groups, group)}
@@ -235,7 +228,10 @@ ${searchOutput()}
 <div id="chant-list">
 <section class="group sets">
 <p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording.</p>
-${out.join('\n')}
+<h2>${escapeHtml(group.title)}</h2>
+<ul class="cards">
+${sets.map(setCard).join('\n')}
+</ul>
 </section>
 </div>`;
   return layout(group.title, body, SEARCH_SCRIPT);
