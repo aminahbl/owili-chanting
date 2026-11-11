@@ -603,7 +603,11 @@ input:focus-visible {
   cursor: pointer;
 }
 
+/* The label holds all three names in one grid cell and shows the current one.
+   The right name shows before the page script runs, and the label keeps the
+   width of the longest name. */
 .method-label {
+  display: inline-grid;
   padding: 0.35rem 0.5rem;
   font: inherit;
   font-size: 0.85rem;
@@ -617,6 +621,16 @@ input:focus-visible {
 .method-label:hover {
   color: var(--fg);
   background: var(--surface);
+}
+
+.method-label > span {
+  grid-area: 1 / 1;
+}
+
+:root:is([data-advance="auto"], [data-advance="timed"]) .method-manual,
+:root:not([data-advance="auto"]) .method-auto,
+:root:not([data-advance="timed"]) .method-timed {
+  visibility: hidden;
 }
 
 /* Icons keep their size before their script has drawn them. */

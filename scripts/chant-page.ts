@@ -251,7 +251,7 @@ function slides(): string {
   <button class="start" id="slide-start">Start</button>
   <button class="icon-button" id="slide-next" title="Next line (→)"><icon-chevron-right></icon-chevron-right><span class="sr-only">Next line</span></button>
   <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
-  <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
+  <button class="method-label" popovertarget="settings" title="How lines move on"><span class="method-manual">Manual</span><span class="method-auto">Auto</span><span class="method-timed">Timed</span></button>
   <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
   ${audioControls()}
 </div>

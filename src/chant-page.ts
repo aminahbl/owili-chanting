@@ -93,8 +93,6 @@ if (form) {
 
 const inSlides = () => root.dataset.view === 'slides';
 
-const METHOD_LABELS: Record<Method, string> = { manual: 'Manual', auto: 'Auto', timed: 'Timed' };
-
 // The text view has manual advance only.
 function chosenMethod(): Method {
   if (!inSlides()) return 'manual';
@@ -118,7 +116,6 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const slideView = new SlideView(slidesEl, steps, title);
   const startButton = document.querySelector<HTMLButtonElement>('#slide-start');
   const trackButton = document.querySelector<HTMLButtonElement>('#track');
-  const methodLabel = document.querySelector<HTMLElement>('.method-label');
   const tempoInput = document.querySelector<HTMLInputElement>('#tempo');
   const chantId = chant.dataset.chant ?? '';
   const slug = chant.dataset.slug ?? '';
@@ -136,7 +133,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
       trackButton.classList.toggle('on', c.status !== 'idle');
       trackButton.setAttribute('aria-pressed', String(c.status !== 'idle'));
     }
-    showMethod();
+    showTempo();
     keepScreenOn(c.isRunning);
     if (c.status !== 'idle' && c.index !== savedIndex) {
       savedIndex = c.index;
@@ -163,8 +160,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     return c.isRunning ? 'Pause' : 'Start';
   }
 
-  function showMethod() {
-    if (methodLabel) methodLabel.textContent = METHOD_LABELS[clock.method];
+  function showTempo() {
     if (tempoInput) tempoInput.value = String(clock.tempo);
   }
 
@@ -202,7 +198,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     }
     recording.setLink(linkFor(method));
     slideView.refresh();
-    showMethod();
+    showTempo();
     showAudioControls();
   }
   useSettings();
@@ -266,7 +262,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   function changeTempo(faster: boolean) {
     if (faster) tempo.faster();
     else tempo.slower();
-    showMethod();
+    showTempo();
   }
   tempoInput?.addEventListener('input', () => tempo.setTempo(Number(tempoInput.value)));
   document.querySelectorAll('.faster').forEach((b) => b.addEventListener('click', () => changeTempo(true)));
