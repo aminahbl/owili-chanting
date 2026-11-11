@@ -5,7 +5,6 @@ export const chant = {
   slug: "pasanna-hontu-sabbe-pi",
   title: "May All Beings Have Faith",
   paliTitle: "Pasannā hontu sabbe pi",
-  groups: [{ group: "reflections", order: 160 }, { group: "joy-and-ceremony", order: 290 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#pasanna-hontu", categories: [{ category: "Reflections", order: 16 }] },
   translation: "draft",
   sections: [

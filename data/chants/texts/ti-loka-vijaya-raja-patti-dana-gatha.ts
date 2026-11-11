@@ -5,7 +5,6 @@ export const chant = {
   slug: "ti-loka-vijaya-raja-patti-dana-gatha",
   title: "Verses on Sharing Goodness of the Conqueror of the Three Worlds",
   paliTitle: "Ti-loka-vijaya-rāja-patti-dāna-gāthā",
-  groups: [{ group: "reflections", order: 130 }, { group: "joy-and-ceremony", order: 270 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#ti-loka", categories: [{ category: "Reflections", order: 13 }] },
   translation: "draft",
   editorial: [

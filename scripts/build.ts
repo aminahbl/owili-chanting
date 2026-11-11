@@ -2,9 +2,9 @@
 // about, guide and resources pages, the search index and redirects.
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
-import { chantPage, setPage, type NextChant, type SetLink } from './chant-page.ts';
+import { chantPage, setPage, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
-import { entries, loadChants, loadSets, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
+import { entries, groupsOf, loadChants, loadSets, loadTimings, searchIndex, type Entry, type Group } from './chant-list.ts';
 import type { Chant } from '../data/types.ts';
 import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES, setsPage } from './templates.ts';
 import { groups } from '../data/groups.ts';
@@ -47,21 +47,13 @@ const all = entries(chants);
 // Categories without chants get no chip and no page. Sangha sets holds sets
 // rather than chants, and is shown when there are sets.
 const setsGroup: Group = groups.find((g) => g.id === 'sangha-sets')!;
-const shown = [...new Map(all.map((e) => [e.group.id, e.group])).values(), ...(sets.length ? [setsGroup] : [])];
+const shown = groups.filter((g) => (g === setsGroup ? sets.length > 0 : g.chants.length > 0));
 
 await writeList(null, all, shown);
 for (const group of shown) {
   if (group !== setsGroup) await writeList(group, all.filter((e) => e.group.id === group.id), shown);
 }
 
-const groupsById = new Map<string, Group>(shown.map((g) => [g.id, g]));
-// The next chant in a chant's first group, by that group's order.
-function nextChant(chant: Chant): NextChant | undefined {
-  const first = chant.groups[0];
-  const list = all.filter((e) => e.group.id === first?.group);
-  const after = list[list.findIndex((e) => e.card.slug === chant.slug) + 1];
-  return after && { slug: after.card.slug, title: after.card.title, groupTitle: after.group.title };
-}
 // Sets by place, places in the order of data/places.ts, sets by their order.
 const byNumber = new Map(chants.map((c) => [c.id, c]));
 const setPlaces = places.map((place) => ({
@@ -86,7 +78,7 @@ const setLinks = (chant: Chant): SetLink[] =>
   setPlaces.flatMap((p) => p.sets.filter((s) => s.chants.includes(chant.id)).map((s) => ({ slug: s.slug, title: s.title, placeTitle: p.title })));
 
 for (const chant of chants) {
-  const page = chantPage(chant, groupsById, nextChant(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
+  const page = chantPage(chant, groupsOf(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
   await write(`${chantHref(chant.slug)}/index.html`, page);
 }
 

@@ -5,7 +5,6 @@ export const chant = {
   slug: "ye-dhamma-hetuppabhava",
   title: "Arising From a Cause",
   paliTitle: "Ye dhammā hetuppabhavā",
-  groups: [{ group: "parittas", order: 410 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#hetuppabhava", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 41 }] },
   translation: "draft",
   sections: [

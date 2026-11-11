@@ -5,7 +5,6 @@ export const chant = {
   slug: "aranne-rukkha-mule-va",
   title: "In the Forest, at the Foot of a Tree",
   paliTitle: "Araññe rukkha-mūle vā",
-  groups: [{ group: "parittas", order: 160 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#aranne", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 16 }] },
   translation: "draft",
   editorial: [

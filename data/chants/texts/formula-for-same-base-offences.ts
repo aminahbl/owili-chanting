@@ -4,7 +4,6 @@ export const chant = {
   id: "0098",
   slug: "formula-for-same-base-offences",
   title: "Formula for same base offences",
-  groups: [{ group: "joy-and-ceremony", order: 70 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#same-base-offences", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Offences", order: 14 }] },
   translation: "draft",
   editorial: [

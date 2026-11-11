@@ -103,12 +103,8 @@ export interface SetLink {
   placeTitle: string;
 }
 
-function infoPopover(chant: Chant, groups: Map<string, Group>, recordings: RecordingInfo[], sets: SetLink[]): string {
-  const groupLinks = chant.groups
-    .map((m) => groups.get(m.group))
-    .filter((g): g is Group => g !== undefined)
-    .map((g) => `<a href="/list/${g.id}">${escapeHtml(g.title)}</a>`)
-    .join(', ');
+function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[], sets: SetLink[]): string {
+  const groupLinks = groups.map((g) => `<a href="/list/${g.id}">${escapeHtml(g.title)}</a>`).join(', ');
   const { label, url, categories } = chant.paliSource;
   const paliSourceName = url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label);
   const placing = (categories ?? [])
@@ -220,13 +216,6 @@ function header(title: string): string {
 </header>`;
 }
 
-/** The chant after this one in its first group, offered on the end slide. */
-export interface NextChant {
-  slug: string;
-  title: string;
-  groupTitle: string;
-}
-
 // The audio controls, shown once the user adds an audio file (spec 09, F11): in
 // the slide bar, beside Start and the advance method, and in a bar of their own
 // at the foot of the text view.
@@ -240,10 +229,7 @@ function audioControls(): string {
 }
 
 // The slide view is filled from the text view's lines by src/slide-view.ts.
-function slides(next: NextChant | undefined): string {
-  const nextLink = next
-    ? `<a class="slide-next-chant" href="/chants/${next.slug}?view=slides">Next in ${escapeHtml(next.groupTitle)}: ${escapeHtml(next.title)}</a>`
-    : '';
+function slides(): string {
   return `<section class="slides" id="slides" aria-label="Slides">
 <p class="slide-section"></p>
 <div class="slide-stage" id="slide-stage">
@@ -254,7 +240,6 @@ function slides(next: NextChant | undefined): string {
       <button class="outline-button" id="back-to-start">Back to start</button>
       <a class="outline-button" href="/">Back to list</a>
     </div>
-    ${nextLink}
   </div>
 </div>
 <div class="slide-bar" id="slide-bar">
@@ -276,8 +261,7 @@ function slides(next: NextChant | undefined): string {
 // A recording's timing is bundled with the page as the default for Timed advance (spec 09, F8).
 export function chantPage(
   chant: Chant,
-  groups: Map<string, Group>,
-  next?: NextChant,
+  groups: Group[],
   timing?: string,
   recordings: RecordingInfo[] = [],
   sets: SetLink[] = [],
@@ -292,7 +276,7 @@ ${chant.sections.map((s) => section(s)).join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
 <div class="audio-bar">${audioControls()}</div>
-${slides(next)}
+${slides()}
 ${infoPopover(chant, groups, recordings, sets)}
 ${settingsPopover([chant], recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
@@ -340,7 +324,7 @@ ${blocks.join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
 <div class="audio-bar">${audioControls()}</div>
-${slides(undefined)}
+${slides()}
 ${setInfoPopover(set, chants, place, recordings)}
 ${settingsPopover(chants, recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;

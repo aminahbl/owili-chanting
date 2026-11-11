@@ -5,7 +5,6 @@ export const chant = {
   slug: "sa-attha-laddha",
   title: "Blessing for a Woman",
   paliTitle: "Sā attha-laddhā",
-  groups: [{ group: "parittas", order: 280 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sa-attha-laddha", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 28 }] },
   translation: "draft",
   sections: [

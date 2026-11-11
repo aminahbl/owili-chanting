@@ -5,7 +5,6 @@ export const chant = {
   slug: "bojjhanga-paritta",
   title: "The Factors of Awakening Protection",
   paliTitle: "Bojjhaṅga-paritta",
-  groups: [{ group: "parittas", order: 220 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bojjhango", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 22 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-01-22/" }],

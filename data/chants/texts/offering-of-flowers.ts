@@ -4,7 +4,6 @@ export const chant = {
   id: "0025",
   slug: "offering-of-flowers",
   title: "Offering of Flowers",
-  groups: [{ group: "reverence", order: 250 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#flowers", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 5 }] },
   translation: "draft",
   sections: [

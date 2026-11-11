@@ -4,7 +4,6 @@ export const chant = {
   id: "0100",
   slug: "five-precepts",
   title: "Five Precepts",
-  groups: [{ group: "joy-and-ceremony", order: 90 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#five-precepts", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Uposatha-day for Lay-followers", order: 17 }] },
   translation: "draft",
   notes: [

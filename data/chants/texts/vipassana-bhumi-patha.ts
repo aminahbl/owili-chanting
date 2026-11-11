@@ -5,7 +5,6 @@ export const chant = {
   slug: "vipassana-bhumi-patha",
   title: "The Grounds for Insight",
   paliTitle: "Vipassanā-bhūmi-pāṭha",
-  groups: [{ group: "funeral", order: 90 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#vipassana-bhumi", categories: [{ category: "Funeral Chants", order: 9 }] },
   translation: "draft",
   editorial: [

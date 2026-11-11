@@ -5,7 +5,6 @@ export const chant = {
   slug: "pabbatopama-gatha",
   title: "Verses on Mountains",
   paliTitle: "Pabbatopama-gāthā",
-  groups: [{ group: "parittas", order: 330 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pabbatopama", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 33 }] },
   translation: "draft",
   editorial: [

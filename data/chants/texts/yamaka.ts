@@ -5,7 +5,6 @@ export const chant = {
   slug: "yamaka",
   title: "Opening of the Yamaka",
   paliTitle: "Yamaka",
-  groups: [{ group: "funeral", order: 70 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#yamaka", categories: [{ category: "Funeral Chants", order: 7 }] },
   translation: "draft",
   editorial: [

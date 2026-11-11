@@ -5,7 +5,6 @@ export const chant = {
   slug: "sabbe-satta-sada-hontu",
   title: "May All Beings Share",
   paliTitle: "Sabbe sattā sadā hontu",
-  groups: [{ group: "reflections", order: 120 }, { group: "joy-and-ceremony", order: 260 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#sabbe-satta", categories: [{ category: "Reflections", order: 12 }] },
   translation: "draft",
   sections: [

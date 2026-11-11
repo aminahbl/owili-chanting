@@ -4,7 +4,6 @@ export const chant = {
   id: "0027",
   slug: "evening-chanting-lbv-veneration",
   title: "Evening Chanting (LBV) – Veneration",
-  groups: [{ group: "reverence", order: 270 }],
   paliSource: { label: "London Buddhist Vihara" },
   translation: "draft",
   links: [{ text: "Mahamevnawa chanting book", href: "https://banaenglish.org/wp-content/uploads/2021/05/Trilinnear-A5-Vandana-Kotte-August2020.pdf" }, { text: "Gandhajāta Sutta (AN 3.79), on the fragrance of virtue", href: "https://suttacentral.net/an3.79" }],

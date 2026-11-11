@@ -4,7 +4,6 @@ export const chant = {
   id: "0042",
   slug: "dedication-of-merit-to-the-devas-and-others",
   title: "Dedication of Merit to the Devas and Others",
-  groups: [{ group: "reflections", order: 150 }, { group: "joy-and-ceremony", order: 280 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#dedication", categories: [{ category: "Reflections", order: 15 }] },
   translation: "draft",
   sections: [

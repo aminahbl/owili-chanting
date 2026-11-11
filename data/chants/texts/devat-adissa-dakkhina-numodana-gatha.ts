@@ -5,7 +5,6 @@ export const chant = {
   slug: "devat-adissa-dakkhina-numodana-gatha",
   title: "Dedicating Offerings to the Devas",
   paliTitle: "Devat'ādissa-dakkhiṇā'numodanā-gāthā",
-  groups: [{ group: "joy-and-ceremony", order: 230 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#devat-adissa", categories: [{ category: "Anumodanā", order: 14 }] },
   translation: "draft",
   editorial: [

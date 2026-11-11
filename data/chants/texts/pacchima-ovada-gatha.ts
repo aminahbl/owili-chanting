@@ -5,7 +5,6 @@ export const chant = {
   slug: "pacchima-ovada-gatha",
   title: "Verses on the Last Instructions",
   paliTitle: "Pacchima-ovāda-gāthā",
-  groups: [{ group: "parittas", order: 400 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#pacchima-ovada", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 40 }] },
   translation: "draft",
   sections: [

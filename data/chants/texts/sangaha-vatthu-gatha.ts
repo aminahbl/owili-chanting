@@ -5,7 +5,6 @@ export const chant = {
   slug: "sangaha-vatthu-gatha",
   title: "Verses on the Ways of Supporting Others",
   paliTitle: "Saṅgaha-vatthu-gāthā",
-  groups: [{ group: "joy-and-ceremony", order: 200 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#sangaha", categories: [{ category: "Anumodanā", order: 11 }] },
   translation: "draft",
   sections: [

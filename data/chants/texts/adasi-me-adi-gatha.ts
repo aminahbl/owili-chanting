@@ -5,7 +5,6 @@ export const chant = {
   slug: "adasi-me-adi-gatha",
   title: "Giving for the Departed",
   paliTitle: "Adāsi-me ādi-gāthā",
-  groups: [{ group: "joy-and-ceremony", order: 140 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#adasi-me", categories: [{ category: "Anumodanā", order: 5 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-04-16/" }],

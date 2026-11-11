@@ -5,7 +5,6 @@ export const chant = {
   slug: "mora-paritta",
   title: "The Peacock's Protection",
   paliTitle: "Mora-paritta",
-  groups: [{ group: "parittas", order: 130 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#udetayan-cakkhuma", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 13 }] },
   translation: "draft",
   notes: [

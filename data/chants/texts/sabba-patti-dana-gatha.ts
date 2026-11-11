@@ -5,7 +5,6 @@ export const chant = {
   slug: "sabba-patti-dana-gatha",
   title: "Verses on the Sharing of Merit",
   paliTitle: "Sabba-patti-dāna-gāthā",
-  groups: [{ group: "reflections", order: 100 }, { group: "joy-and-ceremony", order: 240 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#sabba-patti", categories: [{ category: "Reflections", order: 10 }] },
   translation: "draft",
   editorial: [

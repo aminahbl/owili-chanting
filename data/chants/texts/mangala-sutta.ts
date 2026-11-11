@@ -5,7 +5,6 @@ export const chant = {
   slug: "mangala-sutta",
   title: "The Thirty-Eight Highest Blessings",
   paliTitle: "Maṅgala-sutta",
-  groups: [{ group: "parittas", order: 80 }, { group: "suttas", order: 70 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#asevana", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 8 }] },
   translation: "draft",
   editorial: [

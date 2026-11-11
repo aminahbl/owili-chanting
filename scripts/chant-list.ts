@@ -2,13 +2,10 @@ import { readdir, readFile } from 'node:fs/promises';
 import type { CardData, SearchEntry } from '../src/card.ts';
 import { chantPart, lrcChants, lrcTags, readLrc } from '../src/lrc.ts';
 import { normalise } from '../src/normalise.ts';
-import { groups, type GroupId } from '../data/groups.ts';
+import { groups } from '../data/groups.ts';
 import type { Chant, ChantingLine, ChantSet, Section, Text } from '../data/types.ts';
 
-export interface Group {
-  id: GroupId;
-  title: string;
-}
+export type Group = (typeof groups)[number];
 
 /** One chant in one group. A chant in two groups gives two entries. */
 export interface Entry {
@@ -16,10 +13,29 @@ export interface Entry {
   card: CardData;
 }
 
+/**
+ * The chants in data/chants/texts/. The build stops on a category that names an
+ * unknown chant number or names a chant twice, and on a chant in no category.
+ */
 export async function loadChants(): Promise<Chant[]> {
   const dir = new URL('../data/chants/texts/', import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
-  return Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
+  const chants = await Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
+  const numbers = new Set(chants.map((c) => c.id));
+  for (const group of groups) {
+    const unknown = group.chants.filter((id) => !numbers.has(id));
+    if (new Set(group.chants).size < group.chants.length) throw new Error(`data/groups.ts: ${group.id} names a chant twice.`);
+    if (unknown.length) throw new Error(`data/groups.ts: ${group.id} names unknown chants (${unknown.join(', ')}).`);
+  }
+  const listed = new Set(groups.flatMap((g) => g.chants));
+  const unlisted = chants.filter((c) => !listed.has(c.id)).map((c) => c.id);
+  if (unlisted.length) throw new Error(`data/groups.ts: chants in no category (${unlisted.join(', ')}).`);
+  return chants;
+}
+
+/** The categories that list a chant, in display order. */
+export function groupsOf(chant: Chant): Group[] {
+  return groups.filter((g) => g.chants.includes(chant.id));
 }
 
 /** The sets in data/sets/. The build stops on a set with no chants, a repeated chant or an unknown chant number. */
@@ -128,14 +144,10 @@ function card(chant: Chant): CardData {
   return { slug: chant.slug, title: chant.title, ...(paliTitle ? { paliTitle } : {}), lines };
 }
 
-/** Entries in display order: groups as listed in data/groups.ts, chants by their order in each. */
+/** Entries in display order: groups and their chants as listed in data/groups.ts. */
 export function entries(chants: Chant[]): Entry[] {
-  return groups.flatMap((group) =>
-    chants
-      .flatMap((chant) => chant.groups.filter((m) => m.group === group.id).map((m) => ({ chant, order: m.order })))
-      .sort((a, b) => a.order - b.order)
-      .map(({ chant }) => ({ group, card: card(chant) })),
-  );
+  const byNumber = new Map(chants.map((c) => [c.id, c]));
+  return groups.flatMap((group) => group.chants.map((id) => ({ group, card: card(byNumber.get(id)!) })));
 }
 
 /** Search entries: each chant once, in the order of the list of all chants. */
@@ -151,7 +163,7 @@ export function searchIndex(chants: Chant[], list: Entry[]): SearchEntry[] {
       .flatMap((l) => ('pali' in l ? (typeof l.pali === 'string' ? [l.pali] : [l.pali.men, l.pali.women]) : []));
     const paliSourceCategories = (chant.paliSource.categories ?? []).flatMap((c) => [c.category, c.subcategory ?? '']);
     const text = normalise([chant.title, chant.paliTitle ?? '', ...paliSourceCategories, ...pali].join(' '));
-    const groups = Object.fromEntries(chant.groups.map((m) => [m.group, m.order]));
+    const groups = Object.fromEntries(groupsOf(chant).map((g) => [g.id, g.chants.indexOf(chant.id)]));
     return [{ ...card, groups, text }];
   });
 }

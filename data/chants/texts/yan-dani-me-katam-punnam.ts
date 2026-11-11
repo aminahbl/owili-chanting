@@ -5,7 +5,6 @@ export const chant = {
   slug: "yan-dani-me-katam-punnam",
   title: "The Goodness I Have Now Done",
   paliTitle: "Yan-dāni me kataṁ puññaṁ",
-  groups: [{ group: "reflections", order: 200 }, { group: "joy-and-ceremony", order: 300 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#yan-dani", categories: [{ category: "Reflections", order: 20 }] },
   translation: "draft",
   editorial: [

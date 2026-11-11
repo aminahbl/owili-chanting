@@ -5,7 +5,6 @@ export const chant = {
   slug: "mettapharana",
   title: "Reflection on Universal Well-Being",
   paliTitle: "Mettāpharaṇa",
-  groups: [{ group: "reflections", order: 70 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#mettapharana", categories: [{ category: "Reflections", order: 7 }] },
   translation: "draft",
   editorial: [

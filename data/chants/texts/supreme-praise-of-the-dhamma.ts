@@ -4,7 +4,6 @@ export const chant = {
   id: "0013",
   slug: "supreme-praise-of-the-dhamma",
   title: "Supreme Praise of the Dhamma",
-  groups: [{ group: "reverence", order: 130 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/evening-chanting.html#d-bhi-pali", categories: [{ category: "Evening Chanting", order: 6 }] },
   translation: "draft",
   editorial: [

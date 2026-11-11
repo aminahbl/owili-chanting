@@ -5,7 +5,6 @@ export const chant = {
   slug: "kathavatthu",
   title: "Opening of the Kathāvatthu",
   paliTitle: "Kathāvatthu",
-  groups: [{ group: "funeral", order: 60 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#kathavatthu", categories: [{ category: "Funeral Chants", order: 6 }] },
   translation: "draft",
   sections: [

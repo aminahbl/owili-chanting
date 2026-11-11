@@ -4,7 +4,6 @@ export const chant = {
   id: "0084",
   slug: "verses-on-respect",
   title: "Verses on Respect",
-  groups: [{ group: "parittas", order: 430 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#respect", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 43 }] },
   translation: "draft",
   sections: [

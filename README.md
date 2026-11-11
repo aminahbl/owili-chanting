@@ -50,7 +50,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   │   ├── texts/            # One typed module per chant
 │   │   └── markers/          # Timing files, one per recording
 │   ├── sets/                 # One typed module per Sangha set
-│   ├── groups.ts             # Categories in display order
+│   ├── groups.ts             # Categories and their chants, in display order
 │   ├── places.ts             # Lineages and places of the Sangha sets
 │   ├── ids.ts                # The ledger of chant and set numbers
 │   ├── types.ts              # The Chant and ChantSet types
@@ -86,9 +86,11 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Adding a new chant
 
-Add a module to `data/chants/texts/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts), and give it a place in one or more categories from [data/groups.ts](data/groups.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<slug>`.
+Add a module to `data/chants/texts/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<slug>`.
 
-`paliSource` names where the Pali was taken from. For a chant from a book with its own arrangement, `paliSource.categories` records where the book places it: its category, subcategory where there is one, and position. This is a record of the source, separate from the site's categories in `groups`, and the info panel shows it with the source.
+Add the chant's number to one or more category lists in [data/groups.ts](data/groups.ts), at the position where it should appear, with its slug in a comment. Each list gives its category's chants in display order. The build stops if a list names an unknown chant or names a chant twice, or if a chant is in no list.
+
+`paliSource` names where the Pali was taken from. For a chant from a book with its own arrangement, `paliSource.categories` records where the book places it: its category, subcategory where there is one, and position. This is a record of the source, separate from the site's categories in [data/groups.ts](data/groups.ts), and the info panel shows it with the source.
 
 Each chant has a four-digit number, its `id`, which never changes. A new chant takes the number after the last line of the ledger in [data/ids.ts](data/ids.ts), and the same change adds a line for it there. A chant that is removed keeps its ledger line, marked `retired: true`, so its number is never issued again; a renamed slug is changed in the ledger too. The build stops if a number is repeated, missing from the ledger or retired, or if a chant's slug differs from its ledger line. Sets take numbers from the same ledger.
 

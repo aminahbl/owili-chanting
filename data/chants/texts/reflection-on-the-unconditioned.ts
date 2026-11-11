@@ -4,7 +4,6 @@ export const chant = {
   id: "0035",
   slug: "reflection-on-the-unconditioned",
   title: "Reflection on the Unconditioned",
-  groups: [{ group: "reflections", order: 80 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#unconditioned", categories: [{ category: "Reflections", order: 8 }] },
   translation: "draft",
   editorial: [

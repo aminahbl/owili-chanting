@@ -4,7 +4,6 @@ export const chant = {
   id: "0093",
   slug: "blessing-to-the-world",
   title: "Blessing to the World",
-  groups: [{ group: "joy-and-ceremony", order: 20 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#the-world", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 7 }] },
   translation: "draft",
   editorial: [

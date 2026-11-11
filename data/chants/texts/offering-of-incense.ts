@@ -4,7 +4,6 @@ export const chant = {
   id: "0024",
   slug: "offering-of-incense",
   title: "Offering of Incense",
-  groups: [{ group: "reverence", order: 240 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#incense", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 4 }] },
   translation: "draft",
   sections: [

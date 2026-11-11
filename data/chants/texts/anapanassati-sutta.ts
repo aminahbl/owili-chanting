@@ -5,7 +5,6 @@ export const chant = {
   slug: "anapanassati-sutta",
   title: "Mindfulness of Breathing",
   paliTitle: "Ānāpānassati-sutta",
-  groups: [{ group: "suttas", order: 40 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#anapanassati", categories: [{ category: "Suttas", order: 4 }] },
   translation: "draft",
   sections: [

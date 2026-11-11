@@ -5,7 +5,6 @@ export const chant = {
   slug: "ten-paramis",
   title: "The Ten Paramis",
   paliTitle: "Dasa pāramī",
-  groups: [{ group: "reverence", order: 260 }],
   paliSource: { label: "Traditional; source not recorded" },
   translation: "draft",
   editorial: [

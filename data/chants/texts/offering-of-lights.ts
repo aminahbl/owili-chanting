@@ -4,7 +4,6 @@ export const chant = {
   id: "0023",
   slug: "offering-of-lights",
   title: "Offering of Lights",
-  groups: [{ group: "reverence", order: 230 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#lights", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 3 }] },
   translation: "draft",
   editorial: [

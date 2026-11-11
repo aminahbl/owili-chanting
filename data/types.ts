@@ -1,4 +1,3 @@
-import type { GroupId } from './groups.ts';
 import type { PlaceId } from './places.ts';
 
 /** Text that differs by the chanter's gender carries both forms. */
@@ -35,18 +34,9 @@ export interface Section {
   refs?: Ref[];
 }
 
-interface Membership {
-  group: GroupId;
-  /**
-   * Position in the group's list, ascending. It is compared only with the
-   * other chants in the same group; gaps are allowed.
-   */
-  order: number;
-}
-
 /**
  * Where the Pali source places the chant, kept as a record of its own
- * arrangement. The site's categories are in `groups`.
+ * arrangement. The site's categories are in data/groups.ts.
  */
 interface PaliSourceCategory {
   category: string;
@@ -78,7 +68,6 @@ export interface Chant {
   slug: string;
   title: string;
   paliTitle?: string;
-  groups: Membership[];
   /** Where the Pali text was taken from. The English is our own. */
   paliSource: { label: string; url?: string; categories?: PaliSourceCategory[] };
   translation?: 'draft' | 'reviewed';

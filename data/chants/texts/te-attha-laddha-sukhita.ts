@@ -5,7 +5,6 @@ export const chant = {
   slug: "te-attha-laddha-sukhita",
   title: "Blessing for a Group",
   paliTitle: "Te attha-laddhā sukhitā",
-  groups: [{ group: "parittas", order: 290 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#te-attha-laddha", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 29 }] },
   translation: "draft",
   editorial: [

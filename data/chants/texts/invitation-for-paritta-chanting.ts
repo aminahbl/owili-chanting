@@ -4,7 +4,6 @@ export const chant = {
   id: "0049",
   slug: "invitation-for-paritta-chanting",
   title: "Invitation for Paritta Chanting",
-  groups: [{ group: "parittas", order: 10 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#invitation", categories: [{ category: "Parittas", subcategory: "Invitations", order: 1 }] },
   translation: "draft",
   notes: [

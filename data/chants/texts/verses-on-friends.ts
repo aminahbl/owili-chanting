@@ -4,7 +4,6 @@ export const chant = {
   id: "0044",
   slug: "verses-on-friends",
   title: "Verses on Friends",
-  groups: [{ group: "reflections", order: 170 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#friends", categories: [{ category: "Reflections", order: 17 }] },
   translation: "draft",
   sections: [

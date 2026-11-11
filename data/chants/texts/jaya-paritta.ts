@@ -5,7 +5,6 @@ export const chant = {
   slug: "jaya-paritta",
   title: "Victory Protection",
   paliTitle: "Jaya-paritta",
-  groups: [{ group: "parittas", order: 260 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#maha-karuniko", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 26 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-08-19/" }],

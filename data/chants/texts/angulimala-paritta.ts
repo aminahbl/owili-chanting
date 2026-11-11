@@ -5,7 +5,6 @@ export const chant = {
   slug: "angulimala-paritta",
   title: "Aṅgulimāla's Protection",
   paliTitle: "Aṅgulimāla-paritta",
-  groups: [{ group: "parittas", order: 210 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yato-ham-bhagini", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 21 }] },
   translation: "draft",
   editorial: [

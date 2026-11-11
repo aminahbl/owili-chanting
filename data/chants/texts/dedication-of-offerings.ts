@@ -4,7 +4,6 @@ export const chant = {
   id: "0003",
   slug: "dedication-of-offerings",
   title: "Dedication of Offerings",
-  groups: [{ group: "reverence", order: 30 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#yo-so-bhagava", categories: [{ category: "Morning Chanting", order: 1 }, { category: "Evening Chanting", order: 1 }] },
   translation: "draft",
   editorial: [

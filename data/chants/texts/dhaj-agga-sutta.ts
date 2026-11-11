@@ -5,7 +5,6 @@ export const chant = {
   slug: "dhaj-agga-sutta",
   title: "The Top of the Banner",
   paliTitle: "Dhaj'agga-sutta",
-  groups: [{ group: "suttas", order: 50 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhaj-agga", categories: [{ category: "Suttas", order: 5 }] },
   translation: "draft",
   editorial: [

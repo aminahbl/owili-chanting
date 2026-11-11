@@ -4,7 +4,6 @@ export const chant = {
   id: "0033",
   slug: "reflection-on-the-off-putting-qualities-of-the-requisites",
   title: "Reflection on the Off-Putting Qualities of the Requisites",
-  groups: [{ group: "reflections", order: 60 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#off-putting", categories: [{ category: "Reflections", order: 6 }] },
   translation: "draft",
   sections: [

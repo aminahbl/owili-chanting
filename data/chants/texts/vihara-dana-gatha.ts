@@ -5,7 +5,6 @@ export const chant = {
   slug: "vihara-dana-gatha",
   title: "Verses on Giving a Dwelling",
   paliTitle: "Vihāra-dāna-gāthā",
-  groups: [{ group: "joy-and-ceremony", order: 190 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#vihara-dana", categories: [{ category: "Anumodanā", order: 10 }] },
   translation: "draft",
   sections: [

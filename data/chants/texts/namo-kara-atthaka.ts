@@ -5,7 +5,6 @@ export const chant = {
   slug: "namo-kara-atthaka",
   title: "The Homage Octet",
   paliTitle: "Namo-kāra-aṭṭhaka",
-  groups: [{ group: "parittas", order: 70 }, { group: "reverence", order: 180 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#namo-arahato", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 7 }] },
   translation: "draft",
   editorial: [

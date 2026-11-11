@@ -5,7 +5,6 @@ export const chant = {
   slug: "devata-uyyojana-gatha",
   title: "Verses on Sending Off the Devatā",
   paliTitle: "Devatā-uyyojana-gāthā",
-  groups: [{ group: "parittas", order: 240 }],
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#dukkhappatta", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 24 }] },
   translation: "draft",
   sections: [
