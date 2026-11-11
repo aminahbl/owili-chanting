@@ -22,10 +22,15 @@ const SHORTCUTS = [
   ['Esc', 'Close'],
 ];
 
-// Opening words in brackets are chanted by the leader alone ("[Yo so] bhagavā").
+// What the leader chants alone, a whole line or a line's opening words, is shown
+// in curly brackets, so it is clear where the leader stops and the group joins.
+const LEADER_OPEN = '<span class="leader-bracket leader-open" aria-hidden="true">{&nbsp;</span>';
+const LEADER_CLOSE = '<span class="leader-bracket" aria-hidden="true">&nbsp;}</span>';
+
+// Opening words in square brackets are chanted by the leader alone ("[Yo so] bhagavā").
 // Brackets later in a line mark an optional word and are kept as written.
 function pali(text: string): string {
-  return escapeHtml(text).replace(/^\[([^\]]+)\]/, '<span class="leader-words">$1</span>');
+  return escapeHtml(text).replace(/^\[([^\]]+)\]/, `${LEADER_OPEN}$1${LEADER_CLOSE}`);
 }
 
 // A text with two forms renders both; the CSS shows the one chosen in settings.
@@ -43,21 +48,31 @@ function suttaCentral(ref: Ref): string {
 
 const repeatCount = (times: number) => `<span aria-hidden="true">×${times}</span><span class="sr-only">${times} times</span>`;
 
+type Role = 'leader' | 'solo' | '';
+const ROLE_LABELS: Record<Role, string> = { leader: 'Leader', solo: 'Solo introduction', '': '' };
+
+function role(line: Line | undefined): Role {
+  if (!line || 'cue' in line) return '';
+  if (line.solo) return 'solo';
+  return line.leader ? 'leader' : '';
+}
+
 function chantingLine(line: ChantingLine, labelled: boolean): string {
-  const label = labelled ? '<span class="leader-label">Leader</span>' : '';
+  const lineRole = role(line);
+  const label = labelled ? `<span class="role-label">${ROLE_LABELS[lineRole]}</span>` : '';
   const repeat = line.repeat ? ` <span class="repeat">${repeatCount(line.repeat)}</span>` : '';
   const en = line.en ? `<p class="en">${forms(line.en, escapeHtml)}</p>` : '';
   const repeats = line.repeat ? ` data-repeat="${line.repeat}"` : '';
-  return `<div class="line${line.leader ? ' leader' : ''}" data-line="${line.id}"${repeats}>${label}<p class="pali" lang="pi">${forms(line.pali, pali)}${repeat}</p>${en}</div>`;
+  const text = line.leader ? `${LEADER_OPEN}${forms(line.pali, pali)}${LEADER_CLOSE}` : forms(line.pali, pali);
+  return `<div class="line${lineRole ? ` ${lineRole}` : ''}" data-line="${line.id}"${repeats}>${label}<p class="pali" lang="pi">${text}${repeat}</p>${en}</div>`;
 }
 
-// A run of consecutive leader lines has one label.
+// A run of consecutive solo or leader lines has one label.
 function lines(list: Line[]): string {
   return list
     .map((line, i) => {
       if ('cue' in line) return `<p class="cue" data-cue="${line.id}">${escapeHtml(line.cue)}</p>`;
-      const before = list[i - 1];
-      const labelled = Boolean(line.leader) && !(before && 'pali' in before && before.leader);
+      const labelled = role(line) !== '' && role(line) !== role(list[i - 1]);
       return chantingLine(line, labelled);
     })
     .join('\n');

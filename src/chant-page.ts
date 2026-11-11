@@ -115,7 +115,8 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const steps = readSteps(chant);
   const textView = new TextView(steps, backButton, document.querySelector('.chant-header'));
   const title = chant.querySelector('h1')?.textContent ?? '';
-  const slideView = new SlideView(slidesEl, steps, title);
+  const paliTitle = chant.querySelector(':scope > .chant-pali-title')?.textContent ?? '';
+  const slideView = new SlideView(slidesEl, steps, title, paliTitle);
   const startButton = document.querySelector<HTMLButtonElement>('#slide-start');
   const trackButton = document.querySelector<HTMLButtonElement>('#track');
   const methodLabel = document.querySelector<HTMLElement>('.method-label');

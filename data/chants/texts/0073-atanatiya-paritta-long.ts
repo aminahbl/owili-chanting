@@ -8,7 +8,6 @@ export const chant = {
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#atanatiya", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 32 }] },
   translation: "draft",
   notes: [
-    "Solo introduction",
     "If chanting for oneself, change tumhe to amhe here and in the lines below.",
     "If chanting for oneself, change te to me here and in the lines below.",
   ],
@@ -19,10 +18,10 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "Appasannehi nāthassa sāsane sādhusammate", en: "Against those without faith in the Protector's teaching, held to be good,", leader: true },
-        { id: 2, pali: "Amanussehi caṇḍehi sadā kibbisakāribhi", en: "fierce non-human beings, always doing harm,", leader: true },
-        { id: 3, pali: "Parisānañca-tassannam ahiṁsāya ca guttiyā", en: "for the four assemblies, to keep them from harm and guard them,", leader: true },
-        { id: 4, pali: "Yandesesi mahāvīro parittan-tam bhaṇāma se", en: "the Great Hero taught this protection: let us chant it.", leader: true },
+        { id: 1, pali: "Appasannehi nāthassa sāsane sādhusammate", en: "Against those without faith in the Protector's teaching, held to be good,", solo: true },
+        { id: 2, pali: "Amanussehi caṇḍehi sadā kibbisakāribhi", en: "fierce non-human beings, always doing harm,", solo: true },
+        { id: 3, pali: "Parisānañca-tassannam ahiṁsāya ca guttiyā", en: "for the four assemblies, to keep them from harm and guard them,", solo: true },
+        { id: 4, pali: "Yandesesi mahāvīro parittan-tam bhaṇāma se", en: "the Great Hero taught this protection: let us chant it.", solo: true },
       ],
     },
     {

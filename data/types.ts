@@ -10,6 +10,8 @@ export interface ChantingLine {
   en?: Text;
   /** Chanted by the leader alone. */
   leader?: true;
+  /** Chanted by one chanter alone, as in a sutta's introduction; not the leader's role. */
+  solo?: true;
   repeat?: number;
 }
 

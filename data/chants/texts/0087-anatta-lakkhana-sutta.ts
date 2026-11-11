@@ -7,9 +7,6 @@ export const chant = {
   paliTitle: "Anatta-lakkhaṇa-sutta",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#anatta-lakkhana", categories: [{ category: "Suttas", order: 2 }] },
   translation: "draft",
-  notes: [
-    "Solo introduction",
-  ],
   editorial: [
     { status: "changed", lines: [42, 49, 56, 63, 70], note: "The manual has *viparināma*, a misspelling; corrected to *vipariṇāma*." },
     { status: "kept", lines: [38], note: "SN 22.59 has *rūpaṁ* where the manual has *rūpam*. Kept as the manual prints it." },
@@ -20,14 +17,14 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "Yantaṁ sattehi dukkhena ñeyyaṁ anattalakkhaṇaṁ", en: "The characteristic of not-self, hard for beings to know,", leader: true },
-        { id: 2, pali: "Attavādattasaññāṇaṁ sammadeva vimocanaṁ", en: "which rightly releases from the doctrine and perception of a self,", leader: true },
-        { id: 3, pali: "Sambuddho taṁ pakāsesi diṭṭhasaccāna yoginaṁ", en: "the Awakened One made known to the practitioners who had seen the truths,", leader: true },
-        { id: 4, pali: "Uttariṁ paṭivedhāya bhāvetuṁ ñāṇamuttamaṁ", en: "so that they could develop the highest knowledge for further penetration;", leader: true },
-        { id: 5, pali: "Yantesaṁ diṭṭhadhammānam ñāṇenupaparikkhataṁ", en: "and when they had examined it with knowledge, having seen the Dhamma,", leader: true },
-        { id: 6, pali: "Sabbāsavehi cittāni vimucciṁsu asesato", en: "their minds were released from all taints without remainder.", leader: true },
-        { id: 7, pali: "Tathā ñāṇānussārena sāsanaṁ kātumicchataṁ", en: "Likewise, for the good who wish to follow the teaching with knowledge,", leader: true },
-        { id: 8, pali: "Sādhūnaṁ atthasiddhatthaṁ taṁ suttantaṁ bhaṇāma se", en: "for the success of their aim, let us chant that discourse.", leader: true },
+        { id: 1, pali: "Yantaṁ sattehi dukkhena ñeyyaṁ anattalakkhaṇaṁ", en: "The characteristic of not-self, hard for beings to know,", solo: true },
+        { id: 2, pali: "Attavādattasaññāṇaṁ sammadeva vimocanaṁ", en: "which rightly releases from the doctrine and perception of a self,", solo: true },
+        { id: 3, pali: "Sambuddho taṁ pakāsesi diṭṭhasaccāna yoginaṁ", en: "the Awakened One made known to the practitioners who had seen the truths,", solo: true },
+        { id: 4, pali: "Uttariṁ paṭivedhāya bhāvetuṁ ñāṇamuttamaṁ", en: "so that they could develop the highest knowledge for further penetration;", solo: true },
+        { id: 5, pali: "Yantesaṁ diṭṭhadhammānam ñāṇenupaparikkhataṁ", en: "and when they had examined it with knowledge, having seen the Dhamma,", solo: true },
+        { id: 6, pali: "Sabbāsavehi cittāni vimucciṁsu asesato", en: "their minds were released from all taints without remainder.", solo: true },
+        { id: 7, pali: "Tathā ñāṇānussārena sāsanaṁ kātumicchataṁ", en: "Likewise, for the good who wish to follow the teaching with knowledge,", solo: true },
+        { id: 8, pali: "Sādhūnaṁ atthasiddhatthaṁ taṁ suttantaṁ bhaṇāma se", en: "for the success of their aim, let us chant that discourse.", solo: true },
       ],
     },
     {

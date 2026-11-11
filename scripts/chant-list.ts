@@ -149,9 +149,9 @@ function firstForm(text: Text): string {
 const chanting = (s: Section) => s.lines.filter((l): l is ChantingLine => 'pali' in l);
 
 function card(chant: Chant): CardData {
-  // The leader's introduction ("Handa mayaṁ …") is in the opening sections, which
-  // hold only leader lines; a leader line after them may be the chant's first words.
-  const opening = chant.sections.findIndex((s) => chanting(s).some((l) => !l.leader));
+  // The leader's or a solo introduction ("Handa mayaṁ …") is in the opening sections, which
+  // hold only leader or solo lines; a leader line after them may be the chant's first words.
+  const opening = chant.sections.findIndex((s) => chanting(s).some((l) => !l.leader && !l.solo));
   const lines = chant.sections
     .slice(Math.max(opening, 0))
     .flatMap(chanting)

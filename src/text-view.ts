@@ -29,11 +29,11 @@ export function readSteps(root: ParentNode): Step[] {
   });
 }
 
-/** The text of the form in use, without the repeat count. */
+/** The text of the form in use, without the repeat count and leader brackets. */
 export function visibleText(el: Element): string {
   const copy = el.cloneNode(true) as Element;
   const hidden = document.documentElement.dataset.form === 'women' ? '.form-men' : '.form-women';
-  copy.querySelectorAll(`${hidden}, .repeat`).forEach((e) => e.remove());
+  copy.querySelectorAll(`${hidden}, .repeat, .leader-bracket`).forEach((e) => e.remove());
   return copy.textContent ?? '';
 }
 

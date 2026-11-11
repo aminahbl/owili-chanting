@@ -7,9 +7,6 @@ export const chant = {
   paliTitle: "Āditta-pariyāya-sutta",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#aditta-pariyaya", categories: [{ category: "Suttas", order: 3 }] },
   translation: "draft",
-  notes: [
-    "Solo introduction",
-  ],
   editorial: [
     { status: "kept", lines: [35], note: "SN 35.28 has *jivhāviññāṇaṁ* where the manual has *jivhāviññāṇam*. Kept as the manual prints it." },
     { status: "kept", lines: [60, 64, 68, 72, 76, 80], note: "SN 35.28 has *tasmim* where the manual has *tasmiṁ*. Kept as the manual prints it." },
@@ -20,14 +17,14 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "Veneyyadamanopāye sabbaso pāramiṁ gato", en: "Gone in every way to perfection in the means of taming those to be trained,", leader: true },
-        { id: 2, pali: "Amoghavacano buddho abhiññāyānusāsako", en: "the Buddha, whose words are never in vain, teaching from direct knowledge,", leader: true },
-        { id: 3, pali: "Ciṇṇānurūpato cāpi dhammena vinayaṁ pajaṁ", en: "and in keeping with what they had practised, training people by the Dhamma,", leader: true },
-        { id: 4, pali: "Ciṇṇāggipāricariyānaṁ sambojjhārahayoginaṁ", en: "for the former fire-worshippers, practitioners ready for awakening,", leader: true },
-        { id: 5, pali: "Yamādittapariyāyaṁ desayanto manoharaṁ", en: "taught the delightful Discourse on Burning,", leader: true },
-        { id: 6, pali: "Te sotāro vimocesi asekkhāya vimuttiyā", en: "and freed those listeners with the release of those beyond training.", leader: true },
-        { id: 7, pali: "Tathevopaparikkhāya viññūṇaṁ sotumicchataṁ", en: "Likewise, for the wise who wish to hear and examine it,", leader: true },
-        { id: 8, pali: "Dukkhatālakkhaṇopāyaṁ taṁ suttantaṁ bhaṇāma se", en: "let us chant that discourse, a means to the mark of suffering.", leader: true },
+        { id: 1, pali: "Veneyyadamanopāye sabbaso pāramiṁ gato", en: "Gone in every way to perfection in the means of taming those to be trained,", solo: true },
+        { id: 2, pali: "Amoghavacano buddho abhiññāyānusāsako", en: "the Buddha, whose words are never in vain, teaching from direct knowledge,", solo: true },
+        { id: 3, pali: "Ciṇṇānurūpato cāpi dhammena vinayaṁ pajaṁ", en: "and in keeping with what they had practised, training people by the Dhamma,", solo: true },
+        { id: 4, pali: "Ciṇṇāggipāricariyānaṁ sambojjhārahayoginaṁ", en: "for the former fire-worshippers, practitioners ready for awakening,", solo: true },
+        { id: 5, pali: "Yamādittapariyāyaṁ desayanto manoharaṁ", en: "taught the delightful Discourse on Burning,", solo: true },
+        { id: 6, pali: "Te sotāro vimocesi asekkhāya vimuttiyā", en: "and freed those listeners with the release of those beyond training.", solo: true },
+        { id: 7, pali: "Tathevopaparikkhāya viññūṇaṁ sotumicchataṁ", en: "Likewise, for the wise who wish to hear and examine it,", solo: true },
+        { id: 8, pali: "Dukkhatālakkhaṇopāyaṁ taṁ suttantaṁ bhaṇāma se", en: "let us chant that discourse, a means to the mark of suffering.", solo: true },
       ],
     },
     {

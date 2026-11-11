@@ -10,7 +10,7 @@ export interface CardData {
   slug: string;
   title: string;
   paliTitle?: string;
-  /** The first two chanting lines, without leader lines and cues. */
+  /** The first two chanting lines, without an opening introduction and cues. */
   lines: string[];
 }
 

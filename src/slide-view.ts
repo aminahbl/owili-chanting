@@ -2,10 +2,11 @@
 // time. The block stays still and the accent bar moves down it. After the
 // block, a smaller, fainter preview shows the next block's first line. When
 // the current line passes the block's end, the page turns to the next block.
-// Before the chant starts, the page shows the title and the chant's notes,
-// with the first line as the preview. The lines, section titles, cues and
-// leader labels are copied from the text view, so forms and translation
-// follow the same settings. During a timed pause after a line (spec 09, F5),
+// Before the chant starts, the page shows only the title and the Pali title.
+// The chant's notes are shown as cues above its first line. The lines, section
+// titles, cues and solo labels are copied from the text view, so forms and
+// translation follow the same settings. A leader line is marked by its curly
+// brackets, so it has no label. During a timed pause after a line (spec 09, F5),
 // the line is dimmed; a pause with a cue, such as a bow, shows the next line's
 // block with the cue marked, since the cue stands above the line it comes before.
 import type { LineClock } from './clock.ts';
@@ -33,7 +34,7 @@ interface PageLine {
   section: string;
   /** The cues between the line before and this one. */
   cues: Cue[];
-  leader: boolean;
+  solo: boolean;
 }
 
 function part(root: HTMLElement, selector: string): HTMLElement {
@@ -91,13 +92,12 @@ export class SlideView {
   private rest: number | null | undefined;
   private resizeFrame = 0;
 
-  constructor(root: HTMLElement, steps: Step[], title: string) {
+  constructor(root: HTMLElement, steps: Step[], title: string, paliTitle: string) {
     this.root = root;
     this.steps = steps;
     this.lines = [...new Set(steps.map((s) => s.line))];
-    // A set's chants keep their notes in their own blocks.
-    const notes = document.querySelector('article.chant > .chant-notes');
-    this.titleHtml = `<p class="pali">${escapeHtml(title)}</p>${notes ? `<div class="slide-page-notes">${notes.innerHTML}</div>` : ''}`;
+    const subtitle = paliTitle ? `<p class="slide-page-pali-title" lang="pi">${escapeHtml(paliTitle)}</p>` : '';
+    this.titleHtml = `<p class="pali">${escapeHtml(title)}</p>${subtitle}`;
     this.stage = part(root, '.slide-stage');
     this.page = part(root, '.slide-page');
     this.section = part(root, '.slide-section');
@@ -189,8 +189,8 @@ export class SlideView {
   private pageLines(): PageLine[] {
     const cuesBefore = new Map<HTMLElement, Cue[]>();
     let cues: Cue[] = [];
-    for (const el of document.querySelectorAll<HTMLElement>('.chant .cue, .chant .line')) {
-      if (el.matches('.cue')) cues.push({ id: el.dataset.cue ?? '', html: el.innerHTML });
+    for (const el of document.querySelectorAll<HTMLElement>('.chant .chant-notes p, .chant .cue, .chant .line')) {
+      if (!el.matches('.line')) cues.push({ id: el.dataset.cue ?? '', html: el.innerHTML });
       else if (this.lines.includes(el)) {
         cuesBefore.set(el, cues);
         cues = [];
@@ -205,7 +205,7 @@ export class SlideView {
         pali,
         section: sectionTitle(line),
         cues: cuesBefore.get(line) ?? [],
-        leader: line.classList.contains('leader'),
+        solo: line.classList.contains('solo'),
       };
     });
   }
@@ -265,10 +265,10 @@ export class SlideView {
       const line = lines[i];
       if (opensSection(lines, i)) items.push(`<h2 class="slide-page-heading">${escapeHtml(line.section)}</h2>`);
       items.push(...line.cues.map(cueHtml));
-      if (line.leader && (i === start || !lines[i - 1].leader)) items.push('<p class="leader-label">Leader</p>');
+      if (line.solo && (i === start || !lines[i - 1].solo)) items.push('<p class="role-label">Solo introduction</p>');
       items.push(lineHtml(line.html));
     }
-    const preview = lines[end];
+    const preview = block === TITLE ? undefined : lines[end];
     if (preview) {
       const section = opensSection(lines, end) ? `<p class="slide-page-section">${escapeHtml(preview.section)}</p>` : '';
       items.push(`<div class="slide-page-preview">${section}<p class="pali" lang="pi">${preview.pali}</p></div>`);

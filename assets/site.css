@@ -782,7 +782,7 @@ icon-moon {
   display: none;
 }
 
-.leader-label {
+.role-label {
   display: block;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
@@ -790,8 +790,14 @@ icon-moon {
   color: var(--muted);
 }
 
-.leader-words {
-  color: var(--muted);
+.leader-bracket {
+  opacity: 0.25;
+}
+
+/* The opening bracket hangs before the line, so the words stay in line with the lines around them. */
+.leader-open {
+  position: absolute;
+  transform: translateX(-100%);
 }
 
 .repeat {
@@ -1105,9 +1111,9 @@ kbd {
   color: var(--muted);
 }
 
-/* Cues and the leader label sit above their line and are not dimmed with it. */
+/* Cues and the solo label sit above their line and are not dimmed with it. */
 .slide-page-cue,
-.slide-page .leader-label {
+.slide-page .role-label {
   padding-bottom: calc(var(--line-size) * 0.15);
 }
 
@@ -1116,19 +1122,16 @@ kbd {
   line-height: 1.4;
 }
 
-.slide-page .leader-label {
+.slide-page .role-label {
   font-size: max(0.75rem, calc(var(--line-size) * 0.35));
 }
 
-.slide-page-notes {
-  margin-top: calc(var(--line-size) * 0.4);
-  font-size: max(1rem, calc(var(--line-size) * 0.45));
+/* Sized like a line's translation, but shown when translation is off. */
+.slide-page .slide-page-pali-title {
+  margin: 0.3em 0 0;
+  font-size: max(1rem, calc(var(--line-size) * 0.65));
   line-height: 1.4;
   color: var(--muted);
-}
-
-.slide-page-notes p + p {
-  margin-top: 0.5em;
 }
 
 /* During a timed pause the line just chanted is dimmed with its bar, and a
