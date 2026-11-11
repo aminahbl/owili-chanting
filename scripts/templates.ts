@@ -17,7 +17,7 @@ export interface Page {
 
 // In the order of the site header's links.
 export const PAGES: Page[] = [
-  { slug: 'about', title: 'About' },
+  // { slug: 'about', title: 'About' },
   { slug: 'guide', title: 'Guide' },
   { slug: 'resources', title: 'Resources' },
 ];
