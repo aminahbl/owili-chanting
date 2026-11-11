@@ -1220,6 +1220,19 @@ kbd {
   color: var(--muted);
 }
 
+.slide-line {
+  padding: 0;
+  font: inherit;
+  text-align: right;
+  color: inherit;
+  background: none;
+  border: 0;
+}
+
+.slide-line:focus {
+  color: var(--fg);
+}
+
 @media (max-width: 40rem) {
   .slide-bar {
     --slide-side: 3.5rem;

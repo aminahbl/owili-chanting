@@ -74,7 +74,7 @@ export class SlideView {
   private root: HTMLElement;
   private page: HTMLElement;
   private section: HTMLElement;
-  private position: HTMLElement;
+  private lineInput: HTMLInputElement;
   private steps: Step[];
   private lines: HTMLElement[];
   private titleHtml: string;
@@ -101,7 +101,18 @@ export class SlideView {
     this.stage = part(root, '.slide-stage');
     this.page = part(root, '.slide-page');
     this.section = part(root, '.slide-section');
-    this.position = part(root, '.slide-position');
+    this.lineInput = part(root, '.slide-line') as HTMLInputElement;
+    const total = String(this.lines.length);
+    part(root, '.slide-total').textContent = total;
+    this.lineInput.style.width = `${total.length + 0.5}ch`;
+    // The field keeps what is typed until it loses focus; Escape discards it.
+    this.lineInput.addEventListener('blur', () => this.showNumber());
+    this.lineInput.addEventListener('focus', () => this.lineInput.select());
+    this.lineInput.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      this.showNumber(true);
+      this.lineInput.blur();
+    });
     // A chant without section titles has no section row.
     this.section.hidden = !this.lines.some((line) => sectionTitle(line));
     addEventListener('resize', () => {
@@ -130,10 +141,23 @@ export class SlideView {
     if (this.shown !== NOTHING) this.render(false);
   }
 
+  /** The first step of the line with this number, counted from 1, or null if there is no such number. */
+  stepOfLine(number: number): number | null {
+    if (!Number.isInteger(number)) return null;
+    const line = this.lines[Math.max(1, Math.min(this.lines.length, number)) - 1];
+    return this.steps.findIndex((step) => step.line === line);
+  }
+
+  private showNumber(whileTyping = false) {
+    if (!whileTyping && document.activeElement === this.lineInput) return;
+    const step = this.shown === TITLE || this.shown === NOTHING ? null : this.steps[this.shown];
+    this.lineInput.value = step ? String(this.lines.indexOf(step.line) + 1) : '';
+  }
+
   private render(animate: boolean) {
     const step = this.shown === TITLE ? null : this.steps[this.shown];
     const number = step ? this.lines.indexOf(step.line) : TITLE;
-    this.position.textContent = step ? `${number + 1} / ${this.lines.length}` : '';
+    this.showNumber();
     // The page has no size in the text view or on the end slide.
     if (!this.page.clientHeight) return;
     const lines = this.pageLines();

@@ -255,7 +255,7 @@ function slides(): string {
   <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
   ${audioControls()}
 </div>
-<p class="slide-position"></p>
+<p class="slide-position"><input class="slide-line" id="slide-line" inputmode="numeric" enterkeyhint="go" autocomplete="off" placeholder="–" aria-label="Go to line" title="Go to line"> / <span class="slide-total"></span></p>
 </div>
 </section>`;
 }

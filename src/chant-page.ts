@@ -275,6 +275,17 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   document.querySelector('#slide-next')?.addEventListener('click', () => move(1));
   document.querySelector('#back-to-start')?.addEventListener('click', () => clock.reset());
 
+  // Entering a number in the slide bar's position moves to the first chanting of that line.
+  const lineInput = document.querySelector<HTMLInputElement>('#slide-line');
+  lineInput?.addEventListener('change', () => {
+    const index = slideView.stepOfLine(Number.parseInt(lineInput.value, 10));
+    if (index !== null) {
+      if (clock.status === 'idle' && clock.method === 'manual') clock.start();
+      clock.goTo(index);
+    }
+    lineInput.blur();
+  });
+
   // Timed advance follows the imported timing, or the default (spec 09, F6).
   const timingName = document.querySelector<HTMLElement>('.timing-name');
   const timingError = document.querySelector<HTMLElement>('.timing-error');
