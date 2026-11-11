@@ -50,12 +50,29 @@ async function update(field: HTMLInputElement, out: HTMLElement, rest: HTMLEleme
   }
   // A newer keystroke may have changed the field while the index loaded.
   if (normalise(field.value) !== query) return;
-  const { group, groupTitle } = field.dataset;
-  const found = inScope(entries, group).filter((e) => matches(e.text, query));
-  out.innerHTML = found.map(cardHtml).join('\n');
+  const setCards = [...rest.querySelectorAll<HTMLElement>('.card[data-chants]')];
+  if (setCards.length) {
+    const found = matchingSets(setCards, entries, query);
+    out.replaceChildren(...found.map((card) => card.cloneNode(true)));
+    line.textContent = found.length ? '' : 'No sets found';
+  } else {
+    const { group, groupTitle } = field.dataset;
+    const found = inScope(entries, group).filter((e) => matches(e.text, query));
+    out.innerHTML = found.map(cardHtml).join('\n');
+    line.textContent = statusText(found.length, groupTitle);
+  }
   out.hidden = false;
   rest.hidden = true;
-  line.textContent = statusText(found.length, groupTitle);
+}
+
+// On the Sangha sets page a set matches when every word of the query appears
+// in its title, place and lineage, or in the text of its chants.
+function matchingSets(cards: HTMLElement[], entries: SearchEntry[], query: string): HTMLElement[] {
+  const textBySlug = new Map(entries.map((e) => [e.slug, e.text]));
+  return cards.filter((card) => {
+    const chantTexts = (card.dataset.chants ?? '').split(' ').map((slug) => textBySlug.get(slug) ?? '');
+    return matches([card.dataset.text ?? '', ...chantTexts].join(' '), query);
+  });
 }
 
 if (input && status && results && list) {

@@ -64,7 +64,7 @@ const setPlaces = places.map((place) => ({
 if (sets.length) {
   const list = setPlaces
     .filter((p) => p.sets.length)
-    .map((p) => ({ ...p, sets: p.sets.map((set) => ({ set, chantTitles: set.chants.map((id) => byNumber.get(id)!.title) })) }));
+    .map((p) => ({ ...p, sets: p.sets.map((set) => ({ set, chants: set.chants.map((id) => byNumber.get(id)!) })) }));
   await write(`/list/${setsGroup.id}/index.html`, setsPage(setsGroup, shown, list));
 }
 const timings = await loadTimings(chants, sets);

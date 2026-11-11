@@ -1,7 +1,8 @@
 import { cardHtml } from '../src/card.ts';
 import { escapeHtml } from '../src/html.ts';
+import { normalise } from '../src/normalise.ts';
 import { SETTING_NAMES, SETTINGS_KEY } from '../src/settings.ts';
-import type { ChantSet } from '../data/types.ts';
+import type { Chant, ChantSet } from '../data/types.ts';
 import type { Entry, Group } from './chant-list.ts';
 
 const SITE = 'Chanting for shared happiness';
@@ -159,47 +160,61 @@ export function listPage({ group, groups, entries, page, pageSize }: ListPage): 
   const pageEntries = entries.slice(first, first + pageSize);
   const parts = [group?.title, page > 1 ? `Page ${page}` : ''].filter(Boolean);
   const title = parts.length ? parts.join(', ') : SITE;
-  // On a group page, search covers that group only.
-  const searchLabel = group ? `Search ${escapeHtml(group.title)}` : 'Search chants';
-  const groupData = group ? ` data-group="${group.id}" data-group-title="${escapeHtml(group.title)}"` : '';
   const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
-<div class="search" role="search">
-  <label for="search-input" class="sr-only">${searchLabel}</label>
-  <input id="search-input" type="search" placeholder="${searchLabel}" autocomplete="off" spellcheck="false" data-index="/search.json"${groupData}>
-</div>
+${searchBox(group)}
 ${chips(groups, group)}
-<p id="search-status" class="search-status" role="status"></p>
-<ul id="search-results" class="cards" hidden></ul>
+${searchOutput()}
 <div id="chant-list">
 ${blocks(pageEntries, first, entries)}
 ${pagination(base, page, count)}
 </div>`;
-  return layout(title, body, '<script type="module" src="/assets/js/search.js"></script>');
+  return layout(title, body, SEARCH_SCRIPT);
+}
+
+const SEARCH_SCRIPT = '<script type="module" src="/assets/js/search.js"></script>';
+
+// On a group page, search covers that group only; with no group it covers all chants.
+function searchBox(group: Group | null): string {
+  const searchLabel = group ? `Search ${escapeHtml(group.title)}` : 'Search chants';
+  const groupData = group ? ` data-group="${group.id}" data-group-title="${escapeHtml(group.title)}"` : '';
+  return `<div class="search" role="search">
+  <label for="search-input" class="sr-only">${searchLabel}</label>
+  <input id="search-input" type="search" placeholder="${searchLabel}" autocomplete="off" spellcheck="false" data-index="/search.json"${groupData}>
+</div>`;
+}
+
+// While a search is active, src/search.ts shows its results here and hides #chant-list.
+function searchOutput(): string {
+  return `<p id="search-status" class="search-status" role="status"></p>
+<ul id="search-results" class="cards" hidden></ul>`;
 }
 
 /** The sets of one place, with the titles of their chants, for the Sangha sets page. */
 export interface PlaceSets {
   title: string;
   lineageTitle?: string;
-  sets: { set: ChantSet; chantTitles: string[] }[];
+  sets: { set: ChantSet; chants: Chant[] }[];
 }
 
 // A set's card shows the titles of its first two chants, and how many follow.
-function setCard(set: ChantSet, chantTitles: string[], heading: 'h3' | 'h4'): string {
+// Its data attributes are what src/search.ts matches against.
+function setCard(set: ChantSet, chants: Chant[], place: PlaceSets, heading: 'h3' | 'h4'): string {
+  const chantTitles = chants.map((c) => c.title);
+  const text = normalise([set.title, place.title, place.lineageTitle ?? ''].join(' '));
+  const slugs = chants.map((c) => c.slug).join(' ');
   const more = chantTitles.length - 2;
   const lines = [...chantTitles.slice(0, 2), more > 0 ? `and ${more} more` : '']
     .filter(Boolean)
     .map((t) => `<span>${escapeHtml(t)}</span>`)
     .join('');
-  return `<li class="card">
+  return `<li class="card" data-text="${text}" data-chants="${slugs}">
 <div class="card-head"><${heading} class="card-title"><a href="/sets/${set.slug}">${escapeHtml(set.title)}</a></${heading}></div>
 <p class="card-lines">${lines}</p>
 </li>`;
 }
 
 // Places are grouped under their lineage, each with its own heading; a place
-// with no lineage has its heading at the lineage's level. The page has no
-// search box, as it lists only a few sets.
+// with no lineage has its heading at the lineage's level.
 export function setsPage(group: Group, groups: Group[], places: PlaceSets[]): string {
   const out: string[] = [];
   let lineage: string | undefined;
@@ -207,19 +222,23 @@ export function setsPage(group: Group, groups: Group[], places: PlaceSets[]): st
     if (place.lineageTitle && place.lineageTitle !== lineage) out.push(`<h2>${escapeHtml(place.lineageTitle)}</h2>`);
     lineage = place.lineageTitle;
     const placeHeading = place.lineageTitle ? 'h3' : 'h2';
-    const cards = place.sets.map(({ set, chantTitles }) => setCard(set, chantTitles, place.lineageTitle ? 'h4' : 'h3'));
+    const cards = place.sets.map(({ set, chants }) => setCard(set, chants, place, place.lineageTitle ? 'h4' : 'h3'));
     out.push(`<${placeHeading}>${escapeHtml(place.title)}</${placeHeading}>
 <ul class="cards">
 ${cards.join('\n')}
 </ul>`);
   }
   const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
+${searchBox(group)}
 ${chips(groups, group)}
+${searchOutput()}
+<div id="chant-list">
 <section class="group sets">
 <p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording.</p>
 ${out.join('\n')}
-</section>`;
-  return layout(group.title, body);
+</section>
+</div>`;
+  return layout(group.title, body, SEARCH_SCRIPT);
 }
 
 export function handWrittenPage(page: Page, body: string): string {
