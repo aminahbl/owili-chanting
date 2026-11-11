@@ -31,6 +31,8 @@ export interface Ref {
 export interface Section {
   title?: string;
   lines: Line[];
+  /** The whole section is chanted this many times. */
+  repeat?: number;
   refs?: Ref[];
 }
 

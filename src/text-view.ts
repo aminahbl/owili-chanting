@@ -5,15 +5,27 @@ import type { LineClock } from './clock.ts';
 
 export interface Step {
   line: HTMLElement;
-  /** Which chanting of the line this is, from 1. */
+  /** Which chanting of the line, or of its repeated section, this is, from 1. */
   repeat: number;
   of: number;
+  /** The "×3" shown for the repeat, on the line or after its section. */
+  count: HTMLElement | null;
 }
 
+// A repeated section's lines are stepped through once per chanting.
 export function readSteps(root: ParentNode): Step[] {
-  return [...root.querySelectorAll<HTMLElement>('.line[data-line]')].flatMap((line) => {
-    const of = Number(line.dataset.repeat ?? 1);
-    return Array.from({ length: of }, (_, i) => ({ line, repeat: i + 1, of }));
+  return [...root.querySelectorAll<HTMLElement>('.chant-section')].flatMap((section) => {
+    const lines = [...section.querySelectorAll<HTMLElement>('.line[data-line]')];
+    const passes = Number(section.dataset.repeat ?? 1);
+    const sectionCount = section.querySelector<HTMLElement>(':scope > .section-repeat [aria-hidden]');
+    return Array.from({ length: passes }, (_, pass) =>
+      lines.flatMap((line) => {
+        const of = Number(line.dataset.repeat ?? 1);
+        if (of === 1) return [{ line, repeat: pass + 1, of: passes, count: sectionCount }];
+        const count = line.querySelector<HTMLElement>('.repeat [aria-hidden]');
+        return Array.from({ length: of }, (_, i) => ({ line, repeat: i + 1, of, count }));
+      }),
+    ).flat();
   });
 }
 
@@ -87,11 +99,10 @@ export class TextView {
     return this.steps.findIndex((s) => s.line === line);
   }
 
-  // While a repeated line is current, its "×3" becomes "2 of 3".
+  // While a repeated line or section is current, its "×3" becomes "2 of 3".
   private mark(step: Step, on: boolean) {
     step.line.classList.toggle('current', on);
-    const count = step.line.querySelector('.repeat [aria-hidden]');
-    if (count) count.textContent = on ? `${step.repeat} of ${step.of}` : `×${step.of}`;
+    if (step.count) step.count.textContent = on ? `${step.repeat} of ${step.of}` : `×${step.of}`;
   }
 
   private scrollToCurrent() {

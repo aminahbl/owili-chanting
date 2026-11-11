@@ -119,7 +119,8 @@ export async function loadTimings(chants: Chant[], sets: ChantSet[]): Promise<Ti
       if (slug !== chant.slug) throw fail(`gives ${id} the slug ${slug ?? '(none)'}, but the chant's slug is ${chant.slug}.`);
       const part = chantPart(text, id) ?? '';
       const lines = chant.sections.flatMap((s) => s.lines);
-      const lineIds = lines.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
+      const chanted = chant.sections.flatMap((s) => Array.from({ length: s.repeat ?? 1 }, () => s.lines).flat());
+      const lineIds = chanted.flatMap((l) => ('pali' in l ? Array<number>(l.repeat ?? 1).fill(l.id) : []));
       const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
       const read = readLrc(part, id, lineIds, cueIds);
       if (typeof read === 'string') throw fail(`${slug}: ${read}`);

@@ -790,6 +790,12 @@ icon-moon {
   white-space: nowrap;
 }
 
+.section-repeat {
+  margin: 0;
+  text-align: end;
+  max-width: 38em;
+}
+
 .cue {
   margin: 0 0 0.9rem;
   font-style: italic;

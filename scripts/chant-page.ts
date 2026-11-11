@@ -41,11 +41,11 @@ function suttaCentral(ref: Ref): string {
   return ref.uid ? `<a href="https://suttacentral.net/${ref.uid}">${label}</a>` : label;
 }
 
+const repeatCount = (times: number) => `<span aria-hidden="true">×${times}</span><span class="sr-only">${times} times</span>`;
+
 function chantingLine(line: ChantingLine, labelled: boolean): string {
   const label = labelled ? '<span class="leader-label">Leader</span>' : '';
-  const repeat = line.repeat
-    ? ` <span class="repeat"><span aria-hidden="true">×${line.repeat}</span><span class="sr-only">${line.repeat} times</span></span>`
-    : '';
+  const repeat = line.repeat ? ` <span class="repeat">${repeatCount(line.repeat)}</span>` : '';
   const en = line.en ? `<p class="en">${forms(line.en, escapeHtml)}</p>` : '';
   const repeats = line.repeat ? ` data-repeat="${line.repeat}"` : '';
   return `<div class="line${line.leader ? ' leader' : ''}" data-line="${line.id}"${repeats}>${label}<p class="pali" lang="pi">${forms(line.pali, pali)}${repeat}</p>${en}</div>`;
@@ -66,8 +66,10 @@ function lines(list: Line[]): string {
 // On a set page, each chant's title is an h2, so its section titles are h3.
 function section(s: Section, heading: 'h2' | 'h3' = 'h2'): string {
   const title = s.title ? `<${heading}>${escapeHtml(s.title)}</${heading}>\n` : '';
-  return `<section class="chant-section">
-${title}${lines(s.lines)}
+  const repeats = s.repeat ? ` data-repeat="${s.repeat}"` : '';
+  const repeat = s.repeat ? `\n<p class="repeat section-repeat">${repeatCount(s.repeat)}</p>` : '';
+  return `<section class="chant-section"${repeats}>
+${title}${lines(s.lines)}${repeat}
 </section>`;
 }
 
