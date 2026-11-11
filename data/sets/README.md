@@ -5,7 +5,7 @@ After any change, run `npm run check` and `npm run build`. The build names anyth
 ## Add a set
 
 1. Take the next number, and add a line for it at the end of [ids.ts](../ids.ts).
-2. Add a module here named `<number>-<slug>.ts` that exports `set` with `satisfies ChantSet`.
+2. Add a module here named `<place>-<number>-<title>.ts` that exports `set` with `satisfies ChantSet`. The slug is `<place>-<title>`.
 3. Fill in `place` (add a new one to [places.ts](../places.ts)), `order`, `chants` and `anchorRecording`.
 
 ## Change a set's chants

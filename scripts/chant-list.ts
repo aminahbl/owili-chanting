@@ -13,14 +13,14 @@ export interface Entry {
   card: CardData;
 }
 
-/** The named export of each module in a data folder. The build stops unless each file is named <id>-<slug>.ts. */
-async function loadModules<T extends { id: string; slug: string }>(folder: string, name: string): Promise<T[]> {
+/** The named export of each module in a data folder. The build stops unless each file has the name `fileName` gives it. */
+async function loadModules<T>(folder: string, name: string, fileName: (item: T) => string): Promise<T[]> {
   const dir = new URL(`../${folder}/`, import.meta.url);
   const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
   return Promise.all(
     files.map(async (file) => {
       const item = ((await import(new URL(file, dir).href)) as Record<string, T>)[name];
-      const expected = `${item.id}-${item.slug}.ts`;
+      const expected = fileName(item);
       if (file !== expected) throw new Error(`${folder}/${file}: should be named ${expected}.`);
       return item;
     }),
@@ -32,7 +32,7 @@ async function loadModules<T extends { id: string; slug: string }>(folder: strin
  * unknown chant number or names a chant twice, and on a chant in no category.
  */
 export async function loadChants(): Promise<Chant[]> {
-  const chants = await loadModules<Chant>('data/chants/texts', 'chant');
+  const chants = await loadModules<Chant>('data/chants/texts', 'chant', (c) => `${c.id}-${c.slug}.ts`);
   const numbers = new Set(chants.map((c) => c.id));
   for (const group of groups) {
     const unknown = group.chants.filter((id) => !numbers.has(id));
@@ -50,12 +50,19 @@ export function groupsOf(chant: Chant): Group[] {
   return groups.filter((g) => g.chants.includes(chant.id));
 }
 
+/** A set's file name, <place>-<id>-<title>.ts, where the title is the slug after its place prefix. */
+function setFileName(set: ChantSet): string {
+  const prefix = `${set.place}-`;
+  if (!set.slug.startsWith(prefix)) throw new Error(`data/sets: ${set.id}'s slug ${set.slug} should start with ${prefix}`);
+  return `${prefix}${set.id}-${set.slug.slice(prefix.length)}.ts`;
+}
+
 /** The sets in data/sets/. The build stops on a set with no chants, a repeated chant or an unknown chant number. */
 export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
-  const sets = await loadModules<ChantSet>('data/sets', 'set');
+  const sets = await loadModules<ChantSet>('data/sets', 'set', setFileName);
   const numbers = new Set(chants.map((c) => c.id));
   for (const set of sets) {
-    const file = `data/sets/${set.id}-${set.slug}.ts`;
+    const file = `data/sets/${setFileName(set)}`;
     const unknown = set.chants.filter((id) => !numbers.has(id));
     if (set.chants.length === 0) throw new Error(`${file}: has no chants.`);
     // A timing file gives each chant one block, found by the chant's number.

@@ -49,7 +49,7 @@ The build stops if a category names an unknown chant or names a chant twice, or 
 
 ## Sangha sets
 
-A set is a module in `sets/` named `<id>-<slug>.ts`, like a chant's. It exports `set`, typed with `satisfies ChantSet` from [types.ts](types.ts). It gives:
+A set is a module in `sets/` named `<place>-<id>-<title>.ts`, for example `lbv-0130-evening-puja.ts`. The title part is the slug without its place prefix, so a set's slug must start with its place. The module exports `set`, typed with `satisfies ChantSet` from [types.ts](types.ts). It gives:
 
 - its number and slug from the ledger;
 - its title;
@@ -61,7 +61,7 @@ The build writes the set's page to `/sets/<slug>`. The Sangha sets page lists th
 
 A new place or lineage is added to `places.ts` in display order. A place can only be removed once no set names it; otherwise `npm run check` fails.
 
-The build stops if a set's file name does not match its number and slug, or if the set has no chants, names an unknown chant or names a chant twice.
+The build stops if a set's slug does not start with its place, if its file name does not match its place, number and slug, or if the set has no chants, names an unknown chant or names a chant twice.
 
 ## Timing files
 
