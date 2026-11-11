@@ -144,4 +144,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0137', slug: 'vajja-pakasana' },
   { id: '0138', slug: 'offering-of-flowers-to-the-triple-gem' },
   { id: '0139', slug: 'pamsukula-for-the-living' },
+  { id: '0140', slug: 'pamsukula-for-the-dead-short' },
 ];

@@ -8,7 +8,8 @@
 #   patthana-matika-patha
 #   vipassana-bhumi-patha
 #   karaniya-metta-sutta
-# Old rows not matched to a chant: 175-194.
+#   pamsukula-for-the-dead-short
+# Old rows not matched to a chant: 187-194.
 # vipassana-bhumi-patha: estimated from the rhythm model, to be checked by ear: 5, 7, 9, 19, 20, 21, 24, 26, 29, 31, 33, 35, 37, 39, 41, 43.
 
 [chant:0001 pubba-bhaga-nama-kara-patha]
@@ -196,4 +197,17 @@
 [13:13.15]39 Sīlavā dassanena sampanno
 [13:16.97]40 Kāmesu vineyya gedhaṁ
 [13:20.74]41 Na hi jātu gabbha-seyyaṁ punaretī'ti
-[13:27.32]
+
+[chant:0140 pamsukula-for-the-dead-short]
+[13:27.32]1 Aniccā vata saṅkhārā
+[13:35.19]2 Uppāda-vaya-dhammino
+[13:40.14]3 Uppajjitvā nirujjhanti
+[13:44.20]4 Tesaṁ vūpasamo sukho.
+[13:48.34]1 Aniccā vata saṅkhārā
+[13:52.21]2 Uppāda-vaya-dhammino
+[13:55.62]3 Uppajjitvā nirujjhanti
+[13:59.84]4 Tesaṁ vūpasamo sukho.
+[14:03.79]1 Aniccā vata saṅkhārā
+[14:07.40]2 Uppāda-vaya-dhammino
+[14:11.54]3 Uppajjitvā nirujjhanti
+[14:15.27]4 Tesaṁ vūpasamo sukho.
