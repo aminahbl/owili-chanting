@@ -246,13 +246,17 @@ function slides(): string {
 </div>
 <div class="slide-bar" id="slide-bar">
 <div class="slide-controls">
-  <button class="icon-button audio-link" data-audio="link" aria-pressed="true" title="Lock the audio to the slides" hidden><icon-lock-open size="16"></icon-lock-open><icon-lock size="16"></icon-lock><span class="sr-only">Lock the audio to the slides</span></button>
-  <button class="icon-button" id="slide-previous" title="Previous line (←)"><icon-chevron-left></icon-chevron-left><span class="sr-only">Previous line</span></button>
-  <button class="start" id="slide-start">Start</button>
-  <button class="icon-button" id="slide-next" title="Next line (→)"><icon-chevron-right></icon-chevron-right><span class="sr-only">Next line</span></button>
-  <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
-  <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
-  <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
+  <div class="slide-group">
+    <button class="icon-button audio-link" data-audio="link" aria-pressed="true" title="Lock the audio to the slides" hidden><icon-lock-open size="16"></icon-lock-open><icon-lock size="16"></icon-lock><span class="sr-only">Lock the audio to the slides</span></button>
+    <button class="icon-button" id="slide-previous" title="Previous line (←)"><icon-chevron-left></icon-chevron-left><span class="sr-only">Previous line</span></button>
+    <button class="start" id="slide-start">Start</button>
+    <button class="icon-button" id="slide-next" title="Next line (→)"><icon-chevron-right></icon-chevron-right><span class="sr-only">Next line</span></button>
+  </div>
+  <div class="slide-group">
+    <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
+    <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
+    <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
+  </div>
   ${audioControls()}
 </div>
 <p class="slide-position"><input class="slide-line" id="slide-line" inputmode="numeric" enterkeyhint="go" autocomplete="off" placeholder="–" aria-label="Go to line" title="Go to line"> / <span class="slide-total"></span></p>
