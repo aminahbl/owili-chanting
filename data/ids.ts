@@ -145,4 +145,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0138', slug: 'offering-of-flowers-to-the-triple-gem' },
   { id: '0139', slug: 'pamsukula-for-the-living' },
   { id: '0140', slug: 'pamsukula-for-the-dead-short' },
+  { id: '0141', slug: 'mahamevnawa-main-puja' },
 ];

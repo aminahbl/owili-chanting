@@ -12,6 +12,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0125", // amaravati-evening-chanting
     "0126", // amaravati-twelve-parittas
     "0127", // amaravati-funeral-chanting
+    "0141", // mahamevnawa-main-puja
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // pubba-bhaga-nama-kara-patha
