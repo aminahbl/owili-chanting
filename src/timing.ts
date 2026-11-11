@@ -4,11 +4,23 @@
 // again. A set page holds several chants, and a timing file gives each chant
 // its own `[chant:…]` block: each block is read against its chant's lines,
 // because line and cue numbers repeat between chants, and the results are
-// joined in page order. A chant page is the case of one chant.
+// joined in page order. A chant page is the case of one chant. A file fits
+// one order of chanting, named by its `chanting` tag (see chantingOrder); a
+// file without the tag, such as a recording's, is for the Pali.
 import { chantPart, formatTime, lrcTags, readLrc, type Schedule } from './lrc.ts';
 import { readChantSettings, writeChantSettings } from './settings.ts';
 import { rhythmDurations } from './tempo.ts';
-import { visibleText, type Step } from './text-view.ts';
+import { chantingOrder, stepText, type Step } from './text-view.ts';
+
+const ORDER_NAMES: Record<string, string> = {
+  pali: 'chanting the Pali',
+  translation: 'chanting the translation',
+  'pali-translation': 'chanting the Pali, then the translation',
+  'translation-pali': 'chanting the translation, then the Pali',
+};
+
+const orderOf = (lrc: string) => lrcTags(lrc).chanting ?? 'pali';
+const fitsChanting = (lrc: string) => orderOf(lrc) === chantingOrder();
 
 /** One chant on the page: its number and slug, its steps and its cues' line numbers. */
 export interface TimingPart {
@@ -20,10 +32,12 @@ export interface TimingPart {
 
 /** The rhythm model's timing, as LRC, with one block per chant. */
 function rhythmLrc(title: string, parts: TimingPart[]): string {
+  const order = chantingOrder();
   const rows = [
     `[ti:${title}]`,
+    ...(order === 'pali' ? [] : [`[chanting:${order}]`]),
     '# Default timing from the rhythm model at the natural speed.',
-    '# Each row: [minutes:seconds] when the line starts, its ID, then its Pali, which is not read on import.',
+    '# Each row: [minutes:seconds] when the line starts, its ID, then the text chanted, which is not read on import.',
     '# A row with a time and no text ends the line before it.',
   ];
   let time = 0;
@@ -31,8 +45,7 @@ function rhythmLrc(title: string, parts: TimingPart[]): string {
     rows.push(`[chant:${part.id} ${part.slug}]`);
     const durations = rhythmDurations(part.steps);
     part.steps.forEach((step, i) => {
-      const pali = visibleText(step.line.querySelector('.pali') ?? step.line).trim();
-      rows.push(`${formatTime(time)}${step.line.dataset.line} ${pali}`);
+      rows.push(`${formatTime(time)}${step.line.dataset.line} ${stepText(step)}`);
       time += durations[i];
     });
   }
@@ -59,12 +72,20 @@ export class Timing {
     return readChantSettings(this.pageId).timing;
   }
 
+  /** The recording's timing, while the Pali alone is chanted. */
+  private get recordedInUse(): string | null {
+    return this.recorded && fitsChanting(this.recorded) ? this.recorded : null;
+  }
+
   get name(): string {
-    if (this.imported) return this.imported.name;
-    if (!this.recorded) return 'Default (rhythm model)';
-    const tags = lrcTags(this.recorded);
-    const by = tags.place ?? tags.performers;
-    return by ? `Default (${by} recording)` : 'Default (recording)';
+    const imported = this.imported;
+    if (imported && fitsChanting(imported.lrc)) return imported.name;
+    const recorded = this.recordedInUse;
+    const by = recorded ? (lrcTags(recorded).place ?? lrcTags(recorded).performers) : undefined;
+    let name = 'Default (rhythm model)';
+    if (recorded) name = by ? `Default (${by} recording)` : 'Default (recording)';
+    if (!imported) return name;
+    return `${name}. The imported ${imported.name} is set aside: it is for ${ORDER_NAMES[orderOf(imported.lrc)] ?? orderOf(imported.lrc)}`;
   }
 
   get isImported(): boolean {
@@ -93,8 +114,8 @@ export class Timing {
   // file can fail to fit, for example after the text changed; it then gives way
   // to the default. Null means the rhythm model.
   private inUse(): { lrc: string; schedule: Schedule } | null {
-    for (const lrc of [this.imported?.lrc, this.recorded]) {
-      if (!lrc) continue;
+    for (const lrc of [this.imported?.lrc, this.recordedInUse]) {
+      if (!lrc || !fitsChanting(lrc)) continue;
       const read = this.read(lrc);
       if (typeof read !== 'string') return { lrc, schedule: read };
     }
@@ -120,12 +141,16 @@ export class Timing {
     return this.inUse() !== null;
   }
 
+  /** The file in use, or the rhythm model's timing. */
   lrc(): string {
-    return this.imported?.lrc ?? this.recorded ?? rhythmLrc(this.title, this.parts);
+    return this.inUse()?.lrc ?? rhythmLrc(this.title, this.parts);
   }
 
   /** Stores the file as imported if it fits every chant on the page; otherwise returns the reason it does not. */
   import(name: string, text: string): string | null {
+    if (!fitsChanting(text)) {
+      return `This timing is for ${ORDER_NAMES[orderOf(text)] ?? orderOf(text)}, but the settings are for ${ORDER_NAMES[chantingOrder()]}.`;
+    }
     const read = this.read(text);
     if (typeof read === 'string') return read;
     writeChantSettings(this.pageId, { timing: { name, lrc: text } });

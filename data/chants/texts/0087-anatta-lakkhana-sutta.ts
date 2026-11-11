@@ -106,7 +106,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 38, pali: "[Taṁ kiṁ maññatha bhikkhave] rūpam niccaṁ vā aniccaṁ vā'ti.", en: "What do you think, bhikkhus: is form permanent or impermanent?" },
+        { id: 38, pali: "{Taṁ kiṁ maññatha bhikkhave} rūpam niccaṁ vā aniccaṁ vā'ti.", en: "{What do you think, bhikkhus:} is form permanent or impermanent?" },
         { id: 39, pali: "Aniccaṁ bhante.", en: "Impermanent, Venerable Sir." },
         { id: 40, pali: "Yam panāniccaṁ, dukkhaṁ vā taṁ sukhaṁ vā'ti.", en: "Now is what is impermanent suffering or happiness?" },
         { id: 41, pali: "Dukkhaṁ bhante.", en: "Suffering, Venerable Sir." },
@@ -181,7 +181,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 73, pali: "[Tasmā tiha bhikkhave] yaṁ kiñci rūpaṁ atītānāgata-paccuppannaṁ ajjhattaṁ vā bahiddhā", en: "Therefore, bhikkhus, any form whatever, past, future or present, internal or external," },
+        { id: 73, pali: "{Tasmā tiha bhikkhave} yaṁ kiñci rūpaṁ atītānāgata-paccuppannaṁ ajjhattaṁ vā bahiddhā", en: "{Therefore, bhikkhus,} any form whatever, past, future or present, internal or external," },
         { id: 74, pali: "vā oḷārikaṁ vā sukhumaṁ vā hīnaṁ vā paṇītaṁ vā yandūre santike vā,", en: "gross or subtle, inferior or superior, far or near:" },
         { id: 75, pali: "sabbaṁ rūpaṁ netaṁ mama, nesoham'asmi, na me so attā'ti,", en: "all form: 'This is not mine, this I am not, this is not my self':" },
         { id: 76, pali: "evametaṁ yathābhūtaṁ sammappaññāya daṭṭhabbaṁ.", en: "so should it be seen as it really is with right wisdom." },
@@ -221,7 +221,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 93, pali: "[Evaṁ passaṁ bhikkhave] sutvā ariyasāvako rūpasmim pi nibbindati,", en: "Seeing thus, bhikkhus, the instructed noble disciple becomes disenchanted with form," },
+        { id: 93, pali: "{Evaṁ passaṁ bhikkhave} sutvā ariyasāvako rūpasmim pi nibbindati,", en: "{Seeing thus, bhikkhus,} the instructed noble disciple becomes disenchanted with form," },
         { id: 94, pali: "vedanāya pi nibbindati, saññāya pi nibbindati, saṅkhāresu pi nibbindati,", en: "with feeling, with perception, with formations," },
         { id: 95, pali: "viññāṇasmim pi nibbindati, nibbindaṁ virajjati, virāgā vimuccati,", en: "with consciousness. Disenchanted, they become dispassionate; through dispassion they are released;" },
         { id: 96, pali: "vimuttasmiṁ vimuttam iti ñāṇaṁ hoti, khīṇā jāti, vusitaṁ brahmacariyaṁ,", en: "when released, they know 'released'. They understand: 'Birth is ended, the holy life has been lived," },
@@ -230,7 +230,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 98, pali: "[Idam-avoca bhagavā.] Attamanā pañcavaggiyā bhikkhū", en: "This is what the Gracious One said. Pleased, the group of five bhikkhus" },
+        { id: 98, pali: "{Idam-avoca bhagavā.} Attamanā pañcavaggiyā bhikkhū", en: "{This is what the Gracious One said.} Pleased, the group of five bhikkhus" },
         { id: 99, pali: "bhagavato bhāsitaṁ abhinanduṁ.", en: "delighted in the Gracious One's words." },
         { id: 100, pali: "Imasmiñca pana veyyākaraṇasmiṁ bhaññamāne pañcavaggiyānaṁ", en: "And while this discourse was being spoken, the minds of the group of five" },
         { id: 101, pali: "bhikkhūnaṁ anupādāya āsavehi cittāni vimucciṁsū'ti.", en: "bhikkhus were released from the taints through not clinging." },

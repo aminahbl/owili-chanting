@@ -16,7 +16,7 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "[Evaṁ me sutaṁ] Ekaṁ samayaṁ bhagavā sāvatthiyaṁ", en: "Thus have I heard. At one time the Gracious One was staying near Sāvatthī," },
+        { id: 1, pali: "{Evaṁ me sutaṁ} Ekaṁ samayaṁ bhagavā sāvatthiyaṁ", en: "{Thus have I heard.} At one time the Gracious One was staying near Sāvatthī," },
         { id: 2, pali: "viharati jetavane Anāthapiṇḍikassa ārāme.", en: "in Jeta's Grove, Anāthapiṇḍika's monastery." },
         { id: 3, pali: "Tena kho pana samayena āyasmā Girimānando ābādhiko hoti dukkhito bāḷha-gilāno.", en: "Now at that time Venerable Girimānanda was sick, suffering, gravely ill." },
         { id: 4, pali: "Atha kho āyasmā Ānando yena bhagavā ten'upasaṅkami,", en: "Then Venerable Ānanda approached the Gracious One," },

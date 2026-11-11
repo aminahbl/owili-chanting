@@ -26,8 +26,9 @@ import { stepDurations, stepPauses } from './lrc.ts';
 import { forgetAudio, keepsHandles, pickAudio, readAudio, saveAudio, type AudioHandle } from './audio-store.ts';
 import { Recording, type Link } from './recording.ts';
 import { rhythmDurations, Tempo } from './tempo.ts';
-import { readSteps, TextView } from './text-view.ts';
+import { readSteps, TextView, type Step } from './text-view.ts';
 import { Timing, type TimingPart } from './timing.ts';
+import { Translations } from './translation.ts';
 import { keepScreenOn } from './wake-lock.ts';
 
 const root = document.documentElement;
@@ -38,7 +39,7 @@ const settings = document.querySelector<HTMLElement>('#settings');
 const shortcuts = document.querySelector<HTMLElement>('#shortcuts');
 const slidesRoot = document.querySelector<HTMLElement>('#slides');
 const back = document.querySelector<HTMLElement>('#back-to-line');
-let afterSettingChange = () => {};
+let afterSettingChange = (_name: SettingName) => {};
 
 const isSetting = (name: string): name is SettingName => (SETTING_NAMES as readonly string[]).includes(name);
 
@@ -48,7 +49,7 @@ function apply(name: SettingName, value: string) {
   // The text view's size is a number, which the CSS cannot read from the attribute.
   if (name === 'size') root.style.setProperty('--pali-size', value ? `${value}rem` : '');
   writeSetting(name, value);
-  afterSettingChange();
+  afterSettingChange(name);
 }
 
 // A checkbox stores its value when checked and its data-unchecked value when
@@ -112,6 +113,13 @@ function download(name: string, text: string) {
 }
 
 function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLElement) {
+  // A set page has a block for each chant; a chant page is one block.
+  const setBlocks = [...chant.querySelectorAll<HTMLElement>('.set-chant')];
+  const blocks = setBlocks.length ? setBlocks : [chant];
+  // The translation is filled in first, as the steps depend on which lines have one.
+  const translations = new Translations(
+    blocks.map((block) => ({ id: block.dataset.chant ?? '', slug: block.dataset.slug ?? '', block })),
+  );
   const steps = readSteps(chant);
   const textView = new TextView(steps, backButton, document.querySelector('.chant-header'));
   const title = chant.querySelector('h1')?.textContent ?? '';
@@ -143,13 +151,12 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
       savedIndex = c.index;
       const step = steps[c.index];
       const chantOfLine = step.line.closest<HTMLElement>('[data-chant]')?.dataset.chant ?? chantId;
-      writeChantSettings(chantId, { position: { chant: chantOfLine, line: Number(step.line.dataset.line), repeat: step.repeat } });
+      const line = Number(step.line.dataset.line);
+      writeChantSettings(chantId, { position: { chant: chantOfLine, line, part: step.part, repeat: step.repeat } });
     }
   });
   const tempo = new Tempo(clock, steps, chantId);
-  // A set page has a block for each chant; a chant page is one block.
-  const blocks = [...chant.querySelectorAll<HTMLElement>('.set-chant')];
-  const parts: TimingPart[] = (blocks.length ? blocks : [chant]).map((block) => ({
+  const parts: TimingPart[] = blocks.map((block) => ({
     id: block.dataset.chant ?? '',
     slug: block.dataset.slug ?? '',
     steps: steps.filter((s) => block.contains(s.line)),
@@ -208,7 +215,30 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   }
   useSettings();
   slideView.show(clock);
-  afterSettingChange = useSettings;
+
+  // The steps follow the chanting setting and which lines have a translation,
+  // so they are read again when either changes. The array is changed in place,
+  // as the views and the tempo hold it, and the clock stays on the same line.
+  function readStepsAgain() {
+    const current = clock.status === 'idle' ? null : steps[clock.index];
+    clock.pause();
+    steps.splice(0, steps.length, ...readSteps(chant));
+    parts.forEach((part, i) => (part.steps = steps.filter((s) => blocks[i].contains(s.line))));
+    clock.count = steps.length;
+    savedIndex = -1;
+    if (!current) return;
+    const sameLine = (s: Step) => s.line === current.line;
+    const same = steps.findIndex((s) => sameLine(s) && s.part === current.part && s.repeat === current.repeat);
+    clock.goTo(same >= 0 ? same : steps.findIndex(sameLine));
+  }
+
+  afterSettingChange = (name) => {
+    if (name === 'chanting' || name === 'order') {
+      readStepsAgain();
+      showTiming();
+      showTranslation();
+    } else useSettings();
+  };
 
   // In the text view, a clock that has not started begins at the first line in view.
   const startIndex = () => (inSlides() ? clock.index : textView.firstVisible());
@@ -310,6 +340,39 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   useDefaultButton?.addEventListener('click', () => {
     timing.useDefault();
     showTiming();
+  });
+
+  // The translation in use: the site's English or an imported file.
+  const translationName = document.querySelector<HTMLElement>('.translation-name');
+  const translationError = document.querySelector<HTMLElement>('.translation-error');
+  const translationImport = document.querySelector<HTMLInputElement>('#translation-import');
+  const useSiteButton = document.querySelector<HTMLButtonElement>('#translation-site');
+  function showTranslation(message = '') {
+    if (translationName) translationName.textContent = translations.description;
+    if (useSiteButton) useSiteButton.hidden = !translations.isImported;
+    if (translationError) translationError.textContent = message;
+  }
+  // After an import or its removal, the lines' text has changed.
+  function afterTranslationChange(message = '') {
+    readStepsAgain();
+    slideView.relayout();
+    showTiming();
+    showTranslation(message);
+  }
+  showTranslation();
+  document.querySelector('#translation-export')?.addEventListener('click', () => download(`${slug}-translation.txt`, translations.export()));
+  document.querySelector('#translation-import-button')?.addEventListener('click', () => translationImport?.click());
+  translationImport?.addEventListener('change', async () => {
+    const file = translationImport.files?.[0];
+    translationImport.value = '';
+    if (!file) return;
+    const result = translations.import(file.name, await file.text());
+    if ('error' in result) showTranslation(result.error);
+    else afterTranslationChange(result.note);
+  });
+  useSiteButton?.addEventListener('click', () => {
+    translations.useSite();
+    afterTranslationChange();
   });
 
   // The user's audio file, in either view (F11). While it is linked to the
@@ -513,7 +576,8 @@ document.addEventListener('keydown', (event) => {
     return;
   }
   const key = event.key.toLowerCase();
-  if (key === 't' && form?.querySelector('[name="translation"]')) toggleTranslation();
+  // When both texts are chanted there is no shadow line to show or hide.
+  if (key === 't' && form?.querySelector('[name="translation"]') && root.dataset.chanting !== 'both') toggleTranslation();
   else if (key === 'i') info?.togglePopover();
   else if (key === 's') settings?.togglePopover();
   else if (key === '?') shortcuts?.togglePopover();

@@ -4,15 +4,15 @@
 // the current line passes the block's end, the page turns to the next block.
 // Before the chant starts, the page shows only the title and the Pali title.
 // The chant's notes are shown as cues above its first line. The lines, section
-// titles, cues and solo labels are copied from the text view, so forms and
-// translation follow the same settings. A leader line is marked by its curly
+// titles, cues and solo labels are copied from the text view, so forms,
+// translation and chanting follow the same settings. A leader line is marked by its curly
 // brackets, so it has no label. During a timed pause after a line (spec 09, F5),
 // the line is dimmed; a pause with a cue, such as a bow, shows the next line's
 // block with the cue marked, since the cue stands above the line it comes before.
 import type { LineClock } from './clock.ts';
 import { escapeHtml } from './html.ts';
 import { SIZE_RANGES } from './settings.ts';
-import type { Step } from './text-view.ts';
+import { chantedParts, type Part, type Step } from './text-view.ts';
 
 const MAX_BLOCK_LINES = 4;
 /** What the slide shows before the clock has started. */
@@ -27,10 +27,10 @@ interface Cue {
 }
 
 interface PageLine {
-  /** The Pali and translation. */
+  /** The Pali & translation. */
   html: string;
-  /** The Pali alone, for the preview. */
-  pali: string;
+  /** The first text chanted, for the preview. */
+  preview: string;
   section: string;
   /** The cues between the line before and this one. */
   cues: Cue[];
@@ -43,11 +43,12 @@ function part(root: HTMLElement, selector: string): HTMLElement {
   return el;
 }
 
-// The line's Pali without its "×3", which the slide shows as "1 of 3".
-function paliHtml(line: HTMLElement): string {
-  const pali = line.querySelector('.pali')?.cloneNode(true) as HTMLElement | undefined;
-  pali?.querySelector('.repeat')?.remove();
-  return pali?.innerHTML ?? '';
+// One of the line's texts, with its language, without its "×3", which the slide shows as "1 of 3".
+function partHtml(line: HTMLElement, part: Part): string {
+  const text = line.querySelector(`.${part}`)?.cloneNode(true) as HTMLElement | undefined;
+  text?.querySelector('.repeat')?.remove();
+  const lang = text?.lang ? ` lang="${text.lang}"` : '';
+  return `<p class="${part}"${lang}>${text?.innerHTML ?? ''}</p>`;
 }
 
 // A section without a title continues the titled section before it. On a set
@@ -162,7 +163,7 @@ export class SlideView {
     if (!this.page.clientHeight) return;
     const lines = this.pageLines();
     const d = document.documentElement.dataset;
-    const key = [this.page.clientWidth, this.page.clientHeight, d.form, d.translation, d.slideSize].join();
+    const key = [this.page.clientWidth, this.page.clientHeight, d.form, d.translation, d.chanting, d.order, d.slideSize].join();
     if (key !== this.key) {
       this.key = key;
       this.fit(lines);
@@ -182,8 +183,8 @@ export class SlideView {
     const count = step && step.of > 1 ? `${step.repeat} of ${step.of}` : '';
     this.page.classList.toggle('resting', this.rest !== undefined);
     for (const el of this.page.querySelectorAll<HTMLElement>('.slide-page-cue')) el.classList.toggle('current', el.dataset.cue === String(cue));
-    if (nextLine) this.mark(-1, false, '');
-    else this.mark(block === TITLE ? 0 : number - this.starts[block], block !== TITLE, count);
+    if (nextLine) this.mark(-1, false, '', 'pali');
+    else this.mark(block === TITLE ? 0 : number - this.starts[block], block !== TITLE, count, step?.part ?? 'pali');
   }
 
   private pageLines(): PageLine[] {
@@ -198,11 +199,9 @@ export class SlideView {
     }
     this.trailingCues = cues;
     return this.lines.map((line) => {
-      const pali = paliHtml(line);
-      const en = line.querySelector('.en')?.innerHTML ?? '';
       return {
-        html: `<p class="pali" lang="pi">${pali}</p><p class="en">${en}</p>`,
-        pali,
+        html: partHtml(line, 'pali') + partHtml(line, 'en'),
+        preview: partHtml(line, chantedParts(line)[0]),
         section: sectionTitle(line),
         cues: cuesBefore.get(line) ?? [],
         solo: line.classList.contains('solo'),
@@ -271,7 +270,7 @@ export class SlideView {
     const preview = block === TITLE ? undefined : lines[end];
     if (preview) {
       const section = opensSection(lines, end) ? `<p class="slide-page-section">${escapeHtml(preview.section)}</p>` : '';
-      items.push(`<div class="slide-page-preview">${section}<p class="pali" lang="pi">${preview.pali}</p></div>`);
+      items.push(`<div class="slide-page-preview">${section}${preview.preview}</div>`);
     } else if (block !== TITLE) {
       items.push(...this.trailingCues.map(cueHtml));
     }
@@ -300,10 +299,18 @@ export class SlideView {
     });
   }
 
+  /** Redraws the current slide after the lines' text changed, for example after a translation is imported. */
+  relayout() {
+    this.key = '';
+    this.refresh();
+  }
+
   // The bar and the full colour move to the current line; the title has no bar.
-  private mark(index: number, isLine: boolean, count: string) {
+  // When both texts are chanted, the bar covers the one being chanted.
+  private mark(index: number, isLine: boolean, count: string, part: Part) {
     const lines = [...this.page.querySelectorAll<HTMLElement>('.slide-page-line')];
     lines.forEach((line, i) => line.classList.toggle('current', i === index));
+    for (const text of this.page.querySelectorAll('.current-part')) text.classList.remove('current-part');
     const line = lines[index];
     const bar = this.page.querySelector<HTMLElement>('.slide-page-bar');
     const label = this.page.querySelector<HTMLElement>('.slide-page-count');
@@ -311,8 +318,11 @@ export class SlideView {
     bar.hidden = !isLine || !line;
     label.textContent = '';
     if (!line) return;
-    bar.style.top = `${line.offsetTop}px`;
-    bar.style.height = `${line.querySelector('.slide-page-text')?.clientHeight ?? line.offsetHeight}px`;
+    const both = document.documentElement.dataset.chanting === 'both';
+    const chanted = both ? line.querySelector<HTMLElement>(`.slide-page-text > .${part}:not(:empty)`) : null;
+    chanted?.classList.add('current-part');
+    bar.style.top = `${chanted?.offsetTop ?? line.offsetTop}px`;
+    bar.style.height = `${chanted?.offsetHeight ?? line.querySelector('.slide-page-text')?.clientHeight ?? line.offsetHeight}px`;
     label.textContent = count;
     label.style.top = `${line.offsetTop}px`;
   }

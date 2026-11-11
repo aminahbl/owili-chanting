@@ -11,18 +11,18 @@
   The home page lists every chant by category. The category buttons under the
   search box show one category at a time. The search box searches the titles and
   the Pali of every chant, and on a category’s page it searches that category
-  only. On the Sangha sets page it finds sets by their title, place and
-  lineage, and by the titles and Pali of their chants. Long lists continue on further pages, linked at the foot of the list.
+  only. On the Sangha sets page it finds sets by their title, place and lineage,
+  and by the titles and Pali of their chants. Long lists continue on further
+  pages, linked at the foot of the list.
 </p>
 
 <p>
-  <strong>Sangha sets</strong>, the last category button, lists sequences of
-  chants as a monastery or centre chants them, such as Amaravati Monastery’s
-  morning chanting, under the lineage and the monastery. A set opens as one page
-  that holds its chants in order, each under its own title, so it can be chanted
-  straight through. A set page works like a chant page, in both views and with
-  every way of moving on. Its info panel lists its chants, with links to their
-  own pages.
+  <strong>Sangha sets</strong>, give sequences of chants as a monastery, centre
+  or individual chants them, such as Mahamevnawa Monastery’s morning chanting. A
+  set opens as one page that holds its chants in order, each under its own
+  title, so it can be chanted straight through. A set page works like a chant
+  page, in both views and with every way of moving on. Its info panel lists its
+  chants, with links to their own pages.
 </p>
 
 <h2 id="chant-page">The chant page</h2>
@@ -52,11 +52,12 @@
 <h2 id="marks">Marks in the chant text</h2>
 
 <p>
-  Words in curly brackets are chanted by the leader alone, and the group joins
-  after the closing bracket. The brackets can hold a whole line, such as
-  { Evaṁ me sutaṁ }, or the opening words of a line, such as
-  { Yo so } bhagavā. Lines labelled <strong>Solo introduction</strong> are chanted by one
-  chanter before the leader and the group begin.
+  When chanting in a group, words in curly brackets are chanted by the leader
+  alone, and the group joins after the closing bracket. The brackets can hold a
+  whole line, such as “{ Evaṁ me sutaṁ }”, or the opening words of a line, such
+  as “{ Yo so } bhagavā”. The translation carries the same marks, so they also
+  show when the translation is chanted. Lines labelled “Solo introduction” are
+  chanted by one chanter before the leader and the group begin.
 </p>
 
 <h2 id="text-view">The text view</h2>
@@ -168,12 +169,84 @@
   </dd>
 </dl>
 
+<h2 id="translation">Chanting in translation</h2>
+
+<p>Under <strong>Chanting</strong>, the settings choose what is chanted:</p>
+
+<dl class="entries">
+  <dt>Pali</dt>
+  <dd>The Pali is chanted, with the translation in smaller text under it.</dd>
+  <dt>Translation</dt>
+  <dd>The translation is chanted, with the Pali in smaller text under it.</dd>
+  <dt>Pali & translation</dt>
+  <dd>
+    Each line is chanted in both, one after the other. <strong>Order</strong>
+    chooses which comes first. The current line marks the text being chanted.
+  </dd>
+</dl>
+
+<p>
+  A line without a translation is chanted in Pali. With Auto advance, the pace
+  of a translation is an estimate from its syllables. The timings of recordings
+  are for the Pali, so when the translation is chanted, Timed advance uses the
+  estimate unless a timing file made for that choice is imported. An exported
+  timing file records the choice it was made for.
+</p>
+
+<p>
+  The translation is the site’s own English unless one is imported. Under
+  <strong>Translation</strong>, the settings offer:
+</p>
+
+<dl class="entries">
+  <dt>Import translation</dt>
+  <dd>
+    Loads a translation file, which replaces the English of the chants it
+    covers. It is kept for each chant, so it also shows on the chant’s own page
+    and in every set that includes it.
+  </dd>
+  <dt>Export translation</dt>
+  <dd>
+    Saves the translation in use as a file, with each line’s Pali above it. This
+    gives a template to translate into.
+  </dd>
+  <dt>Use Site English (LLM generated)</dt>
+  <dd>
+    Removes the imported translation of the chants on the page and shows the
+    site’s default English again. The site’s English translations are LLM
+    generated and, like all translations, should be approached with due care and
+    inquisitiveness.
+  </dd>
+</dl>
+
+<p>
+  A translation file is plain text. <code>[lang:de]</code> gives its language,
+  and <code>[ti:…]</code> may give its name. Each chant starts with a
+  <code>[chant:…]</code> row naming the chant’s number, and each line is a row
+  that starts with the line’s number. Rows that start with <code>#</code> are
+  not read. For example:
+</p>
+
+<pre><code>[lang:de]
+[ti:Eigene Übersetzung]
+[chant:0053 karaniya-metta-sutta]
+# Karaṇīyam-attha-kusalena
+1 Dies ist zu tun von einem, der im Guten geschickt ist,</code></pre>
+
+<p>
+  A line with men’s and women’s forms can have a row for each, such as
+  <code>2/men</code> and <code>2/women</code>. Words in curly brackets at the
+  start of a row are chanted by the leader alone. The site’s font covers Latin
+  letters, and other scripts use a font from the device.
+</p>
+
 <h2 id="settings">Display settings</h2>
 
 <p>
-  The settings also define the text size of each view, whether the English
-  translation is shown, and, for chants that have them, the men’s or women’s
-  forms of the words. These settings apply to every chant.
+  The settings also define the text size of each view, whether the smaller text
+  under each line is shown, and, for chants that have them, the men’s or women’s
+  forms of the words. These settings, and the choice of what is chanted, apply
+  to every chant.
 </p>
 
 <h2 id="shortcuts">Keyboard shortcuts</h2>
@@ -193,7 +266,9 @@
   <dt><kbd>V</kbd></dt>
   <dd>Switch between text and slides</dd>
   <dt><kbd>T</kbd></dt>
-  <dd>Show or hide the translation</dd>
+  <dd>
+    Show or hide the translation, or the Pali when the translation is chanted
+  </dd>
   <dt><kbd>I</kbd></dt>
   <dd>Info</dd>
   <dt><kbd>S</kbd></dt>
@@ -213,11 +288,12 @@
 </p>
 
 <p>
-  Settings, the current line of each chant and imported timing files are kept in
-  the browser’s storage on this device. So is a chosen audio file, as a link or
-  a copy (see <a href="#audio">Chanting with a recording</a>). None of this is
-  sent anywhere, and audio files are never uploaded. Clearing the site’s data in
-  the browser removes all of it, and <strong>Remove</strong> under Audio in the
+  Settings, the current line of each chant, imported timing files and imported
+  translations are kept in the browser’s storage on this device. So is a chosen
+  audio file, as a link or a copy (see
+  <a href="#audio">Chanting with a recording</a>). None of this is sent
+  anywhere, and audio files are never uploaded. Clearing the site’s data in the
+  browser removes all of it, and <strong>Remove</strong> under Audio in the
   settings forgets the audio file of one chant or set.
 </p>
 

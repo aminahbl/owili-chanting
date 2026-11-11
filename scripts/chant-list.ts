@@ -156,7 +156,7 @@ function card(chant: Chant): CardData {
     .slice(Math.max(opening, 0))
     .flatMap(chanting)
     .slice(0, 2)
-    .map((l) => firstForm(l.pali).replace(/[[\]]/g, ''));
+    .map((l) => firstForm(l.pali).replace(/[[\]{}]/g, ''));
   // A Pali title that only repeats the first line adds nothing to the card.
   const repeatsLine = chant.paliTitle && normalise(lines[0] ?? '').startsWith(normalise(chant.paliTitle));
   const paliTitle = chant.paliTitle && chant.paliTitle !== chant.title && !repeatsLine ? chant.paliTitle : undefined;

@@ -1,10 +1,13 @@
 import { escapeHtml } from '../src/html.ts';
+import { lineText } from '../src/line-text.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
 import type { Chant, ChantingLine, ChantSet, Line, Ref, Section, Text } from '../data/types.ts';
 import type { Group, RecordingInfo } from './chant-list.ts';
 import { layout, THEME_BUTTON } from './templates.ts';
 
 const TRANSLATION_NOTE = 'LLM generated as a provisional guide only. Please find a reliable published translation.';
+// The page names an imported translation in the last entry, and shows the site's note only while a chant still uses the site's English.
+const TRANSLATION_INFO = `<dt class="translation-term">English</dt><dd class="translation-site">${TRANSLATION_NOTE}</dd><dd class="translation-imported" hidden></dd>`;
 const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
 const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';
@@ -15,29 +18,12 @@ const SHORTCUTS = [
   ['← or Page Up', 'Previous line'],
   ['+ and −', 'Faster or slower (Auto advance on slides)'],
   ['V', 'Switch between text and slides'],
-  ['T', 'Show or hide translation'],
+  ['T', 'Show or hide the translation, or the Pali when the translation is chanted'],
   ['I', 'Info'],
   ['S', 'Settings'],
   ['?', 'Keyboard shortcuts'],
   ['Esc', 'Close'],
 ];
-
-// What the leader chants alone, a whole line or a line's opening words, is shown
-// in curly brackets, so it is clear where the leader stops and the group joins.
-const LEADER_OPEN = '<span class="leader-bracket leader-open" aria-hidden="true">{&nbsp;</span>';
-const LEADER_CLOSE = '<span class="leader-bracket" aria-hidden="true">&nbsp;}</span>';
-
-// Opening words in square brackets are chanted by the leader alone ("[Yo so] bhagavā").
-// Brackets later in a line mark an optional word and are kept as written.
-function pali(text: string): string {
-  return escapeHtml(text).replace(/^\[([^\]]+)\]/, `${LEADER_OPEN}$1${LEADER_CLOSE}`);
-}
-
-// A text with two forms renders both; the CSS shows the one chosen in settings.
-function forms(text: Text, format: (t: string) => string): string {
-  if (typeof text === 'string') return format(text);
-  return `<span class="form-men">${format(text.men)}</span><span class="form-women">${format(text.women)}</span>`;
-}
 
 const hasForms = (text: Text | undefined) => typeof text === 'object';
 
@@ -60,11 +46,12 @@ function role(line: Line | undefined): Role {
 function chantingLine(line: ChantingLine, labelled: boolean): string {
   const lineRole = role(line);
   const label = labelled ? `<span class="role-label">${ROLE_LABELS[lineRole]}</span>` : '';
+  // The count is in both texts, as either can be the chanted one.
   const repeat = line.repeat ? ` <span class="repeat">${repeatCount(line.repeat)}</span>` : '';
-  const en = line.en ? `<p class="en">${forms(line.en, escapeHtml)}</p>` : '';
+  const leader = line.leader === true;
+  const en = line.en ? `<p class="en">${lineText(line.en, leader)}${repeat}</p>` : '';
   const repeats = line.repeat ? ` data-repeat="${line.repeat}"` : '';
-  const text = line.leader ? `${LEADER_OPEN}${forms(line.pali, pali)}${LEADER_CLOSE}` : forms(line.pali, pali);
-  return `<div class="line${lineRole ? ` ${lineRole}` : ''}" data-line="${line.id}"${repeats}>${label}<p class="pali" lang="pi">${text}${repeat}</p>${en}</div>`;
+  return `<div class="line${lineRole ? ` ${lineRole}` : ''}" data-line="${line.id}"${repeats}>${label}<p class="pali" lang="pi">${lineText(line.pali, leader)}${repeat}</p>${en}</div>`;
 }
 
 // A run of consecutive solo or leader lines has one label.
@@ -135,7 +122,7 @@ function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[],
       ? `<dt>Sangha sets</dt>${sets.map((s) => `<dd><a href="/sets/${s.slug}">${escapeHtml(s.title)}</a>, ${escapeHtml(s.placeTitle)}</dd>`).join('')}`
       : '',
     `<dt>Pali source</dt><dd>${paliSource}</dd>`,
-    chant.translation ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
+    chant.translation ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     refs.length ? `<dt>References</dt><dd>${refs.map(suttaCentral).join(', ')}</dd>` : '',
     chant.notes?.length ? `<dt>Notes</dt>${chant.notes.map((n) => `<dd>${escapeHtml(n)}</dd>`).join('')}` : '',
@@ -148,11 +135,12 @@ function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[],
   return popover('info', escapeHtml(chant.title), `${pali}<dl>${items.join('')}</dl>${number}`);
 }
 
-function choice(name: string, legend: string, options: [string, string][]): string {
+function choice(name: string, legend: string, options: [string, string][], className = ''): string {
   const inputs = options
     .map(([value, label]) => `<label><input type="radio" name="${name}" value="${value}"> ${label}</label>`)
     .join('');
-  return `<fieldset><legend>${legend}</legend><div class="choices">${inputs}</div></fieldset>`;
+  const classes = className ? ` class="${className}"` : '';
+  return `<fieldset${classes}><legend>${legend}</legend><div class="choices">${inputs}</div></fieldset>`;
 }
 
 // `attributes` names the slider: a setting's name, or an ID for the tempo.
@@ -170,7 +158,6 @@ function textSize(name: 'size' | 'slideSize', view: string): string {
 function settingsPopover(chants: Chant[], recorded: boolean): string {
   const chantLines = chants.flatMap((c) => c.sections.flatMap((s) => s.lines)).filter((l): l is ChantingLine => 'pali' in l);
   const twoForms = chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
-  const translated = chantLines.some((l) => l.en);
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
   <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Details of the available recordings, with links to their pages, are given in the info panel.' : ''}</p>
@@ -206,7 +193,19 @@ function settingsPopover(chants: Chant[], recorded: boolean): string {
 </div>
 ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
-${translated ? '<label class="toggle"><input type="checkbox" name="translation" value="" data-unchecked="off"> Show translation</label>' : ''}
+${choice('chanting', 'Chanting', [['', 'Pali'], ['translation', 'Translation'], ['both', 'Pali & translation']])}
+${choice('order', 'Order', [['', 'Pali first'], ['translation', 'Translation first']], 'order-options')}
+<fieldset><legend>Translation</legend>
+  <label class="toggle shadow-toggle"><input type="checkbox" name="translation" value="" data-unchecked="off"> <span class="shadow-en">Show translation</span><span class="shadow-pali">Show Pali</span></label>
+  <p class="translation-name option-note"></p>
+  <div class="option-actions">
+    <button type="button" class="outline-button" id="translation-site" hidden>Use Site English (LLM generated)</button>
+    <button type="button" class="outline-button" id="translation-import-button">Import translation</button>
+    <input type="file" id="translation-import" accept=".txt,text/plain" hidden>
+    <button type="button" class="outline-button" id="translation-export">Export translation</button>
+  </div>
+  <p class="translation-error option-error" role="alert"></p>
+</fieldset>
 ${twoForms ? choice('form', 'Form', [['', 'Men’s form'], ['women', 'Women’s form']]) : ''}
 </form>`;
   return popover('settings', 'Settings', body);
@@ -319,7 +318,7 @@ function setInfoPopover(set: ChantSet, chants: Chant[], place: SetPlace, recordi
     `<dt>Place</dt><dd>${escapeHtml([place.title, place.lineageTitle].filter(Boolean).join(', '))}</dd>`,
     `<dt>Chants</dt>${chants.map((c) => `<dd><a href="/chants/${c.slug}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
     `<dt>Anchor recording</dt><dd>${anchorName}</dd>`,
-    chants.some((c) => c.translation) ? `<dt>English</dt><dd>${TRANSLATION_NOTE}</dd>` : '',
+    chants.some((c) => c.translation) ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     set.links?.length
       ? `<dt>Links</dt>${set.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`

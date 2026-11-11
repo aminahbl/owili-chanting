@@ -19,7 +19,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: { men: "[Jarā-dhammomhi] jaraṁ anatīto", women: "[Jarā-dhammāmhi] jaraṁ anatītā" }, en: "I am of the nature to age; I have not gone beyond ageing." },
+        { id: 2, pali: { men: "{Jarā-dhammomhi} jaraṁ anatīto", women: "{Jarā-dhammāmhi} jaraṁ anatītā" }, en: "{I am of the nature to age;} I have not gone beyond ageing." },
         { id: 3, pali: { men: "Byādhi-dhammomhi byādhiṁ anatīto", women: "Byādhi-dhammāmhi byādhiṁ anatītā" }, en: "I am of the nature to sicken; I have not gone beyond sickness." },
         { id: 4, pali: { men: "Maraṇa-dhammomhi maraṇaṁ anatīto", women: "Maraṇa-dhammāmhi maraṇaṁ anatītā" }, en: "I am of the nature to die; I have not gone beyond dying." },
         { id: 5, pali: "Sabbehi me piyehi manāpehi nānābhāvo vinābhāvo", en: "I will be parted and separated from all that is dear and pleasing to me." },

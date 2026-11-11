@@ -14,7 +14,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Yathā paccayaṁ] pavattamānaṁ dhātu-mattam-ev'etaṁ", en: "Occurring according to conditions, this is only elements:" },
+        { id: 2, pali: "{Yathā paccayaṁ} pavattamānaṁ dhātu-mattam-ev'etaṁ", en: "{Occurring according to conditions,} this is only elements:" },
         { id: 3, pali: "Yad idaṁ cīvaraṁ tad upabhuñjako ca puggalo", en: "this robe, and the person who uses it," },
         { id: 4, pali: "Dhātu-mattako, nissatto, nijjīvo, suñño", en: "are only elements, not a being, not a soul, empty." },
         { id: 5, pali: "Sabbāni pana imāni cīvarāni ajigucchanīyāni", en: "None of these robes is repulsive in itself," },

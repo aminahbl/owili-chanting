@@ -128,7 +128,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 42, pali: "[Idaṁ dukkhaṁ] ariya-saccan'ti me bhikkhave,", en: "'This is the noble truth of suffering': thus, bhikkhus, in me," },
+        { id: 42, pali: "{Idaṁ dukkhaṁ} ariya-saccan'ti me bhikkhave,", en: "{'This is the noble truth of suffering':} thus, bhikkhus, in me," },
         { id: 43, pali: "pubbe ananussutesu dhammesu cakkhuṁ udapādi, ñāṇaṁ udapādi, paññā udapādi,", en: "concerning things not heard before, there arose vision, there arose knowledge, there arose wisdom," },
         { id: 44, pali: "vijjā udapādi, āloko udapādi.", en: "there arose true knowledge, there arose light." },
       ],
@@ -214,7 +214,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 80, pali: "[Yāva kīvañca me bhikkhave] imesu catūsu ariya-saccesu evan-ti-parivaṭṭaṁ", en: "As long, bhikkhus, as my knowledge and vision of these four noble truths, in their three rounds" },
+        { id: 80, pali: "{Yāva kīvañca me bhikkhave} imesu catūsu ariya-saccesu evan-ti-parivaṭṭaṁ", en: "{As long, bhikkhus,} as my knowledge and vision of these four noble truths, in their three rounds" },
         { id: 81, pali: "dvādas'ākāraṁ yathā-bhūtaṁ ñāṇa-dassanaṁ na suvisuddhaṁ ahosi,", en: "and twelve aspects, as they really are, was not fully purified," },
         { id: 82, pali: "n'eva tāv'āhaṁ bhikkhave,", en: "so long, bhikkhus, did I not claim," },
         { id: 83, pali: "sadevake loke samārake sabrahmake sassamaṇa-brāhmaṇiyā pajāya", en: "in the world with its devas, Māras and Brahmās, among people with their ascetics and brahmins," },
@@ -251,7 +251,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 97, pali: "[Pavattite ca bhagavatā] dhammacakke bhummā devā saddamanussāvesuṁ:", en: "And when the Gracious One had set the wheel of Dhamma rolling, the earth devas raised the cry:" },
+        { id: 97, pali: "{Pavattite ca bhagavatā} dhammacakke bhummā devā saddamanussāvesuṁ:", en: "{And when the Gracious One had set the wheel of Dhamma rolling,} the earth devas raised the cry:" },
       ],
     },
     {

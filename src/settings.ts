@@ -3,8 +3,10 @@
 // CSS reads; an absent value means the default. The build inlines a script in
 // each page's head that sets the attributes before the page is drawn.
 
+import type { Forms } from './line-text.ts';
+
 export const SETTINGS_KEY = 'settings';
-export const SETTING_NAMES = ['theme', 'translation', 'size', 'slideSize', 'form', 'view', 'advance', 'link'] as const;
+export const SETTING_NAMES = ['theme', 'translation', 'chanting', 'order', 'size', 'slideSize', 'form', 'view', 'advance', 'link'] as const;
 export type SettingName = (typeof SETTING_NAMES)[number];
 export type Settings = Partial<Record<SettingName, string>>;
 
@@ -46,12 +48,21 @@ export function writeSetting(name: SettingName, value: string) {
 
 /** Settings for one chant or set, such as its last position, stored as one entry for each. */
 interface ChantSettings {
-  /** The line and the number of the chant it belongs to, which on a set page is one of several. */
-  position?: { chant: string; line: number; repeat: number };
+  /** The line, the text chanted, and the number of the chant it belongs to, which on a set page is one of several. */
+  position?: { chant: string; line: number; part: 'pali' | 'en'; repeat: number };
   /** Auto-advance tempo, 1 being the rhythm model's natural speed. */
   tempo?: number;
   /** An imported timing file (LRC), as imported, and its file name. */
   timing?: { name: string; lrc: string };
+  /** An imported translation, kept under the chant's own number, so it applies on every page that shows the chant. */
+  translation?: ImportedTranslation;
+}
+
+/** A translation imported for one chant: its name, its language, and the text of each line by line ID. */
+export interface ImportedTranslation {
+  name: string;
+  lang: string;
+  lines: Record<string, Forms>;
 }
 
 const chantKey = (id: string) => `chant:${id}`;

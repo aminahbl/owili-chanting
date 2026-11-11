@@ -20,7 +20,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Iminā puññakammena] upajjhāyā guṇuttarā", en: "Through this act of goodness, may my preceptors, supreme in virtue," },
+        { id: 2, pali: "{Iminā puññakammena} upajjhāyā guṇuttarā", en: "{Through this act of goodness,} may my preceptors, supreme in virtue," },
         { id: 3, pali: "Ācariyūpakārā ca mātāpitā ca ñātakā", en: "my teachers and helpers, my mother, father and relatives," },
         { id: 4, pali: "Suriyo candimā rājā guṇavantā narāpi ca", en: "the sun, the moon, the king, and people of virtue," },
         { id: 5, pali: "Brahma-mārā ca indā ca lokapālā ca devatā", en: "the Brahmās, Māras and Indras, the world guardians and devas," },

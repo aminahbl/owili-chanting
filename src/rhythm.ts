@@ -52,3 +52,21 @@ export function lineBeats(text: string): number {
 export function lineSeconds(text: string, sectionEnd: boolean): number {
   return lineBeats(text) * BEAT_SECONDS + LINE_SECONDS + (sectionEnd ? SECTION_END_SECONDS : 0);
 }
+
+// A translation's line is timed at one even beat per syllable. A syllable is a
+// run of vowel letters, which suits languages in the Latin alphabet; text with
+// no such vowels, as in most other scripts, counts one beat for every two
+// letters. Both are first estimates, not yet checked against a recording.
+const TRANSLATION_BEAT_SECONDS = 0.35;
+
+export function translationBeats(text: string): number {
+  const plain = text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  const syllables = plain.match(/[aeiouy]+/g)?.length ?? 0;
+  if (syllables > 0) return syllables;
+  return Math.ceil((plain.match(/\p{L}/gu)?.length ?? 0) / 2);
+}
+
+/** A translation line's duration in seconds at a tempo of 1. */
+export function translationSeconds(text: string, sectionEnd: boolean): number {
+  return translationBeats(text) * TRANSLATION_BEAT_SECONDS + LINE_SECONDS + (sectionEnd ? SECTION_END_SECONDS : 0);
+}

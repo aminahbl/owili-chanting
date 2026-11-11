@@ -19,7 +19,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Ahaṁ sukhito homi] niddukkho homi, avero homi, abyāpajjho homi, anīgho homi,", en: "May I be happy, free from suffering, free from enmity, free from ill will, free from distress;" },
+        { id: 2, pali: "{Ahaṁ sukhito homi} niddukkho homi, avero homi, abyāpajjho homi, anīgho homi,", en: "{May I be happy,} free from suffering, free from enmity, free from ill will, free from distress;" },
         { id: 3, pali: "sukhī attānaṁ pariharāmi", en: "may I look after myself with ease." },
       ],
     },

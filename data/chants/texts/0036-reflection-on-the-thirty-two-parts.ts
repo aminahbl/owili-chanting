@@ -14,7 +14,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Ayaṁ kho] me kāyo uddhaṁ pādatalā adho kesamatthakā", en: "This body of mine, from the soles of the feet up, from the crown of the head down," },
+        { id: 2, pali: "{Ayaṁ kho} me kāyo uddhaṁ pādatalā adho kesamatthakā", en: "{This body of mine,} from the soles of the feet up, from the crown of the head down," },
         { id: 3, pali: "tacapariyanto pūro nānappakārassa asucino", en: "bounded by skin, is full of many kinds of impurity." },
         { id: 4, pali: "Atthi imasmiṁ kāye", en: "In this body there are:" },
         { id: 5, pali: "kesā", en: "head hairs," },

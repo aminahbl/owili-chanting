@@ -470,6 +470,16 @@ input:focus-visible {
   margin: 1rem 0;
 }
 
+/* An example file. Long rows wrap, so a narrow screen does not scroll sideways. */
+.prose pre {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
 /* Chant page */
 
 .chant-header {
@@ -773,8 +783,68 @@ icon-moon {
   color: var(--muted);
 }
 
-:root[data-translation="off"] .en {
+:root[data-translation="off"]:not([data-chanting]) .en,
+.en:empty {
   display: none;
+}
+
+/* The shadow line leaves out the leader's brackets and the repeat count, which the chanted line carries. */
+:root:not([data-chanting]) .en :is(.leader-bracket, .repeat),
+:root[data-chanting="translation"]
+  :is(.line, .slide-page-text):has(> .en:not(:empty))
+  > .pali
+  :is(.leader-bracket, .repeat) {
+  display: none;
+}
+
+/* When the translation is chanted, it comes first at the chanted size, and the
+   Pali is the shadow line. A line without a translation keeps its Pali chanted. */
+:root[data-chanting="translation"]
+  :is(.line, .slide-page-text):has(> .en:not(:empty)) {
+  display: flex;
+  flex-direction: column;
+}
+
+:root[data-chanting="translation"]
+  :is(.line, .slide-page-text):has(> .en:not(:empty))
+  > .role-label {
+  order: -2;
+}
+
+:root[data-chanting="translation"]
+  :is(.line, .slide-page-text):has(> .en:not(:empty))
+  > .en {
+  order: -1;
+}
+
+:root[data-chanting="translation"] .line:has(> .en:not(:empty)) > .en,
+:root[data-chanting="both"] .line > .en {
+  margin: 0;
+  font-size: var(--pali-size);
+  color: inherit;
+}
+
+:root[data-chanting="both"] .line > .en {
+  margin-top: 0.2rem;
+}
+
+:root[data-chanting="translation"] .line:has(> .en:not(:empty)) > .pali {
+  margin-top: 0.1rem;
+  font-size: calc(var(--pali-size) * 0.8);
+  color: var(--muted);
+}
+
+:root[data-translation="off"][data-chanting="translation"]
+  :is(.line, .slide-page-text):has(> .en:not(:empty))
+  > .pali {
+  display: none;
+}
+
+/* When both texts are chanted, the one not being chanted on the current line is muted. */
+:root[data-chanting="both"]
+  :is(.line.current, .slide-page-line.current .slide-page-text)
+  > :is(.pali, .en):not(.current-part) {
+  color: var(--muted);
 }
 
 :root:not([data-form="women"]) .form-women,
@@ -822,7 +892,7 @@ icon-moon {
 .popover {
   position: fixed;
   inset: 3.5rem 0.5rem auto auto;
-  width: min(24rem, calc(100vw - 1rem));
+  width: min(25rem, calc(100vw - 1rem));
   max-height: calc(100dvh - 4.5rem);
   margin: 0;
   padding: 0.5rem 1.25rem 1.25rem;
@@ -915,6 +985,22 @@ icon-moon {
 .toggle {
   display: block;
   margin-top: 1rem;
+}
+
+.settings legend + .toggle {
+  margin-top: 0;
+}
+
+/* The order applies when both texts are chanted, and the shadow line when one is. */
+:root:not([data-chanting="both"]) .order-options,
+:root[data-chanting="both"] .shadow-toggle,
+.shadow-pali,
+:root[data-chanting="translation"] .shadow-en {
+  display: none;
+}
+
+:root[data-chanting="translation"] .shadow-pali {
+  display: inline;
 }
 
 .shortcuts {
@@ -1064,16 +1150,43 @@ kbd {
 }
 
 .slide-page-line .pali,
-.slide-page-preview .pali {
+.slide-page-preview :is(.pali, .en),
+:root[data-chanting="translation"]
+  .slide-page-text:has(> .en:not(:empty))
+  > .en,
+:root[data-chanting="both"] .slide-page-text > .en {
   font-size: var(--line-size);
   line-height: 1.3;
   text-wrap: balance;
 }
 
-.slide-page-line .en {
+.slide-page-line .en,
+:root[data-chanting="translation"]
+  .slide-page-text:has(> .en:not(:empty))
+  > .pali {
   margin-top: 0.3em;
   font-size: max(1rem, calc(var(--line-size) * 0.65));
   line-height: 1.4;
+}
+
+:root[data-chanting="translation"]
+  .slide-page-text:has(> .en:not(:empty))
+  > .pali {
+  color: var(--muted);
+  text-wrap: wrap;
+}
+
+:root[data-chanting="translation"]
+  .slide-page-text:has(> .en:not(:empty))
+  > .en {
+  margin-top: 0;
+}
+
+:root[data-chanting="translation"]
+  .slide-page-text:has(> .en:not(:empty))
+  > .en,
+:root[data-chanting="both"] .slide-page-text > .en {
+  color: inherit;
 }
 
 /* The preview is set apart by a dotted rule, a smaller size and less colour,
@@ -1089,8 +1202,10 @@ kbd {
   border-top: 2px dotted var(--border);
 }
 
-.slide-page-preview .pali {
+.slide-page-preview :is(.pali, .en) {
+  margin: 0;
   font-size: calc(var(--line-size) * 0.75);
+  color: inherit;
   opacity: 0.3;
 }
 

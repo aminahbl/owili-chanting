@@ -22,7 +22,7 @@ export const chant = {
         { id: 10, pali: "sīlaṁ rakkhantu sabbadā", en: "always keep virtue," },
         { id: 11, pali: "Bhāvanābhiratā hontu", en: "and delight in meditation." },
         { id: 12, pali: "gacchantu devatā-gatā", en: "May the devas who have come now go." },
-        { id: 13, pali: "[Sabbe buddhā] balappattā", en: "All the Buddhas have attained power," },
+        { id: 13, pali: "{Sabbe buddhā} balappattā", en: "{All the Buddhas} have attained power," },
         { id: 14, pali: "paccekānañ-ca yaṁ balaṁ", en: "and by the power of the solitary Buddhas" },
         { id: 15, pali: "Arahantānañ-ca tejena", en: "and the might of the worthy ones" },
         { id: 16, pali: "rakkhaṁ bandhāmi sabbaso", en: "I bind this protection in every way." },

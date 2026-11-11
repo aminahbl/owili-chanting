@@ -14,7 +14,7 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "[Evam-me sutaṁ.] Ekaṁ samayaṁ Bhagavā, Sāvatthiyaṁ viharati,", en: "Thus have I heard. At one time the Gracious One was staying near Sāvatthī," },
+        { id: 1, pali: "{Evam-me sutaṁ.} Ekaṁ samayaṁ Bhagavā, Sāvatthiyaṁ viharati,", en: "{Thus have I heard.} At one time the Gracious One was staying near Sāvatthī," },
         { id: 2, pali: "Jeta-vane Anāthapiṇḍikassa ārāme.", en: "in Jeta's Grove, Anāthapiṇḍika's monastery." },
         { id: 3, pali: "Tatra kho Bhagavā bhikkhū āmantesi:", en: "There the Gracious One addressed the bhikkhus:" },
         { id: 4, pali: "“bhikkhavo-ti”.", en: "“Bhikkhus!”" },

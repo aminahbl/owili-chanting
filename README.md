@@ -8,6 +8,8 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 - Chant list with search, categories and pages
 - Sangha sets: sequences of chants as a monastery or centre chants them, each on one page
 - Pali text with secondary English line‑by‑line
+- Chanting in Pali, in translation, or in both line by line
+- The user's own translation, imported from a plain text file in place of the English
 - A text view with line tracking, and a slide view that shows a few lines at a time with the current line marked
 - Three ways for lines to move on in the slide view: Manual, Auto (at a pace worked out from the Pali, with a speed control) and Timed (following a timing file)
 - Timing files in LRC, the plain text format for timed lyrics, that can be exported, edited and imported; chants with a recording's timing use it by default
@@ -30,12 +32,15 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── search.ts             # Search on the list pages
 │   ├── chant-page.ts         # Connects the chant or set page's views, controls and keys
 │   ├── clock.ts              # The line clock: the current line and how it moves on
-│   ├── text-view.ts          # The text view
+│   ├── text-view.ts          # The text view, and the steps of the line clock
 │   ├── slide-view.ts         # The slide view
 │   ├── rhythm.ts             # Line lengths from Pali syllables, for Auto advance
 │   ├── tempo.ts              # The Auto speed
 │   ├── lrc.ts                # Reads timing files, shared with the build
 │   ├── timing.ts             # The timing in use for Timed advance
+│   ├── translation.ts        # The translation in use: the site's English or an imported file
+│   ├── translation-file.ts   # Reads and writes translation files, shared with the build
+│   ├── line-text.ts          # A line's text as HTML, with leader marks and forms, shared with the build
 │   ├── audio-store.ts        # Remembering the user's audio file per chant or set
 │   ├── recording.ts          # The user's audio file, which the slides can follow
 │   ├── wake-lock.ts          # Keeps the screen on while lines move on
@@ -80,12 +85,13 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 - On the home page, search or choose a category, then open a chant. Sangha sets lists sets by lineage and place; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
 - The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
-- On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, translation and, for chants that have them, men's or women's forms. These settings apply to every chant.
+- On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, what is chanted (Pali, translation, or both), whether the smaller text under each line is shown and, for chants that have them, men's or women's forms. These settings apply to every chant.
 - Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
 - With Timed, the settings show the timing in use, with Export timing and Import timing.
+- Under Translation in the settings, Export translation saves the translation in use as a plain text file, with each line's Pali as a comment, and Import translation loads one in place of the site's English. The file format is described in the guide and at the top of [src/translation-file.ts](src/translation-file.ts).
 - Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
 - In the slide view with Auto or Timed advance, the lock at the start of the bottom bar locks the audio to the slides. It is closed while the audio is locked. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With the lock open, the audio and the slides run separately. Manual advance has no Start and no lock: next and previous move the lines, and the audio controls work on their own.
-- Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
+- Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation (or the Pali when the translation is chanted), I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
 
 ## Changing chants and sets
 
@@ -111,7 +117,7 @@ Each page's body is plain HTML in `pages/<slug>.html`, starting with its `<h1>`.
 
 ## Privacy
 
-- Audio files stay on your device and are never uploaded. The browser keeps a link to the file, or in some browsers a copy of it, until you remove it. Settings, positions and imported timing files are kept in your browser's local storage.
+- Audio files stay on your device and are never uploaded. The browser keeps a link to the file, or in some browsers a copy of it, until you remove it. Settings, positions, imported timing files and imported translations are kept in your browser's local storage.
 
 ## Roadmap ideas
 

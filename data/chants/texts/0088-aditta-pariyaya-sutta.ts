@@ -112,7 +112,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 56, pali: "[Evaṁ passaṁ bhikkhave] sutvā ariyasāvako cakkhusmiṁ pi nibbindati,", en: "Seeing thus, bhikkhus, the instructed noble disciple becomes disenchanted with the eye," },
+        { id: 56, pali: "{Evaṁ passaṁ bhikkhave} sutvā ariyasāvako cakkhusmiṁ pi nibbindati,", en: "{Seeing thus, bhikkhus,} the instructed noble disciple becomes disenchanted with the eye," },
         { id: 57, pali: "rūpesu pi nibbindati, cakkhuviññāṇe pi nibbindati,", en: "disenchanted with forms, disenchanted with eye-consciousness," },
         { id: 58, pali: "cakkhusamphasse pi nibbindati,", en: "disenchanted with eye-contact," },
         { id: 59, pali: "yampidaṁ cakkhusamphassapaccayā uppajjati vedayitaṁ sukhaṁ vā", en: "and with whatever is felt arising with eye-contact as condition, whether pleasant" },
@@ -168,7 +168,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 84, pali: "[Idam-avoca bhagavā.] Attamanā te bhikkhū bhagavato bhāsitaṁ abhinanduṁ.", en: "This is what the Gracious One said. Pleased, those bhikkhus delighted in the Gracious One's words." },
+        { id: 84, pali: "{Idam-avoca bhagavā.} Attamanā te bhikkhū bhagavato bhāsitaṁ abhinanduṁ.", en: "{This is what the Gracious One said.} Pleased, those bhikkhus delighted in the Gracious One's words." },
         { id: 85, pali: "Imasmiñca pana veyyākaraṇasmiṁ bhaññamāne tassa", en: "And while this discourse was being spoken, the minds of" },
         { id: 86, pali: "bhikkhu-sahassassa anupādāya āsavehi cittāni vimucciṁsū'ti.", en: "the thousand bhikkhus were released from the taints through not clinging." },
       ],

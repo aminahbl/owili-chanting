@@ -1,15 +1,18 @@
 // Auto advance (spec 05, T7, T8 and T11): step durations from the rhythm
-// model, and a tempo stored per chant that scales them.
+// model, or the estimate for a translation, and a tempo stored per chant that scales them.
 import type { LineClock } from './clock.ts';
-import { lineSeconds } from './rhythm.ts';
+import { lineSeconds, translationSeconds } from './rhythm.ts';
 import { readChantSettings, TEMPO_RANGE, writeChantSettings } from './settings.ts';
-import { endsSection, visibleText, type Step } from './text-view.ts';
+import { endsSection, stepText, type Step } from './text-view.ts';
 
 const clamp = (tempo: number) => Math.min(TEMPO_RANGE.max, Math.max(TEMPO_RANGE.min, tempo));
 
-/** Each step's duration from the text, in the form in use, at a tempo of 1. */
+/** Each step's duration from the text chanted, in the form in use, at a tempo of 1. */
 export function rhythmDurations(steps: Step[]): number[] {
-  return steps.map((s) => lineSeconds(visibleText(s.line.querySelector('.pali') ?? s.line), endsSection(s)));
+  return steps.map((s) => {
+    const seconds = s.part === 'en' ? translationSeconds : lineSeconds;
+    return seconds(stepText(s), endsSection(s));
+  });
 }
 
 export class Tempo {

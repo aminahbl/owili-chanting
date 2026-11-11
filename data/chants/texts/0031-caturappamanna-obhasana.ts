@@ -15,7 +15,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Mettā-sahagatena] cetasā ekaṁ disaṁ pharitvā viharati", en: "With a heart filled with warmth, one dwells suffusing one direction," },
+        { id: 2, pali: "{Mettā-sahagatena} cetasā ekaṁ disaṁ pharitvā viharati", en: "{With a heart filled with warmth,} one dwells suffusing one direction," },
         { id: 3, pali: "Tathā dutiyaṁ tathā tatiyaṁ tathā catutthaṁ", en: "likewise the second, likewise the third, likewise the fourth." },
         { id: 4, pali: "Iti uddhamadho tiriyaṁ sabbadhi sabbattatāya", en: "So above, below, across, everywhere, and to all as to oneself," },
         { id: 5, pali: "Sabbāvantaṁ lokaṁ mettā-sahagatena cetasā", en: "one dwells suffusing the whole world with a heart filled with warmth," },

@@ -54,6 +54,15 @@ Explanations do not go into the English line, because they lengthen it and blur 
 
 Where the forms differ only in grammatical gender (for example "anatīto" and "anatītā", both "not gone beyond"), the English is the same for both. A different English line is written only if the meaning differs.
 
+### The leader's opening words
+
+Where a Pali line opens with words the leader chants alone, written in curly brackets ("{Yo so} bhagavā"), the English marks its own opening words the same way, so a group chanting the English knows where to join. The marked words render the Pali's opening words where the English word order allows. Where it does not, they are the English line's opening phrase, of about the same length.
+
+| Pali | English |
+|---|---|
+| {Paṭisaṅkhā} yoniso cīvaraṁ paṭisevāmi, | {Reflecting wisely,} I use the robe |
+| {Svākkhāto} bhagavatā dhammo | {The Dhamma,} well taught by the Gracious One: |
+
 ## Pali words in the English
 
 - **Kept, with diacritics as in the Pali text:** Buddha, Dhamma, Saṅgha, Tathāgata, the kinds of non-human beings that have no English equivalent (deva, brahmā, yakkha, nāga, gandhabba, asura), and the names of people and places. They take an English plural: devas, nāgas.

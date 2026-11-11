@@ -19,7 +19,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 2, pali: "[Dasa ime bhikkhave] dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā, katame dasa", en: "These ten things, bhikkhus, one gone forth should often recollect. What ten?" },
+        { id: 2, pali: "{Dasa ime bhikkhave} dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā, katame dasa", en: "{These ten things, bhikkhus,} one gone forth should often recollect. What ten?" },
         { id: 3, pali: "Vevaṇṇiyamhi ajjhupagato'ti pabbajitena abhiṇhaṁ paccavekkhitabbaṁ", en: "'I have left social standing behind': so one gone forth should often recollect." },
         { id: 4, pali: "Parapaṭibaddhā me jīvikā'ti pabbajitena abhiṇhaṁ paccavekkhitabbaṁ", en: "'My living depends on others': so one gone forth should often recollect." },
         { id: 5, pali: "Añño me ākappo karaṇīyo'ti pabbajitena abhiṇhaṁ paccavekkhitabbaṁ", en: "'My conduct must be different': so one gone forth should often recollect." },

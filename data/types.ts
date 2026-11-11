@@ -6,7 +6,12 @@ export type Text = string | { men: string; women: string };
 export interface ChantingLine {
   /** Assigned once and never reused, so timing files can refer to it. */
   id: number;
+  /**
+   * Opening words in curly brackets, "{Yo so} bhagavā", are chanted by the
+   * leader alone; square brackets later in a line mark optional words.
+   */
   pali: Text;
+  /** Marks the leader's opening words in curly brackets, as the Pali does. */
   en?: Text;
   /** Chanted by the leader alone. */
   leader?: true;
