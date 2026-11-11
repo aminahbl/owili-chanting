@@ -32,8 +32,14 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0023", // offering-of-lights
     "0024", // offering-of-incense
     "0025", // offering-of-flowers
+    "0138", // offering-of-flowers-to-the-triple-gem
+    "0135", // offering-of-water
+    "0136", // offering-of-medicine
+    "0132", // buddha-guna-vandana
+    "0133", // dhamma-guna-vandana
+    "0134", // sangha-guna-vandana
+    "0137", // vajja-pakasana
     "0026", // ten-paramis
-    "0027", // evening-chanting-lbv-veneration
   ] },
   { id: 'reflections', title: 'Reflections', chants: [
     "0028", // reflection-on-the-four-requisites
@@ -69,6 +75,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0051", // mangala-sutta
     "0052", // ratana-sutta
     "0053", // karaniya-metta-sutta
+    "0131", // karaniya-metta-sutta-short
     "0054", // khandha-paritta
     "0055", // chaddanta-paritta
     "0056", // mora-paritta

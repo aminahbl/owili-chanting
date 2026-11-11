@@ -1,7 +1,7 @@
 import type { ChantSet } from '../types.ts';
 
 export const set = {
-  id: "0127",
+  id: "0126",
   slug: "amaravati-twelve-parittas",
   title: "Twelve Parittas",
   place: "amaravati",
@@ -22,5 +22,5 @@ export const set = {
     "0066", // jaya-mangala-attha-gatha
     "0067", // jaya-paritta
   ],
-  anchorRecording: { label: "Amaravati recording, Twelve Parittas", url: "https://amaravati.org/audio/twelve-parittas/" },
+  anchorRecording: { label: "Amaravati recording, Twelve Parittas", url: "https://amaravati.org/audio/twelve-parittas/", date: "2022-05-17" },
 } satisfies ChantSet;

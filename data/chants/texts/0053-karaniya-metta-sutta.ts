@@ -77,9 +77,7 @@ export const chant = {
       ],
     },
     {
-      title: "Mettañ-ca sabba-lokasmiṁ",
       lines: [
-        { id: 29, cue: "A shorter form is sometimes started here" },
         { id: 30, pali: "Mettañ-ca sabba-lokasmiṁ", en: "With warmth for all the world," },
         { id: 31, pali: "Mānasam-bhāvaye aparimāṇaṁ", en: "let one cultivate a boundless heart," },
         { id: 32, pali: "Uddhaṁ adho ca tiriyañ-ca", en: "above, below and all around," },

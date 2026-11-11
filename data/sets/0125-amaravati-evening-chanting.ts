@@ -1,7 +1,7 @@
 import type { ChantSet } from '../types.ts';
 
 export const set = {
-  id: "0126",
+  id: "0125",
   slug: "amaravati-evening-chanting",
   title: "Evening chanting",
   place: "amaravati",
@@ -17,5 +17,5 @@ export const set = {
     "0015", // supreme-praise-of-the-sangha
     "0009", // closing-homage
   ],
-  anchorRecording: { label: "To be confirmed" },
+  anchorRecording: { label: "Amaravati evening chanting", url: "https://amaravati.org/audio/evening-chanting-pali-page-20-26/", date: "2014-10-11" },
 } satisfies ChantSet;
