@@ -46,10 +46,13 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── normalise.ts          # Search text normalisation, shared with the build
 │   └── html.ts               # HTML escaping
 ├── data/
+│   ├── DATA.md               # How the data fits together and is checked
 │   ├── chants/
-│   │   ├── texts/            # One typed module per chant
+│   │   ├── README.md         # Steps for changing chants
+│   │   ├── texts/            # One typed module per chant; retired ones in retired/
 │   │   └── markers/          # Timing files, one per recording
-│   ├── sets/                 # One typed module per Sangha set
+│   ├── sets/                 # One typed module per Sangha set; retired ones in retired/
+│   │   └── README.md         # Steps for changing sets
 │   ├── groups.ts             # Categories and their chants, in display order
 │   ├── places.ts             # Lineages and places of the Sangha sets
 │   ├── ids.ts                # The ledger of chant and set numbers
@@ -84,21 +87,11 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 - In the slide view with Auto or Timed advance, the lock at the start of the bottom bar locks the audio to the slides. It is closed while the audio is locked. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With the lock open, the audio and the slides run separately. Manual advance has no Start and no lock: next and previous move the lines, and the audio controls work on their own.
 - Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation, I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
 
-## Adding a new chant
+## Changing chants and sets
 
-Add a module to `data/chants/texts/` that exports `chant`, typed with `satisfies Chant` from [data/types.ts](data/types.ts). The build picks up every module in the folder and writes the chant's page to `/chants/<slug>`.
-
-Add the chant's number to one or more category lists in [data/groups.ts](data/groups.ts), at the position where it should appear, with its slug in a comment. Each list gives its category's chants in display order. The build stops if a list names an unknown chant or names a chant twice, or if a chant is in no list.
-
-`paliSource` names where the Pali was taken from. For a chant from a book with its own arrangement, `paliSource.categories` records where the book places it: its category, subcategory where there is one, and position. This is a record of the source, separate from the site's categories in [data/groups.ts](data/groups.ts), and the info panel shows it with the source.
-
-Each chant has a four-digit number, its `id`, which never changes. A new chant takes the number after the last line of the ledger in [data/ids.ts](data/ids.ts), and the same change adds a line for it there. A chant that is removed keeps its ledger line, marked `retired: true`, so its number is never issued again; a renamed slug is changed in the ledger too. The build stops if a number is repeated, missing from the ledger or retired, or if a chant's slug differs from its ledger line. Sets take numbers from the same ledger.
-
-The timing of a recording goes in `data/chants/markers/<recording>.lrc`, an LRC file in the format the chant page exports. It follows the recording: tags at the top give its details (`ti`, `place`, `performers`, `date`, and `page` for the address of the recording's web page), a comment lists the chants it covers in order, and a `[chant:<number> <slug>]` tag starts each chant's rows, one row per line chanted. A chant chanted in two parts, with another chant between them, has its tag twice. The build checks each chant's part against the chant's lines and includes it in the chant's page as the default timing for Timed advance; the chant's info panel lists the recording. Where several recordings cover a chant, a file tagged `[default:yes]` is used, otherwise the first by file name. A file that names a set's chants, in the set's order and no others, is also the set's default timing.
-
-## Adding a Sangha set
-
-Add a module to `data/sets/` that exports `set`, typed with `satisfies ChantSet` from [data/types.ts](data/types.ts). It gives the set's number and slug from the ledger in [data/ids.ts](data/ids.ts), its title, its place from [data/places.ts](data/places.ts), its `order` among the place's sets, and its chants as a list of chant numbers, with each chant's slug in a comment. Every set is anchored by a specific recording, named in `anchorRecording`: its chants, their order and their wording match that recording. The field gives the recording's label and, where known, its `url`, `performers` and `date`, and the set's info panel shows them. A new place or lineage is added to `data/places.ts`, in display order. The build writes the set's page to `/sets/<slug>` and stops if a set names an unknown chant or names a chant twice.
+- [data/chants/README.md](data/chants/README.md): steps for adding, editing, renaming and retiring a chant.
+- [data/sets/README.md](data/sets/README.md): the same for Sangha sets.
+- [data/DATA.md](data/DATA.md): how the data fits together, what the build checks, and what retiring a chant or set changes.
 
 ## Editing the about, guide and resources pages
 
