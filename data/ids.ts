@@ -128,7 +128,7 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0121', slug: 'yamaka' },
   { id: '0122', slug: 'patthana-matika-patha' },
   { id: '0123', slug: 'vipassana-bhumi-patha' },
-  { id: '0124', slug: 'pamsukula' },
+  { id: '0124', slug: 'pamsukula-for-the-dead' },
   { id: '0125', slug: 'amaravati-evening-chanting' },
   { id: '0126', slug: 'amaravati-twelve-parittas' },
   { id: '0127', slug: 'amaravati-funeral-chanting' },
@@ -143,4 +143,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0136', slug: 'offering-of-medicine' },
   { id: '0137', slug: 'vajja-pakasana' },
   { id: '0138', slug: 'offering-of-flowers-to-the-triple-gem' },
+  { id: '0139', slug: 'pamsukula-for-the-living' },
 ];

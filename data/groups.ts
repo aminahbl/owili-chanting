@@ -132,7 +132,8 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0121", // yamaka
     "0122", // patthana-matika-patha
     "0123", // vipassana-bhumi-patha
-    "0124", // pamsukula
+    "0124", // pamsukula-for-the-dead
+    "0139", // pamsukula-for-the-living
   ] },
   { id: 'joy-and-ceremony', title: 'Joy and ceremony', chants: [
     "0092", // transference-of-merit-to-devas

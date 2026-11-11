@@ -2,17 +2,13 @@ import type { Chant } from '../../types.ts';
 
 export const chant = {
   id: "0124",
-  slug: "pamsukula",
-  title: "Verses for the Rag-robe Offering",
-  paliTitle: "Paṁsukūla",
+  slug: "pamsukula-for-the-dead",
+  title: "Verses for the rag-robe Offering (for the dead)",
+  paliTitle: "Paṁsukūla (for the dead)",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#pamsukula", categories: [{ category: "Funeral Chants", order: 10 }] },
   translation: "draft",
   notes: [
-    "The following verses are often repeated three times. (For the dead)",
-  ],
-  editorial: [
-    { status: "kept", lines: [17], note: "Dhp 41 has *Pathaviṁ* where the manual has *Paṭhaviṁ*. Kept as the manual prints it." },
-    { status: "kept", lines: [18], note: "Dhp 41 has *Chuddho* where the manual has *Chuḍḍho*. Kept as the manual prints it." },
+    "The verses are often repeated three times.",
   ],
   sections: [
     {
@@ -42,16 +38,6 @@ export const chant = {
         { id: 14, pali: "Maraṇaṁ me niyataṁ.", en: "My death is certain." },
       ],
       refs: [{ label: "Dhp-a III 170" }],
-    },
-    {
-      lines: [
-        { id: 15, cue: "For the living" },
-        { id: 16, pali: "Aciraṁ vat'ayaṁ kāyo", en: "Before long, alas, this body" },
-        { id: 17, pali: "Paṭhaviṁ adhisessati", en: "will lie on the earth," },
-        { id: 18, pali: "Chuḍḍho apeta-viññāṇo", en: "cast aside, without consciousness," },
-        { id: 19, pali: "Niratthaṁ va kaliṅgaraṁ.", en: "useless, like a log." },
-      ],
-      refs: [{ label: "Dhp 41", uid: "dhp33-43" }],
     },
   ],
 } satisfies Chant;
