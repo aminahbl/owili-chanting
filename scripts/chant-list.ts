@@ -13,14 +13,26 @@ export interface Entry {
   card: CardData;
 }
 
+/** The named export of each module in a data folder. The build stops unless each file is named <id>-<slug>.ts. */
+async function loadModules<T extends { id: string; slug: string }>(folder: string, name: string): Promise<T[]> {
+  const dir = new URL(`../${folder}/`, import.meta.url);
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
+  return Promise.all(
+    files.map(async (file) => {
+      const item = ((await import(new URL(file, dir).href)) as Record<string, T>)[name];
+      const expected = `${item.id}-${item.slug}.ts`;
+      if (file !== expected) throw new Error(`${folder}/${file}: should be named ${expected}.`);
+      return item;
+    }),
+  );
+}
+
 /**
  * The chants in data/chants/texts/. The build stops on a category that names an
  * unknown chant number or names a chant twice, and on a chant in no category.
  */
 export async function loadChants(): Promise<Chant[]> {
-  const dir = new URL('../data/chants/texts/', import.meta.url);
-  const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
-  const chants = await Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { chant: Chant }).chant));
+  const chants = await loadModules<Chant>('data/chants/texts', 'chant');
   const numbers = new Set(chants.map((c) => c.id));
   for (const group of groups) {
     const unknown = group.chants.filter((id) => !numbers.has(id));
@@ -40,16 +52,15 @@ export function groupsOf(chant: Chant): Group[] {
 
 /** The sets in data/sets/. The build stops on a set with no chants, a repeated chant or an unknown chant number. */
 export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
-  const dir = new URL('../data/sets/', import.meta.url);
-  const files = (await readdir(dir)).filter((f) => f.endsWith('.ts')).sort();
-  const sets = await Promise.all(files.map(async (f) => ((await import(new URL(f, dir).href)) as { set: ChantSet }).set));
+  const sets = await loadModules<ChantSet>('data/sets', 'set');
   const numbers = new Set(chants.map((c) => c.id));
   for (const set of sets) {
+    const file = `data/sets/${set.id}-${set.slug}.ts`;
     const unknown = set.chants.filter((id) => !numbers.has(id));
-    if (set.chants.length === 0) throw new Error(`data/sets/${set.slug}: has no chants.`);
+    if (set.chants.length === 0) throw new Error(`${file}: has no chants.`);
     // A timing file gives each chant one block, found by the chant's number.
-    if (new Set(set.chants).size < set.chants.length) throw new Error(`data/sets/${set.slug}: names a chant twice.`);
-    if (unknown.length) throw new Error(`data/sets/${set.slug}: names unknown chants (${unknown.join(', ')}).`);
+    if (new Set(set.chants).size < set.chants.length) throw new Error(`${file}: names a chant twice.`);
+    if (unknown.length) throw new Error(`${file}: names unknown chants (${unknown.join(', ')}).`);
   }
   return sets;
 }
