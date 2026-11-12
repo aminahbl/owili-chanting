@@ -27,9 +27,13 @@ const SHORTCUTS = [
 
 const hasForms = (text: Text | undefined) => typeof text === 'object';
 
+/** A link to another site, opened in a new tab so a chant in progress is not left. */
+function externalLink(href: string, text: string): string {
+  return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+}
+
 function suttaCentral(ref: Ref): string {
-  const label = escapeHtml(ref.label);
-  return ref.uid ? `<a href="https://suttacentral.net/${ref.uid}">${label}</a>` : label;
+  return ref.uid ? externalLink(`https://suttacentral.net/${ref.uid}`, ref.label) : escapeHtml(ref.label);
 }
 
 const repeatCount = (times: number) => `<span aria-hidden="true">×${times}</span><span class="sr-only">${times} times</span>`;
@@ -94,8 +98,8 @@ ${body}
 function recording({ file, tags }: RecordingInfo): string {
   const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
   const links = [
-    tags.page ? `<a href="${escapeHtml(tags.page)}">Recording page</a>` : '',
-    `<a href="${MARKER_FILES}/${encodeURIComponent(file)}">Timing file</a>`,
+    tags.page ? externalLink(tags.page, 'Recording page') : '',
+    externalLink(`${MARKER_FILES}/${encodeURIComponent(file)}`, 'Timing file'),
   ];
   return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
 }
@@ -110,7 +114,7 @@ export interface SetLink {
 function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[], sets: SetLink[]): string {
   const groupLinks = groups.map((g) => `<a href="/list/${g.id}">${escapeHtml(g.title)}</a>`).join(', ');
   const { label, url, categories } = chant.paliSource;
-  const paliSourceName = url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label);
+  const paliSourceName = url ? externalLink(url, label) : escapeHtml(label);
   const placing = (categories ?? [])
     .map((c) => escapeHtml([c.category, c.subcategory].filter(Boolean).join(', ')))
     .join('; ');
@@ -127,7 +131,7 @@ function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[],
     refs.length ? `<dt>References</dt><dd>${refs.map(suttaCentral).join(', ')}</dd>` : '',
     chant.notes?.length ? `<dt>Notes</dt>${chant.notes.map((n) => `<dd>${escapeHtml(n)}</dd>`).join('')}` : '',
     chant.links?.length
-      ? `<dt>Links</dt>${chant.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`
+      ? `<dt>Links</dt>${chant.links.map((l) => `<dd>${externalLink(l.href, l.text)}</dd>`).join('')}`
       : '',
   ];
   const pali = chant.paliTitle ? `<p class="info-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
@@ -309,7 +313,7 @@ ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timin
 
 function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, recordings: RecordingInfo[]): string {
   const anchor = set.anchorRecording;
-  const anchorLabel = anchor.url ? `<a href="${escapeHtml(anchor.url)}">${escapeHtml(anchor.label)}</a>` : escapeHtml(anchor.label);
+  const anchorLabel = anchor.url ? externalLink(anchor.url, anchor.label) : escapeHtml(anchor.label);
   const anchorDetails = [anchor.performers, anchor.date].filter(Boolean).map((t) => escapeHtml(t!));
   const anchorName = [anchorLabel, ...anchorDetails].join(', ');
   const items = [
@@ -319,7 +323,7 @@ function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, rec
     chants.some((c) => c.translation) ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     set.links?.length
-      ? `<dt>Links</dt>${set.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`
+      ? `<dt>Links</dt>${set.links.map((l) => `<dd>${externalLink(l.href, l.text)}</dd>`).join('')}`
       : '',
   ];
   const copy = `<p class="info-actions"><button type="button" class="outline-button" id="copy-set" data-title="${escapeHtml(`${set.title}, ${chanter.title}`)}">Copy to open sets</button></p>`;
