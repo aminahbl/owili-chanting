@@ -121,6 +121,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
   ] },
   { id: 'suttas', title: 'Suttas', chants: [
     "0142", // dhammacakkappavattana-sutta-introduction
+    "0145", // dhammacakka-amun
     "0086", // dhammacakkappavattana-sutta
     "0143", // anatta-lakkhana-sutta-introduction
     "0087", // anatta-lakkhana-sutta

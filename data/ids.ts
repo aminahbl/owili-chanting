@@ -149,4 +149,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0142', slug: 'dhammacakkappavattana-sutta-introduction' },
   { id: '0143', slug: 'anatta-lakkhana-sutta-introduction' },
   { id: '0144', slug: 'aditta-pariyaya-sutta-introduction' },
+  { id: '0145', slug: 'dhammacakka-amun' },
 ];
