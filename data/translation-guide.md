@@ -203,6 +203,7 @@ The formula as lines:
 |---|---|
 | *bhikkhave* | bhikkhus |
 | *āvuso* | friend |
+| *kalyāṇamitta* | good friend |
 | *upāsaka*, *upāsikā* | lay follower |
 
 **Ceremonies:**

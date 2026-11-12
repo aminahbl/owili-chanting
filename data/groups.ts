@@ -206,6 +206,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0099", // eight-precepts-ceremony
     "0097", // method-of-confessing-light-offences
     "0098", // formula-for-same-base-offences
+    "0162", // confession-with-a-good-friend
   ] },
   { id: 'other', title: 'Other chants', chants: [] },
 ];
