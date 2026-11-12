@@ -7,6 +7,7 @@ export const chant = {
   paliTitle: "Dhaj'agga-sutta",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhaj-agga", categories: [{ category: "Suttas", order: 5 }] },
   translation: "draft",
+  links: [{ text: "Recording on palichanting.org", href: "https://palichanting.org/dhajagga_sutta_aranne_at_end_sl_laywoman/" }],
   editorial: [
     { status: "open", lines: [22], note: "Possibly a misprint: *dha'jaggaṁ*, where the other paragraphs have *dhaj'aggaṁ*. Needs a second source before any change." },
     { status: "open", lines: [38, 46, 50, 58], note: "English to review: over 100 characters; the Pali lines are also long." },
