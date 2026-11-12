@@ -183,10 +183,16 @@ function searchBox(group: Group | null): string {
 </div>`;
 }
 
+const SEARCH_STATUS = '<p id="search-status" class="search-status" role="status"></p>';
+
 // While a search is active, src/search.ts shows its results here and hides #chant-list.
+// The results take the shape of a group, so the cards do not move when they replace it.
 function searchOutput(): string {
-  return `<p id="search-status" class="search-status" role="status"></p>
-<ul id="search-results" class="cards" hidden></ul>`;
+  return `${SEARCH_STATUS}
+<section id="search-results" class="group" hidden>
+<h2>Search results</h2>
+<ul class="cards"></ul>
+</section>`;
 }
 
 /** Who chants a set: a community or an individual, and their lineage if any. */
@@ -224,7 +230,7 @@ export function setsPage(group: Group, groups: Group[], sets: ListedSet[]): stri
   const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
 ${searchBox(group)}
 ${chips(groups, group)}
-${searchOutput()}
+${SEARCH_STATUS}
 <div id="chant-list">
 <section class="group sets">
 <p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording.</p>

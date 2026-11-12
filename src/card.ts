@@ -1,9 +1,12 @@
 import { escapeHtml } from './html.ts';
 
-/** A chant in the search index: its card, its position in each of its groups and its titles and Pali, normalised. */
+/** A chant in the search index: its card, its position in each of its groups and its normalised search text. */
 export interface SearchEntry extends CardData {
   groups: Record<string, number>;
+  /** Titles and Pali. */
   text: string;
+  /** Categories in the Pali source, such as "Morning Chanting". Not searched on the Sangha sets page. */
+  sourceCategories: string;
 }
 
 export interface CardData {

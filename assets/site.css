@@ -282,10 +282,6 @@ input:focus-visible {
   }
 }
 
-#search-results {
-  margin-top: 1rem;
-}
-
 /* Cards in a row share the height of the tallest; the excerpt band sits at the foot of each, so the bands line up. */
 .card {
   position: relative;

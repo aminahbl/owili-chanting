@@ -7,8 +7,9 @@ import { matches, normalise } from './normalise.ts';
 
 const input = document.querySelector<HTMLInputElement>('#search-input');
 const status = document.querySelector<HTMLElement>('#search-status');
-const results = document.querySelector<HTMLElement>('#search-results');
 const list = document.querySelector<HTMLElement>('#chant-list');
+// Only the chant list pages have a results section.
+const results = document.querySelector<HTMLElement>('#search-results');
 
 let index: Promise<SearchEntry[]> | null = null;
 
@@ -32,52 +33,60 @@ function inScope(entries: SearchEntry[], group?: string): SearchEntry[] {
   return entries.filter((e) => group in e.groups).sort((a, b) => a.groups[group] - b.groups[group]);
 }
 
-async function update(field: HTMLInputElement, out: HTMLElement, rest: HTMLElement, line: HTMLElement) {
+async function update(field: HTMLInputElement, line: HTMLElement, rest: HTMLElement) {
   const query = normalise(field.value);
-  if (!query) {
-    out.hidden = true;
-    out.innerHTML = '';
-    rest.hidden = false;
-    line.textContent = '';
-    return;
+  let entries: SearchEntry[] = [];
+  if (query) {
+    try {
+      entries = await load(field.dataset.index ?? '/search.json');
+    } catch {
+      line.textContent = 'Search is not available right now';
+      return;
+    }
+    // A newer keystroke may have changed the field while the index loaded.
+    if (normalise(field.value) !== query) return;
   }
-  let entries: SearchEntry[];
-  try {
-    entries = await load(field.dataset.index ?? '/search.json');
-  } catch {
-    line.textContent = 'Search is not available right now';
-    return;
-  }
-  // A newer keystroke may have changed the field while the index loaded.
-  if (normalise(field.value) !== query) return;
-  const setCards = [...rest.querySelectorAll<HTMLElement>('.card[data-chants]')];
-  if (setCards.length) {
-    const found = matchingSets(setCards, entries, query);
-    out.replaceChildren(...found.map((card) => card.cloneNode(true)));
-    line.textContent = found.length ? '' : 'No sets found';
+  if (results) {
+    line.textContent = showChants(results, rest, entries, query, field.dataset);
   } else {
-    const { group, groupTitle } = field.dataset;
-    const found = inScope(entries, group).filter((e) => matches(e.text, query));
-    out.innerHTML = found.map(cardHtml).join('\n');
-    line.textContent = statusText(found.length, groupTitle);
+    line.textContent = filterSets(rest, entries, query);
   }
+}
+
+// On the chant list pages the matching chants replace the list.
+function showChants(out: HTMLElement, rest: HTMLElement, entries: SearchEntry[], query: string, data: DOMStringMap): string {
+  const cards = out.querySelector('.cards')!;
+  if (!query) {
+    cards.innerHTML = '';
+    out.hidden = true;
+    rest.hidden = false;
+    return '';
+  }
+  const found = inScope(entries, data.group).filter((e) => matches(`${e.text} ${e.sourceCategories}`, query));
+  cards.innerHTML = found.map(cardHtml).join('\n');
   out.hidden = false;
   rest.hidden = true;
+  return statusText(found.length, data.groupTitle);
 }
 
-// On the Sangha sets page a set matches when every word of the query appears
-// in its title, chanter and lineage, or in the text of its chants.
-function matchingSets(cards: HTMLElement[], entries: SearchEntry[], query: string): HTMLElement[] {
+// On the Sangha sets page the set cards are filtered in place. A set matches
+// when every word of the query appears in its title, chanter and lineage, or in
+// the titles and Pali of its chants. The Pali source's categories are left out,
+// because they describe the source's arrangement, not the set.
+function filterSets(rest: HTMLElement, entries: SearchEntry[], query: string): string {
   const textBySlug = new Map(entries.map((e) => [e.slug, e.text]));
-  return cards.filter((card) => {
+  let found = 0;
+  for (const card of rest.querySelectorAll<HTMLElement>('.card[data-chants]')) {
     const chantTexts = (card.dataset.chants ?? '').split(' ').map((slug) => textBySlug.get(slug) ?? '');
-    return matches([card.dataset.text ?? '', ...chantTexts].join(' '), query);
-  });
+    card.hidden = query !== '' && !matches([card.dataset.text ?? '', ...chantTexts].join(' '), query);
+    if (!card.hidden) found++;
+  }
+  return found ? '' : 'No sets found';
 }
 
-if (input && status && results && list) {
+if (input && status && list) {
   input.addEventListener('focus', () => load(input.dataset.index ?? '/search.json').catch(() => {}), { once: true });
-  input.addEventListener('input', () => update(input, results, list, status));
+  input.addEventListener('input', () => update(input, status, list));
   // The browser may restore the field's text when the user comes back to the page.
-  if (input.value) update(input, results, list, status);
+  if (input.value) update(input, status, list);
 }
