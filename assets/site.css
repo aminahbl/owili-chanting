@@ -416,12 +416,15 @@ input:focus-visible {
 }
 
 .prose a {
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--hover);
   text-underline-offset: 0.15em;
+  text-decoration-style: dashed;
 }
 
 .prose a:hover {
   color: var(--accent);
+  text-decoration-color: var(--accent);
+  text-decoration-style: solid;
 }
 
 .prose li + li {
