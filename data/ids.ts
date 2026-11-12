@@ -157,4 +157,12 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0150', slug: 'cloud-mountain-refuges-and-eight-precepts' },
   { id: '0151', slug: 'karuna-morning-chanting' },
   { id: '0152', slug: 'narayan-liebenson-blessings' },
+  { id: '0153', slug: 'invitation-to-the-devas-royal-ceremonies' },
+  { id: '0154', slug: 'invitation-to-the-devas-shorter-parittas' },
+  { id: '0155', slug: 'invitation-to-the-devas-longer-parittas' },
+  { id: '0156', slug: 'invitation-to-the-devas-closing' },
+  { id: '0157', slug: 'invitation-to-the-devas-closing-at-the-monastery' },
+  { id: '0158', slug: 'vandana-short' },
+  { id: '0159', slug: 'paritta-parikamma' },
+  { id: '0160', slug: 'u-pannanda-paritta-preliminaries' },
 ];

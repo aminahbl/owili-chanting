@@ -6,6 +6,7 @@
  */
 export const groups: { id: string; title: string; chants: string[] }[] = [
   { id: 'sangha-sets', title: 'Sangha sets', chants: [
+    "0160", // u-pannanda-paritta-preliminaries
     "0147", // wat-marp-jan-morning-chanting
     "0151", // karuna-morning-chanting
     "0130", // lbv-evening-puja
@@ -80,8 +81,15 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
   ] },
   { id: 'parittas', title: 'Parittas', chants: [
     "0049", // invitation-for-paritta-chanting
+    "0153", // invitation-to-the-devas-royal-ceremonies
+    "0154", // invitation-to-the-devas-shorter-parittas
+    "0155", // invitation-to-the-devas-longer-parittas
     "0050", // invitation-to-the-devas
+    "0156", // invitation-to-the-devas-closing
+    "0157", // invitation-to-the-devas-closing-at-the-monastery
+    "0159", // paritta-parikamma
     "0001", // vandana
+    "0158", // vandana-short
     "0002", // sarana-gamana-patha
     "0016", // sambuddhe
     "0017", // nama-kara-siddhi-gatha
