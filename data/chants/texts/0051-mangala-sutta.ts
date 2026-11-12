@@ -7,7 +7,9 @@ export const chant = {
   paliTitle: "Maṅgala-sutta",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#asevana", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 8 }] },
   translation: "draft",
+  links: [{ text: "Translation, commentary and a recording: mangalasutta.com", href: "https://mangalasutta.com/verses/" }],
   editorial: [
+    { status: "open", note: "No lines are marked as the leader's. Which lines the leader chants alone is to be checked against a recording." },
     { status: "kept", lines: [1], note: "Snp 2.4 has *Evaṁ-me* where the manual has *Evam-me*. Kept as the manual prints it." },
     { status: "kept", lines: [15, 19, 23, 27, 31, 35, 39, 43, 47, 51], note: "Snp 2.4 has *Etaṁ* where the manual has *Etam*. Kept as the manual prints it." },
     { status: "kept", lines: [16], note: "Snp 2.4 has *Patirūpa-desa-vāso* where the manual has *Paṭirūpa-desa-vāso*. Kept as the manual prints it." },
@@ -17,21 +19,21 @@ export const chant = {
   sections: [
     {
       lines: [
-        { id: 1, pali: "Evam-me sutaṁ:", en: "Thus have I heard:", leader: true },
-        { id: 2, pali: "ekaṁ samayaṁ bhagavā, sāvatthiyaṁ viharati, jeta-vane anāthapiṇḍikassa ārāme.", en: "at one time the Gracious One was staying near Sāvatthī, in Jeta's Grove, Anāthapiṇḍika's monastery.", leader: true },
-        { id: 3, pali: "Atha kho aññatarā devatā abhikkantāya rattiyā", en: "Then, when the night was far advanced, a certain deva", leader: true },
-        { id: 4, pali: "abhikkanta-vaṇṇā kevala-kappaṁ jetavanaṁ obhāsetvā,", en: "of surpassing beauty, lighting up the whole of Jeta's Grove,", leader: true },
-        { id: 5, pali: "yena bhagavā ten'upasaṅkami.", en: "approached the Gracious One.", leader: true },
-        { id: 6, pali: "Upasaṅkamitvā bhagavantaṁ abhivādetvā ekam-antaṁ aṭṭhāsi.", en: "Having approached and paid respect to the Gracious One, the deva stood to one side.", leader: true },
-        { id: 7, pali: "Ekam-antaṁ ṭhitā kho sā devatā bhagavantaṁ gāthāya ajjhabhāsi:", en: "Standing to one side, the deva addressed the Gracious One in verse:", leader: true },
+        { id: 1, pali: "Evam-me sutaṁ:", en: "Thus have I heard:" },
+        { id: 2, pali: "ekaṁ samayaṁ bhagavā, sāvatthiyaṁ viharati, jeta-vane anāthapiṇḍikassa ārāme.", en: "at one time the Gracious One was staying near Sāvatthī, in Jeta's Grove, Anāthapiṇḍika's monastery." },
+        { id: 3, pali: "Atha kho aññatarā devatā abhikkantāya rattiyā", en: "Then, when the night was far advanced, a certain deva" },
+        { id: 4, pali: "abhikkanta-vaṇṇā kevala-kappaṁ jetavanaṁ obhāsetvā,", en: "of surpassing beauty, lighting up the whole of Jeta's Grove," },
+        { id: 5, pali: "yena bhagavā ten'upasaṅkami.", en: "approached the Gracious One." },
+        { id: 6, pali: "Upasaṅkamitvā bhagavantaṁ abhivādetvā ekam-antaṁ aṭṭhāsi.", en: "Having approached and paid respect to the Gracious One, the deva stood to one side." },
+        { id: 7, pali: "Ekam-antaṁ ṭhitā kho sā devatā bhagavantaṁ gāthāya ajjhabhāsi:", en: "Standing to one side, the deva addressed the Gracious One in verse:" },
       ],
     },
     {
       lines: [
-        { id: 8, pali: "Bahū devā manussā ca,", en: "'Many devas and humans", leader: true },
-        { id: 9, pali: "Maṅgalāni acintayuṁ;", en: "have pondered on blessings,", leader: true },
-        { id: 10, pali: "Ākaṅkhamānā sotthānaṁ,", en: "longing for safety:", leader: true },
-        { id: 11, pali: "Brūhi maṅgalam-uttamaṁ.", en: "tell us the highest blessing.'", leader: true },
+        { id: 8, pali: "Bahū devā manussā ca,", en: "'Many devas and humans" },
+        { id: 9, pali: "Maṅgalāni acintayuṁ;", en: "have pondered on blessings," },
+        { id: 10, pali: "Ākaṅkhamānā sotthānaṁ,", en: "longing for safety:" },
+        { id: 11, pali: "Brūhi maṅgalam-uttamaṁ.", en: "tell us the highest blessing.'" },
       ],
     },
     {
