@@ -162,17 +162,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0140", // pamsukula-for-the-dead-short
     "0139", // pamsukula-for-the-living
   ] },
-  { id: 'joy-and-ceremony', title: 'Joy and ceremony', chants: [
-    "0092", // transference-of-merit-to-devas
-    "0093", // blessing-to-the-world
-    "0094", // transference-of-merits-to-departed-ones
-    "0095", // the-aspirations
-    "0096", // pattanumodana
-    "0097", // method-of-confessing-light-offences
-    "0098", // formula-for-same-base-offences
-    "0099", // eight-precepts
-    "0149", // eight-precepts-short
-    "0100", // five-precepts
+  { id: 'blessings', title: 'Blessings', chants: [
     "0101", // yatha-vari-vaha-pura
     "0102", // sabba-roga-vinimutto
     "0103", // bhojana-dananumodana
@@ -187,13 +177,34 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0112", // adiya-sutta-gatha
     "0113", // ariya-dhana-gatha
     "0114", // devat-adissa-dakkhina-numodana-gatha
+    "0068", // so-attha-laddho
+    "0069", // sa-attha-laddha
+    "0070", // te-attha-laddha-sukhita
+    "0071", // bhavatu-sabba-mangalam
+    "0085", // blessing-and-protection
+    "0093", // blessing-to-the-world
+    "0043", // pasanna-hontu-sabbe-pi
+  ] },
+  { id: 'dedications', title: 'Dedications', chants: [
+    "0092", // transference-of-merit-to-devas
+    "0094", // transference-of-merits-to-departed-ones
+    "0096", // pattanumodana
+    "0095", // the-aspirations
+    "0105", // adasi-me-adi-gatha
+    "0114", // devat-adissa-dakkhina-numodana-gatha
     "0037", // sabba-patti-dana-gatha
     "0038", // uddissanadhitthana-gatha
     "0039", // sabbe-satta-sada-hontu
     "0040", // ti-loka-vijaya-raja-patti-dana-gatha
     "0042", // dedication-of-merit-to-the-devas-and-others
-    "0043", // pasanna-hontu-sabbe-pi
     "0047", // yan-dani-me-katam-punnam
+  ] },
+  { id: 'sila', title: 'Sīla', chants: [
+    "0100", // five-precepts
+    "0099", // eight-precepts
+    "0149", // eight-precepts-short
+    "0097", // method-of-confessing-light-offences
+    "0098", // formula-for-same-base-offences
   ] },
   { id: 'other', title: 'Other chants', chants: [] },
 ];
