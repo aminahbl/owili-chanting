@@ -6,6 +6,8 @@ import type { Chant, ChantSet } from '../data/types.ts';
 import type { Entry, Group } from './chant-list.ts';
 
 const SITE = 'Chanting for shared happiness';
+// Social previews need an absolute URL for the image.
+const SITE_URL = 'https://chanting.ohwowiloveit.com';
 const DESCRIPTION =
   'Practice Pali chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy.';
 
@@ -64,7 +66,7 @@ ${APPLY_SETTINGS}
 <meta property="og:title" content="${escapeHtml(full)}">
 <meta property="og:site_name" content="${SITE}">
 <meta property="og:description" content="${DESCRIPTION}">
-<meta property="og:image" content="/assets/socials/social-1200x630.jpg">
+<meta property="og:image" content="${SITE_URL}/assets/socials/social-1200x630.jpg">
 <meta property="og:image:alt" content="${SITE}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
