@@ -50,6 +50,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0134", // sangha-guna-vandana
     "0137", // vajja-pakasana
     "0026", // ten-paramis
+    "0148", // buddham-vande
   ] },
   { id: 'reflections', title: 'Reflections', chants: [
     "0028", // reflection-on-the-four-requisites
