@@ -6,6 +6,7 @@
  */
 export const groups: { id: string; title: string; chants: string[] }[] = [
   { id: 'sangha-sets', title: 'Sangha sets', chants: [
+    "0147", // wat-marp-jan-morning-chanting
     "0130", // lbv-evening-puja
     "0128", // abhayagiri-evening-chanting
     "0125", // amaravati-evening-chanting
