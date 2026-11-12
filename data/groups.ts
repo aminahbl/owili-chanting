@@ -13,6 +13,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0129", // abhayagiri-funeral-chanting
     "0127", // amaravati-funeral-chanting
     "0126", // amaravati-twelve-parittas
+    "0146", // aungsi-sayadaw-dhammacakkappavattana-sutta
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // vandana

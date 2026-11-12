@@ -9,6 +9,7 @@ export const chanters = [
   { id: 'amaravati', title: 'Amaravati Monastery', lineage: 'ajahn-chah' },
   { id: 'lbv', title: 'London Buddhist Vihara' },
   { id: 'mahamevnawa', title: 'Mahamevnawa Buddhist Monastery' },
+  { id: 'aungsi-sayadaw', title: 'Aungsi Sayadaw U Pannathamibhivamsa' },
 ] as const;
 
 export type ChanterId = (typeof chanters)[number]['id'];

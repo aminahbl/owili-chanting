@@ -250,7 +250,6 @@ export const chant = {
       ],
     },
     {
-      title: "Bhummānaṁ devānaṁ",
       lines: [
         { id: 101, pali: "Bhummānaṁ devānaṁ saddaṁ sutvā, cātummahārājikā devā saddamanussāvesuṁ...", en: "Hearing the cry of the earth devas, the devas of the Four Great Kings raised the cry…" },
       ],
