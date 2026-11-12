@@ -6,12 +6,9 @@ export const chant = {
   title: "Invitation to the Devas (main verses)",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#devas", categories: [{ category: "Parittas", subcategory: "Invitations", order: 2 }] },
   translation: "draft",
-  notes: [
-    "In Thai custom, these verses are always part of the invitation to the devas. The third monk in seniority chants the invitation, holding his hands in añjali and lifting up the ceremonial string.",
-    "The string is wound up at the beginning of the last chant, Mahā-kāruṇiko nātho or Bhavatu sabba-maṅgalaṁ, which should be kept in mind by the last bhikkhu or sāmaṇera.",
-  ],
   editorial: [
     { status: "changed", note: "Part D of the manual's Invitation to the Devas, which gives parts A to F with instructions on when each is chanted. Each part is a chant of its own here." },
+    { status: "changed", note: "Commentarial lifted: In Thai custom, these verses are always part of the invitation to the devas. The third monk in seniority chants the invitation, holding his hands in añjali and lifting up the ceremonial string. The string is wound up at the beginning of the last chant, Mahā-kāruṇiko nātho or Bhavatu sabba-maṅgalaṁ, which should be kept in mind by the last bhikkhu or sāmaṇera." },
   ],
   sections: [
     {
