@@ -11,22 +11,9 @@ export const chant = {
     { status: "changed", lines: [42, 49, 56, 63, 70], note: "The manual has *viparināma*, a misspelling; corrected to *vipariṇāma*." },
     { status: "kept", lines: [38], note: "SN 22.59 has *rūpaṁ* where the manual has *rūpam*. Kept as the manual prints it." },
     { status: "kept", lines: [40, 42, 47, 49, 54, 56, 61, 63, 68, 70], note: "SN 22.59 has *Yaṁ* where the manual has *Yam*. Kept as the manual prints it." },
-    { status: "open", lines: [1, 2, 3, 4, 5, 6, 7, 8], note: "English to review: the introduction is a later verse composition with long compounds; the draft follows the commentarial reading." },
     { status: "open", lines: [13, 18, 23], note: "English to review: *labbhetha ca rūpe* is \"one could have it of form\", that is, form would obey one's wish." },
   ],
   sections: [
-    {
-      lines: [
-        { id: 1, pali: "Yantaṁ sattehi dukkhena ñeyyaṁ anattalakkhaṇaṁ", en: "The characteristic of not-self, hard for beings to know,", solo: true },
-        { id: 2, pali: "Attavādattasaññāṇaṁ sammadeva vimocanaṁ", en: "which rightly releases from the doctrine and perception of a self,", solo: true },
-        { id: 3, pali: "Sambuddho taṁ pakāsesi diṭṭhasaccāna yoginaṁ", en: "the Awakened One made known to the practitioners who had seen the truths,", solo: true },
-        { id: 4, pali: "Uttariṁ paṭivedhāya bhāvetuṁ ñāṇamuttamaṁ", en: "so that they could develop the highest knowledge for further penetration;", solo: true },
-        { id: 5, pali: "Yantesaṁ diṭṭhadhammānam ñāṇenupaparikkhataṁ", en: "and when they had examined it with knowledge, having seen the Dhamma,", solo: true },
-        { id: 6, pali: "Sabbāsavehi cittāni vimucciṁsu asesato", en: "their minds were released from all taints without remainder.", solo: true },
-        { id: 7, pali: "Tathā ñāṇānussārena sāsanaṁ kātumicchataṁ", en: "Likewise, for the good who wish to follow the teaching with knowledge,", solo: true },
-        { id: 8, pali: "Sādhūnaṁ atthasiddhatthaṁ taṁ suttantaṁ bhaṇāma se", en: "for the success of their aim, let us chant that discourse.", solo: true },
-      ],
-    },
     {
       lines: [
         { id: 9, pali: "Evaṁ me sutaṁ", en: "Thus have I heard.", leader: true },

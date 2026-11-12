@@ -6,6 +6,7 @@ export const chant = {
   title: "Setting in Motion the Wheel of Dhamma",
   paliTitle: "Dhammacakkappavattana-sutta",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhammacakkappavattana", categories: [{ category: "Suttas", order: 1 }] },
+  links: [{ text: "Recording: Ayya Santacitta, Ayya Santussika", href: "https://dharmaseed.org/talks/78586/" }],
   translation: "draft",
   editorial: [
     { status: "kept", lines: [22, 34], note: "SN 56.11 has *seyyathidaṁ* where the manual has *seyyathīdaṁ*. Kept as the manual prints it." },
@@ -13,22 +14,9 @@ export const chant = {
     { status: "kept", lines: [87], note: "SN 56.11 has *suvisuddhaṁ* where the manual has *suvisuddham*. Kept as the manual prints it." },
     { status: "kept", lines: [88], note: "SN 56.11 has *ath'āhaṁ* where the manual has *ath'āham*. Kept as the manual prints it." },
     { status: "kept", lines: [114], note: "SN 56.11 has *dasa-sahassi* where the manual has *dasa-sahassī*. Kept as the manual prints it." },
-    { status: "open", lines: [1, 2, 3, 4, 5, 6, 7, 8], note: "English to review: the introduction is a later verse composition; the draft follows the commentarial reading." },
     { status: "open", lines: [30, 34, 37, 98, 115], note: "English to review: over 100 characters; the Pali lines are also long." },
   ],
   sections: [
-    {
-      lines: [
-        { id: 1, pali: "Anuttaraṁ abhisambodhiṁ sambujjhitvā tathāgato", en: "Having awakened to unsurpassed full awakening, the Tathāgata", solo: true },
-        { id: 2, pali: "Pathamaṁ yaṁ adesesi dhammacakkaṁ anuttaraṁ", en: "first taught the unsurpassed wheel of Dhamma,", solo: true },
-        { id: 3, pali: "Sammadeva pavattento loke appativattiyaṁ", en: "rightly setting it rolling, which none in the world can turn back,", solo: true },
-        { id: 4, pali: "Yatthākkhātā ubho antā paṭipatti ca majjhimā", en: "in which both extremes are explained, and the middle practice,", solo: true },
-        { id: 5, pali: "Catūsvāriyasaccesu visuddhaṁ ñāṇadassanaṁ", en: "and the purified knowledge and vision of the four noble truths:", solo: true },
-        { id: 6, pali: "Desitaṁ dhammarājena sammāsambodhikittanaṁ", en: "taught by the King of Dhamma, proclaiming his perfect self-awakening,", solo: true },
-        { id: 7, pali: "Nāmena vissutaṁ suttaṁ dhammacakkappavattanaṁ", en: "the discourse renowned by the name 'Setting in Motion the Wheel of Dhamma':", solo: true },
-        { id: 8, pali: "Veyyākaraṇapāthena saṅgītantam bhaṇāma se", en: "as it was recited in the form of an exposition, let us chant it.", solo: true },
-      ],
-    },
     {
       lines: [
         { id: 9, pali: "Evaṁ me sutaṁ", en: "Thus have I heard.", leader: true },

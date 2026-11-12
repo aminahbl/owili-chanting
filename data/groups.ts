@@ -8,11 +8,11 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
   { id: 'sangha-sets', title: 'Sangha sets', chants: [
     "0130", // lbv-evening-puja
     "0128", // abhayagiri-evening-chanting
-    "0129", // abhayagiri-funeral-chanting
     "0125", // amaravati-evening-chanting
-    "0126", // amaravati-twelve-parittas
-    "0127", // amaravati-funeral-chanting
     "0141", // mahamevnawa-main-puja
+    "0129", // abhayagiri-funeral-chanting
+    "0127", // amaravati-funeral-chanting
+    "0126", // amaravati-twelve-parittas
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // pubba-bhaga-nama-kara-patha
@@ -120,8 +120,11 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0085", // blessing-and-protection
   ] },
   { id: 'suttas', title: 'Suttas', chants: [
+    "0142", // dhammacakkappavattana-sutta-introduction
     "0086", // dhammacakkappavattana-sutta
+    "0143", // anatta-lakkhana-sutta-introduction
     "0087", // anatta-lakkhana-sutta
+    "0144", // aditta-pariyaya-sutta-introduction
     "0088", // aditta-pariyaya-sutta
     "0089", // anapanassati-sutta
     "0090", // dhaj-agga-sutta

@@ -146,4 +146,7 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0139', slug: 'pamsukula-for-the-living' },
   { id: '0140', slug: 'pamsukula-for-the-dead-short' },
   { id: '0141', slug: 'mahamevnawa-main-puja' },
+  { id: '0142', slug: 'dhammacakkappavattana-sutta-introduction' },
+  { id: '0143', slug: 'anatta-lakkhana-sutta-introduction' },
+  { id: '0144', slug: 'aditta-pariyaya-sutta-introduction' },
 ];
