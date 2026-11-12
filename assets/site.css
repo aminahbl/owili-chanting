@@ -36,7 +36,7 @@
   --hover: light-dark(hsl(30, 14.3%, 56.1%), #737994);
   --excerpt: light-dark(hsl(30, 50%, 98.4%), #292c3c);
   --radius: 0.75rem;
-  --pali-size: 1rem;
+  --pali-size: 1.125rem;
 }
 
 /* The theme follows the system unless the user chooses one in settings. */

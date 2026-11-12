@@ -19,7 +19,7 @@ export interface Range {
 
 /** Each view has its own text size, in rem: the reading size in the text view and the line size on slides. */
 export const SIZE_RANGES: Record<'size' | 'slideSize', Range> = {
-  size: { min: 0.75, max: 1.75, step: 0.125, default: 1 },
+  size: { min: 0.75, max: 1.75, step: 0.125, default: 1.125 },
   slideSize: { min: 1.25, max: 4, step: 0.25, default: 2 },
 };
 
