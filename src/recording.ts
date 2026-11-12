@@ -1,8 +1,8 @@
-// The user's audio file (spec 09, F11). The user adds their own copy of a
+// The user's audio file. The user adds their own copy of a
 // recording and plays it in either view. In the slide view it can be linked to
 // the slides. Linked with Timed advance and a timing from a file, the slides
 // follow it: the current line is the last one whose start is not later than
-// the playback time plus the lead time (spec 05, T12), and Start, Pause and
+// the playback time plus the lead time, and Start, Pause and
 // moving to a line work on the audio. Linked otherwise, Start and Pause also
 // play and pause it. Linked either way, the audio starts when the slides'
 // count-in ends. src/audio-store.ts remembers the file per chant.

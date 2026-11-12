@@ -1,4 +1,4 @@
-// The rhythm model (spec 05, T8). From the Bhikkhu Manual's chanting
+// The rhythm model. From the Bhikkhu Manual's chanting
 // technique: a syllable ending in short a, i or u is one beat, and every other
 // syllable is two beats. A line takes its beats times the beat length, plus a
 // fixed time for the breath at the line end.

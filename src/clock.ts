@@ -1,9 +1,9 @@
-// The line clock (spec 05, T1) holds the current step and moves it. A step is
+// The line clock holds the current step and moves it. A step is
 // one chanting of a line, so a line chanted three times has three steps. The
 // clock is driven by the user (manual) or by a timer over each step's
 // duration, scaled by a tempo (auto), or by a timer over durations from a
 // timing file (timed). In timed advance the user's audio can drive it instead
-// (spec 09, F11). The views only display its state.
+// The views only display its state.
 
 export type Method = 'manual' | 'auto' | 'timed';
 type Status = 'idle' | 'countin' | 'running' | 'paused' | 'ended';
@@ -16,12 +16,12 @@ export class LineClock {
   /** Seconds left in the count-in, rounded up. */
   countIn = 0;
   tempo = 1;
-  /** Seconds by which a line changes early (T12). */
+  /** Seconds by which a line changes early. */
   lead = 0.3;
   countInSeconds = 3;
   /** Each step's duration in seconds at a tempo of 1, for auto and timed advance. */
   durations: number[] = [];
-  /** How much of each step's duration is a pause after its line, for timed advance (spec 09, F5). */
+  /** How much of each step's duration is a pause after its line, for timed advance. */
   pauses: number[] = [];
   /** The cue timed in each step's pause, if any. */
   cues: (number | null)[] = [];
@@ -71,7 +71,7 @@ export class LineClock {
 
   /**
    * Starts from the current step. Auto and timed advance begin with a count-in
-   * (T13), also when a recording drives the clock; the recording starts when it
+   * also when a recording drives the clock; the recording starts when it
    * ends. `countIn` false leaves it out.
    */
   start(countIn = true) {
@@ -125,7 +125,7 @@ export class LineClock {
     this.emit();
   }
 
-  /** Moves to a step. While running, the timer restarts at that step (P7). */
+  /** Moves to a step. While running, the timer restarts at that step. */
   goTo(target: number) {
     this.index = Math.max(0, Math.min(this.count - 1, target));
     this.elapsed = 0;

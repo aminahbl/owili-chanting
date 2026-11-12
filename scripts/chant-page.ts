@@ -1,3 +1,4 @@
+import { chantHref } from '../src/card.ts';
 import { escapeHtml } from '../src/html.ts';
 import { forms, lineText } from '../src/line-text.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
@@ -94,7 +95,7 @@ ${body}
 </div>`;
 }
 
-// Each recording that a marker file follows, with its details, its page and the file (spec 09, F8).
+// Each recording that a marker file follows, with its details, its page and the file.
 function recording({ file, tags }: RecordingInfo): string {
   const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
   const links = [
@@ -240,7 +241,7 @@ function header(title: string): string {
 </header>`;
 }
 
-// The audio controls, shown once the user adds an audio file (spec 09, F11): in
+// The audio controls, shown once the user adds an audio file: in
 // the slide bar, beside Start and the advance method, and in a bar of their own
 // at the foot of the text view.
 function audioControls(): string {
@@ -286,7 +287,7 @@ function slides(): string {
 </section>`;
 }
 
-// A recording's timing is bundled with the page as the default for Timed advance (spec 09, F8).
+// A recording's timing is bundled with the page as the default for Timed advance.
 export function chantPage(
   chant: Chant,
   groups: Group[],
@@ -318,7 +319,7 @@ function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, rec
   const anchorName = [anchorLabel, ...anchorDetails].join(', ');
   const items = [
     `<dt>Chanted by</dt><dd>${escapeHtml([chanter.title, chanter.lineageTitle].filter(Boolean).join(', '))}</dd>`,
-    `<dt>Chants</dt>${chants.map((c) => `<dd><a href="/chants/${c.slug}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
+    `<dt>Chants</dt>${chants.map((c) => `<dd><a href="${chantHref(c.slug)}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
     `<dt>Anchor recording</dt><dd>${anchorName}</dd>`,
     chants.some((c) => c.translation) ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',

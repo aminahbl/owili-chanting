@@ -1,4 +1,4 @@
-// The page's timing for Timed advance (spec 09). The default is the timing of
+// The page's timing for Timed advance. The default is the timing of
 // a recording, where a marker file covers the chant or set, and otherwise the
 // rhythm model's. The user can export the timing in use, edit it and import it
 // again. A set page holds several chants, and a timing file gives each chant

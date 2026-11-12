@@ -1,4 +1,4 @@
-// The slide view (spec 04, P5 to P7) shows the chant a block of lines at a
+// The slide view shows the chant a block of lines at a
 // time. The block stays still and the accent bar moves down it. After the
 // block, a smaller, fainter preview shows the next block's first line. When
 // the current line passes the block's end, the page turns to the next block.
@@ -6,7 +6,7 @@
 // The chant's notes are shown as cues above its first line. The lines, section
 // titles, cues and solo labels are copied from the text view, so forms,
 // translation and chanting follow the same settings. A leader line is marked by its curly
-// brackets, so it has no label. During a timed pause after a line (spec 09, F5),
+// brackets, so it has no label. During a timed pause after a line,
 // the line is dimmed; a pause with a cue, such as a bow, shows the next line's
 // block with the cue marked, since the cue stands above the line it comes before.
 import type { LineClock } from './clock.ts';

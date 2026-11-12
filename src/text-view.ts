@@ -1,5 +1,5 @@
 // The text view marks the clock's current step and keeps it about a third of
-// the way down the screen (spec 04, P4). Scrolling by hand pauses following
+// the way down the screen. Scrolling by hand pauses following
 // until the user presses "Back to current line" or moves to another line.
 import type { LineClock } from './clock.ts';
 

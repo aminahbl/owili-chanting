@@ -1,4 +1,4 @@
-// Timing files in LRC, the plain text format for timed lyrics (spec 09). A
+// Timing files in LRC, the plain text format for timed lyrics. A
 // file follows one recording, which can hold several chants: a
 // `[chant:<number> <slug>]` tag starts each chant's rows. The number names the
 // chant; the slug is there for the reader and may be left out. A row is

@@ -52,7 +52,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── settings.ts           # Stored display settings, shared with the build
 │   ├── theme.ts              # The theme button in every page's header
 │   ├── icons/                # Icons as custom elements
-│   ├── card.ts               # Card markup, shared with the build
+│   ├── card.ts               # Card markup and the search index, shared with the build
 │   ├── normalise.ts          # Search text normalisation, shared with the build
 │   └── html.ts               # HTML escaping
 ├── data/

@@ -3,7 +3,7 @@
 // chants. The address names what is shown: a set's ID after "#" opens it in
 // the editor, "#new" opens a new set, and no "#" shows the list.
 import './icons/home.ts';
-import type { SearchEntry } from './card.ts';
+import { chantHref, loadSearchIndex, type SearchEntry } from './card.ts';
 import { escapeHtml } from './html.ts';
 import { matches, normalise } from './normalise.ts';
 import { deleteOpenSet, newOpenSetId, readOpenSets, saveOpenSet, SET_PAGE, shareLink, type OpenSet } from './open-set-store.ts';
@@ -73,22 +73,13 @@ document.querySelector('#open-set-new')?.addEventListener('click', () => (locati
 
 // The editor. Chant titles come from the search index, which is fetched when
 // the editor first opens.
-let index: Promise<SearchEntry[]> | null = null;
 let entries: SearchEntry[] = [];
 let byId = new Map<string, SearchEntry>();
 /** The set being edited. Only Save stores it. */
 let draft: OpenSet = { id: '', title: '', chants: [] };
 
-function loadIndex(): Promise<SearchEntry[]> {
-  index ??= fetch('/search.json').then((r) => {
-    if (!r.ok) throw new Error(`Search index: ${r.status}`);
-    return r.json() as Promise<SearchEntry[]>;
-  });
-  return index;
-}
-
 // A chant's title links to its page in a new tab, so the set being edited stays open.
-const chantLink = (e: SearchEntry) => `<a href="/chants/${e.slug}" target="_blank">${escapeHtml(e.title)}</a>`;
+const chantLink = (e: SearchEntry) => `<a href="${chantHref(e.slug)}" target="_blank">${escapeHtml(e.title)}</a>`;
 
 function chantName(id: string): string {
   const entry = byId.get(id);
@@ -148,7 +139,7 @@ function edit(set: OpenSet, isNew: boolean) {
   showChants();
   showResults();
   titleInput.focus();
-  loadIndex().then(
+  loadSearchIndex().then(
     (loaded) => {
       entries = loaded;
       byId = new Map(loaded.map((e) => [e.id, e]));

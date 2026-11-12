@@ -1,4 +1,4 @@
-// Auto advance (spec 05, T7, T8 and T11): step durations from the rhythm
+// Auto advance: step durations from the rhythm
 // model, or the estimate for a translation, and a tempo stored per chant that scales them.
 import type { LineClock } from './clock.ts';
 import { lineSeconds, translationSeconds } from './rhythm.ts';

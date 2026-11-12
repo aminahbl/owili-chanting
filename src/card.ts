@@ -18,6 +18,24 @@ export interface CardData {
   lines: string[];
 }
 
+export const SEARCH_INDEX = '/search.json';
+
+let index: Promise<SearchEntry[]> | null = null;
+
+/** The search index, fetched once per page. A failed fetch is tried again on the next call. */
+export function loadSearchIndex(): Promise<SearchEntry[]> {
+  index ??= fetch(SEARCH_INDEX)
+    .then((r) => {
+      if (!r.ok) throw new Error(`Search index: ${r.status}`);
+      return r.json() as Promise<SearchEntry[]>;
+    })
+    .catch((error: unknown) => {
+      index = null;
+      throw error;
+    });
+  return index;
+}
+
 export function chantHref(slug: string): string {
   return `/chants/${slug}`;
 }

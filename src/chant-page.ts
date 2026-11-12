@@ -109,7 +109,8 @@ function download(name: string, text: string) {
   link.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
   link.download = name;
   link.click();
-  URL.revokeObjectURL(link.href);
+  // Revoked straight after the click, some browsers cancel the download.
+  setTimeout(() => URL.revokeObjectURL(link.href));
 }
 
 function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLElement) {
@@ -273,7 +274,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     textView.follow();
   }
 
-  // Switching view keeps the position (P3); from the top of the text, slides open at the title.
+  // Switching view keeps the position; from the top of the text, slides open at the title.
   // The URL names the view, so a slide link can be shared.
   const switchButtons = [...document.querySelectorAll<HTMLButtonElement>('.view-switch button')];
   function showSwitch() {
@@ -317,7 +318,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     lineInput.blur();
   });
 
-  // Timed advance follows the imported timing, or the default (spec 09, F6).
+  // Timed advance follows the imported timing, or the default.
   const timingName = document.querySelector<HTMLElement>('.timing-name');
   const timingError = document.querySelector<HTMLElement>('.timing-error');
   const timingImport = document.querySelector<HTMLInputElement>('#timing-import');
@@ -375,7 +376,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     afterTranslationChange();
   });
 
-  // The user's audio file, in either view (F11). While it is linked to the
+  // The user's audio file, in either view. While it is linked to the
   // slides, Play does what Start does, and Stop also goes back to the title.
   const audioNote = document.querySelector<HTMLElement>('.audio-note');
   const audioName = document.querySelector<HTMLElement>('.audio-name');

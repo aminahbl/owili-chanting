@@ -2,6 +2,7 @@
 // set named in the address, fills the article with each chant's block from
 // /blocks/, and then loads chant-page.js, which reads the blocks as it does on
 // a Sangha set page.
+import { chantHref } from './card.ts';
 import { escapeHtml } from './html.ts';
 import { normalise } from './normalise.ts';
 import { newOpenSetId, readOpenSets, readShareLink, saveOpenSet, type OpenSet } from './open-set-store.ts';
@@ -60,7 +61,7 @@ function listChants(set: OpenSet, chants: HTMLElement) {
   const items = set.chants.map((id) => {
     const block = article?.querySelector<HTMLElement>(`.set-chant[data-chant="${id}"]`);
     const title = block?.querySelector('.set-chant-title')?.textContent ?? '';
-    return block ? `<dd><a href="/chants/${block.dataset.slug}">${escapeHtml(title)}</a></dd>` : `<dd>#${id}, not available</dd>`;
+    return block ? `<dd><a href="${chantHref(block.dataset.slug ?? '')}">${escapeHtml(title)}</a></dd>` : `<dd>#${id}, not available</dd>`;
   });
   chants.insertAdjacentHTML('afterend', items.join(''));
 }

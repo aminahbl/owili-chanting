@@ -2,7 +2,7 @@
 // chant, the set pages, the open set pages, the about, guide and resources
 // pages, the search index and redirects.
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { chantHref } from '../src/card.ts';
+import { chantHref, SEARCH_INDEX } from '../src/card.ts';
 import { chantBlock, chantPage, openSetPage, setPage, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
 import { entries, groupsOf, loadChants, loadSets, loadTimings, searchIndex, setsGroup, type Entry, type Group } from './chant-list.ts';
@@ -86,7 +86,7 @@ for (const page of PAGES) {
   await write(`/${page.slug}/index.html`, handWrittenPage(page, body));
 }
 
-await write('/search.json', JSON.stringify(searchIndex(chants, all)));
+await write(SEARCH_INDEX, JSON.stringify(searchIndex(chants, all)));
 await write('/404.html', notFoundPage());
 
 // The first page of a list has no number, so the numbered form redirects to it.

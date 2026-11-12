@@ -1,4 +1,4 @@
-// The user's audio file, remembered per chant in IndexedDB (spec 09, F11).
+// The user's audio file, remembered per chant in IndexedDB.
 // Where the browser can keep a handle to a file on the device (the File System
 // Access API, in Chromium browsers), only the handle is kept, and the browser
 // asks again for permission to read the file on a later visit. Other browsers

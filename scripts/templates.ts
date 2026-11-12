@@ -179,7 +179,7 @@ function searchBox(group: Group | null): string {
   const groupData = group ? ` data-group="${group.id}" data-group-title="${escapeHtml(group.title)}"` : '';
   return `<div class="search" role="search">
   <label for="search-input" class="sr-only">${searchLabel}</label>
-  <input id="search-input" type="search" placeholder="${searchLabel}" autocomplete="off" spellcheck="false" data-index="/search.json"${groupData}>
+  <input id="search-input" type="search" placeholder="${searchLabel}" autocomplete="off" spellcheck="false"${groupData}>
 </div>`;
 }
 

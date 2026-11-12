@@ -1,25 +1,14 @@
 // Search on the chant list pages. The field is in the page's HTML, so the
 // layout does not shift when this script loads. The index is fetched the
 // first time the field gets focus, so users who never search do not download it.
-import { cardHtml, type SearchEntry } from './card.ts';
+import { cardHtml, loadSearchIndex, type SearchEntry } from './card.ts';
 import { matches, normalise } from './normalise.ts';
-
 
 const input = document.querySelector<HTMLInputElement>('#search-input');
 const status = document.querySelector<HTMLElement>('#search-status');
 const list = document.querySelector<HTMLElement>('#chant-list');
 // Only the chant list pages have a results section.
 const results = document.querySelector<HTMLElement>('#search-results');
-
-let index: Promise<SearchEntry[]> | null = null;
-
-function load(url: string): Promise<SearchEntry[]> {
-  index ??= fetch(url).then((r) => {
-    if (!r.ok) throw new Error(`Search index: ${r.status}`);
-    return r.json() as Promise<SearchEntry[]>;
-  });
-  return index;
-}
 
 // The status line speaks only when nothing is found.
 function statusText(found: number, groupTitle?: string): string {
@@ -38,7 +27,7 @@ async function update(field: HTMLInputElement, line: HTMLElement, rest: HTMLElem
   let entries: SearchEntry[] = [];
   if (query) {
     try {
-      entries = await load(field.dataset.index ?? '/search.json');
+      entries = await loadSearchIndex();
     } catch {
       line.textContent = 'Search is not available right now';
       return;
@@ -85,7 +74,7 @@ function filterSets(rest: HTMLElement, entries: SearchEntry[], query: string): s
 }
 
 if (input && status && list) {
-  input.addEventListener('focus', () => load(input.dataset.index ?? '/search.json').catch(() => {}), { once: true });
+  input.addEventListener('focus', () => loadSearchIndex().catch(() => {}), { once: true });
   input.addEventListener('input', () => update(input, status, list));
   // The browser may restore the field's text when the user comes back to the page.
   if (input.value) update(input, status, list);

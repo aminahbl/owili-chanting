@@ -1,4 +1,4 @@
-// Keeps the screen on while lines are advancing (spec 04, P13). The browser
+// Keeps the screen on while lines are advancing. The browser
 // releases the lock when the page is hidden, so it is requested again when
 // the page becomes visible.
 let lock: WakeLockSentinel | null = null;
