@@ -86,7 +86,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0155", // invitation-to-the-devas-longer-parittas
     "0050", // invitation-to-the-devas
     "0156", // invitation-to-the-devas-closing
-    "0157", // invitation-to-the-devas-closing-at-the-monastery
+    "0157", // invitation-to-the-devas-buddha-dassana
     "0159", // paritta-parikamma
     "0001", // vandana
     "0158", // vandana-short

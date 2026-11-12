@@ -161,7 +161,7 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0154', slug: 'invitation-to-the-devas-shorter-parittas' },
   { id: '0155', slug: 'invitation-to-the-devas-longer-parittas' },
   { id: '0156', slug: 'invitation-to-the-devas-closing' },
-  { id: '0157', slug: 'invitation-to-the-devas-closing-at-the-monastery' },
+  { id: '0157', slug: 'invitation-to-the-devas-buddha-dassana' },
   { id: '0158', slug: 'vandana-short' },
   { id: '0159', slug: 'paritta-parikamma' },
   { id: '0160', slug: 'u-pannanda-paritta-preliminaries' },

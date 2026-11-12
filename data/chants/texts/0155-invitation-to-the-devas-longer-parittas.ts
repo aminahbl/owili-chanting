@@ -3,14 +3,12 @@ import type { Chant } from '../../types.ts';
 export const chant = {
   id: "0155",
   slug: "invitation-to-the-devas-longer-parittas",
-  title: "Invitation to the Devas (longer parittas)",
+  title: "Invitation to the Devas (Samantā…)",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#devas", categories: [{ category: "Parittas", subcategory: "Invitations", order: 2 }] },
   translation: "draft",
-  notes: [
-    "In Thai custom, these lines are chanted before the longer sipsong tamnaan set of parittas, in place of Invitation to the Devas (shorter parittas).",
-  ],
   editorial: [
     { status: "changed", note: "Part C of the manual's Invitation to the Devas, which gives parts A to F with instructions on when each is chanted. Each part is a chant of its own here." },
+     { status: "changed", note: "Commentarial lifted: In Thai custom, these lines are chanted before the longer sipsong tamnaan set of parittas, in place of Invitation to the Devas (shorter parittas)." },
   ],
   sections: [
     {
