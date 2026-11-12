@@ -15,7 +15,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0126", // amaravati-twelve-parittas
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0002", // sarana-gamana-patha
     "0003", // dedication-of-offerings
     "0004", // preliminary-homage
@@ -75,7 +75,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
   { id: 'parittas', title: 'Parittas', chants: [
     "0049", // invitation-for-paritta-chanting
     "0050", // invitation-to-the-devas
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0002", // sarana-gamana-patha
     "0016", // sambuddhe
     "0017", // nama-kara-siddhi-gatha

@@ -6,7 +6,7 @@ export const set = {
   title: "Twelve Parittas",
   chanter: "amaravati",
   chants: [
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0002", // sarana-gamana-patha
     "0017", // nama-kara-siddhi-gatha
     "0018", // namo-kara-atthaka

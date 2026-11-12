@@ -6,7 +6,7 @@ export const set = {
   title: "Main Puja",
   chanter: "mahamevnawa",
   chants: [
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0002", // sarana-gamana-patha
     "0019", // buddha-dhamma-sangha-guna
     "0020", // atanatiya-paritta-short

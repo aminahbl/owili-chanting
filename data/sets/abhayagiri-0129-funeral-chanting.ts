@@ -6,7 +6,7 @@ export const set = {
   title: "Funeral chanting",
   chanter: "abhayagiri",
   chants: [
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0115", // dhamma-sangani-matika
     "0122", // patthana-matika-patha
     "0123", // vipassana-bhumi-patha

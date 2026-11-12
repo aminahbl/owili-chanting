@@ -5,7 +5,7 @@
  * again. A renamed slug is changed here too. The build checks this list.
  */
 export const ids: { id: string; slug: string; retired?: true }[] = [
-  { id: '0001', slug: 'pubba-bhaga-nama-kara-patha' },
+  { id: '0001', slug: 'vandana' },
   { id: '0002', slug: 'sarana-gamana-patha' },
   { id: '0003', slug: 'dedication-of-offerings' },
   { id: '0004', slug: 'preliminary-homage' },

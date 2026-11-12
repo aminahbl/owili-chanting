@@ -6,7 +6,7 @@ export const set = {
   title: "Daily Evening Puja",
   chanter: "lbv",
   chants: [
-    "0001", // pubba-bhaga-nama-kara-patha
+    "0001", // vandana
     "0132", // buddha-guna-vandana
     "0133", // dhamma-guna-vandana
     "0134", // sangha-guna-vandana

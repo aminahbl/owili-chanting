@@ -3,7 +3,7 @@
 # Converted from the previous site's marker file funeral-chanting-markers-abhayagiri.json.
 # The recording is not identified: the previous site named no page for it.
 # Chants in recording order:
-#   pubba-bhaga-nama-kara-patha
+#   vandana
 #   dhamma-sangani-matika
 #   patthana-matika-patha
 #   vipassana-bhumi-patha
@@ -12,7 +12,7 @@
 # Old rows not matched to a chant: 187-194.
 # vipassana-bhumi-patha: estimated from the rhythm model, to be checked by ear: 5, 7, 9, 19, 20, 21, 24, 26, 29, 31, 33, 35, 37, 39, 41, 43.
 
-[chant:0001 pubba-bhaga-nama-kara-patha]
+[chant:0001 vandana]
 [00:00.00]1 Namo tassa bhagavato arahato sammā-sambuddhassa
 [00:09.08]1 Namo tassa bhagavato arahato sammā-sambuddhassa
 [00:17.42]1 Namo tassa bhagavato arahato sammā-sambuddhassa
