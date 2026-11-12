@@ -17,6 +17,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0126", // amaravati-twelve-parittas
     "0146", // aungsi-sayadaw-dhammacakkappavattana-sutta
     "0150", // cloud-mountain-refuges-and-eight-precepts
+    "0152", // narayan-liebenson-blessings
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // vandana

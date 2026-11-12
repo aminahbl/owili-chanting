@@ -156,4 +156,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0149', slug: 'eight-precepts-short' },
   { id: '0150', slug: 'cloud-mountain-refuges-and-eight-precepts' },
   { id: '0151', slug: 'karuna-morning-chanting' },
+  { id: '0152', slug: 'narayan-liebenson-blessings' },
 ];
