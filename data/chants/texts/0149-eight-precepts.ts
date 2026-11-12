@@ -2,12 +2,12 @@ import type { Chant } from '../../types.ts';
 
 export const chant = {
   id: "0149",
-  slug: "eight-precepts-short",
-  title: "Eight Precepts (short)",
+  slug: "eight-precepts",
+  title: "The Eight Precepts",
   paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#eight-precepts", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Uposatha-day for Lay-followers", order: 16 }] },
   translation: "draft",
   editorial: [
-    { status: "changed", note: "The eight training rules of the manual's ceremony (lines 34–42 of *eight-precepts*), without the request, the bhikkhu's part and the closing verses." },
+    { status: "changed", note: "The eight training rules of the manual's ceremony (lines 34–42 of *eight-precepts-ceremony*), without the request, the part of the bhikkhu or bhikkhuni and the closing verses." },
     { status: "open", lines: [7, 8], note: "English to review: the seventh precept is one long rule in two Pali lines; the English keeps it as one sentence over the same two lines." },
   ],
   sections: [

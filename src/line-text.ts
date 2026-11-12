@@ -4,7 +4,7 @@
 // stops and the group joins.
 import { escapeHtml } from './html.ts';
 
-/** Text that differs by the chanter's gender carries both forms. */
+/** Text with men's and women's forms carries both. The forms follow the chanter's gender, except in the precepts ceremonies, where they follow the gender of the one giving the precepts. */
 export type Forms = string | { men: string; women: string };
 
 export const LEADER_OPEN = '<span class="leader-bracket leader-open" aria-hidden="true">{&nbsp;</span>';

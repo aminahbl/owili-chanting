@@ -200,9 +200,10 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0047", // yan-dani-me-katam-punnam
   ] },
   { id: 'sila', title: 'Sīla', chants: [
-    "0100", // five-precepts
-    "0099", // eight-precepts
-    "0149", // eight-precepts-short
+    "0161", // five-precepts
+    "0149", // eight-precepts
+    "0100", // five-precepts-ceremony
+    "0099", // eight-precepts-ceremony
     "0097", // method-of-confessing-light-offences
     "0098", // formula-for-same-base-offences
   ] },

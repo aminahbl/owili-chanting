@@ -2,47 +2,44 @@ import type { Chant } from '../../types.ts';
 
 export const chant = {
   id: "0099",
-  slug: "eight-precepts",
-  title: "Eight Precepts",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#eight-precepts", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Uposatha-day for Lay-followers", order: 16 }] },
+  slug: "eight-precepts-ceremony",
+  title: "Eight Precepts Ceremony",
+  paliSource: { label: "Traditional; source not recorded" },
   translation: "draft",
   notes: [
     "With hands in añjali, the laypeople recite the following request:",
   ],
   editorial: [
-    { status: "changed", note: "The manual's speaker labels are written as cues (*Bhikkhu*, *Laypeople*), and the manual's English glosses under the Pali lines are left out. The glosses can be read at the Pali source link." },
+    { status: "changed", note: "Based on the ceremony in the Bhikkhu Manual (Chants Used in Sri Lanka, Uposatha-day for Lay-followers), which is no longer named as the source. The manual's three opening *Sādhu!* lines are left out, the second and third requests and the homage, which it abbreviates, are written out in full, its speaker labels are written as cues, and its English glosses are left out. The women's form has a bhikkhuni give the precepts: the laypeople address her as *ayye* in place of *bhante*, and the cues name her." },
     { status: "open", lines: [40, 41], note: "English to review: the seventh precept is one long rule in two Pali lines; the English keeps it as one sentence over the same two lines." },
   ],
   sections: [
     {
       lines: [
-        { id: 1, pali: "'Sādhu!", en: "'Excellent!" },
-        { id: 2, pali: "Sādhu!", en: "Excellent!" },
-        { id: 3, pali: "Sādhu!", en: "Excellent!" },
-        { id: 4, pali: "Okāsa ahaṁ bhante ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi,", en: "Venerable Sir, with your leave, I ask for the eight precepts together with the three refuges;" },
-        { id: 5, pali: "anuggahaṁ katvā sīlaṁ detha me bhante.", en: "out of kindness, please give me the precepts, Venerable Sir." },
-        { id: 6, pali: "Dutiyam-pi okāsa...", en: "For the second time, with your leave…" },
-        { id: 7, pali: "detha me bhante.", en: "please give me the precepts, Venerable Sir." },
-        { id: 8, pali: "Tatiyam-pi okāsa...", en: "For the third time, with your leave…" },
-        { id: 9, pali: "detha me bhante.'", en: "please give me the precepts, Venerable Sir.'" },
+        { id: 4, pali: { men: "'Okāsa ahaṁ bhante ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi,", women: "'Okāsa ahaṁ ayye ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi," }, en: { men: "'Venerable Sir, with your leave, I ask for the eight precepts together with the three refuges;", women: "'Venerable, with your leave, I ask for the eight precepts together with the three refuges;" } },
+        { id: 5, pali: { men: "anuggahaṁ katvā sīlaṁ detha me bhante.", women: "anuggahaṁ katvā sīlaṁ detha me ayye." }, en: { men: "out of kindness, please give me the precepts, Venerable Sir.", women: "out of kindness, please give me the precepts, Venerable." } },
+        { id: 6, pali: { men: "Dutiyam-pi okāsa ahaṁ bhante ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi,", women: "Dutiyam-pi okāsa ahaṁ ayye ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi," }, en: { men: "For the second time, Venerable Sir, with your leave, I ask for the eight precepts together with the three refuges;", women: "For the second time, Venerable, with your leave, I ask for the eight precepts together with the three refuges;" } },
+        { id: 7, pali: { men: "anuggahaṁ katvā sīlaṁ detha me bhante.", women: "anuggahaṁ katvā sīlaṁ detha me ayye." }, en: { men: "out of kindness, please give me the precepts, Venerable Sir.", women: "out of kindness, please give me the precepts, Venerable." } },
+        { id: 8, pali: { men: "Tatiyam-pi okāsa ahaṁ bhante ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi,", women: "Tatiyam-pi okāsa ahaṁ ayye ti-saraṇena saddhiṁ aṭṭh'aṅga sīlaṁ dhammaṁ yācāmi," }, en: { men: "For the third time, Venerable Sir, with your leave, I ask for the eight precepts together with the three refuges;", women: "For the third time, Venerable, with your leave, I ask for the eight precepts together with the three refuges;" } },
+        { id: 9, pali: { men: "anuggahaṁ katvā sīlaṁ detha me bhante.'", women: "anuggahaṁ katvā sīlaṁ detha me ayye.'" }, en: { men: "out of kindness, please give me the precepts, Venerable Sir.'", women: "out of kindness, please give me the precepts, Venerable.'" } },
       ],
     },
     {
       lines: [
-        { id: 10, cue: "Bhikkhu" },
+        { id: 10, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
         { id: 11, pali: "'Yaṁ ahaṁ vadāmi taṁ vadetha.'", en: "'Repeat what I say.'" },
       ],
     },
     {
       lines: [
         { id: 12, cue: "Laypeople" },
-        { id: 13, pali: "'Āma, bhante.'", en: "'Yes, Venerable Sir.'" },
+        { id: 13, pali: { men: "'Āma, bhante.'", women: "'Āma, ayye.'" }, en: { men: "'Yes, Venerable Sir.'", women: "'Yes, Venerable.'" } },
       ],
     },
     {
       lines: [
-        { id: 14, cue: "Bhikkhu" },
-        { id: 15, pali: "'Namo...'", en: "'Homage…'", repeat: 3 },
+        { id: 14, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
+        { id: 15, pali: "'Namo tassa bhagavato arahato sammā-sambuddhassa.'", en: "'Homage to the Gracious One, the worthy, the perfectly self-awakened.'", repeat: 3 },
       ],
     },
     {
@@ -53,7 +50,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 18, cue: "Bhikkhu" },
+        { id: 18, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
       ],
     },
     {
@@ -72,19 +69,19 @@ export const chant = {
     {
       lines: [
         { id: 28, cue: "Laypeople: repeat line by line." },
-        { id: 29, cue: "Bhikkhu" },
+        { id: 29, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
         { id: 30, pali: "'Saraṇagamanaṁ sampuṇṇaṁ.'", en: "'The going for refuge is complete.'" },
       ],
     },
     {
       lines: [
         { id: 31, cue: "Laypeople" },
-        { id: 32, pali: "'Āma, bhante.'", en: "'Yes, Venerable Sir.'" },
+        { id: 32, pali: { men: "'Āma, bhante.'", women: "'Āma, ayye.'" }, en: { men: "'Yes, Venerable Sir.'", women: "'Yes, Venerable.'" } },
       ],
     },
     {
       lines: [
-        { id: 33, cue: "Then the bhikkhu recites, with the laypeople repeating line by line:" },
+        { id: 33, cue: { men: "Then the bhikkhu recites, with the laypeople repeating line by line:", women: "Then the bhikkhuni recites, with the laypeople repeating line by line:" } },
         { id: 34, pali: "Pāṇātipātā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from killing living beings." },
         { id: 35, pali: "Adinnādānā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from taking what is not given." },
         { id: 36, pali: "Abrahma-cariyā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from unchaste conduct." },
@@ -99,7 +96,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 43, cue: "Bhikkhu" },
+        { id: 43, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
         { id: 44, pali: "'Imaṁ aṭṭh'aṅga-sīlaṁ samādiyāmi.'", en: "'I undertake these eight precepts.'" },
       ],
     },
@@ -111,7 +108,7 @@ export const chant = {
     },
     {
       lines: [
-        { id: 47, cue: "Bhikkhu" },
+        { id: 47, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
         { id: 48, pali: "'Ti-saraṇena saddhiṁ aṭṭh'aṅga-sīlaṁ dhammaṁ sādhukaṁ", en: "'Keep the eight precepts with the three refuges well," },
         { id: 49, pali: "surakkhitaṁ katvā appamādena sampādetha.'", en: "carefully guarded, and strive on with heedfulness.'" },
       ],
@@ -119,12 +116,12 @@ export const chant = {
     {
       lines: [
         { id: 50, cue: "Laypeople" },
-        { id: 51, pali: "'Āma, bhante.'", en: "'Yes, Venerable Sir.'" },
+        { id: 51, pali: { men: "'Āma, bhante.'", women: "'Āma, ayye.'" }, en: { men: "'Yes, Venerable Sir.'", women: "'Yes, Venerable.'" } },
       ],
     },
     {
       lines: [
-        { id: 52, cue: "Bhikkhu" },
+        { id: 52, cue: { men: "Bhikkhu", women: "Bhikkhuni" } },
       ],
     },
     {

@@ -1,5 +1,5 @@
 import { escapeHtml } from '../src/html.ts';
-import { lineText } from '../src/line-text.ts';
+import { forms, lineText } from '../src/line-text.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
 import type { Chant, ChantingLine, ChantSet, Line, Ref, Section, Text } from '../data/types.ts';
 import type { Group, RecordingInfo } from './chant-list.ts';
@@ -58,7 +58,7 @@ function chantingLine(line: ChantingLine, labelled: boolean): string {
 function lines(list: Line[]): string {
   return list
     .map((line, i) => {
-      if ('cue' in line) return `<p class="cue" data-cue="${line.id}">${escapeHtml(line.cue)}</p>`;
+      if ('cue' in line) return `<p class="cue" data-cue="${line.id}">${forms(line.cue, escapeHtml)}</p>`;
       const labelled = role(line) !== '' && role(line) !== role(list[i - 1]);
       return chantingLine(line, labelled);
     })

@@ -8,7 +8,7 @@ export const set = {
   chants: [
     "0001", // vandana
     "0002", // sarana-gamana-patha
-    "0149", // eight-precepts-short
+    "0149", // eight-precepts
   ],
   anchorRecording: {
     label: "Chanting of Refuges and Precepts",

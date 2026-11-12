@@ -54,6 +54,8 @@ Explanations do not go into the English line, because they lengthen it and blur 
 
 Where the forms differ only in grammatical gender (for example "anatīto" and "anatītā", both "not gone beyond"), the English is the same for both. A different English line is written only if the meaning differs.
 
+In the precepts ceremonies, the forms follow the one giving the precepts: a bhikkhu in the men's form and a bhikkhuni in the women's form. The laypeople address a bhikkhu as *bhante*, "Venerable Sir", and a bhikkhuni as *ayye*, "Venerable".
+
 ### The leader's opening words
 
 Where a Pali line opens with words the leader chants alone, written in curly brackets ("{Yo so} bhagavā"), the English marks its own opening words the same way, so a group chanting the English knows where to join. The marked words render the Pali's opening words where the English word order allows. Where it does not, they are the English line's opening phrase, of about the same length.
@@ -166,6 +168,7 @@ The formula as lines:
 | *(buddho) paṭiggaṇhātu accayaṁ* | may (the Buddha) pardon this fault |
 | *handa mayaṁ … karomase* / *bhaṇāmase* | Now let us … |
 | *bhante* | Venerable Sir; with *bhagavā*, Venerable Lord |
+| *ayye* (to a bhikkhuni) | Venerable |
 
 **The divine abidings:**
 

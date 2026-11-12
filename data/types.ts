@@ -1,6 +1,6 @@
 import type { ChanterId } from './chanters.ts';
 
-/** Text that differs by the chanter's gender carries both forms. */
+/** Text with men's and women's forms carries both. The forms follow the chanter's gender, except in the precepts ceremonies, where they follow the gender of the one giving the precepts. */
 export type Text = string | { men: string; women: string };
 
 export interface ChantingLine {
@@ -23,7 +23,7 @@ export interface ChantingLine {
 /** An instruction shown as a cue, not chanted. */
 interface CueLine {
   id: number;
-  cue: string;
+  cue: Text;
 }
 
 export type Line = ChantingLine | CueLine;
