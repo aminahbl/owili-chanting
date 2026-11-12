@@ -12,6 +12,7 @@ export const chanters = [
   { id: 'mahamevnawa', title: 'Mahamevnawa Buddhist Monastery' },
   { id: 'aungsi-sayadaw', title: 'Aungsi Sayadaw U Pannathamibhivamsa' },
   { id: 'cloud-mountain', title: 'Cloud Mountain Retreat Center' },
+  { id: 'karuna', title: 'Karuna Buddhist Vihara' },
 ] as const;
 
 export type ChanterId = (typeof chanters)[number]['id'];
