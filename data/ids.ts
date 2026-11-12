@@ -153,4 +153,6 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0146', slug: 'aungsi-sayadaw-dhammacakkappavattana-sutta' },
   { id: '0147', slug: 'wat-marp-jan-morning-chanting' },
   { id: '0148', slug: 'buddham-vande' },
+  { id: '0149', slug: 'eight-precepts-short' },
+  { id: '0150', slug: 'cloud-mountain-refuges-and-eight-precepts' },
 ];
