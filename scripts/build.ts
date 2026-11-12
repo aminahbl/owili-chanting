@@ -1,12 +1,13 @@
-// Writes the site to dist/: the chant list pages, a page for each chant, the
-// about, guide and resources pages, the search index and redirects.
+// Writes the site to dist/: the chant list pages, a page and a block for each
+// chant, the set pages, the open set pages, the about, guide and resources
+// pages, the search index and redirects.
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref } from '../src/card.ts';
-import { chantPage, setPage, type SetLink } from './chant-page.ts';
+import { chantBlock, chantPage, openSetPage, setPage, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
 import { entries, groupsOf, loadChants, loadSets, loadTimings, searchIndex, setsGroup, type Entry, type Group } from './chant-list.ts';
 import type { Chant, ChantSet } from '../data/types.ts';
-import { handWrittenPage, listPage, notFoundPage, pageHref, PAGES, setsPage, type SetChanter } from './templates.ts';
+import { handWrittenPage, listPage, notFoundPage, openSetsPage, pageHref, PAGES, setsPage, type SetChanter } from './templates.ts';
 import { groups } from '../data/groups.ts';
 import { chanters, lineages } from '../data/chanters.ts';
 
@@ -74,7 +75,11 @@ const setLinks = (chant: Chant): SetLink[] =>
 for (const chant of chants) {
   const page = chantPage(chant, groupsOf(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
   await write(`${chantHref(chant.slug)}/index.html`, page);
+  await write(`/blocks/${chant.id}.html`, chantBlock(chant));
 }
+
+await write('/open-sets/index.html', openSetsPage());
+await write('/open-sets/set/index.html', openSetPage());
 
 for (const page of PAGES) {
   const body = await readFile(new URL(`pages/${page.slug}.html`, root), 'utf8');

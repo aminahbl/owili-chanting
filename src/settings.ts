@@ -75,6 +75,15 @@ export function readChantSettings(id: string): ChantSettings {
   }
 }
 
+/** Removes everything kept for one chant or set. */
+export function removeChantSettings(id: string) {
+  try {
+    localStorage.removeItem(chantKey(id));
+  } catch {
+    // As for writeSetting.
+  }
+}
+
 export function writeChantSettings(id: string, changes: ChantSettings) {
   try {
     localStorage.setItem(chantKey(id), JSON.stringify({ ...readChantSettings(id), ...changes }));

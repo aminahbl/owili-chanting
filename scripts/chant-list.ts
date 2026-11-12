@@ -198,6 +198,6 @@ export function searchIndex(chants: Chant[], list: Entry[]): SearchEntry[] {
     const sourceCategories = (chant.paliSource.categories ?? []).flatMap((c) => [c.category, c.subcategory ?? '']);
     const text = normalise([chant.title, chant.paliTitle ?? '', ...pali].join(' '));
     const groups = Object.fromEntries(groupsOf(chant).map((g) => [g.id, g.chants.indexOf(chant.id)]));
-    return [{ ...card, groups, text, sourceCategories: normalise(sourceCategories.join(' ')) }];
+    return [{ ...card, id: chant.id, groups, text, sourceCategories: normalise(sourceCategories.join(' ')) }];
   });
 }

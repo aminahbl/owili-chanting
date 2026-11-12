@@ -155,9 +155,13 @@ function textSize(name: 'size' | 'slideSize', view: string): string {
   return `<fieldset class="${view}-only"><legend>Text size</legend>${slider(`name="${name}"`, 'Text size', SIZE_RANGES[name], ends)}</fieldset>`;
 }
 
-function settingsPopover(chants: Chant[], recorded: boolean): string {
+function hasTwoForms(chants: Chant[]): boolean {
   const chantLines = chants.flatMap((c) => c.sections.flatMap((s) => s.lines)).filter((l): l is ChantingLine => 'pali' in l);
-  const twoForms = chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
+  return chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
+}
+
+// The choice of men's and women's forms is included when `twoForms` is true.
+function settingsPopover(twoForms: boolean, recorded: boolean): string {
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
   <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Details of the available recordings, with links to their pages, are given in the info panel.' : ''}</p>
@@ -206,7 +210,7 @@ ${choice('order', 'Order', [['', 'Pali first'], ['translation', 'Translation fir
   </div>
   <p class="translation-error option-error" role="alert"></p>
 </fieldset>
-${twoForms ? choice('form', 'Form', [['', 'Men’s form'], ['women', 'Women’s form']]) : ''}
+${twoForms ? choice('form', 'Form', [['', 'Men’s form'], ['women', 'Women’s form']], 'form-options') : ''}
 </form>`;
   return popover('settings', 'Settings', body);
 }
@@ -298,7 +302,7 @@ ${chant.sections.map((s) => section(s)).join('\n')}
 <div class="audio-bar">${audioControls()}</div>
 ${slides()}
 ${infoPopover(chant, groups, recordings, sets)}
-${settingsPopover([chant], recordings.length > 0)}
+${settingsPopover(hasTwoForms([chant]), recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant.title));
 }
@@ -318,30 +322,67 @@ function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, rec
       ? `<dt>Links</dt>${set.links.map((l) => `<dd><a href="${escapeHtml(l.href)}">${escapeHtml(l.text)}</a></dd>`).join('')}`
       : '',
   ];
+  const copy = `<p class="info-actions"><button type="button" class="outline-button" id="copy-set" data-title="${escapeHtml(`${set.title}, ${chanter.title}`)}">Copy to open sets</button></p>`;
   const number = `<p class="info-number">#${set.id}</p>`;
-  return popover('info', escapeHtml(set.title), `<dl>${items.join('')}</dl>${number}`);
+  return popover('info', escapeHtml(set.title), `<dl>${items.join('')}</dl>${copy}${number}`);
 }
 
-// A set is one continuous text: each chant is a block with its title as a
-// heading. The article carries the set's number, for its kept settings, and
-// each block the chant's number.
-export function setPage(set: ChantSet, chants: Chant[], chanter: SetChanter, timing?: string, recordings: RecordingInfo[] = []): string {
-  const blocks = chants.map((chant) => `<section class="set-chant" data-chant="${chant.id}" data-slug="${chant.slug}">
+/**
+ * A chant as one block of a set page, with its title as a heading. The block
+ * carries the chant's number. The build also writes each chant's block to
+ * /blocks/<number>.html, which an open set's page fetches.
+ */
+export function chantBlock(chant: Chant): string {
+  return `<section class="set-chant" data-chant="${chant.id}" data-slug="${chant.slug}">
 <h2 class="set-chant-title">${escapeHtml(chant.title)}</h2>
 ${notes(chant)}
 ${chant.sections.map((s) => section(s, 'h3')).join('\n')}
-</section>`);
+</section>`;
+}
+
+// A set is one continuous text of chant blocks. The article carries the set's
+// number, for its kept settings.
+export function setPage(set: ChantSet, chants: Chant[], chanter: SetChanter, timing?: string, recordings: RecordingInfo[] = []): string {
   const body = `<article class="chant" data-chant="${set.id}" data-slug="${set.slug}">
 <h1>${escapeHtml(set.title)}</h1>
 <p class="set-chanter">${escapeHtml(chanter.title)}</p>
-${blocks.join('\n')}
+${chants.map(chantBlock).join('\n')}
 </article>
 <button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
 <div class="audio-bar">${audioControls()}</div>
 ${slides()}
 ${setInfoPopover(set, chants, chanter, recordings)}
-${settingsPopover(chants, recordings.length > 0)}
+${settingsPopover(hasTwoForms(chants), recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   const title = `${set.title}, ${chanter.title}`;
-  return layout(title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(title));
+  const scripts = '<script type="module" src="/assets/js/chant-page.js"></script>\n<script type="module" src="/assets/js/copy-set.js"></script>';
+  return layout(title, body, scripts, header(title));
+}
+
+const OPEN_SET = 'Open set';
+
+// The page of an open set, at /open-sets/set. src/open-set.ts fills the
+// article, the title and the info panel's list of chants from the set kept in
+// the browser or given in the address, and then loads chant-page.js. The form
+// choice is always included, and the script hides it when no line has two forms.
+export function openSetPage(): string {
+  const items = [
+    '<dt id="open-set-chants">Chants</dt>',
+    TRANSLATION_INFO,
+    '<dt class="open-set-kept">Open set</dt><dd class="open-set-kept">Kept in this browser. <a id="open-set-edit" href="/open-sets">Edit in Open sets</a></dd>',
+  ];
+  const body = `<div class="open-set-save text-only" hidden>
+<p>This set is not saved in this browser.</p>
+<button type="button" class="outline-button" id="open-set-save">Save to open sets</button>
+</div>
+<p class="open-set-status" role="status"></p>
+<noscript><p class="open-set-status">Open sets need JavaScript.</p></noscript>
+<article class="chant"></article>
+<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
+<div class="audio-bar">${audioControls()}</div>
+${slides()}
+${popover('info', OPEN_SET, `<dl>${items.join('')}</dl>`)}
+${settingsPopover(true, false)}
+${shortcutsPopover()}`;
+  return layout(OPEN_SET, body, '<script type="module" src="/assets/js/open-set.js"></script>', header(OPEN_SET));
 }

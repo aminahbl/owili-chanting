@@ -7,6 +7,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 - Minimal, typography‑first layout focussed on the text
 - Chant list with search, categories and pages
 - Sangha sets: sequences of chants as a community or an individual chants them, each on one page
+- Open sets: sequences of chants chosen by the user, kept in the browser and shared by link, each on one page like a Sangha set
 - Pali text with secondary English line‑by‑line
 - Chanting in Pali, in translation, or in both line by line
 - The user's own translation, imported from a plain text file in place of the English
@@ -25,12 +26,16 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 ├── scripts/
 │   ├── build.ts              # Writes the site to dist/
 │   ├── chant-list.ts         # Chants and sets, their timings, cards and search index
-│   ├── chant-page.ts         # HTML for the chant and set pages
+│   ├── chant-page.ts         # HTML for the chant, set and open set pages, and each chant's block
 │   ├── ids.ts                # Checks chant and set numbers against the ledger
-│   └── templates.ts          # Page layout, the site header, and HTML for the list pages
+│   └── templates.ts          # Page layout, the site header, and HTML for the list and Open sets pages
 ├── src/                      # Browser code, compiled to dist/assets/js/
 │   ├── search.ts             # Search on the list pages
 │   ├── chant-page.ts         # Connects the chant or set page's views, controls and keys
+│   ├── open-set-store.ts     # The user's open sets in the browser, and their share links
+│   ├── open-set.ts           # Fills an open set's page with its chants' blocks
+│   ├── open-sets.ts          # The Open sets page: the list and the editor
+│   ├── copy-set.ts           # Copy to open sets, on a Sangha set's page
 │   ├── clock.ts              # The line clock: the current line and how it moves on
 │   ├── text-view.ts          # The text view, and the steps of the line clock
 │   ├── slide-view.ts         # The slide view
@@ -84,6 +89,7 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 ## Usage
 
 - On the home page, search or choose a category, then open a chant. Sangha sets lists sets in one list, each titled with who chants it; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
+- The Sangha sets page links to Open sets, where the user makes, edits, shares and deletes sets of their own. An open set opens at `/open-sets/set` and works like a Sangha set page. Copy to open sets, in a Sangha set's info panel, starts an open set with its chants.
 - The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
 - On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, what is chanted (Pali, translation, or both), whether the smaller text under each line is shown and, for chants that have them, men's or women's forms. These settings apply to every chant.
 - Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
@@ -117,7 +123,7 @@ Each page's body is plain HTML in `pages/<slug>.html`, starting with its `<h1>`.
 
 ## Privacy
 
-- Audio files stay on your device and are never uploaded. The browser keeps a link to the file, or in some browsers a copy of it, until you remove it. Settings, positions, imported timing files and imported translations are kept in your browser's local storage.
+- Audio files stay on your device and are never uploaded. The browser keeps a link to the file, or in some browsers a copy of it, until you remove it. Settings, open sets, positions, imported timing files and imported translations are kept in your browser's local storage. An open set's share link holds the set after the `#`, which the browser does not send to the server.
 
 ## Roadmap ideas
 

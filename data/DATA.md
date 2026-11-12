@@ -33,7 +33,7 @@ The build does not notice a deleted ledger line, because gaps in the numbers are
 
 ## Chants
 
-A chant is a module in `chants/texts/` named `<id>-<slug>.ts`, for example `0053-karaniya-metta-sutta.ts`. It exports `chant`, typed with `satisfies Chant` from [types.ts](types.ts). The build reads every `.ts` file in the folder, stops if a file name does not match the module's number and slug, and writes the chant's page to `/chants/<slug>`.
+A chant is a module in `chants/texts/` named `<id>-<slug>.ts`, for example `0053-karaniya-metta-sutta.ts`. It exports `chant`, typed with `satisfies Chant` from [types.ts](types.ts). The build reads every `.ts` file in the folder, stops if a file name does not match the module's number and slug, and writes the chant's page to `/chants/<slug>`. It also writes the chant's block, its text as a set page shows it, to `/blocks/<number>.html`, which the pages of open sets fetch.
 
 - **Sections and lines.** A chant is a list of sections, each a stanza or paragraph of lines. Each line has an `id`, a number within the chant that is assigned once and never reused, because timing files refer to lines by it. A line with `cue` instead of `pali` is an instruction, shown but not chanted.
 - **`paliSource`** names where the Pali was taken from. For a chant from a book with its own arrangement, `paliSource.categories` records where the book places it: its category, subcategory where there is one, and position. This is a record of the source, separate from the site's categories, and the info panel shows it with the source.
@@ -84,6 +84,8 @@ Browsers store data for each chant and set under its number:
 
 This data stays in the browser when a chant or set is retired. Because a retired number is never issued again, it is never applied to another chant or set.
 
+Open sets, the sets users make, are kept in `localStorage` under the key `open-sets`, as a list of each set's ID, title and chant numbers. An open set's ID starts with `open-`, so it cannot clash with a number, and the set's data is kept under its ID as above. Deleting an open set removes this data too.
+
 ## Retiring a chant or set
 
 A retired chant or set is removed from the site. Its module moves into the `retired/` folder beside it, unchanged, and its ledger line is marked `retired: true`. The build does not read `retired/` folders, and `npm run check` leaves them out, so a retired module's import of `types.ts` does not need fixing; it resolves again if the module is moved back.
@@ -96,7 +98,7 @@ For a set, its number is also removed from the `sangha-sets` entry in `groups.ts
 - the set's chants keep their pages and categories;
 - a timing file that covered the set still gives its chants their timing.
 
-A retired chant must also be removed wherever its number appears: the categories in `groups.ts`, any set in `sets/`, and its rows and tag in `chants/markers/`. The build stops on each of these until they are removed. Removing a chant from a set means the set no longer matches its anchor recording, which may call for a note or a different recording.
+A retired chant must also be removed wherever its number appears: the categories in `groups.ts`, any set in `sets/`, and its rows and tag in `chants/markers/`. The build stops on each of these until they are removed. Removing a chant from a set means the set no longer matches its anchor recording, which may call for a note or a different recording. Its block at `/blocks/<number>.html` is no longer written. Open sets that name the chant cannot be changed by the build: their pages show a note in its place, and the Open sets editor marks it for removal.
 
 ## Old addresses
 

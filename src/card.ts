@@ -1,7 +1,8 @@
 import { escapeHtml } from './html.ts';
 
-/** A chant in the search index: its card, its position in each of its groups and its normalised search text. */
+/** A chant in the search index: its card, its number, its position in each of its groups and its normalised search text. */
 export interface SearchEntry extends CardData {
+  id: string;
   groups: Record<string, number>;
   /** Titles and Pali. */
   text: string;

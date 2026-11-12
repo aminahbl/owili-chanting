@@ -233,7 +233,7 @@ ${chips(groups, group)}
 ${SEARCH_STATUS}
 <div id="chant-list">
 <section class="group sets">
-<p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording.</p>
+<p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording. To chant a sequence of your own choosing, make an <a href="/open-sets">open set</a>.</p>
 <h2>${escapeHtml(group.title)}</h2>
 <ul class="cards">
 ${sets.map(setCard).join('\n')}
@@ -246,6 +246,36 @@ ${sets.map(setCard).join('\n')}
 export function handWrittenPage(page: Page, body: string): string {
   const script = '<script type="module" src="/assets/js/icons/home.js"></script>';
   return layout(page.title, `<article class="prose">\n${body}</article>`, script, siteHeader(page));
+}
+
+const OPEN_SETS: Page = { slug: 'open-sets', title: 'Open sets' };
+
+// The user's open sets and the editor, filled by src/open-sets.ts from the sets kept in the browser.
+export function openSetsPage(): string {
+  const body = `<article class="prose open-sets">
+<p class="open-sets-back"><a href="/list/sangha-sets">Back to Sangha sets</a></p>
+<h1>${OPEN_SETS.title}</h1>
+<p>An open set is a sequence of chants that you choose, chanted as one page like a Sangha set. Open sets are kept in this browser. Copy a set’s link to keep it elsewhere, to open it on another device or to give it to someone. The <a href="/guide#open-sets">guide</a> explains more.</p>
+<noscript><p>Open sets need JavaScript.</p></noscript>
+<section id="open-sets-list" hidden>
+<ul class="open-set-list"></ul>
+<p class="open-sets-empty">You have no open sets yet.</p>
+<p><button type="button" class="outline-button" id="open-set-new">New set</button></p>
+</section>
+<form class="open-set-editor" id="open-set-editor" hidden>
+<h2 id="open-set-editor-title">New set</h2>
+<label class="open-set-title">Title <input name="title" required autocomplete="off"></label>
+<h3>Chants</h3>
+<ol class="open-set-chants"></ol>
+<p class="open-set-no-chants">No chants yet. Search below to add them.</p>
+<p class="option-actions"><button type="submit" class="outline-button">Save</button><button type="button" class="outline-button" id="open-set-cancel">Cancel</button></p>
+<h3>Add chants</h3>
+<div class="search"><label for="open-set-search" class="sr-only">Search chants</label><input id="open-set-search" type="search" placeholder="Search chants" autocomplete="off" spellcheck="false"></div>
+${SEARCH_STATUS}
+<ul class="open-set-results"></ul>
+</form>
+</article>`;
+  return layout(OPEN_SETS.title, body, '<script type="module" src="/assets/js/open-sets.js"></script>', siteHeader(OPEN_SETS));
 }
 
 export function notFoundPage(): string {

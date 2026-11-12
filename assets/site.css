@@ -460,6 +460,107 @@ input:focus-visible {
   margin: 1rem 0;
 }
 
+/* The Open sets page: the user's sets, and in the editor the set's chants and
+   the search results, each a row with its buttons at the right. */
+.open-set-list,
+.open-set-chants,
+.open-set-results {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.open-sets li + li {
+  margin-top: 0;
+}
+
+.open-set-list li,
+.open-set-chants li,
+.open-set-results li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.open-set-name {
+  min-width: 0;
+}
+
+.open-set-count {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* The first line of a chant in the search results. */
+.open-set-preview {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.open-sets-back {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.open-set-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.open-set-actions .outline-button,
+.open-sets .option-actions .outline-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.outline-button:disabled {
+  color: var(--muted);
+  box-shadow: inset 0 0 0 2px var(--border);
+  cursor: default;
+}
+
+.open-sets h3 {
+  margin: 1.5rem 0 0;
+  font-size: 1.1rem;
+}
+
+.open-set-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 700;
+}
+
+.open-set-title input {
+  max-width: 32rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-weight: 400;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.open-sets .search {
+  justify-content: flex-start;
+  margin: 0.75rem 0 0;
+}
+
+.open-sets .search-status {
+  text-align: left;
+}
+
+.open-sets .option-actions {
+  margin-top: 1.5rem;
+}
+
 /* An example file. Long rows wrap, so a narrow screen does not scroll sideways. */
 .prose pre {
   margin: 1rem 0;
@@ -728,6 +829,44 @@ icon-moon {
   font-size: 1.4rem;
 }
 
+/* An open set's page: the offer to save a set opened from a link, the loading
+   status, and a note in place of a chant that could not be loaded. */
+.open-set-save,
+.open-set-status {
+  max-width: 50rem;
+  margin: 1rem auto 0;
+}
+
+.open-set-save {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.open-set-save p {
+  margin: 0;
+}
+
+.open-set-status,
+.open-set-missing {
+  color: var(--muted);
+}
+
+.open-set-status:empty {
+  display: none;
+}
+
+.open-set-missing {
+  margin: 3rem 0;
+  font-style: italic;
+}
+
 .line {
   margin: 0 0 0.9rem;
   /* Room for the current line's bar and tint, without moving the text. */
@@ -922,6 +1061,16 @@ icon-moon {
 .info-pali-title {
   margin: 0;
   color: var(--muted);
+}
+
+/* "Copy to open sets" in a Sangha set's info panel. */
+.info-actions {
+  margin: 1.25rem 0 0;
+}
+
+.info-actions .outline-button {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
 }
 
 .info-number {
