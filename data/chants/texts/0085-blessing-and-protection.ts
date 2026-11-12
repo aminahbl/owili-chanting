@@ -1,0 +1,47 @@
+import type { Chant } from '../../types.ts';
+
+export const chant = {
+  id: "0085",
+  slug: "blessing-and-protection",
+  title: "Blessing and Protection",
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#protection", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 10 }] },
+  translation: "draft",
+  editorial: [
+    { status: "changed", lines: [11], note: "The manual has *Sabba-dhammānunbhāvena*, a misspelling; corrected to *Sabba-dhammānubhāvena*." },
+    { status: "kept", lines: [3, 4, 20], note: "The alternatives for the people addressed (*me/no*, *dīghāyuko/ā*, *bhava/homa*, *mayhaṁ/amhe*) are kept as printed; the chanter picks one. The English follows the first form." },
+  ],
+  sections: [
+    {
+      lines: [
+        { id: 1, pali: "Sabb'ītiyo vivajjantu", en: "May all calamities be avoided," },
+        { id: 2, pali: "sabba-rogo vinassatu;", en: "may every illness be destroyed;" },
+        { id: 3, pali: "Mā me/no bhavatvantarāyo", en: "may no obstacles come to me;" },
+        { id: 4, pali: "sukhī dīghāyuko/ā bhava/homa.", en: "may I be happy and live long." },
+        { id: 5, pali: "Bhavatu sabba-maṅgalaṁ", en: "May there be every blessing;" },
+        { id: 6, pali: "rakkhantu sabba-devatā.", en: "may all the devas protect me." },
+        { id: 7, pali: "Sabba-buddhānubhāvena", en: "By the power of all the Buddhas," },
+        { id: 8, pali: "sadā sotthi bhavantu me.", en: "may I always be safe." },
+        { id: 9, pali: "Bhavatu sabba-maṅgalaṁ", en: "May there be every blessing;" },
+        { id: 10, pali: "rakkhantu sabba-devatā.", en: "may all the devas protect me." },
+        { id: 11, pali: "Sabba-dhammānubhāvena", en: "By the power of all the Dhamma," },
+        { id: 12, pali: "sadā sotthi bhavantu me.", en: "may I always be safe." },
+        { id: 13, pali: "Bhavatu sabba-maṅgalaṁ.", en: "May there be every blessing;" },
+        { id: 14, pali: "rakkhantu sabba-devatā.", en: "may all the devas protect me." },
+        { id: 15, pali: "Sabba-saṅghānubhāvena,", en: "By the power of all the Saṅgha," },
+        { id: 16, pali: "sadā sotthi bhavantu me.", en: "may I always be safe." },
+        { id: 17, pali: "Nakkhatta-yakkha-bhūtānaṁ", en: "Of stars, yakkhas and spirits," },
+        { id: 18, pali: "pāpaggaha-nivāraṇā", en: "warding off evil planets:" },
+        { id: 19, pali: "Parittassānubhāvena", en: "by the power of the protection," },
+        { id: 20, pali: "hantvā mayhaṁ/amhe upaddave.", en: "destroying the harm that comes to me." },
+        { id: 21, pali: "Devo vassatu kālena.", en: "May the rain fall in its season" },
+        { id: 22, pali: "sassa-sampatti-hetu ca.", en: "for the success of the crops;" },
+        { id: 23, pali: "Phīto bhavatu loko ca.", en: "may the world be prosperous," },
+        { id: 24, pali: "rājā bhavatu dhammiko.", en: "and the king be righteous." },
+        { id: 25, pali: "Sabbe buddhā balappattā,", en: "All the Buddhas have attained power," },
+        { id: 26, pali: "paccekānañca yaṁ balaṁ", en: "and by the power of the solitary Buddhas" },
+        { id: 27, pali: "Arahantānañca tejena,", en: "and the might of the worthy ones" },
+        { id: 28, pali: "rakkhaṁ bandhāmi sabbaso.", en: "I bind this protection in every way." },
+      ],
+    },
+  ],
+} satisfies Chant;

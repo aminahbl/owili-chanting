@@ -1,0 +1,22 @@
+import type { Chant } from '../../types.ts';
+
+export const chant = {
+  id: "0021",
+  slug: "salutation-to-the-three-main-objects-of-venerations",
+  title: "Salutation to the Three Main Objects of Venerations",
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/sri-lanka.html#three-main-objects", categories: [{ category: "Chants Used in Sri Lanka", subcategory: "Devotional Chants", order: 1 }] },
+  translation: "draft",
+  editorial: [
+    { status: "changed", lines: [3], note: "The manual has *Sārīrīka*, a misspelling; corrected to *Sārīrika*." },
+  ],
+  sections: [
+    {
+      lines: [
+        { id: 1, pali: "Vandāmi cetiyaṁ sabbaṁ", en: "I revere every shrine" },
+        { id: 2, pali: "Sabba-ṭhānesu patiṭṭhitaṁ", en: "established in every place," },
+        { id: 3, pali: "Sārīrika-dhātu-Mahā-bodhiṁ", en: "the bodily relics, the Great Bodhi tree," },
+        { id: 4, pali: "Buddha-rūpaṁ sakalaṁ sadā.", en: "and every image of the Buddha, always." },
+      ],
+    },
+  ],
+} satisfies Chant;

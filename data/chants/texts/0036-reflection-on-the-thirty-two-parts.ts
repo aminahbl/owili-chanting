@@ -1,0 +1,62 @@
+import type { Chant } from '../../types.ts';
+
+export const chant = {
+  id: "0036",
+  slug: "reflection-on-the-thirty-two-parts",
+  title: "Reflection on the Thirty-Two Parts",
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/reflections.html#thirty-two", categories: [{ category: "Reflections", order: 9 }] },
+  translation: "draft",
+  sections: [
+    {
+      lines: [
+        { id: 1, pali: "Handa mayaṁ dvattiṁsākāra-pāṭhaṁ bhaṇāmase", en: "Now let us chant the passage on the thirty-two parts.", leader: true },
+      ],
+    },
+    {
+      lines: [
+        { id: 2, pali: "{Ayaṁ kho} me kāyo uddhaṁ pādatalā adho kesamatthakā", en: "{This body of mine,} from the soles of the feet up, from the crown of the head down," },
+        { id: 3, pali: "tacapariyanto pūro nānappakārassa asucino", en: "bounded by skin, is full of many kinds of impurity." },
+        { id: 4, pali: "Atthi imasmiṁ kāye", en: "In this body there are:" },
+        { id: 5, pali: "kesā", en: "head hairs," },
+        { id: 6, pali: "lomā", en: "body hairs," },
+        { id: 7, pali: "nakhā", en: "nails," },
+        { id: 8, pali: "dantā", en: "teeth," },
+        { id: 9, pali: "taco", en: "skin," },
+        { id: 10, pali: "maṁsaṁ", en: "flesh," },
+        { id: 11, pali: "nahārū", en: "sinews," },
+        { id: 12, pali: "aṭṭhī", en: "bones," },
+        { id: 13, pali: "aṭṭhimiñjaṁ", en: "bone marrow," },
+        { id: 14, pali: "vakkaṁ", en: "kidneys," },
+        { id: 15, pali: "hadayaṁ", en: "heart," },
+        { id: 16, pali: "yakanaṁ", en: "liver," },
+        { id: 17, pali: "kilomakaṁ", en: "membranes," },
+        { id: 18, pali: "pihakaṁ", en: "spleen," },
+        { id: 19, pali: "papphāsaṁ", en: "lungs," },
+        { id: 20, pali: "antaṁ", en: "intestines," },
+        { id: 21, pali: "antaguṇaṁ", en: "mesentery," },
+        { id: 22, pali: "udariyaṁ", en: "undigested food," },
+        { id: 23, pali: "karīsaṁ", en: "faeces," },
+        { id: 24, pali: "pittaṁ", en: "bile," },
+        { id: 25, pali: "semhaṁ", en: "phlegm," },
+        { id: 26, pali: "pubbo", en: "pus," },
+        { id: 27, pali: "lohitaṁ", en: "blood," },
+        { id: 28, pali: "sedo", en: "sweat," },
+        { id: 29, pali: "medo", en: "fat," },
+        { id: 30, pali: "assu", en: "tears," },
+        { id: 31, pali: "vasā", en: "grease," },
+        { id: 32, pali: "kheḷo", en: "saliva," },
+        { id: 33, pali: "siṅghāṇikā", en: "mucus," },
+        { id: 34, pali: "lasikā", en: "fluid of the joints," },
+        { id: 35, pali: "muttaṁ", en: "urine," },
+        { id: 36, pali: "matthaluṅgan'ti", en: "brain." },
+      ],
+    },
+    {
+      lines: [
+        { id: 37, pali: "Evam-ayaṁ me kāyo uddhaṁ pādatalā adho kesamatthakā", en: "Such is this body of mine, from the soles of the feet up, from the crown of the head down," },
+        { id: 38, pali: "tacapariyanto pūro nānappakārassa asucino", en: "bounded by skin, full of many kinds of impurity." },
+      ],
+      refs: [{ label: "MN 10", uid: "mn10" }],
+    },
+  ],
+} satisfies Chant;

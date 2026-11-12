@@ -1,0 +1,296 @@
+import { cardHtml } from '../src/card.ts';
+import { escapeHtml } from '../src/html.ts';
+import { normalise } from '../src/normalise.ts';
+import { SETTING_NAMES, SETTINGS_KEY } from '../src/settings.ts';
+import type { Chant, ChantSet } from '../data/types.ts';
+import type { Entry, Group } from './chant-list.ts';
+import { dependencies } from './modules.ts';
+
+const SITE = 'Chanting for shared happiness';
+// Social previews need an absolute URL for the image.
+const SITE_URL = 'https://chanting.ohwowiloveit.com';
+const DESCRIPTION =
+  'Practice Pali chanting as a devotional offering, to learn the teachings and to cultivate inspiration and joy.';
+
+/** A page written by hand, at /<slug>, with its body in pages/<slug>.html. */
+export interface Page {
+  slug: string;
+  title: string;
+}
+
+// In the order of the site header's links.
+export const PAGES: Page[] = [
+  // { slug: 'about', title: 'About' },
+  { slug: 'guide', title: 'Guide' },
+  { slug: 'resources', title: 'Resources' },
+];
+
+// The last button in the header of every page; src/theme.ts sets its label.
+export const THEME_BUTTON = `<button class="icon-button theme-button" id="theme-button" title="Theme"><icon-sun></icon-sun><icon-moon></icon-moon><span class="sr-only">Theme</span></button>`;
+
+// The header of every page but the chant pages. Away from the list pages, it
+// also links back to the chants, with the site's name.
+function siteHeader(current?: Page): string {
+  const home = current
+    ? `<a class="site-home" href="/"><span class="icon-button"><icon-home></icon-home></span>${SITE}</a>`
+    : '';
+  const links = PAGES.map((p) => {
+    const here = p === current ? ' aria-current="page"' : '';
+    return `<li><a href="/${p.slug}"${here}>${p.title}</a></li>`;
+  });
+  return `<header class="site-header">
+  ${home}
+  <nav aria-label="Site"><ul>${links.join('')}</ul></nav>
+  ${THEME_BUTTON}
+</header>`;
+}
+
+// Applies the stored display settings before the page is drawn, so it does not
+// change after loading (src/settings.ts). The text view's size is also set as
+// a CSS variable. A view named in the URL, as in ?view=slides, takes
+// precedence over the stored view. It is the only inline script, and the
+// build allows it in the Content-Security-Policy by its hash.
+export const APPLY_SETTINGS = `try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v`;
+
+// The page's scripts, named as modules in src/, and a preload link for each
+// module they import, so the browser fetches them all at once rather than one
+// level of imports at a time.
+function moduleTags(entries: string[]): string {
+  const scripts = entries.map((m) => `<script type="module" src="/assets/js/${m}.js"></script>`);
+  const preloads = dependencies(entries).map((m) => `<link rel="modulepreload" href="/assets/js/${m}.js">`);
+  return [...scripts, ...preloads].join('\n');
+}
+
+export function layout(title: string, body: string, modules: string[] = [], header = siteHeader()): string {
+  const full = title === SITE ? SITE : `${title} · ${SITE}`;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(full)}</title>
+<script>${APPLY_SETTINGS}</script>
+<meta name="description" content="${DESCRIPTION}">
+<meta name="theme-color" content="#f1eee9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#292c3c" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${escapeHtml(full)}">
+<meta property="og:site_name" content="${SITE}">
+<meta property="og:description" content="${DESCRIPTION}">
+<meta property="og:image" content="${SITE_URL}/assets/socials/social-1200x630.jpg">
+<meta property="og:image:alt" content="${SITE}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+<link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+<link rel="stylesheet" href="/assets/site.css">
+${moduleTags(['theme', ...modules])}
+</head>
+<body>
+${header}
+<main class="page">
+${body}
+</main>
+</body>
+</html>
+`;
+}
+
+export function pageHref(base: string, page: number): string {
+  if (page === 1) return base;
+  return base === '/' ? `/list/${page}` : `${base}/${page}`;
+}
+
+// Page numbers to show, with null for a gap: the first, the last, and the current one with its neighbours.
+function pageItems(current: number, count: number): (number | null)[] {
+  const items: (number | null)[] = [];
+  for (let p = 1; p <= count; p++) {
+    if (p === 1 || p === count || Math.abs(p - current) <= 1) items.push(p);
+    else if (items.at(-1) !== null) items.push(null);
+  }
+  return items;
+}
+
+function pagination(base: string, current: number, count: number): string {
+  if (count < 2) return '';
+  const link = (page: number, label: string, rel = '') =>
+    `<a href="${pageHref(base, page)}"${rel ? ` rel="${rel}"` : ''}>${label}</a>`;
+  const items = pageItems(current, count).map((p) => {
+    if (p === null) return '<li class="gap" aria-hidden="true">…</li>';
+    if (p === current) return `<li><a aria-current="page" href="${pageHref(base, p)}">${p}</a></li>`;
+    return `<li>${link(p, String(p))}</li>`;
+  });
+  const prev = current > 1 ? `<li>${link(current - 1, '‹ <span class="sr-only">Previous page</span>', 'prev')}</li>` : '';
+  const next = current < count ? `<li>${link(current + 1, '<span class="sr-only">Next page</span> ›', 'next')}</li>` : '';
+  return `<nav class="pagination" aria-label="Pages"><ul>${prev}${items.join('')}${next}</ul></nav>`;
+}
+
+function chips(list: Group[], current: Group | null): string {
+  const chip = (href: string, label: string, here: boolean) =>
+    `<li><a href="${href}"${here ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a></li>`;
+  const items = [chip('/', 'All', current === null), ...list.map((g) => chip(`/list/${g.id}`, g.title, g.id === current?.id))];
+  return `<nav class="chips" aria-label="Categories"><ul>${items.join('')}</ul></nav>`;
+}
+
+// Consecutive entries of one group form a block. A block whose first entry is
+// not the first of its group, because the page broke inside it, is marked continued.
+function blocks(pageEntries: Entry[], firstIndex: number, all: Entry[]): string {
+  const out: string[] = [];
+  let i = 0;
+  while (i < pageEntries.length) {
+    const group = pageEntries[i].group;
+    const start = i;
+    while (i < pageEntries.length && pageEntries[i].group.id === group.id) i++;
+    const before = all[firstIndex + start - 1];
+    const continued = before?.group.id === group.id ? ' <span class="continued">(continued)</span>' : '';
+    const cards = pageEntries.slice(start, i).map((e) => cardHtml(e.card)).join('\n');
+    out.push(`<section class="group">
+<h2>${escapeHtml(group.title)}${continued}</h2>
+<ul class="cards">
+${cards}
+</ul>
+</section>`);
+  }
+  return out.join('\n');
+}
+
+interface ListPage {
+  /** The group shown, or null for all chants. */
+  group: Group | null;
+  groups: Group[];
+  /** All entries of this list, across its pages. */
+  entries: Entry[];
+  page: number;
+  pageSize: number;
+}
+
+export function listPage({ group, groups, entries, page, pageSize }: ListPage): string {
+  const base = group ? `/list/${group.id}` : '/';
+  const count = Math.ceil(entries.length / pageSize);
+  const first = (page - 1) * pageSize;
+  const pageEntries = entries.slice(first, first + pageSize);
+  const parts = [group?.title, page > 1 ? `Page ${page}` : ''].filter(Boolean);
+  const title = parts.length ? parts.join(', ') : SITE;
+  const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
+${searchBox(group)}
+${chips(groups, group)}
+${searchOutput()}
+<div id="chant-list">
+${blocks(pageEntries, first, entries)}
+${pagination(base, page, count)}
+</div>`;
+  return layout(title, body, ['search']);
+}
+
+// On a group page, search covers that group only; with no group it covers all chants.
+function searchBox(group: Group | null): string {
+  const searchLabel = group ? `Search ${escapeHtml(group.title)}` : 'Search chants';
+  const groupData = group ? ` data-group="${group.id}" data-group-title="${escapeHtml(group.title)}"` : '';
+  return `<div class="search" role="search">
+  <label for="search-input" class="sr-only">${searchLabel}</label>
+  <input id="search-input" type="search" placeholder="${searchLabel}" autocomplete="off" spellcheck="false"${groupData}>
+</div>`;
+}
+
+const SEARCH_STATUS = '<p id="search-status" class="search-status" role="status"></p>';
+
+// While a search is active, src/search.ts shows its results here and hides #chant-list.
+// The results take the shape of a group, so the cards do not move when they replace it.
+function searchOutput(): string {
+  return `${SEARCH_STATUS}
+<section id="search-results" class="group" hidden>
+<h2>Search results</h2>
+<ul class="cards"></ul>
+</section>`;
+}
+
+/** Who chants a set: a community or an individual, and their lineage if any. */
+export interface SetChanter {
+  title: string;
+  lineageTitle?: string;
+}
+
+/** A set with its chanter and chants, for the Sangha sets page. */
+export interface ListedSet {
+  set: ChantSet;
+  chanter: SetChanter;
+  chants: Chant[];
+}
+
+// A set's card is titled with its chanter and its own title, and shows the
+// titles of its first two chants, and how many follow. Its data attributes are
+// what src/search.ts matches against.
+function setCard({ set, chanter, chants }: ListedSet): string {
+  const chantTitles = chants.map((c) => c.title);
+  const text = normalise([set.title, chanter.title, chanter.lineageTitle ?? ''].join(' '));
+  const slugs = chants.map((c) => c.slug).join(' ');
+  const more = chantTitles.length - 2;
+  const lines = [...chantTitles.slice(0, 2), more > 0 ? `and ${more} more` : '']
+    .filter(Boolean)
+    .map((t) => `<span>${escapeHtml(t)}</span>`)
+    .join('');
+  return `<li class="card" data-text="${text}" data-chants="${slugs}">
+<div class="card-head"><h3 class="card-title"><a href="/sets/${set.slug}">${escapeHtml(`${chanter.title} · ${set.title}`)}</a></h3></div>
+<p class="card-lines">${lines}</p>
+</li>`;
+}
+
+export function setsPage(group: Group, groups: Group[], sets: ListedSet[]): string {
+  const body = `<h1 class="site-title"><a href="/">${SITE}</a></h1>
+${searchBox(group)}
+${chips(groups, group)}
+${SEARCH_STATUS}
+<div id="chant-list">
+<section class="group sets">
+<p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording. To chant a sequence of your own choosing, make an <a href="/open-sets">open set</a>.</p>
+<h2>${escapeHtml(group.title)}</h2>
+<ul class="cards">
+${sets.map(setCard).join('\n')}
+</ul>
+</section>
+</div>`;
+  return layout(group.title, body, ['search']);
+}
+
+export function handWrittenPage(page: Page, body: string): string {
+  return layout(page.title, `<article class="prose">\n${body}</article>`, ['icons/home'], siteHeader(page));
+}
+
+const OPEN_SETS: Page = { slug: 'open-sets', title: 'Open sets' };
+
+// The user's open sets and the editor, filled by src/open-sets.ts from the sets kept in the browser.
+export function openSetsPage(): string {
+  const body = `<article class="prose open-sets">
+<p class="open-sets-back"><a href="/list/sangha-sets">Back to Sangha sets</a></p>
+<h1>${OPEN_SETS.title}</h1>
+<p>An open set is a sequence of chants that you choose, chanted as one page like a Sangha set. Open sets are kept in this browser. Copy a set’s link to keep it elsewhere, to open it on another device or to give it to someone. The <a href="/guide#open-sets">guide</a> explains more.</p>
+<noscript><p>Open sets need JavaScript.</p></noscript>
+<section id="open-sets-list" hidden>
+<ul class="open-set-list"></ul>
+<p class="open-sets-empty">You have no open sets yet.</p>
+<p><button type="button" class="outline-button" id="open-set-new">New set</button></p>
+</section>
+<form class="open-set-editor" id="open-set-editor" hidden>
+<h2 id="open-set-editor-title">New set</h2>
+<label class="open-set-title">Title <input name="title" required autocomplete="off"></label>
+<h3>Chants</h3>
+<ol class="open-set-chants"></ol>
+<p class="open-set-no-chants">No chants yet. Search below to add them.</p>
+<p class="option-actions"><button type="submit" class="outline-button">Save</button><button type="button" class="outline-button" id="open-set-cancel">Cancel</button></p>
+<h3>Add chants</h3>
+<div class="search"><label for="open-set-search" class="sr-only">Search chants</label><input id="open-set-search" type="search" placeholder="Search chants" autocomplete="off" spellcheck="false"></div>
+${SEARCH_STATUS}
+<ul class="open-set-results"></ul>
+</form>
+</article>`;
+  return layout(OPEN_SETS.title, body, ['open-sets'], siteHeader(OPEN_SETS));
+}
+
+export function notFoundPage(): string {
+  return layout(
+    'Page not found',
+    `<h1 class="site-title"><a href="/">${SITE}</a></h1>
+<p class="not-found">This page does not exist. <a href="/">See all chants</a>.</p>`,
+  );
+}

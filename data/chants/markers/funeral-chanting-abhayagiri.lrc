@@ -1,0 +1,213 @@
+[ti:Funeral chanting]
+[place:Abhayagiri Monastery]
+# Converted from the previous site's marker file funeral-chanting-markers-abhayagiri.json.
+# The recording is not identified: the previous site named no page for it.
+# Chants in recording order:
+#   vandana
+#   dhamma-sangani-matika
+#   patthana-matika-patha
+#   vipassana-bhumi-patha
+#   karaniya-metta-sutta
+#   pamsukula-for-the-dead-short
+# Old rows not matched to a chant: 187-194.
+# vipassana-bhumi-patha: estimated from the rhythm model, to be checked by ear: 5, 7, 9, 19, 20, 21, 24, 26, 29, 31, 33, 35, 37, 39, 41, 43.
+
+[chant:0001 vandana]
+[00:00.00]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+[00:09.08]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+[00:17.42]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+
+[chant:0115 dhamma-sangani-matika]
+[00:26.05]1 Kusalā dhammā.
+[00:28.49]2 Akusalā dhammā.
+[00:31.12]3 Abyākatā dhammā.
+[00:34.07]4 Sukhāya vedanāya sampayuttā dhammā.
+[00:39.95]5 Dukkhāya vedanāya sampayuttā dhammā.
+[00:46.47]6 Adukkhamasukhāya vedanāya sampayuttā dhammā.
+[00:53.80]7 Vipākā dhammā.
+[00:56.23]8 Vipāka-dhamma-dhammā.
+[00:59.55]9 N'eva vipāka na vipāka-dhamma-dhammā.
+[01:04.40]10 Upādinn'upādāniyā dhammā.
+[01:09.44]11 Anupādinn'upādāniyā dhammā.
+[01:14.55]12 Anupādinnānupādāniyā dhammā.
+[01:20.22]13 Saṅkiliṭṭha-saṅkilesikā dhammā.
+[01:25.17]14 Asaṅkiliṭṭha-saṅkilesikā dhammā.
+[01:30.22]15 Asaṅkiliṭṭhāsaṅkilesikā dhammā.
+[01:35.72]16 Savitakka-savicārā dhammā.
+[01:39.92]17 Avitakka-vicāra-mattā dhammā.
+[01:44.50]18 Avitakkāvicārā dhammā.
+[01:48.80]19 Pīti-saha-gatā dhammā.
+[01:52.31]20 Sukha-saha-gatā dhammā.
+[01:55.19]21 Upekkhā-saha-gatā dhammā.
+[01:59.04]22 Dassanena pahātabbā dhammā.
+[02:03.87]23 Bhāvanāya pahātabbā dhammā.
+[02:08.77]24 N'eva dassanena na bhāvanāya pahātabbā dhammā.
+[02:16.01]25 Dassanena pahātabba-hetukā dhammā.
+[02:21.98]26 Bhāvanāya pahātabba-hetukā dhammā.
+[02:27.45]27 N'eva dassanena na bhāvanāya pahātabba-hetukā dhammā.
+[02:36.32]28 Ācaya-gāmino dhammā.
+[02:39.89]29 Apacaya-gāmino dhammā.
+[02:43.45]30 N'ev'ācaya-gāmino nāpacaya-gāmino dhammā.
+[02:50.18]31 Sekkhā dhammā.
+[02:52.17]32 Asekkhā dhammā.
+[02:54.84]33 N'eva sekkhā nāsekkhā dhammā.
+[02:59.50]34 Parittā dhammā.
+[03:02.09]35 Mahaggatā dhammā.
+[03:04.96]36 Appamāṇā dhammā.
+[03:08.00]37 Paritt'ārammaṇā dhammā.
+[03:11.81]38 Mahaggat'ārammaṇā dhammā.
+[03:16.02]39 Appamāṇ'ārammaṇā dhammā.
+[03:20.49]40 Hīnā dhammā.
+[03:22.80]41 Majjhimā dhammā.
+[03:25.34]42 Paṇītā dhammā.
+[03:27.72]43 Micchatta-niyatā dhammā.
+[03:31.29]44 Sammatta-niyatā dhammā.
+[03:34.90]45 Aniyatā dhammā.
+[03:37.29]46 Magg'ārammaṇā dhammā.
+[03:40.98]47 Magga-hetukā dhammā.
+[03:44.42]48 Maggādhipatino dhammā.
+[03:47.95]49 Uppannā dhammā.
+[03:50.46]50 Anuppannā dhammā.
+[03:54.32]51 Uppādino dhammā.
+[03:56.00]52 Atītā dhammā.
+[03:58.43]53 Anāgatā dhammā.
+[04:01.30]54 Paccuppannā dhammā.
+[04:04.59]55 Atīt'ārammaṇā dhammā.
+[04:08.58]56 Anāgat'ārammaṇā dhammā.
+[04:12.66]57 Paccuppann'ārammaṇā dhammā.
+[04:17.45]58 Ajjhattā dhammā.
+[04:20.24]59 Bahiddhā dhammā.
+[04:22.87]60 Ajjhatta-bahiddhā dhammā.
+[04:26.56]61 Ajjhatt'ārammaṇā dhammā.
+[04:31.10]62 Bahiddh'ārammaṇā dhammā.
+[04:34.79]63 Ajjhatta-bahiddh'ārammaṇā dhammā.
+[04:40.11]64 Sanidassana-sappaṭighā dhammā.
+[04:44.21]65 Anidassana-sappaṭighā dhammā.
+[04:48.52]66 Anidassanāppaṭighā dhammā.
+
+[chant:0122 patthana-matika-patha]
+[04:53.44]1 Hetu-paccayo, ārammaṇa-paccayo,
+[04:58.68]2 adhipati-paccayo, anantara-paccayo,
+[05:03.63]3 samanantara-paccayo, saha-jāta-paccayo,
+[05:09.30]4 aññam-añña-paccayo, nissaya-paccayo,
+[05:14.57]5 upanissaya-paccayo, pure-jāta-paccayo,
+[05:20.14]6 pacchā-jāta-paccayo, āsevana-paccayo,
+[05:26.22]7 kamma-paccayo, vipāka-paccayo,
+[05:30.68]8 āhāra-paccayo, indriya-paccayo,
+[05:36.21]9 jhāna-paccayo, magga-paccayo,
+[05:40.35]10 sampayutta-paccayo, vippayutta-paccayo,
+[05:46.11]11 atthi-paccayo, n'atthi-paccayo,
+[05:50.46]12 vigata-paccayo, avigata-paccayo.
+
+[chant:0123 vipassana-bhumi-patha]
+[05:55.82]1 Pañcakkhandhā:
+[05:57.85]2 Rūpakkhandho, vedanākkhandho, saññākkhandho, saṅkhārakkhandho, viññāṇakkhandho.
+[06:10.11]3 Dvā-das'āyatanāni:
+[06:12.67]4 Cakkhv-āyatanaṁ rūp'āyatanaṁ,
+[06:17.02]5 Sot'āyatanaṁ sadd'āyatanaṁ,
+[06:21.36]6 Ghān'āyatanaṁ gandh'āyatanaṁ,
+[06:25.45]7 Jivh'āyatanaṁ ras'āyatanaṁ
+[06:29.28]8 Kāy'āyatanaṁ phoṭṭhabb'āyatanaṁ
+[06:33.86]9 Man'āyatanaṁ dhamm'āyatanaṁ.
+[06:37.67]10 Aṭṭhārasa dhātuyo:
+[06:40.84]11 Cakkhu-dhātu rūpa-dhātu cakkhu-viññāṇa-dhātu,
+[06:46.76]12 Sota-dhātu sadda-dhātu sota-viññāṇa-dhātu,
+[06:52.69]13 Ghāna-dhātu gandha-dhātu ghāna-viññāṇa-dhātu,
+[06:58.91]14 Jivhā-dhātu rasa-dhātu jivhā-viññāṇa-dhātu,
+[07:05.32]15 Kāya-dhātu phoṭṭhabba-dhātu kāya-viññāṇa-dhātu,
+[07:12.30]16 Mano-dhātu dhamma-dhātu mano-viññāṇa-dhātu.
+[07:18.27]17 Bā-vīsat'indriyāni:
+[07:20.95]18 Cakkhu'ndriyaṁ sot'indriyaṁ ghān'indriyaṁ,
+[07:26.77]19 jivh'indriyaṁ kāy'indriyaṁ man'indriyaṁ,
+[07:32.14]20 Itth'indriyaṁ puris'indriyaṁ jīvit'indriyaṁ,
+[07:37.82]21 Sukh'indriyaṁ dukkh'indriyaṁ,
+[07:41.04]22 somanass'indriyaṁ domanass'indriyaṁ upekkh'indriyaṁ,
+[07:48.26]23 saddh'indriyaṁ viriy'indriyaṁ sat'indriyaṁ
+[07:53.62]24 samādh'indriyaṁ paññ'indriyaṁ,
+[07:57.64]25 Anaññātañ-ñassāmī-t'indriyaṁ aññ'indriyaṁ
+[08:04.21]26 aññātāv'indriyaṁ.
+[08:07.10]27 Cattāri ariya-saccāni:
+[08:10.26]28 Dukkhaṁ ariya-saccaṁ,
+[08:13.22]29 Dukkha-samudayo ariya-saccaṁ,
+[08:17.25]30 Dukkha-nirodho ariya-saccaṁ,
+[08:21.10]31 Dukkha-nirodha-gāminī paṭipadā ariya-saccaṁ.
+[08:27.27]32 Avijjā-paccayā saṅkhārā,
+[08:31.47]33 Saṅkhāra-paccayā viññāṇaṁ,
+[08:35.67]34 Viññāṇa-paccayā nāma-rūpaṁ,
+[08:40.39]35 Nāma-rūpa-paccayā saḷ-āyatanaṁ,
+[08:45.40]36 Saḷ-āyatana-paccayā phasso,
+[08:48.85]37 Phassa-paccayā vedanā,
+[08:51.84]38 Vedanā-paccayā taṇhā,
+[08:56.01]39 Taṇhā-paccayā upādānaṁ,
+[09:00.77]40 Upādāna-paccayā bhavo,
+[09:04.49]41 Bhava-paccayā jāti,
+[09:07.15]42 Jāti-paccayā jarā-maraṇaṁ soka-parideva-dukkha-domanass'upāyāsā sambhavanti.
+[09:25.16]43 Evam-etassa kevalassa dukkhakkhandhassa samudayo hoti.
+[09:26.96]44 Avijjāya tv-eva asesa-virāga-nirodhā saṅkhāra-nirodho,
+[09:35.24]45 Saṅkhāra-nirodhā viññāṇa-nirodho,
+[09:40.84]46 Viññāṇa-nirodhā nāma-rūpa-nirodho,
+[09:46.32]47 Nāma-rūpa-nirodhā saḷ-āyatana-nirodho,
+[09:52.20]48 Saḷ-āyatana-nirodhā phassa-nirodho,
+[09:55.65]49 Phassa-nirodhā vedanā-nirodho,
+[10:00.03]50 Vedanā-nirodhā taṇhā-nirodho,
+[10:07.25]51 Taṇhā-nirodhā upādāna-nirodho,
+[10:13.67]52 Upādāna-nirodhā bhava-nirodho,
+[10:17.40]53 Bhava-nirodhā jāti-nirodho,
+[10:21.29]54 Jāti-nirodhā jarā-maraṇaṁ soka-parideva-dukkha-domanass'upāyāsā nirujjhanti.
+[10:32.64]55 Evam-etassa kevalassa dukkhakkhandhassa nirodho hoti.
+
+[chant:0053 karaniya-metta-sutta]
+[10:42.53]1 Karaṇīyam-attha-kusalena
+[10:45.98]2 Yan-taṁ santaṁ padaṁ abhisamecca
+[10:50.32]3 Sakko ujū ca suhujū ca
+[10:53.74]4 Suvaco c'assa mudu anatimānī
+[10:57.76]5 Santussako ca subharo ca
+[11:01.58]6 Appakicco ca sallahuka-vutti
+[11:05.40]7 Sant'indriyo ca nipako ca
+[11:08.74]8 Appagabbho kulesu ananugiddho
+[11:13.40]9 Na ca khuddaṁ samācare kiñci
+[11:17.26]10 Yena viññū pare upavadeyyuṁ
+[11:21.69]11 Sukhino vā khemino hontu
+[11:25.59]12 Sabbe sattā bhavantu sukhit'attā
+[11:29.90]13 Ye keci pāṇa-bhūt'atthi
+[11:33.52]14 Tasā vā thāvarā vā anavasesā
+[11:38.31]15 Dīghā vā ye mahantā vā
+[11:42.53]16 Majjhimā rassakā aṇuka-thūlā
+[11:46.80]17 Diṭṭhā vā ye ca adiṭṭhā
+[11:51.02]18 Ye ca dūre vasanti avidūre
+[11:55.21]19 Bhūtā vā sambhavesī vā
+[11:59.46]20 Sabbe sattā bhavantu sukhit'attā
+[12:04.05]21 Na paro paraṁ nikubbetha
+[12:07.47]22 Nātimaññetha katthaci naṁ kiñci
+[12:11.64]23 Byārosanā paṭighasaññā
+[12:15.74]24 Nāññam-aññassa dukkham-iccheyya
+[12:20.00]25 Mātā yathā niyaṁ puttaṁ
+[12:23.61]26 Āyusā eka-puttam-anurakkhe
+[12:28.15]27 Evam'pi sabba-bhūtesu
+[12:31.65]28 Mānasam-bhāvaye aparimāṇaṁ
+[12:36.12]30 Mettañ-ca sabba-lokasmiṁ
+[12:39.76]31 Mānasam-bhāvaye aparimāṇaṁ
+[12:44.20]32 Uddhaṁ adho ca tiriyañ-ca
+[12:47.65]33 Asambādhaṁ averaṁ asapattaṁ
+[12:52.51]34 Tiṭṭhañ-caraṁ nisinno vā
+[12:55.84]35 Sayāno vā yāvat'assa vigata-middho
+[13:01.57]36 Etaṁ satiṁ adhiṭṭheyya
+[13:04.78]37 Brahmam-etaṁ vihāraṁ idham-āhu
+[13:09.61]38 Diṭṭhiñca anupagamma
+[13:13.15]39 Sīlavā dassanena sampanno
+[13:16.97]40 Kāmesu vineyya gedhaṁ
+[13:20.74]41 Na hi jātu gabbha-seyyaṁ punaretī'ti
+
+[chant:0140 pamsukula-for-the-dead-short]
+[13:27.32]1 Aniccā vata saṅkhārā
+[13:35.19]2 Uppāda-vaya-dhammino
+[13:40.14]3 Uppajjitvā nirujjhanti
+[13:44.20]4 Tesaṁ vūpasamo sukho.
+[13:48.34]1 Aniccā vata saṅkhārā
+[13:52.21]2 Uppāda-vaya-dhammino
+[13:55.62]3 Uppajjitvā nirujjhanti
+[13:59.84]4 Tesaṁ vūpasamo sukho.
+[14:03.79]1 Aniccā vata saṅkhārā
+[14:07.40]2 Uppāda-vaya-dhammino
+[14:11.54]3 Uppajjitvā nirujjhanti
+[14:15.27]4 Tesaṁ vūpasamo sukho.

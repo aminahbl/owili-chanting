@@ -1,0 +1,47 @@
+import type { Chant } from '../../types.ts';
+
+export const chant = {
+  id: "0020",
+  slug: "atanatiya-paritta-short",
+  title: "Homage to the Seven Past Buddhas",
+  paliTitle: "Āṭānāṭiya-paritta (short)",
+  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#vipassissa", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 17 }] },
+  translation: "draft",
+  links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2025-10-15/" }],
+  editorial: [
+    { status: "changed", lines: [9], note: "The manual has *Konāgamana*, a misspelling; corrected to *Koṇāgamana*." },
+  ],
+  sections: [
+    {
+      lines: [
+        { id: 1, pali: "Vipassissa nam'atthu", en: "Homage to Vipassī," },
+        { id: 2, pali: "cakkhumantassa sirīmato", en: "the one with vision, the glorious one." },
+        { id: 3, pali: "Sikhissa pi nam'atthu", en: "Homage to Sikhī as well," },
+        { id: 4, pali: "sabba-bhūtānukampino", en: "who cares for all beings." },
+        { id: 5, pali: "Vessabhussa nam'atthu", en: "Homage to Vessabhū," },
+        { id: 6, pali: "nhātakassa tapassino", en: "the purified, the ascetic." },
+        { id: 7, pali: "Nam'atthu kakusandhassa", en: "Homage to Kakusandha," },
+        { id: 8, pali: "māra-senappamaddino", en: "crusher of Māra's army." },
+        { id: 9, pali: "Koṇāgamanassa nam'atthu", en: "Homage to Koṇāgamana," },
+        { id: 10, pali: "brāhmaṇassa vusīmato", en: "the true brahmin, who has completed the holy life." },
+        { id: 11, pali: "Kassapassa nam'atthu", en: "Homage to Kassapa," },
+        { id: 12, pali: "vippamuttassa sabbadhi", en: "released in every way." },
+        { id: 13, pali: "Aṅgīrasassa nam'atthu", en: "Homage to Aṅgīrasa," },
+        { id: 14, pali: "sakya-puttassa sirīmato", en: "the glorious son of the Sakyans," },
+        { id: 15, pali: "Yo imaṁ dhammam-adesesi", en: "who taught this Dhamma" },
+        { id: 16, pali: "sabba-dukkhāpanūdanaṁ", en: "that dispels all suffering." },
+        { id: 17, pali: "Ye cāpi nibbutā loke", en: "And those in the world who are quenched," },
+        { id: 18, pali: "yathā-bhūtaṁ vipassisuṁ", en: "who have seen with insight things as they are," },
+        { id: 19, pali: "Te janā apisuṇā", en: "people who never speak divisively," },
+        { id: 20, pali: "mahantā vīta-sāradā", en: "great and self-assured," },
+        { id: 21, pali: "Hitaṁ deva-manussānaṁ", en: "the one who works for the welfare of devas and humans," },
+        { id: 22, pali: "yaṁ namassanti gotamaṁ", en: "Gotama, to whom they pay homage:" },
+        { id: 23, pali: "Vijjā-caraṇa-sampannaṁ", en: "accomplished in knowledge and conduct," },
+        { id: 24, pali: "mahantaṁ vīta-sāradaṁ", en: "great and self-assured." },
+        { id: 25, pali: "Vijjā-caraṇa-sampannaṁ", en: "Accomplished in knowledge and conduct," },
+        { id: 26, pali: "buddhaṁ vandāma gotaman'ti", en: "the Buddha Gotama we revere." },
+      ],
+      refs: [{ label: "DN 32", uid: "dn32" }],
+    },
+  ],
+} satisfies Chant;

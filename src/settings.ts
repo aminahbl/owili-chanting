@@ -1,0 +1,93 @@
+// Display settings are global across chants and stored as one localStorage
+// entry. Each stored value is also set as a data attribute on <html>, which the
+// CSS reads; an absent value means the default. The build inlines a script in
+// each page's head that sets the attributes before the page is drawn.
+
+import type { Forms } from './line-text.ts';
+
+export const SETTINGS_KEY = 'settings';
+export const SETTING_NAMES = ['theme', 'translation', 'chanting', 'order', 'size', 'slideSize', 'form', 'view', 'advance', 'link'] as const;
+export type SettingName = (typeof SETTING_NAMES)[number];
+export type Settings = Partial<Record<SettingName, string>>;
+
+export interface Range {
+  min: number;
+  max: number;
+  step: number;
+  default: number;
+}
+
+/** Each view has its own text size, in rem: the reading size in the text view and the line size on slides. */
+export const SIZE_RANGES: Record<'size' | 'slideSize', Range> = {
+  size: { min: 0.75, max: 1.75, step: 0.125, default: 1.125 },
+  slideSize: { min: 1.25, max: 4, step: 0.25, default: 2 },
+};
+
+/** The Auto tempo, 1 being the rhythm model's natural speed, in the middle of the range. */
+export const TEMPO_RANGE: Range = { min: 0.5, max: 1.5, step: 0.05, default: 1 };
+
+function readSettings(): Settings {
+  try {
+    return JSON.parse(localStorage.getItem(SETTINGS_KEY) ?? '{}') as Settings;
+  } catch {
+    return {};
+  }
+}
+
+/** Stores one setting; an empty value restores the default. */
+export function writeSetting(name: SettingName, value: string) {
+  const settings = readSettings();
+  if (value) settings[name] = value;
+  else delete settings[name];
+  try {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  } catch {
+    // Storage can be unavailable, for example in some private windows; the setting then lasts for this page only.
+  }
+}
+
+/** Settings for one chant or set, such as its last position, stored as one entry for each. */
+interface ChantSettings {
+  /** The line, the text chanted, and the number of the chant it belongs to, which on a set page is one of several. */
+  position?: { chant: string; line: number; part: 'pali' | 'en'; repeat: number };
+  /** Auto-advance tempo, 1 being the rhythm model's natural speed. */
+  tempo?: number;
+  /** An imported timing file (LRC), as imported, and its file name. */
+  timing?: { name: string; lrc: string };
+  /** An imported translation, kept under the chant's own number, so it applies on every page that shows the chant. */
+  translation?: ImportedTranslation;
+}
+
+/** A translation imported for one chant: its name, its language, and the text of each line by line ID. */
+export interface ImportedTranslation {
+  name: string;
+  lang: string;
+  lines: Record<string, Forms>;
+}
+
+const chantKey = (id: string) => `chant:${id}`;
+
+export function readChantSettings(id: string): ChantSettings {
+  try {
+    return JSON.parse(localStorage.getItem(chantKey(id)) ?? '{}') as ChantSettings;
+  } catch {
+    return {};
+  }
+}
+
+/** Removes everything kept for one chant or set. */
+export function removeChantSettings(id: string) {
+  try {
+    localStorage.removeItem(chantKey(id));
+  } catch {
+    // As for writeSetting.
+  }
+}
+
+export function writeChantSettings(id: string, changes: ChantSettings) {
+  try {
+    localStorage.setItem(chantKey(id), JSON.stringify({ ...readChantSettings(id), ...changes }));
+  } catch {
+    // As for writeSetting.
+  }
+}
