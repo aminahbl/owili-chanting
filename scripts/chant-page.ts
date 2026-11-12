@@ -309,7 +309,7 @@ ${slides()}
 ${infoPopover(chant, groups, recordings, sets)}
 ${settingsPopover(hasTwoForms([chant]), recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
-  return layout(chant.title, body, '<script type="module" src="/assets/js/chant-page.js"></script>', header(chant.title));
+  return layout(chant.title, body, ['chant-page'], header(chant.title));
 }
 
 function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, recordings: RecordingInfo[]): string {
@@ -360,8 +360,7 @@ ${setInfoPopover(set, chants, chanter, recordings)}
 ${settingsPopover(hasTwoForms(chants), recordings.length > 0)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   const title = `${set.title}, ${chanter.title}`;
-  const scripts = '<script type="module" src="/assets/js/chant-page.js"></script>\n<script type="module" src="/assets/js/copy-set.js"></script>';
-  return layout(title, body, scripts, header(title));
+  return layout(title, body, ['chant-page', 'copy-set'], header(title));
 }
 
 const OPEN_SET = 'Open set';
@@ -389,5 +388,5 @@ ${slides()}
 ${popover('info', OPEN_SET, `<dl>${items.join('')}</dl>`)}
 ${settingsPopover(true, false)}
 ${shortcutsPopover()}`;
-  return layout(OPEN_SET, body, '<script type="module" src="/assets/js/open-set.js"></script>', header(OPEN_SET));
+  return layout(OPEN_SET, body, ['open-set'], header(OPEN_SET));
 }

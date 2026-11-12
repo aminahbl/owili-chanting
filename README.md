@@ -28,6 +28,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── chant-list.ts         # Chants and sets, their timings, cards and search index
 │   ├── chant-page.ts         # HTML for the chant, set and open set pages, and each chant's block
 │   ├── ids.ts                # Checks chant and set numbers against the ledger
+│   ├── modules.ts            # The modules each page's scripts import, for preload links
 │   └── templates.ts          # Page layout, the site header, and HTML for the list and Open sets pages
 ├── src/                      # Browser code, compiled to dist/assets/js/
 │   ├── search.ts             # Search on the list pages

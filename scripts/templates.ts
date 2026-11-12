@@ -4,6 +4,7 @@ import { normalise } from '../src/normalise.ts';
 import { SETTING_NAMES, SETTINGS_KEY } from '../src/settings.ts';
 import type { Chant, ChantSet } from '../data/types.ts';
 import type { Entry, Group } from './chant-list.ts';
+import { dependencies } from './modules.ts';
 
 const SITE = 'Chanting for shared happiness';
 // Social previews need an absolute URL for the image.
@@ -51,7 +52,16 @@ function siteHeader(current?: Page): string {
 // build allows it in the Content-Security-Policy by its hash.
 export const APPLY_SETTINGS = `try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v`;
 
-export function layout(title: string, body: string, scripts = '', header = siteHeader()): string {
+// The page's scripts, named as modules in src/, and a preload link for each
+// module they import, so the browser fetches them all at once rather than one
+// level of imports at a time.
+function moduleTags(entries: string[]): string {
+  const scripts = entries.map((m) => `<script type="module" src="/assets/js/${m}.js"></script>`);
+  const preloads = dependencies(entries).map((m) => `<link rel="modulepreload" href="/assets/js/${m}.js">`);
+  return [...scripts, ...preloads].join('\n');
+}
+
+export function layout(title: string, body: string, modules: string[] = [], header = siteHeader()): string {
   const full = title === SITE ? SITE : `${title} · ${SITE}`;
   return `<!doctype html>
 <html lang="en">
@@ -75,8 +85,7 @@ export function layout(title: string, body: string, scripts = '', header = siteH
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
 <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
 <link rel="stylesheet" href="/assets/site.css">
-<script type="module" src="/assets/js/theme.js"></script>
-${scripts}
+${moduleTags(['theme', ...modules])}
 </head>
 <body>
 ${header}
@@ -171,10 +180,8 @@ ${searchOutput()}
 ${blocks(pageEntries, first, entries)}
 ${pagination(base, page, count)}
 </div>`;
-  return layout(title, body, SEARCH_SCRIPT);
+  return layout(title, body, ['search']);
 }
-
-const SEARCH_SCRIPT = '<script type="module" src="/assets/js/search.js"></script>';
 
 // On a group page, search covers that group only; with no group it covers all chants.
 function searchBox(group: Group | null): string {
@@ -243,12 +250,11 @@ ${sets.map(setCard).join('\n')}
 </ul>
 </section>
 </div>`;
-  return layout(group.title, body, SEARCH_SCRIPT);
+  return layout(group.title, body, ['search']);
 }
 
 export function handWrittenPage(page: Page, body: string): string {
-  const script = '<script type="module" src="/assets/js/icons/home.js"></script>';
-  return layout(page.title, `<article class="prose">\n${body}</article>`, script, siteHeader(page));
+  return layout(page.title, `<article class="prose">\n${body}</article>`, ['icons/home'], siteHeader(page));
 }
 
 const OPEN_SETS: Page = { slug: 'open-sets', title: 'Open sets' };
@@ -278,7 +284,7 @@ ${SEARCH_STATUS}
 <ul class="open-set-results"></ul>
 </form>
 </article>`;
-  return layout(OPEN_SETS.title, body, '<script type="module" src="/assets/js/open-sets.js"></script>', siteHeader(OPEN_SETS));
+  return layout(OPEN_SETS.title, body, ['open-sets'], siteHeader(OPEN_SETS));
 }
 
 export function notFoundPage(): string {
