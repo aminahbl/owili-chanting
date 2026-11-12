@@ -119,7 +119,7 @@ Each page's body is plain HTML in `pages/<slug>.html`, starting with its `<h1>`.
 ## Deployment
 
 - Netlify runs `npm run build` and publishes `dist/` ([netlify.toml](netlify.toml)).
-- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs and the previous site's `chant.html?id=<id>` and `about.html` links; other hosts need the same redirects.
+- Any static host works with the same two steps: build, then serve `dist/` as the site root, because pages link to absolute paths such as `/assets/site.css`. The build writes Netlify's `_redirects` file for the page-1 list URLs and the previous site's `chant.html?id=<id>` and `about.html` links, and its `_headers` file with the security headers and the asset cache time. The Content-Security-Policy in `_headers` allows the one inline script, which applies the stored settings, by its hash, and the build updates the hash when the script changes. Other hosts need the same redirects and headers.
 
 ## Privacy
 

@@ -47,8 +47,9 @@ function siteHeader(current?: Page): string {
 // Applies the stored display settings before the page is drawn, so it does not
 // change after loading (src/settings.ts). The text view's size is also set as
 // a CSS variable. A view named in the URL, as in ?view=slides, takes
-// precedence over the stored view.
-const APPLY_SETTINGS = `<script>try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v</script>`;
+// precedence over the stored view. It is the only inline script, and the
+// build allows it in the Content-Security-Policy by its hash.
+export const APPLY_SETTINGS = `try{var r=document.documentElement,d=r.dataset,s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)}))||{};${JSON.stringify(SETTING_NAMES)}.forEach(function(k){if(s[k])d[k]=s[k]});if(+s.size)r.style.setProperty("--pali-size",s.size+"rem")}catch(e){}var v=new URLSearchParams(location.search).get("view");if(v==="slides"||v==="text")d.view=v`;
 
 export function layout(title: string, body: string, scripts = '', header = siteHeader()): string {
   const full = title === SITE ? SITE : `${title} · ${SITE}`;
@@ -58,7 +59,7 @@ export function layout(title: string, body: string, scripts = '', header = siteH
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(full)}</title>
-${APPLY_SETTINGS}
+<script>${APPLY_SETTINGS}</script>
 <meta name="description" content="${DESCRIPTION}">
 <meta name="theme-color" content="#f1eee9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#292c3c" media="(prefers-color-scheme: dark)">

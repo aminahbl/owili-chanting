@@ -1,13 +1,14 @@
 // Writes the site to dist/: the chant list pages, a page and a block for each
 // chant, the set pages, the open set pages, the about, guide and resources
-// pages, the search index and redirects.
+// pages, the search index, and Netlify's redirects and headers.
+import { createHash } from 'node:crypto';
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref, SEARCH_INDEX } from '../src/card.ts';
 import { chantBlock, chantPage, openSetPage, setPage, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
 import { entries, groupsOf, loadChants, loadSets, loadTimings, searchIndex, setsGroup, type Entry, type Group } from './chant-list.ts';
 import type { Chant, ChantSet } from '../data/types.ts';
-import { handWrittenPage, listPage, notFoundPage, openSetsPage, pageHref, PAGES, setsPage, type SetChanter } from './templates.ts';
+import { APPLY_SETTINGS, handWrittenPage, listPage, notFoundPage, openSetsPage, pageHref, PAGES, setsPage, type SetChanter } from './templates.ts';
 import { groups } from '../data/groups.ts';
 import { chanters, lineages } from '../data/chanters.ts';
 
@@ -101,5 +102,30 @@ const redirects = [
   '/about.html /about 301',
 ];
 await write('/_redirects', `${redirects.join('\n')}\n`);
+
+// The pages load scripts, styles, fonts and data from the site only. The one
+// inline script is allowed by its hash, and the user's audio file plays from a
+// blob: URL. Asset file names are not hashed, so their cache time is short.
+const settingsHash = createHash('sha256').update(APPLY_SETTINGS).digest('base64');
+const policy = [
+  "default-src 'self'",
+  `script-src 'self' 'sha256-${settingsHash}'`,
+  "media-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+];
+const headers = [
+  '/*',
+  `  Content-Security-Policy: ${policy.join('; ')}`,
+  '  X-Content-Type-Options: nosniff',
+  '  Referrer-Policy: no-referrer',
+  '  X-Frame-Options: DENY',
+  '  X-XSS-Protection: 0',
+  '/assets/*',
+  '  Cache-Control: public, max-age=3600',
+];
+await write('/_headers', `${headers.join('\n')}\n`);
 
 console.log(`Built ${chants.length} chants, ${sets.length} sets, ${shown.length} groups into dist/`);

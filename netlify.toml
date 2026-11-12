@@ -10,20 +10,7 @@
 [dev]
   publish = "dist"
 
-# Security headers (conservative defaults unlikely to break features)
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "0"
-
-# Cache static assets modestly (filenames are not hashed, so keep TTL short)
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
+# Headers, including the Content-Security-Policy, are written by the build to dist/_headers.
 
 # Redirect HTTP to HTTPS to ensure secure context for browser APIs
 [[redirects]]
