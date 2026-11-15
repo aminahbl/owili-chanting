@@ -256,6 +256,12 @@ input:focus-visible {
   color: var(--muted);
 }
 
+.sets-open {
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .continued {
   font-weight: 400;
   color: var(--muted);
