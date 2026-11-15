@@ -244,6 +244,7 @@ ${SEARCH_STATUS}
 <div id="chant-list">
 <section class="group sets">
 <p class="sets-intro">Each set is anchored by a specific recording of a community’s chanting, following its chant order and wording. To chant a sequence of your own choosing, make an <a href="/open-sets">open set</a>.</p>
+<p class="sets-open"><a class="outline-button" href="/open-sets">Your open sets</a></p>
 <h2>${escapeHtml(group.title)}</h2>
 <ul class="cards">
 ${sets.map(setCard).join('\n')}

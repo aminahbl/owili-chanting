@@ -14,10 +14,10 @@ const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';
 
 const SHORTCUTS = [
-  ['Space', 'Start or pause; next line in Manual advance; in the text view, tracking on or off'],
+  ['Space', 'Start or pause; with Manual advance, the next line on slides, or tracking on or off in the text view'],
   ['→ or Page Down', 'Next line'],
   ['← or Page Up', 'Previous line'],
-  ['+ and −', 'Faster or slower (Auto advance on slides)'],
+  ['+ and −', 'Faster or slower (Auto advance)'],
   ['V', 'Switch between text and slides'],
   ['T', 'Show or hide the translation, or the Pali when the translation is chanted'],
   ['I', 'Info'],
@@ -179,7 +179,6 @@ function settingsPopover(twoForms: boolean, recorded: boolean): string {
   </div>
   <p class="audio-error option-error" role="alert"></p>
 </fieldset>
-<div class="slides-only">
 <fieldset><legend>Advance</legend><div class="choices">
   <label><input type="radio" name="advance" value=""> Manual</label>
   <label><input type="radio" name="advance" value="auto"> Auto</label>
@@ -198,7 +197,6 @@ function settingsPopover(twoForms: boolean, recorded: boolean): string {
     <button type="button" class="outline-button" id="timing-export">Export timing</button>
   </div>
   <p class="timing-error option-error" role="alert"></p>
-</div>
 </div>
 ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
@@ -233,7 +231,6 @@ function header(title: string): string {
     <button data-view="text" title="Text (V)">Text</button>
     <button data-view="slides" title="Slides (V)">Slides</button>
   </div>
-  <button class="track" id="track" aria-pressed="false" title="Mark the current line (Space)">Track</button>
   <button class="icon-button" popovertarget="settings" title="Settings (S)"><icon-tune></icon-tune><span class="sr-only">Settings</span></button>
   <button class="icon-button" popovertarget="info" title="Info (I)"><icon-info></icon-info><span class="sr-only">Info</span></button>
   <button class="icon-button shortcuts-button" popovertarget="shortcuts" title="Keyboard shortcuts (?)"><icon-command></icon-command><span class="sr-only">Keyboard shortcuts</span></button>
@@ -241,15 +238,43 @@ function header(title: string): string {
 </header>`;
 }
 
-// The audio controls, shown once the user adds an audio file: in
-// the slide bar, beside Start and the advance method, and in a bar of their own
-// at the foot of the text view.
+// The audio controls, shown once the user adds an audio file, in the slide bar
+// and in the text bar, beside Start and the advance method.
 function audioControls(): string {
   return `<div class="audio-controls" hidden>
   <button class="icon-button audio-skip" data-audio="back" title="Back 3 seconds; hold to rewind"><icon-rewind></icon-rewind><span class="sr-only">Back 3 seconds</span></button>
   <button class="icon-button" data-audio="play" title="Play"><icon-play></icon-play><icon-pause></icon-pause><span class="sr-only">Play</span></button>
   <button class="icon-button audio-skip" data-audio="forward" title="Forward 3 seconds; hold to fast-forward"><icon-forward></icon-forward><span class="sr-only">Forward 3 seconds</span></button>
   <button class="icon-button" data-audio="stop" title="Stop"><icon-stop></icon-stop><span class="sr-only">Stop</span></button>
+</div>`;
+}
+
+function lockButton(title: string): string {
+  return `<button class="icon-button audio-link" data-audio="link" aria-pressed="true" title="${title}" hidden><icon-lock-open size="16"></icon-lock-open><icon-lock size="16"></icon-lock><span class="sr-only">${title}</span></button>`;
+}
+
+function methodControls(): string {
+  return `<div class="control-group">
+    <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
+    <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
+    <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
+  </div>`;
+}
+
+// The text view's controls float at the foot of the screen, with "Back to
+// current line" above them.
+function textFoot(): string {
+  return `<div class="text-foot">
+<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
+<div class="text-bar">
+  <div class="control-group">
+    <button class="track" id="track" aria-pressed="false" title="Mark the current line">Track</button>
+    ${lockButton('Lock the audio to the text')}
+    <button class="start">Start</button>
+  </div>
+  ${methodControls()}
+  ${audioControls()}
+</div>
 </div>`;
 }
 
@@ -269,17 +294,13 @@ function slides(): string {
 </div>
 <div class="slide-bar" id="slide-bar">
 <div class="slide-controls">
-  <div class="slide-group">
-    <button class="icon-button audio-link" data-audio="link" aria-pressed="true" title="Lock the audio to the slides" hidden><icon-lock-open size="16"></icon-lock-open><icon-lock size="16"></icon-lock><span class="sr-only">Lock the audio to the slides</span></button>
+  <div class="control-group">
+    ${lockButton('Lock the audio to the slides')}
     <button class="icon-button" id="slide-previous" title="Previous line (←)"><icon-chevron-left></icon-chevron-left><span class="sr-only">Previous line</span></button>
-    <button class="start" id="slide-start">Start</button>
+    <button class="start">Start</button>
     <button class="icon-button" id="slide-next" title="Next line (→)"><icon-chevron-right></icon-chevron-right><span class="sr-only">Next line</span></button>
   </div>
-  <div class="slide-group">
-    <button class="icon-button slower auto-only" title="Slower (−)"><icon-minus></icon-minus><span class="sr-only">Slower</span></button>
-    <button class="method-label" popovertarget="settings" title="How lines move on">Manual</button>
-    <button class="icon-button faster auto-only" title="Faster (+)"><icon-plus></icon-plus><span class="sr-only">Faster</span></button>
-  </div>
+  ${methodControls()}
   ${audioControls()}
 </div>
 <p class="slide-position"><input class="slide-line" id="slide-line" inputmode="numeric" enterkeyhint="go" autocomplete="off" placeholder="–" aria-label="Go to line" title="Go to line"> / <span class="slide-total"></span></p>
@@ -303,8 +324,7 @@ ${paliTitle}
 ${notes(chant)}
 ${chant.sections.map((s) => section(s)).join('\n')}
 </article>
-<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
-<div class="audio-bar">${audioControls()}</div>
+${textFoot()}
 ${slides()}
 ${infoPopover(chant, groups, recordings, sets)}
 ${settingsPopover(hasTwoForms([chant]), recordings.length > 0)}
@@ -353,8 +373,7 @@ export function setPage(set: ChantSet, chants: Chant[], chanter: SetChanter, tim
 <p class="set-chanter">${escapeHtml(chanter.title)}</p>
 ${chants.map(chantBlock).join('\n')}
 </article>
-<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
-<div class="audio-bar">${audioControls()}</div>
+${textFoot()}
 ${slides()}
 ${setInfoPopover(set, chants, chanter, recordings)}
 ${settingsPopover(hasTwoForms(chants), recordings.length > 0)}
@@ -382,8 +401,7 @@ export function openSetPage(): string {
 <p class="open-set-status" role="status"></p>
 <noscript><p class="open-set-status">Open sets need JavaScript.</p></noscript>
 <article class="chant"></article>
-<button class="back-to-line" id="back-to-line" hidden>Back to current line</button>
-<div class="audio-bar">${audioControls()}</div>
+${textFoot()}
 ${slides()}
 ${popover('info', OPEN_SET, `<dl>${items.join('')}</dl>`)}
 ${settingsPopover(true, false)}

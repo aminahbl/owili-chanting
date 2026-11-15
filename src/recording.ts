@@ -1,11 +1,11 @@
 // The user's audio file. The user adds their own copy of a
-// recording and plays it in either view. In the slide view it can be linked to
-// the slides. Linked with Timed advance and a timing from a file, the slides
-// follow it: the current line is the last one whose start is not later than
+// recording and plays it in either view. With Auto or Timed advance it can be
+// linked to the lines. Linked with Timed advance and a timing from a file, the
+// lines follow it: the current line is the last one whose start is not later than
 // the playback time plus the lead time, and Start, Pause and
 // moving to a line work on the audio. Linked otherwise, Start and Pause also
-// play and pause it. Linked either way, the audio starts when the slides'
-// count-in ends. src/audio-store.ts remembers the file per chant.
+// play and pause it. Linked either way, the audio starts when the count-in
+// ends. src/audio-store.ts remembers the file per chant.
 import type { LineClock } from './clock.ts';
 import { nextStart, type Schedule } from './lrc.ts';
 
@@ -18,7 +18,7 @@ function lastStarted(starts: (number | null)[], time = Infinity): number {
   return found;
 }
 
-/** How the audio is linked to the slides: not at all, by Start and Pause only, or by its time. */
+/** How the audio is linked to the lines: not at all, by Start and Pause only, or by its time. */
 export type Link = 'off' | 'start' | 'follow';
 
 /** Seconds of audio passed over per second while back or forward is held. */
@@ -67,7 +67,7 @@ export class Recording {
     return !this.audio.paused;
   }
 
-  /** True when Start and Pause also play and pause the audio, without the slides following it. */
+  /** True when Start and Pause also play and pause the audio, without the lines following it. */
   get startsWithClock(): boolean {
     return this.link === 'start' && this.active;
   }
@@ -102,7 +102,7 @@ export class Recording {
     this.onChange(this);
   }
 
-  /** Plays or pauses the audio while it is not linked to the slides. */
+  /** Plays or pauses the audio while it is not linked to the lines. */
   toggle() {
     if (!this.active) return;
     if (this.audio.paused) this.audio.play().catch(() => {});
@@ -115,7 +115,7 @@ export class Recording {
     this.audio.currentTime = 0;
   }
 
-  /** Moves the audio by some seconds; slides that follow it move with it. */
+  /** Moves the audio by some seconds; lines that follow it move with it. */
   skip(seconds: number) {
     this.moveTo(this.audio.currentTime + seconds);
   }
@@ -154,7 +154,7 @@ export class Recording {
     this.drive();
   }
 
-  // The audio keeps playing when the slides stop following it, and the slides
+  // The audio keeps playing when the lines stop following it, and the lines
   // pick it up where it is when they start following it again.
   private drive() {
     this.clock.driven = this.link === 'follow' && this.active && this.schedule !== null;

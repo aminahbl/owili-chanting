@@ -127,9 +127,6 @@
     available views;
   </li>
   <li>
-    <strong>Track</strong> (text view only), which marks the current line;
-  </li>
-  <li>
     <strong>Settings</strong>, for how the chant is shown and how lines move on;
   </li>
   <li>
@@ -154,10 +151,12 @@
 <h2 id="text-view">The text view</h2>
 
 <p>
-  The text view shows the whole chant. With <strong>Track</strong> on, the
-  current line is marked and kept in view. A click on a line makes it the
-  current line, and the arrow keys move one line at a time. After scrolling away
-  by hand, <strong>Back to current line</strong> returns to it.
+  The text view shows the whole chant, with its controls in a bar at the foot
+  of the screen. With Manual advance, <strong>Track</strong> marks the current
+  line and keeps it in view; with Auto or Timed advance, <strong>Start</strong>
+  takes its place. A click on a line makes it the current line, and the arrow keys
+  move one line at a time. After scrolling away by hand,
+  <strong>Back to current line</strong> returns to it.
 </p>
 
 <h2 id="slide-view">The slide view</h2>
@@ -166,16 +165,21 @@
   The slide view shows a few lines at a time, filling the screen, with the
   current line marked. It suits chanting from a distance, or from a screen set
   up in front of a group. On a touch screen, a swipe across a slide moves a
-  line.
+  line. The controls are in the bar at the foot of the slides.
 </p>
 
-<p>The <strong>Advance</strong> setting chooses how lines move on:</p>
+<h2 id="advance">How lines move on</h2>
+
+<p>
+  The <strong>Advance</strong> setting chooses how lines move on, in both
+  views:
+</p>
 
 <dl class="entries">
   <dt>Manual</dt>
   <dd>
-    Lines move on only when asked: with the next and previous buttons, the arrow
-    keys, Space or a swipe.
+    Lines move on only when asked: with the arrow keys, a click on a line, or,
+    on slides, the next and previous buttons, Space or a swipe.
   </dd>
   <dt>Auto</dt>
   <dd>
@@ -192,8 +196,9 @@
 </dl>
 
 <p>
-  With Auto or Timed, <strong>Start</strong> sets the lines moving and
-  <strong>Pause</strong> stops them.
+  With Auto or Timed, <strong>Start</strong> in the bar at the foot of either
+  view sets the lines moving from the current line, or in the text view from
+  the first line in view, and <strong>Pause</strong> stops them.
 </p>
 
 <h2 id="audio">Chanting with a recording</h2>
@@ -214,9 +219,9 @@
 </p>
 
 <p>
-  In the slide view with Auto or Timed advance, the <strong>lock</strong> at the
-  start of the bottom bar locks the audio to the slides. It is closed while the
-  audio is locked, and a press opens or closes it:
+  With Auto or Timed advance, the <strong>lock</strong> in the bar locks the
+  audio to the lines. It is closed while the audio is locked, and
+  a press opens or closes it:
 </p>
 
 <ul>
@@ -228,7 +233,7 @@
     With Auto advance, or Timed advance with a timing worked out from the Pali,
     Start and Pause also play and pause the audio.
   </li>
-  <li>With the lock open, the audio and the slides run separately.</li>
+  <li>With the lock open, the audio and the lines run separately.</li>
 </ul>
 
 <p>
@@ -346,15 +351,15 @@
 <dl class="shortcuts">
   <dt><kbd>Space</kbd></dt>
   <dd>
-    Start or pause; the next line with Manual advance; in the text view,
-    tracking on or off
+    Start or pause; with Manual advance, the next line on slides, or tracking
+    on or off in the text view
   </dd>
   <dt><kbd>→</kbd> or <kbd>Page Down</kbd></dt>
   <dd>Next line</dd>
   <dt><kbd>←</kbd> or <kbd>Page Up</kbd></dt>
   <dd>Previous line</dd>
   <dt><kbd>+</kbd> and <kbd>−</kbd></dt>
-  <dd>Faster or slower (Auto advance on slides)</dd>
+  <dd>Faster or slower (Auto advance)</dd>
   <dt><kbd>V</kbd></dt>
   <dd>Switch between text and slides</dd>
   <dt><kbd>T</kbd></dt>

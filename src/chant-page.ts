@@ -96,9 +96,7 @@ const inSlides = () => root.dataset.view === 'slides';
 
 const METHOD_LABELS: Record<Method, string> = { manual: 'Manual', auto: 'Auto', timed: 'Timed' };
 
-// The text view has manual advance only.
 function chosenMethod(): Method {
-  if (!inSlides()) return 'manual';
   if (root.dataset.advance === 'auto') return 'auto';
   if (root.dataset.advance === 'timed') return 'timed';
   return 'manual';
@@ -126,9 +124,9 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   const title = chant.querySelector('h1')?.textContent ?? '';
   const paliTitle = chant.querySelector(':scope > .chant-pali-title')?.textContent ?? '';
   const slideView = new SlideView(slidesEl, steps, title, paliTitle);
-  const startButton = document.querySelector<HTMLButtonElement>('#slide-start');
+  const startButtons = [...document.querySelectorAll<HTMLButtonElement>('.start')];
   const trackButton = document.querySelector<HTMLButtonElement>('#track');
-  const methodLabel = document.querySelector<HTMLElement>('.method-label');
+  const methodLabels = [...document.querySelectorAll<HTMLElement>('.method-label')];
   const tempoInput = document.querySelector<HTMLInputElement>('#tempo');
   const chantId = chant.dataset.chant ?? '';
   const slug = chant.dataset.slug ?? '';
@@ -138,9 +136,9 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     recording.sync(c);
     textView.show(c);
     slideView.show(c);
-    if (startButton) {
-      startButton.textContent = startLabel(c);
-      startButton.classList.toggle('on', c.isRunning);
+    for (const button of startButtons) {
+      button.textContent = startLabel(c);
+      button.classList.toggle('on', c.isRunning);
     }
     if (trackButton) {
       trackButton.classList.toggle('on', c.status !== 'idle');
@@ -173,7 +171,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   }
 
   function showMethod() {
-    if (methodLabel) methodLabel.textContent = METHOD_LABELS[clock.method];
+    for (const label of methodLabels) label.textContent = METHOD_LABELS[clock.method];
     if (tempoInput) tempoInput.value = String(clock.tempo);
   }
 
@@ -186,12 +184,12 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     recording.use(schedule, fallback);
   }
 
-  // In the slide view with Auto or Timed advance, the lock (closed unless opened)
-  // ties the audio to the slides: in Timed advance with a timing from a file the
-  // slides follow it, and otherwise Start and Pause also play and pause it.
-  // Manual advance has no Start, so nothing to lock to.
+  // With Auto or Timed advance, the lock (closed unless opened) ties the audio
+  // to the lines: in Timed advance with a timing from a file the lines follow
+  // it, and otherwise Start and Pause also play and pause it. Manual advance
+  // has no Start, so nothing to lock to.
   function linkFor(method: Method): Link {
-    if (!inSlides() || method === 'manual' || root.dataset.link === 'off') return 'off';
+    if (method === 'manual' || root.dataset.link === 'off') return 'off';
     return method === 'timed' && timing.fromFile ? 'follow' : 'start';
   }
 
@@ -247,6 +245,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   function startOrPause() {
     if (clock.status === 'idle') clock.goTo(startIndex());
     clock.toggle();
+    if (clock.isRunning) textView.follow();
   }
 
   // In the text view, tracking marks the current line; turning it off clears the clock.
@@ -286,14 +285,14 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     const url = new URL(location.href);
     if (view === 'slides') url.searchParams.set('view', 'slides');
     else url.searchParams.delete('view');
-    history.replaceState(null, '', url);
+    history.replaceState(history.state, '', url);
     showSwitch();
     if (view !== 'slides') textView.follow();
   }
   showSwitch();
   for (const b of switchButtons) b.addEventListener('click', () => setView(b.dataset.view ?? 'text'));
 
-  startButton?.addEventListener('click', startOrPause);
+  for (const button of startButtons) button.addEventListener('click', startOrPause);
   trackButton?.addEventListener('click', toggleTracking);
   function changeTempo(faster: boolean) {
     if (faster) tempo.faster();
@@ -377,7 +376,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
   });
 
   // The user's audio file, in either view. While it is linked to the
-  // slides, Play does what Start does, and Stop also goes back to the title.
+  // lines, Play does what Start does, and Stop also clears the current line.
   const audioNote = document.querySelector<HTMLElement>('.audio-note');
   const audioName = document.querySelector<HTMLElement>('.audio-name');
   const audioError = document.querySelector<HTMLElement>('.audio-error');
@@ -405,7 +404,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     const linked = root.dataset.link !== 'off';
     for (const button of audioButtons('play')) {
       button.classList.toggle('on', recording.playing);
-      button.disabled = linkedToClock() && button.closest('.slide-bar') !== null;
+      button.disabled = linkedToClock();
       button.title = button.disabled ? 'Locked: Start plays and pauses the audio' : label;
       const text = button.querySelector('.sr-only');
       if (text) text.textContent = label;
@@ -552,14 +551,14 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
 
   return (event: KeyboardEvent): boolean => {
     if (keepsKey(event.target, event.key)) return false;
-    if (event.key === ' ' && inSlides() && clock.method === 'manual') move(1);
-    else if (event.key === ' ' && inSlides()) startOrPause();
+    if (event.key === ' ' && clock.method !== 'manual') startOrPause();
+    else if (event.key === ' ' && inSlides()) move(1);
     else if (event.key === ' ') toggleTracking();
     else if (event.key === 'ArrowRight' || event.key === 'PageDown') move(1);
     else if (event.key === 'ArrowLeft' || event.key === 'PageUp') move(-1);
     else if (event.key.toLowerCase() === 'v') setView(inSlides() ? 'text' : 'slides');
-    else if (inSlides() && clock.method === 'auto' && ['+', '='].includes(event.key)) changeTempo(true);
-    else if (inSlides() && clock.method === 'auto' && ['-', '−'].includes(event.key)) changeTempo(false);
+    else if (clock.method === 'auto' && ['+', '='].includes(event.key)) changeTempo(true);
+    else if (clock.method === 'auto' && ['-', '−'].includes(event.key)) changeTempo(false);
     else if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
       textView.stopFollowing();
       return false;

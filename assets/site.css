@@ -256,6 +256,12 @@ input:focus-visible {
   color: var(--muted);
 }
 
+.sets-open {
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .continued {
   font-weight: 400;
   color: var(--muted);
@@ -295,7 +301,7 @@ input:focus-visible {
 }
 
 .card:hover {
-  border-color: var(--hover);
+  border-color: var(--accent);
 }
 
 .card:focus-within {
@@ -599,9 +605,9 @@ input:focus-visible {
   color: var(--muted);
 }
 
-/* The pills keep a wider space before the next button, so the icon buttons
-   after them stand evenly apart. */
-.chant-header :is(.view-switch, .track) {
+/* The view switch keeps a wider space before the next button, so the icon
+   buttons after it stand evenly apart. */
+.chant-header .view-switch {
   margin-right: 0.5rem;
 }
 
@@ -627,17 +633,12 @@ input:focus-visible {
     width: 2.25rem;
   }
 
-  .chant-header :is(.view-switch, .track) {
+  .chant-header .view-switch {
     margin-right: 0.25rem;
   }
 
   .chant-header .view-switch button {
     padding-inline: 0.4rem;
-  }
-
-  .chant-header .track {
-    min-width: 0;
-    padding-inline: 0.6rem;
   }
 }
 
@@ -670,6 +671,7 @@ input:focus-visible {
 .start,
 .track {
   min-width: 5.25rem;
+  padding: 0.35rem 1rem;
   font: inherit;
   font-weight: 700;
   border: 0;
@@ -678,19 +680,19 @@ input:focus-visible {
 }
 
 .start {
-  padding: 0.35rem 1rem;
   color: var(--bg);
   background: var(--accent);
 }
 
-/* Manual advance moves by next and previous only, so the slide bar has no
-   Start, and no lock to tie the audio to it. */
-:root:not([data-advance]) .slide-bar :is(.start, .audio-link) {
+/* Manual advance moves by next and previous only, so neither bar has a
+   Start, nor a lock to tie the audio to it. With Auto or Timed advance, Start
+   takes the place of Track in the text bar. */
+:root:not([data-advance]) :is(.slide-bar, .text-bar) :is(.start, .audio-link),
+:root[data-advance] .text-bar .track {
   display: none;
 }
 
 .track {
-  padding: 0.25rem 0.75rem;
   color: var(--muted);
   background: none;
   box-shadow: inset 0 0 0 2px var(--border);
@@ -786,10 +788,12 @@ icon-moon {
   display: block;
 }
 
+/* The space at the end keeps the last lines clear of the text bar. */
 .chant {
   max-width: 50rem;
   margin: 0 auto;
   padding-top: 1.5rem;
+  padding-bottom: 8rem;
 }
 
 .chant h1 {
@@ -887,10 +891,6 @@ icon-moon {
 }
 
 .back-to-line {
-  position: fixed;
-  bottom: 1.25rem;
-  left: 50%;
-  translate: -50% 0;
   padding: 0.5rem 1.1rem;
   font: inherit;
   font-size: 0.9rem;
@@ -1223,8 +1223,7 @@ kbd {
   height: calc(100dvh - 3.25rem);
 }
 
-:root[data-view="slides"]:has(#slides)
-  :is(.chant, .back-to-line, .chant-header .track) {
+:root[data-view="slides"]:has(#slides) :is(.chant, .text-foot) {
   display: none;
 }
 
@@ -1482,7 +1481,7 @@ kbd {
   gap: 0.25rem 0.5rem;
 }
 
-.slide-group {
+.control-group {
   display: flex;
   align-items: center;
   gap: inherit;
@@ -1546,15 +1545,15 @@ kbd {
 }
 
 /* The audio controls (spec 09, F11). Play shows the pause icon while the audio
-   plays. Locked to the slides, Start plays and pauses the audio, so the slide
-   bar's Play is disabled and greyed out. */
+   plays. While the audio is locked to the lines, Start plays and pauses it, so
+   Play is disabled and greyed out. */
 .audio-controls {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.slide-bar .audio-controls {
+:is(.slide-bar, .text-bar) .audio-controls {
   margin-left: 0.5rem;
 }
 
@@ -1601,33 +1600,53 @@ kbd {
   display: none;
 }
 
-/* In the text view the controls sit in a bar of their own at the foot of the
-   screen, and "Back to current line" moves up above them. */
-.audio-bar {
+/* In the text view the controls sit in a footer across the foot of the
+   screen, in the page's colour, with "Back to current line" above them. A
+   band above the footer fades the text into it. On a phone the footer wraps a
+   group at a time. The column lets clicks through around its buttons. */
+.text-foot {
   position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  translate: -50% 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
 }
 
-.audio-bar .audio-controls {
-  padding: 0.25rem 0.75rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  box-shadow: 0 0.25rem 1rem hsl(0 0% 0% / 0.15);
+.text-foot > * {
+  pointer-events: auto;
 }
 
-:root:has(.audio-bar .audio-controls:not([hidden])) .back-to-line {
-  bottom: 5rem;
+/* Above the fade, which would otherwise cover its lower edge. */
+.text-foot .back-to-line {
+  position: relative;
+  z-index: 1;
 }
 
-:root:has(.audio-bar .audio-controls:not([hidden])) .chant {
-  padding-bottom: 5rem;
+.text-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
+  width: 100%;
+  padding: 0.25rem 1rem 0.5rem;
+  background: var(--bg);
 }
 
-:root[data-view="slides"]:has(#slides) .audio-bar {
-  display: none;
+.text-bar::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 1.5rem;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
 }
 
 /* Sliders in settings: the text size, and the speed of Auto advance, which is

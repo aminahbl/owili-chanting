@@ -5,7 +5,7 @@
 import { chantHref } from './card.ts';
 import { escapeHtml } from './html.ts';
 import { normalise } from './normalise.ts';
-import { newOpenSetId, readOpenSets, readShareLink, saveOpenSet, type OpenSet } from './open-set-store.ts';
+import { newOpenSetId, readOpenSets, readShareLink, saveOpenSet, shareLink, type OpenSet } from './open-set-store.ts';
 
 const article = document.querySelector<HTMLElement>('article.chant');
 const status = document.querySelector<HTMLElement>('.open-set-status');
@@ -19,21 +19,24 @@ function linkId(set: Omit<OpenSet, 'id'>): string {
   return `open-${hash.toString(36)}`;
 }
 
-/** The set named in the address, and whether it is saved in this browser. */
+/**
+ * The set named in the address, and whether it is saved in this browser. The
+ * list links to a set by its ID; the page then shows its share link in the
+ * address and keeps the ID in the history state, which survives a reload and
+ * tells apart saved sets with the same title and chants.
+ */
 function findSet(): { set: OpenSet; saved: boolean } | null {
   const saved = readOpenSets();
-  const byId = saved.find((s) => `#${s.id}` === location.hash);
+  const id = history.state?.id ?? location.hash.slice(1);
+  const byId = saved.find((s) => s.id === id);
   if (byId) return { set: byId, saved: true };
   const link = readShareLink(location.hash);
   if (!link) return null;
   const same = saved.find((s) => s.title === link.title && s.chants.join() === link.chants.join());
-  if (same) {
-    history.replaceState(null, '', `#${same.id}`);
-    return { set: same, saved: true };
-  }
+  if (same) return { set: same, saved: true };
   // A set saved from this link and edited since keeps the link's ID.
-  const id = saved.some((s) => s.id === linkId(link)) ? newOpenSetId() : linkId(link);
-  return { set: { id, ...link }, saved: false };
+  const unsavedId = saved.some((s) => s.id === linkId(link)) ? newOpenSetId() : linkId(link);
+  return { set: { id: unsavedId, ...link }, saved: false };
 }
 
 const missing = (text: string) => `<p class="open-set-missing">${text}</p>`;
@@ -83,7 +86,6 @@ async function show(article: HTMLElement, set: OpenSet, saved: boolean) {
   showSaved(set, saved);
   document.querySelector('#open-set-save')?.addEventListener('click', () => {
     saveOpenSet(set);
-    history.replaceState(null, '', `#${set.id}`);
     showSaved(set, true);
   });
   if (status) status.textContent = '';
@@ -94,5 +96,11 @@ async function show(article: HTMLElement, set: OpenSet, saved: boolean) {
 addEventListener('hashchange', () => location.reload());
 
 const found = findSet();
+if (found) {
+  // A query such as ?view=slides stays in the address.
+  const url = new URL(shareLink(found.set));
+  url.search = location.search;
+  history.replaceState({ id: found.set.id }, '', url);
+}
 if (article && found) void show(article, found.set, found.saved);
 else if (status) status.innerHTML = 'This set is not kept in this browser. Your sets are listed in <a href="/open-sets">Open sets</a>.';
