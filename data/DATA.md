@@ -2,7 +2,7 @@
 
 This folder holds the content of the site: the chants, the Sangha sets, the categories and the timing files. `npm run build` ([scripts/build.ts](../scripts/build.ts)) reads it, checks it, and writes the site to `dist/`. The build stops with a message naming the file and the problem when the data is inconsistent.
 
-Short instructions for common changes are in [chants/README.md](chants/README.md) and [sets/README.md](sets/README.md). This file describes how the data fits together.
+Short instructions for common changes are in [chants/CHANTS.md](chants/CHANTS.md) and [sets/SETS.md](sets/SETS.md). This file describes how the data fits together.
 
 ## Files in this folder
 
@@ -65,7 +65,9 @@ The build stops if a set's slug does not start with its chanter, if its file nam
 
 ## Timing files
 
-The timing of a recording is a file `chants/markers/<recording>.lrc`, in the LRC format the chant page exports. The format is described at the top of [src/lrc.ts](../src/lrc.ts).
+The timing of a recording is a file in `chants/markers/`, in the LRC format the chant page exports. The format is described at the top of [src/lrc.ts](../src/lrc.ts).
+
+A file that is a set's timing takes the set's file name, for example `abhayagiri-0128-evening-chanting.lrc`. Any other file takes the number and slug of the first chant it names, followed by the chanter where known, for example `0051-mangala-sutta-mahamevnawa.lrc`.
 
 - Tags at the top give the recording's details: `ti`, `place`, `performers`, `date`, and `page` for the address of the recording's web page.
 - A comment lists the chants the recording covers, in order.
