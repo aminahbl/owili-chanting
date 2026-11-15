@@ -301,7 +301,7 @@ input:focus-visible {
 }
 
 .card:hover {
-  border-color: var(--hover);
+  border-color: var(--accent);
 }
 
 .card:focus-within {
@@ -1223,8 +1223,7 @@ kbd {
   height: calc(100dvh - 3.25rem);
 }
 
-:root[data-view="slides"]:has(#slides)
-  :is(.chant, .text-foot) {
+:root[data-view="slides"]:has(#slides) :is(.chant, .text-foot) {
   display: none;
 }
 
