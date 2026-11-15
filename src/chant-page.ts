@@ -285,7 +285,7 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     const url = new URL(location.href);
     if (view === 'slides') url.searchParams.set('view', 'slides');
     else url.searchParams.delete('view');
-    history.replaceState(null, '', url);
+    history.replaceState(history.state, '', url);
     showSwitch();
     if (view !== 'slides') textView.follow();
   }
