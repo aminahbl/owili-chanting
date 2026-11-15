@@ -32,4 +32,4 @@ Edit its categories in [groups.ts](../groups.ts).
 
 ## Add a timing
 
-Add `markers/<recording>.lrc`, in the format the chant page exports.
+Add a file to `markers/`, in the format the chant page exports. A set's timing takes the set's file name, for example `abhayagiri-0128-evening-chanting.lrc`; any other timing takes its first chant's number and slug and the chanter, for example `0051-mangala-sutta-mahamevnawa.lrc`. [markers/MARKERS.md](markers/MARKERS.md) describes how to make one from the recording's pauses.
