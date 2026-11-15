@@ -59,11 +59,11 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 ├── data/
 │   ├── DATA.md               # How the data fits together and is checked
 │   ├── chants/
-│   │   ├── README.md         # Steps for changing chants
+│   │   ├── CHANTS.md         # Steps for changing chants
 │   │   ├── texts/            # One typed module per chant; retired ones in retired/
 │   │   └── markers/          # Timing files, one per recording
 │   ├── sets/                 # One typed module per Sangha set; retired ones in retired/
-│   │   └── README.md         # Steps for changing sets
+│   │   └── SETS.md           # Steps for changing sets
 │   ├── groups.ts             # Categories and their chants, in display order
 │   ├── chanters.ts           # Chanters of the Sangha sets and their lineages
 │   ├── ids.ts                # The ledger of chant and set numbers
@@ -102,8 +102,8 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Changing chants and sets
 
-- [data/chants/README.md](data/chants/README.md): steps for adding, editing, renaming and retiring a chant.
-- [data/sets/README.md](data/sets/README.md): the same for Sangha sets.
+- [data/chants/CHANTS.md](data/chants/CHANTS.md): steps for adding, editing, renaming and retiring a chant.
+- [data/sets/SETS.md](data/sets/SETS.md): the same for Sangha sets.
 - [data/DATA.md](data/DATA.md): how the data fits together, what the build checks, and what retiring a chant or set changes.
 
 ## Editing the about, guide and resources pages

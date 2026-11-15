@@ -2,7 +2,7 @@
 
 This folder holds the content of the site: the chants, the Sangha sets, the categories and the timing files. `npm run build` ([scripts/build.ts](../scripts/build.ts)) reads it, checks it, and writes the site to `dist/`. The build stops with a message naming the file and the problem when the data is inconsistent.
 
-Short instructions for common changes are in [chants/README.md](chants/README.md) and [sets/README.md](sets/README.md). This file describes how the data fits together.
+Short instructions for common changes are in [chants/CHANTS.md](chants/CHANTS.md) and [sets/SETS.md](sets/SETS.md). This file describes how the data fits together.
 
 ## Files in this folder
 
