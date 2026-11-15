@@ -52,7 +52,6 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0132", // buddha-guna-vandana
     "0133", // dhamma-guna-vandana
     "0134", // sangha-guna-vandana
-    "0137", // vajja-pakasana
     "0026", // ten-paramis
     "0148", // buddham-vande
   ] },
@@ -207,6 +206,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0097", // method-of-confessing-light-offences
     "0098", // formula-for-same-base-offences
     "0162", // confession-with-a-good-friend
+    "0137", // vajja-pakasana
   ] },
   { id: 'other', title: 'Other chants', chants: [] },
 ];
