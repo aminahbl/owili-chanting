@@ -87,25 +87,25 @@ export async function loadSets(chants: Chant[]): Promise<ChantSet[]> {
   return order.map((id) => byNumber.get(id)!);
 }
 
-/** A recording that covers a chant: its marker file and the details at the top of it. */
+/** A recording that covers a chant: its timing file and the details at the top of it. */
 export interface RecordingInfo {
   file: string;
   tags: Record<string, string>;
 }
 
 interface Timings {
-  /** Each chant's default timing, as the chant's part of a marker file, by chant number. */
+  /** Each chant's default timing, as the chant's part of a timing file, by chant number. */
   defaults: Map<string, string>;
   /** The recordings that cover each chant, in file-name order, by chant number. */
   recordings: Map<string, RecordingInfo[]>;
-  /** Each set's default timing, as a whole marker file, by set number. */
+  /** Each set's default timing, as a whole timing file, by set number. */
   setDefaults: Map<string, string>;
   /** The recordings that cover each set, in file-name order, by set number. */
   setRecordings: Map<string, RecordingInfo[]>;
 }
 
 /**
- * The timings in the marker files in `data/chants/markers/`. A marker file
+ * The timings in the timing files in `data/chants/timings/`. A timing file
  * follows one recording and can cover several chants; each chant's part is
  * checked against its lines, so the build stops on a timing that no longer
  * fits. Where several files cover a chant, a file tagged `[default:yes]` is
@@ -114,14 +114,14 @@ interface Timings {
  * picks a set's default.
  */
 export async function loadTimings(chants: Chant[], sets: ChantSet[]): Promise<Timings> {
-  const dir = new URL('../data/chants/markers/', import.meta.url);
+  const dir = new URL('../data/chants/timings/', import.meta.url);
   const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith('.lrc')).sort();
   const byId = new Map(chants.map((c) => [c.id, c]));
   const found = new Map<string, { part: string; preferred: boolean; recording: RecordingInfo }[]>();
   const covers: { text: string; chants: string; preferred: boolean; recording: RecordingInfo }[] = [];
   for (const file of files) {
     const text = await readFile(new URL(file, dir), 'utf8');
-    const fail = (reason: string) => new Error(`data/chants/markers/${file}: ${reason}`);
+    const fail = (reason: string) => new Error(`data/chants/timings/${file}: ${reason}`);
     // A timing is bundled inside a script element, which this would end.
     if (/<\/script/i.test(text)) throw fail('contains "</script".');
     const named = lrcChants(text);

@@ -221,3 +221,4 @@ The formula as lines:
 2. Recurring terms take their rendering from the tables above. A new recurring term is added to the tables first.
 3. Lines where the translation is uncertain (a rare word, a disputed reading, or a choice that may lean too far towards warmth) are recorded with the reason as open editorial notes in the chant's data (`editorial`), so review can start there.
 4. A new translation is marked `translation: "draft"` in the chant's data. After review it is marked `"reviewed"`.
+5. When a line break moves, as it may while a chant made from a recording is checked, the English moves with its Pali, and both lines are reread.

@@ -129,3 +129,5 @@ const headers = [
 await write('/_headers', `${headers.join('\n')}\n`);
 
 console.log(`Built ${chants.length} chants, ${sets.length} sets, ${shown.length} groups into dist/`);
+const drafts = chants.filter((c) => c.draft).map((c) => c.id);
+if (drafts.length) console.log(`Draft chants, not ready for release: ${drafts.join(', ')}.`);

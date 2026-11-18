@@ -242,6 +242,18 @@
   later visit. Other browsers keep a copy of the file.
 </p>
 
+<p>
+  A long MP3 file made at a variable bitrate can lose its place when the audio
+  is moved, by moving to a line or with back and forward. Browsers estimate
+  where a time falls in such a file, and in a recording of an hour or more the
+  estimate can be several seconds out. The lines then follow the wrong part of
+  the audio. Played through from the start without moving, the file stays in
+  time. Converting the file to a constant bitrate fixes this; for chanting,
+  64 kbit/s in mono is enough, and makes the file smaller. With
+  <a href="https://ffmpeg.org/">ffmpeg</a>:
+  <code>ffmpeg -i recording.mp3 -ac 1 -b:a 64k recording-64k.mp3</code>.
+</p>
+
 <h2 id="timing">Timing files</h2>
 
 <p>

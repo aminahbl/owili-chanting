@@ -9,7 +9,7 @@ import { layout, THEME_BUTTON, type SetChanter } from './templates.ts';
 const TRANSLATION_NOTE = 'LLM generated as a provisional guide only. Please find a reliable published translation.';
 // The page names an imported translation in the last entry, and shows the site's note only while a chant still uses the site's English.
 const TRANSLATION_INFO = `<dt class="translation-term">English</dt><dd class="translation-site">${TRANSLATION_NOTE}</dd><dd class="translation-imported" hidden></dd>`;
-const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
+const TIMING_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/timings';
 const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';
 
@@ -95,12 +95,12 @@ ${body}
 </div>`;
 }
 
-// Each recording that a marker file follows, with its details, its page and the file.
+// Each recording that a timing file follows, with its details, its page and the file.
 function recording({ file, tags }: RecordingInfo): string {
   const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
   const links = [
     tags.page ? externalLink(tags.page, 'Recording page') : '',
-    externalLink(`${MARKER_FILES}/${encodeURIComponent(file)}`, 'Timing file'),
+    externalLink(`${TIMING_FILES}/${encodeURIComponent(file)}`, 'Timing file'),
   ];
   return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
 }
