@@ -146,6 +146,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0051", // mangala-sutta
     "0052", // ratana-sutta
     "0053", // karaniya-metta-sutta
+    "0163", // brahmajala-sutta
   ] },
   { id: 'funeral', title: 'Funeral chants', chants: [
     "0115", // dhamma-sangani-matika

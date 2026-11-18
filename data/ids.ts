@@ -167,4 +167,5 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0160', slug: 'u-pannanda-paritta-preliminaries' },
   { id: '0161', slug: 'five-precepts' },
   { id: '0162', slug: 'confession-with-a-good-friend' },
+  { id: '0163', slug: 'brahmajala-sutta' },
 ];
