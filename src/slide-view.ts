@@ -53,14 +53,23 @@ function partHtml(line: HTMLElement, part: Part): string {
 
 // A section without a title continues the titled section before it. On a set
 // page, the chant's title comes first, so each chant opens with its title.
-function sectionTitle(line: HTMLElement): string {
-  let title = '';
-  for (let section = line.closest('.chant-section'); section && !title; section = section.previousElementSibling) {
-    const heading = section.matches('.chant-section') ? section.querySelector('h2, h3') : null;
-    title = heading?.textContent ?? '';
-  }
-  const chant = line.closest('.set-chant')?.querySelector('.set-chant-title')?.textContent ?? '';
-  return [chant, title].filter(Boolean).join(' · ');
+// Each section's title is found once, since a long chant has hundreds of sections.
+function sectionTitles(lines: HTMLElement[]): string[] {
+  const known = new Map<Element, string>();
+  const titleOf = (section: Element | null): string => {
+    if (!section) return '';
+    let title = known.get(section);
+    if (title === undefined) {
+      const heading = section.matches('.chant-section') ? section.querySelector('h2, h3') : null;
+      title = heading?.textContent || titleOf(section.previousElementSibling);
+      known.set(section, title);
+    }
+    return title;
+  };
+  return lines.map((line) => {
+    const chant = line.closest('.set-chant')?.querySelector('.set-chant-title')?.textContent ?? '';
+    return [chant, titleOf(line.closest('.chant-section'))].filter(Boolean).join(' · ');
+  });
 }
 
 const lineHtml = (html: string) => `<div class="slide-page-line"><div class="slide-page-text">${html}</div></div>`;
@@ -79,6 +88,9 @@ export class SlideView {
   private lineInput: HTMLInputElement;
   private steps: Step[];
   private lines: HTMLElement[];
+  private sections: string[];
+  /** The lines as the slides show them, read again when the key changes. */
+  private pageLines: PageLine[] = [];
   private titleHtml: string;
   /** The step shown, or TITLE or NOTHING. */
   private shown = NOTHING;
@@ -97,6 +109,7 @@ export class SlideView {
     this.root = root;
     this.steps = steps;
     this.lines = [...new Set(steps.map((s) => s.line))];
+    this.sections = sectionTitles(this.lines);
     const subtitle = paliTitle ? `<p class="slide-page-pali-title" lang="pi">${escapeHtml(paliTitle)}</p>` : '';
     this.titleHtml = `<p class="pali">${escapeHtml(title)}</p>${subtitle}`;
     this.stage = part(root, '.slide-stage');
@@ -115,7 +128,7 @@ export class SlideView {
       this.lineInput.blur();
     });
     // A chant without section titles has no section row.
-    this.section.hidden = !this.lines.some((line) => sectionTitle(line));
+    this.section.hidden = !this.sections.some(Boolean);
     addEventListener('resize', () => {
       cancelAnimationFrame(this.resizeFrame);
       this.resizeFrame = requestAnimationFrame(() => this.refresh());
@@ -161,20 +174,21 @@ export class SlideView {
     this.showNumber();
     // The page has no size in the text view or on the end slide.
     if (!this.page.clientHeight) return;
-    const lines = this.pageLines();
     const d = document.documentElement.dataset;
     const key = [this.page.clientWidth, this.page.clientHeight, d.form, d.translation, d.chanting, d.order, d.slideSize].join();
     if (key !== this.key) {
       this.key = key;
-      this.fit(lines);
+      this.pageLines = this.readLines();
+      this.fit(this.pageLines);
       this.shownBlock = null;
     }
+    const lines = this.pageLines;
     // A pause with a cue shows the block of the next line, where the cue stands.
     const cue = typeof this.rest === 'number' ? this.rest : null;
     const nextLine = step && cue !== null ? this.steps[this.shown + 1]?.line : undefined;
     const block = this.blockOf(nextLine ? this.lines.indexOf(nextLine) : number);
     // The row names the section only when the block does not start with its title.
-    this.section.textContent = step && !opensSection(lines, this.starts[block]) ? sectionTitle(step.line) : '';
+    this.section.textContent = step && !opensSection(lines, this.starts[block]) ? lines[number].section : '';
     if (block !== this.shownBlock) {
       if (animate && this.shownBlock !== null) this.turn();
       this.page.innerHTML = this.blockHtml(lines, block);
@@ -187,22 +201,23 @@ export class SlideView {
     else this.mark(block === TITLE ? 0 : number - this.starts[block], block !== TITLE, count, step?.part ?? 'pali');
   }
 
-  private pageLines(): PageLine[] {
+  private readLines(): PageLine[] {
     const cuesBefore = new Map<HTMLElement, Cue[]>();
+    const shown = new Set(this.lines);
     let cues: Cue[] = [];
     for (const el of document.querySelectorAll<HTMLElement>('.chant .chant-notes p, .chant .cue, .chant .line')) {
       if (!el.matches('.line')) cues.push({ id: el.dataset.cue ?? '', html: el.innerHTML });
-      else if (this.lines.includes(el)) {
+      else if (shown.has(el)) {
         cuesBefore.set(el, cues);
         cues = [];
       }
     }
     this.trailingCues = cues;
-    return this.lines.map((line) => {
+    return this.lines.map((line, i) => {
       return {
         html: partHtml(line, 'pali') + partHtml(line, 'en'),
         preview: partHtml(line, chantedParts(line)[0]),
-        section: sectionTitle(line),
+        section: this.sections[i],
         cues: cuesBefore.get(line) ?? [],
         solo: line.classList.contains('solo'),
       };
@@ -211,31 +226,37 @@ export class SlideView {
 
   // Blocks hold as many lines as fit at the chosen text size, up to four, and
   // end at a section's end. If a single line does not fit, the size is reduced.
+  // Smaller text never makes a block taller, so after a reduction only the
+  // blocks that were too tall are measured again.
   private fit(lines: PageLine[]) {
     const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const chosen = Number(document.documentElement.dataset.slideSize) || SIZE_RANGES.slideSize.default;
+    const room = this.page.clientHeight;
     let size = chosen * rem;
+    this.page.style.setProperty('--line-size', `${size}px`);
     for (let most = MAX_BLOCK_LINES; most > 1; most -= 1) {
       this.divide(lines, most);
-      if (this.tallest(lines, size) <= this.page.clientHeight) return;
+      if (this.blocks().every((block) => this.height(lines, block) <= room)) return;
     }
     this.divide(lines, 1);
+    let tooTall = this.blocks();
     for (let tries = 0; tries < 6; tries += 1) {
-      const tallest = this.tallest(lines, size);
-      if (tallest <= this.page.clientHeight) return;
-      size *= Math.min(0.95, this.page.clientHeight / tallest);
+      const heights = tooTall.map((block) => this.height(lines, block));
+      tooTall = tooTall.filter((_, i) => heights[i] > room);
+      if (!tooTall.length) return;
+      size *= Math.min(0.95, room / Math.max(...heights));
+      this.page.style.setProperty('--line-size', `${size}px`);
     }
   }
 
-  // Measured by showing each block, and the title, in turn; render() then shows the right one.
-  private tallest(lines: PageLine[], size: number): number {
-    this.page.style.setProperty('--line-size', `${size}px`);
-    let tallest = 0;
-    for (const block of [TITLE, ...this.starts.keys()]) {
-      this.page.innerHTML = this.blockHtml(lines, block);
-      tallest = Math.max(tallest, this.page.scrollHeight);
-    }
-    return tallest;
+  private blocks(): number[] {
+    return [TITLE, ...this.starts.keys()];
+  }
+
+  // Measured by showing the block; render() then shows the right one.
+  private height(lines: PageLine[], block: number): number {
+    this.page.innerHTML = this.blockHtml(lines, block);
+    return this.page.scrollHeight;
   }
 
   private divide(lines: PageLine[], most: number) {
