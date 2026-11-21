@@ -73,7 +73,7 @@ The build stops if a set's slug does not start with its chanter, if its file nam
 
 The timing of a recording is a file in `chants/timings/`, in the LRC format the chant page exports. The format is described at the top of [src/lrc.ts](../src/lrc.ts).
 
-A file that is a set's timing takes the set's file name, for example `abhayagiri-0128-evening-chanting.lrc`. Any other file takes the number and slug of the first chant it names, followed by the chanter where known, for example `0051-mangala-sutta-mahamevnawa.lrc`.
+A file that is a set's timing takes the set's file name, for example `abhayagiri-0128-evening-chanting.lrc`. Any other file takes the number of the first chant it names, then the chanter where known, then the chant's slug, for example `0051-mahamevnawa-mangala-sutta.lrc`. The chanter comes before the slug because it is what tells one recording of a chant from another.
 
 - Tags at the top give the recording's details: `ti`, `place`, `performers`, `date`, and `page` for the address of the recording's web page.
 - A comment lists the chants the recording covers, in order.

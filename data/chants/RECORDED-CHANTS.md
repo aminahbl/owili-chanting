@@ -19,7 +19,7 @@ To time a recording of a chant the site already has, see [timings/TIMINGS.md](ti
    `node scripts/timings.ts module <text> checked.txt <number> <slug> > data/chants/texts/<number>-<slug>.ts`
 9. Add the chant to [ids.ts](../ids.ts) and [groups.ts](../groups.ts), as in [CHANTS.md](CHANTS.md#add-a-chant).
 10. Write the timing file, then add the recording's tags at the top ([details](#the-timing-file)):
-    `node scripts/timings.ts lrc checked.txt <number> > data/chants/timings/<number>-<slug>-<chanter>.lrc`
+    `node scripts/timings.ts lrc checked.txt <number> > data/chants/timings/<number>-<chanter>-<slug>.lrc`
 11. Run `npm run check` and `npm run build`.
 12. On the chant page, play the constant-bitrate copy with Timed advance, moving between lines.
 13. When every line has been checked, remove `draft: true` from the module ([details](#ready-for-release)). The English can follow as separate work.
@@ -84,7 +84,7 @@ Fill in the title, the Pali title where there is one, and the label of the `refs
 
 `node scripts/timings.ts lrc checked.txt <number>` pairs the labels with the chant's lines in order, and prints a row for each line's start, a last row that ends the last label's line, and a row with no time for each line after it. Run it after the module is in place, and again whenever lines are checked or corrected.
 
-Name the file as described in [DATA.md](../DATA.md#timing-files), and add above the rows the tags that describe the recording and a comment that lists its chants and says how far the lines have been checked. [0163-brahmajala-sutta-mahamevnawa.lrc](timings/0163-brahmajala-sutta-mahamevnawa.lrc) is an example of a recording that stops before the text ends.
+Name the file as described in [DATA.md](../DATA.md#timing-files), and add above the rows the tags that describe the recording and a comment that lists its chants and says how far the lines have been checked. [0163-mahamevnawa-brahmajala-sutta.lrc](timings/0163-mahamevnawa-brahmajala-sutta.lrc) is an example of a recording that stops before the text ends.
 
 ## Ready for release
 

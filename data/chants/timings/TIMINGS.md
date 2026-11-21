@@ -32,7 +32,7 @@ Check `pauses.txt` before going on:
 - **It has more pauses than the chants have lines.** `grep -c silence_start pauses.txt` counts the pauses. Every line needs a breath group of its own, and there is one breath group fewer than there are pauses.
 - **No stretch between two pauses is much longer than a line.** The `silence_end` of one pause and the `silence_start` of the next give the length of the stretch. A stretch of a minute holds pauses that were missed.
 
-Some recordings do not have a pause between every two lines, and no setting finds one. The recording timed in [0101-yatha-vari-vaha-pura-amaravati.lrc](0101-yatha-vari-vaha-pura-amaravati.lrc) is an example. It has 49 line starts. The settings above find 4 pauses in it. `noise=-15dB:d=0.15` finds 72, but only 27 of the 49 line starts are within half a second of one. Make the timing file for such a recording from a chant page instead.
+Some recordings do not have a pause between every two lines, and no setting finds one. The recording timed in [0101-amaravati-yatha-vari-vaha-pura.lrc](0101-amaravati-yatha-vari-vaha-pura.lrc) is an example. It has 49 line starts. The settings above find 4 pauses in it. `noise=-15dB:d=0.15` finds 72, but only 27 of the 49 line starts are within half a second of one. Make the timing file for such a recording from a chant page instead.
 
 ## 2. Propose the line starts
 
@@ -61,7 +61,7 @@ Then export the labels (Export Labels, in the File menu), for example as `checke
 node scripts/timings.ts lrc checked-labels.txt
 ```
 
-Save the output in this folder, named as described in [DATA.md](../../DATA.md#timing-files), and add above it the tags that describe the recording and a comment listing its chants. [0051-mangala-sutta-mahamevnawa.lrc](0051-mangala-sutta-mahamevnawa.lrc) is an example.
+Save the output in this folder, named as described in [DATA.md](../../DATA.md#timing-files), and add above it the tags that describe the recording and a comment listing its chants. [0051-mahamevnawa-mangala-sutta.lrc](0051-mahamevnawa-mangala-sutta.lrc) is an example.
 
 ## 5. Check the file
 
@@ -101,7 +101,7 @@ The proposal is least reliable at the start and end of a recording, where a titl
 
 Continues the text from the last checked word, over the stretch of the recording after the last checked label, 7 minutes unless another length is given. It stops if the checked labels do not hold the text's first words, in order.
 
-- **Pace.** The pace is taken from the checked labels, in syllables per second of sound. A chanter's pace can change through a recording: the recording timed in [0163-brahmajala-sutta-mahamevnawa.lrc](0163-brahmajala-sutta-mahamevnawa.lrc) starts at about 2.1 syllables a second and reaches about 2.5. That recording covers only half the sutta, so a pace taken from the whole text over the whole recording put about twice the chanted text into each breath.
+- **Pace.** The pace is taken from the checked labels, in syllables per second of sound. A chanter's pace can change through a recording: the recording timed in [0163-mahamevnawa-brahmajala-sutta.lrc](0163-mahamevnawa-brahmajala-sutta.lrc) starts at about 2.1 syllables a second and reaches about 2.5. That recording covers only half the sutta, so a pace taken from the whole text over the whole recording put about twice the chanted text into each breath.
 - **Breaths.** A line takes one breath group, or up to three where that keeps a phrase together. A group that holds no words of the text is labelled `? no words`. Stretches of sound under 0.4 s are clicks or breaths and are left out.
 - **Breaks.** A line ends most easily at the end of a segment, then after punctuation, then inside a clause. The checked lines are known phrases: wherever their words recur in the text, a break at their edges costs nothing and a break inside them costs more. A text that repeats its formulas, as suttas do, gains most: one corrected line also corrects the later lines with the same words. A line never ends between a doubled word, such as *tattha tattha*, or on the first word of a quotation.
 - **Flags.** A label ending in ` ?` marks a line more than 25% off the pace, or one that ends inside a checked line's words.
