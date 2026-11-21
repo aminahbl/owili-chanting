@@ -1,0 +1,66 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on the Three Characteristics":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L377
+# Printed in the web edition of 2024-12-26, page 72: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=80
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0078 ti-lakkhan-adi-gatha]
+# Sabbe saṅkhārā aniccā'ti
+1 'Impermanent are all conditioned things' —
+# yadā paññāya passati
+2 When with wisdom this is seen
+# Atha nibbindati dukkhe
+3 One feels weary of all dukkha;
+# esa maggo visuddhiyā
+4 This is the path to purity.
+# Sabbe saṅkhārā dukkhā'ti
+5 'Dukkha are all conditioned things' —
+# yadā paññāya passati
+6 When with wisdom this is seen
+# Atha nibbindati dukkhe
+7 One feels weary of all dukkha;
+# esa maggo visuddhiyā
+8 This is the path to purity.
+# Sabbe dhammā anattā'ti
+9 'There is no self in anything' —
+# yadā paññāya passati
+10 When with wisdom this is seen
+# Atha nibbindati dukkhe
+11 One feels weary of all dukkha;
+# esa maggo visuddhiyā
+12 This is the path to purity.
+# Appakā te manussesu
+13 Few amongst humankind
+# ye janā pāra-gāmino
+14 Are those who go beyond,
+# Athāyaṁ itarā pajā
+15 Yet there are the many folks
+# tīram-evānudhāvati
+16 Ever wand'ring on this shore.
+# Ye ca kho sammad-akkhāte
+17 Wherever Dhamma is well-taught,
+# dhamme dhammānuvattino
+18 Those who train in line with it
+# Te janā pāram-essanti
+19 Are the ones who will cross over
+# maccu-dheyyaṁ suduttaraṁ
+20 The realm of death so hard to flee.
+# Kaṇhaṁ dhammaṁ vippahāya
+21 Abandoning the darker states,
+# sukkaṁ bhāvetha paṇḍito
+22 The wise pursue the bright;
+# Okā anokam-āgamma
+23 From the floods dry land they reach
+# viveke yattha dūramaṁ
+24 Living withdrawn so hard to do.
+# Tatrābhiratim-iccheyya
+25 Such rare delight one should desire,
+# hitvā kāme akiñcano
+26 Sense pleasures cast away, Not having anything.

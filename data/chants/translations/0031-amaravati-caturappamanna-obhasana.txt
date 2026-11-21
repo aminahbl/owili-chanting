@@ -1,0 +1,54 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Suffusion With the Divine Abidings":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L317
+# Printed in the web edition of 2024-12-26, page 43: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=51
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs most lines; where one English line faces two Pali lines, the break between them is ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0031 caturappamanna-obhasana]
+# {Mettā-sahagatena} cetasā ekaṁ disaṁ pharitvā viharati
+1 {I will abide} pervading one quarter with a heart imbued with loving-kindness;
+# Tathā dutiyaṁ tathā tatiyaṁ tathā catutthaṁ
+2 Likewise the second, likewise the third, likewise the fourth;
+# Iti uddhamadho tiriyaṁ sabbadhi sabbattatāya
+3 So above and below, around and everywhere; and to all as to myself.
+# Sabbāvantaṁ lokaṁ mettā-sahagatena cetasā
+4 I will abide pervading the all-encompassing world with a heart imbued with loving-kindness;
+# Vipulena mahaggatena appamāṇena averena abyāpajjhena pharitvā viharati
+5 abundant, exalted, immeasurable, without hostility, and without ill-will.
+# Karuṇā-sahagatena cetasā ekaṁ disaṁ pharitvā viharati
+6 I will abide pervading one quarter with a heart imbued with compassion;
+# Tathā dutiyaṁ tathā tatiyaṁ tathā catutthaṁ
+7 Likewise the second, likewise the third, likewise the fourth;
+# Iti uddhamadho tiriyaṁ sabbadhi sabbattatāya
+8 So above and below, around and everywhere; and to all as to myself.
+# Sabbāvantaṁ lokaṁ karuṇā-sahagatena cetasā
+9 I will abide pervading the all-encompassing world with a heart imbued with compassion;
+# Vipulena mahaggatena appamāṇena averena abyāpajjhena pharitvā viharati
+10 abundant, exalted, immeasurable, without hostility, and without ill-will.
+# Muditā-sahagatena cetasā ekaṁ disaṁ pharitvā viharati
+11 I will abide pervading one quarter with a heart imbued with gladness;
+# Tathā dutiyaṁ tathā tatiyaṁ tathā catutthaṁ
+12 Likewise the second, likewise the third, likewise the fourth;
+# Iti uddhamadho tiriyaṁ sabbadhi sabbattatāya
+13 So above and below, around and everywhere; and to all as to myself.
+# Sabbāvantaṁ lokaṁ muditā-sahagatena cetasā
+14 I will abide pervading the all-encompassing world with a heart imbued with gladness;
+# Vipulena mahaggatena appamāṇena averena abyāpajjhena pharitvā viharati
+15 abundant, exalted, immeasurable, without hostility, and without ill-will.
+# Upekkhā-sahagatena cetasā ekaṁ disaṁ pharitvā viharati
+16 I will abide pervading one quarter with a heart imbued with equanimity;
+# Tathā dutiyaṁ tathā tatiyaṁ tathā catutthaṁ
+17 Likewise the second, likewise the third, likewise the fourth;
+# Iti uddhamadho tiriyaṁ sabbadhi sabbattatāya
+18 So above and below, around and everywhere; and to all as to myself.
+# Sabbāvantaṁ lokaṁ upekkhā-sahagatena cetasā
+19 I will abide pervading the all-encompassing world with a heart imbued with equanimity;
+# Vipulena mahaggatena appamāṇena averena abyāpajjhena pharitvā viharatī'ti
+20 abundant, exalted, immeasurable, without hostility, and without ill-will.

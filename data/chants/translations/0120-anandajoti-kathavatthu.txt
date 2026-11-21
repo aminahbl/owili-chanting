@@ -1,0 +1,31 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Abhidhamma Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Abhidhamma-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0120 kathavatthu]
+# Puggalo upalabbhati saccikaṭṭha-paramatthenā'ti.
+1 Is a person found in a real and ultimate way?
+# Āmantā.
+2 Yes.
+# Yo saccikaṭṭho paramattho,
+3 That which is real and ultimate,
+# tato so puggalo upalabbhati saccikaṭṭha-paramatthenā'ti.
+4 is this person found in (the same) real and ultimate way?
+# Na h'evaṁ vattabbe.
+5 No, that cannot be said.
+# Ājānāhi niggahaṁ.
+6 Acknowledge the refutation.
+# Hañci puggalo upalabbhati saccikaṭṭha-paramatthena, tena vata re vattabbe.
+7 If a person is found in a real and ultimate way, then you surely should have said:
+# Yo saccikaṭṭho paramattho,
+8 That which is real and ultimate,
+# tato so puggalo upalabbhati saccikaṭṭha-paramatthenā'ti micchā.
+9 this person is found in (the same) real and ultimate way. (Your view is) wrong.

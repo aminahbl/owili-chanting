@@ -1,0 +1,126 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "The Highest Blessings":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L400
+# Printed in the web edition of 2024-12-26, page 46: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=54
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book prints the English as a chant of its own, with no Pali; the pairing with the Pali lines is ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0051 mangala-sutta]
+# Evam-me sutaṁ: ekaṁ samayaṁ bhagavā,
+1 {Thus have I heard that the Blessed One}
+# sāvatthiyaṁ viharati,
+2 Was staying at Sāvatthī,
+# jeta-vane
+3 Residing at the Jeta's Grove
+# anāthapiṇḍikassa ārāme.
+4 In Anāthapiṇḍika's Park.
+# Atha kho aññatarā devatā abhikkantāya rattiyā abhikkanta-vaṇṇā
+5 Then in the dark of the night, a radiant deva
+# kevala-kappaṁ jetavanaṁ obhāsetvā,
+6 Illuminated all Jeta's Grove.
+# yena bhagavā ten'upasaṅkami. Upasaṅkamitvā bhagavantaṁ abhivādetvā ekam-antaṁ aṭṭhāsi.
+7 She bowed down low before the Blessed One
+# Ekam-antaṁ ṭhitā kho sā devatā bhagavantaṁ gāthāya ajjhabhāsi:
+8 Then standing to one side she said:
+# Bahū devā manussā ca,
+9 'Devas are concerned for happiness
+# Maṅgalāni acintayuṁ;
+10 And ever long for peace.
+# Ākaṅkhamānā sotthānaṁ,
+11 The same is true for humankind.
+# Brūhi maṅgalam-uttamaṁ.
+12 What then are the highest blessings?'
+# Asevanā ca bālānaṁ
+13 'Avoiding those of foolish ways,
+# Paṇḍitānañ-ca sevanā
+14 Associating with the wise,
+# Pūjā ca pūjanīyānaṁ
+15 And honouring those worthy of honour.
+# Etam maṅgalam-uttamaṁ
+16 These are the highest blessings.
+# Paṭirūpa-desa-vāso ca
+17 'Living in places of suitable kinds,
+# Pubbe ca kata-puññatā
+18 With the fruits of past good deeds
+# Atta-sammā-paṇidhi ca
+19 And guided by the rightful way.
+# Etam maṅgalam-uttamaṁ
+20 These are the highest blessings.
+# Bāhu-saccañ-ca sippañ-ca,
+21 'Accomplished in learning and craftsman's skills,
+# Vinayo ca susikkhito
+22 With discipline, highly trained,
+# Subhāsitā ca yā vācā
+23 And speech that is true and pleasant to hear.
+# Etam maṅgalam-uttamaṁ
+24 These are the highest blessings.
+# Mātā-pitu-upaṭṭhānaṁ
+25 'Providing for mother and father's support
+# Putta-dārassa saṅgaho
+26 And cherishing family,
+# Anākulā ca kammantā
+27 And ways of work that harm no being,
+# Etam maṅgalam-uttamaṁ
+28 These are the highest blessings.
+# Dānañ-ca dhamma-cariyā ca
+29 'Generosity and a righteous life,
+# Ñātakānañ-ca saṅgaho
+30 Offering help to relatives and kin,
+# Anavajjāni kammāni
+31 And acting in ways that leave no blame.
+# Etam maṅgalam-uttamaṁ
+32 These are the highest blessings.
+# Āratī viratī pāpā
+33 'Steadfast in restraint, and shunning evil ways,
+# Majja-pānā ca saññamo
+34 Avoiding intoxicants that dull the mind,
+# Appamādo ca dhammesu
+35 And heedfulness in all things that arise.
+# Etam maṅgalam-uttamaṁ
+36 These are the highest blessings.
+# Gāravo ca nivāto ca
+37 'Respectfulness and being of humble ways,
+# Santuṭṭhī ca kataññutā
+38 Contentment and gratitude,
+# Kālena dhammassavanaṁ
+39 And hearing the Dhamma frequently taught.
+# Etam maṅgalam-uttamaṁ
+40 These are the highest blessings.
+# Khantī ca sovacassatā
+41 'Patience and willingness to accept one's faults,
+# Samaṇānañ-ca dassanaṁ
+42 Seeing venerated seekers of the truth,
+# Kālena dhamma-sākacchā
+43 And sharing often the words of Dhamma.
+# Etam maṅgalam-uttamaṁ
+44 These are the highest blessings.
+# Tapo ca brahma-cariyañ-ca
+45 'Ardent, committed to the Holy Life,
+# Ariya-saccāna-dassanaṁ
+46 Seeing for oneself the Noble Truths
+# Nibbāna-sacchikiriyā ca
+47 And the realization of Nibbāna.
+# Etam maṅgalam-uttamaṁ
+48 These are the highest blessings.
+# Phuṭṭhassa loka-dhammehi
+49 'Although in contact with the world,
+# Cittaṁ yassa na kampati
+50 Unshaken the mind remains
+# Asokaṁ virajaṁ khemaṁ
+51 Beyond all sorrow, spotless, secure.
+# Etam maṅgalam-uttamaṁ
+52 These are the highest blessings.
+# Etādisāni katvāna
+53 'They who live by following this path
+# Sabbattham-aparājitā
+54 Know victory wherever they go,
+# Sabbattha sotthiṁ gacchanti
+55 And every place for them is safe.
+# Tan-tesaṁ maṅgalam-uttaman'ti
+56 These are the highest blessings.'

@@ -1,0 +1,50 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Supreme Praise of the Dhamma":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/evening-chanting.tex#L188
+# Printed in the web edition of 2024-12-26, page 25: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=33
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0013 supreme-praise-of-the-dhamma]
+# Svākkhātat'ādiguṇa-yoga-vasena seyyo
+1 It is excellent because it is 'well expounded,'
+# Yo magga-pāka-pariyatti-vimokkha-bhedo
+2 And it can be divided into Path and Fruit, Learning and Liberation.
+# Dhammo kuloka-patanā tada-dhāri-dhārī
+3 The Dhamma holds those who uphold it from falling into delusion.
+# Vandām'ahaṁ tama-haraṁ vara-dhammam-etaṁ
+4 I revere the excellent Teaching, that which removes darkness —
+# Dhammo yo sabba-pāṇīnaṁ saraṇaṁ khemam-uttamaṁ
+5 The Dhamma, which is the supreme, secure refuge of all beings —
+# Dutiyānussatiṭṭhānaṁ vandāmi taṁ siren'ahaṁ
+6 As the Second Object of Recollection, I venerate it with bowed head.
+# Dhammassāh'asmi dāso va dhammo me sāmi-kissaro
+7 I am indeed the Dhamma's servant, the Dhamma is my Lord and Guide.
+# Dhammo dukkhassa ghātā ca vidhātā ca hitassa me
+8 The Dhamma is sorrow's destroyer, and it bestows blessings on me.
+# Dhammass'āhaṁ niyyādemi sarīrañ-jīvitañ-cidaṁ
+9 To the Dhamma I dedicate this body and life,
+# Vandantohaṁ carissāmi dhammass'eva sudhammataṁ
+10 And in devotion I will walk this excellent way of Truth.
+# Natthi me saraṇaṁ aññaṁ dhammo me saraṇaṁ varaṁ
+11 For me there is no other refuge, the Dhamma is my excellent refuge.
+# Etena sacca-vajjena vaḍḍheyyaṁ satthu-sāsane
+12 By the utterance of this Truth, may I grow in the Master's Way.
+# Dhammaṁ me vandamānena yaṁ puññaṁ pasutaṁ idha
+13 By my devotion to the Dhamma, and the blessing of this practice —
+# Sabbepi antarāyā me māhesuṁ tassa tejasā
+14 By its power, may all obstacles be overcome.
+# Kāyena vācāya va cetasā vā
+16 By body, speech, or mind,
+# Dhamme kukammaṁ pakataṁ mayā yaṁ
+17 For whatever wrong action I have committed towards the Dhamma,
+# Dhammo paṭiggaṇhātu accayantaṁ
+18 May my acknowledgement of fault be accepted,
+# Kālantare saṁvarituṁ va dhamme
+19 That in future there may be restraint regarding the Dhamma.

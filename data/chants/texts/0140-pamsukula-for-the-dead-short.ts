@@ -5,7 +5,7 @@ export const chant = {
   slug: "pamsukula-for-the-dead-short",
   title: "Verses for the rag-robe Offering (for the dead, short)",
   paliTitle: "Paṁsukūla (for the dead, short)",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/funeral-chants.html#pamsukula" },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/funeral.tex#L175" },
   translation: "draft",
   sections: [
     {

@@ -4,7 +4,7 @@ export const chant = {
   id: "0009",
   slug: "closing-homage",
   title: "Closing Homage",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#closing-pali", categories: [{ category: "Morning Chanting", order: 7 }, { category: "Evening Chanting", order: 9 }] },
+  paliSource: { label: "Community Chanting Book, Volume One", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L746", categories: [{ category: "Morning Chanting", order: 7 }] },
   translation: "draft",
   sections: [
     {

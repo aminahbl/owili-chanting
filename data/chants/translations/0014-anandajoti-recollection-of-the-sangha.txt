@@ -1,0 +1,28 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "2. Worshipping the Virtues of the Three Treasures":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-02.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0014 recollection-of-the-sangha]
+# Supaṭipanno bhagavato sāvakasaṅgho
+1 The Fortunate One’s Saṅgha of disciples are good in their practice,
+# Ujupaṭipanno bhagavato sāvakasaṅgho
+2 the Fortunate One’s Saṅgha of disciples are upright in their practice,
+# Ñāyapaṭipanno bhagavato sāvakasaṅgho
+3 the Fortunate One’s Saṅgha of disciples are systematic in their practice,
+# Sāmīcipaṭipanno bhagavato sāvakasaṅgho
+4 the Fortunate One’s Saṅgha of disciples are correct in their practice,
+# Yadidaṁ cattāri purisayugāni aṭṭha purisapuggalā
+5 that is to say, the four pairs of persons, the eight individual persons,
+# Esa bhagavato sāvakasaṅgho
+6 this is the Fortunate One’s Saṅgha of disciples,
+# Āhuneyyo pāhuneyyo dakkhiṇeyyo añjali-karaṇīyo
+7 they are worthy of offerings, of hospitality, of gifts, and of reverential salutation,
+# Anuttaraṁ puññakkhettaṁ lokassā'ti
+8 they are an unsurpassed field of merit for the world.

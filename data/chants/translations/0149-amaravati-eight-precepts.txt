@@ -1,0 +1,30 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "The Eight Precepts":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/formal-requests.tex#L447
+# Printed in the web edition of 2024-12-26, page 134: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=142
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0149 eight-precepts]
+# Pāṇātipātā veramaṇī sikkhā-padaṁ samādiyāmi.
+1 I undertake the precept to refrain from taking the life of any living creature.
+# Adinnādānā veramaṇī sikkhā-padaṁ samādiyāmi.
+2 I undertake the precept to refrain from taking that which is not given.
+# Abrahma-cariyā veramaṇī sikkhā-padaṁ samādiyāmi.
+3 I undertake the precept to refrain from any intentional sexual activity.
+# Musāvādā veramaṇī sikkhā-padaṁ samādiyāmi.
+4 I undertake the precept to refrain from lying.
+# Surā-meraya-majja-pamādaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.
+5 I undertake the precept to refrain from consuming intoxicating drink and drugs which lead to carelessness.
+# Vikāla-bhojanā veramaṇī sikkhā-padaṁ samādiyāmi.
+6 I undertake the precept to refrain from eating at inappropriate times.
+# Nacca-gīta vādita visūka-dassana mālāgandha vilepana dhāraṇa maṇḍana vibhūsanaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.
+7 I undertake the precept to refrain from entertainment, beautification, and adornment.
+# Uccā-sayana mahā-sayanā veramaṇī sikkhā-padaṁ samādiyāmi.
+8 I undertake the precept to refrain from lying on a high or luxurious sleeping place.

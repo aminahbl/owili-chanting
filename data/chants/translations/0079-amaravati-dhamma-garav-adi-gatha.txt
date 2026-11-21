@@ -1,0 +1,52 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on Respect for the Dhamma":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L553
+# Printed in the web edition of 2024-12-26, page 77: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=85
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0079 dhamma-garav-adi-gatha]
+# Ye ca atītā sambuddhā
+1 All the Buddhas of the past,
+# ye ca buddhā anāgatā
+2 All the Buddhas yet to come,
+# Yo c'etarahi sambuddho
+3 The Buddha of this current age —
+# bahunnaṁ soka-nāsano
+4 Dispellers of much sorrow.
+# Sabbe saddhamma-garuno
+5 Those having lived or living now,
+# vihariṁsu viharanti ca
+6 Those living in the future,
+# Atho pi viharissanti
+7 All do revere the True Dhamma —
+# esā buddhāna dhammatā
+8 That is the nature of all Buddhas.
+# Tasmā hi atta-kāmena
+9 Therefore desiring one's own welfare,
+# mahattam-abhikaṅkhatā
+10 Pursuing greatest aspirations,
+# Saddhammo garu-kātabbo
+11 One should revere the True Dhamma —
+# saraṁ buddhāna sāsanaṁ
+12 Recollecting the Buddha's teaching.
+# Na hi dhammo adhammo ca
+13 What is true Dhamma and what not
+# Ubho sama-vipākino
+14 Will never have the same results,
+# Adhammo nirayaṁ neti
+15 While lack of Dhamma leads to hell-realms —
+# Dhammo pāpeti suggatiṁ
+16 True Dhamma takes one on a good course.
+# Dhammo have rakkhati dhamma-cāriṁ
+17 The Dhamma guards who lives in line with it
+# Dhammo suciṇṇo sukham-āvahāti
+18 And leads to happiness when practised well —
+# Esānisaṁso dhamme suciṇṇe
+19 This is the blessing of well-practised Dhamma.

@@ -5,7 +5,7 @@ export const chant = {
   slug: "culla-mangala-cakka-vala",
   title: "The Lesser Circle of Blessings",
   paliTitle: "Culla-maṅgala-cakka-vāḷa",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#culla-mangala", categories: [{ category: "Anumodanā", order: 8 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L693", categories: [{ category: "Parittas", order: 24 }] },
   translation: "draft",
   sections: [
     {

@@ -1,0 +1,24 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "6. Protection and Blessing Verses":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-06.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0071 bhavatu-sabba-mangalam]
+# Bhavatu sabba-maṅgalaṁ rakkhantu sabba-devatā
+1 May there be every blessing, and may all of the gods protect you,
+# Sabba-buddhānubhāvena sadā sotthī bhavantu te
+2 by the power of all the Buddhas may you be safe forever!
+# Bhavatu sabba-maṅgalaṁ rakkhantu sabba-devatā
+3 May there be every blessing, and may all of the gods protect you,
+# Sabba-dhammānubhāvena sadā sotthī bhavantu te
+4 by the power of all that is Dhamma may you be safe forever!
+# Bhavatu sabba-maṅgalaṁ rakkhantu sabba-devatā
+5 May there be every blessing, and may all of the gods protect you,
+# Sabba-saṅghānubhāvena sadā sotthī bhavantu te
+6 by the power of the whole Saṅgha may you be safe forever!

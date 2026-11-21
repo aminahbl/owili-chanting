@@ -10,6 +10,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 - Open sets: sequences of chants chosen by the user, kept in the browser and shared by link, each on one page like a Sangha set
 - Pali text with secondary English line‑by‑line
 - Chanting in Pali, in translation, or in both line by line
+- Published translations, such as the English of Amaravati Buddhist Monastery and of Ānandajoti Bhikkhu, offered in the settings beside the site's English
 - The user's own translation, imported from a plain text file in place of the English
 - A text view with line tracking, and a slide view that shows a few lines at a time with the current line marked
 - Three ways for lines to move on in the slide view: Manual, Auto (at a pace worked out from the Pali, with a speed control) and Timed (following a timing file)
@@ -45,7 +46,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── tempo.ts              # The Auto speed
 │   ├── lrc.ts                # Reads timing files, shared with the build
 │   ├── timing.ts             # The timing in use for Timed advance
-│   ├── translation.ts        # The translation in use: the site's English or an imported file
+│   ├── translation.ts        # The translation in use: the site's English, a published one or an imported file
 │   ├── translation-file.ts   # Reads and writes translation files, shared with the build
 │   ├── line-text.ts          # A line's text as HTML, with leader marks and forms, shared with the build
 │   ├── audio-store.ts        # Remembering the user's audio file per chant or set
@@ -63,11 +64,13 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   │   ├── CHANTS.md         # Quick guides for changing chants
 │   │   ├── RECORDED-CHANTS.md # Making a chant whose lines follow a recording
 │   │   ├── texts/            # One typed module per chant; retired ones in retired/
-│   │   └── timings/          # Timing files, one per recording, and TIMINGS.md
+│   │   ├── timings/          # Timing files, one per recording, and TIMINGS.md
+│   │   └── translations/     # Published translations offered in the settings, and TRANSLATIONS.md
 │   ├── sets/                 # One typed module per Sangha set; retired ones in retired/
 │   │   └── SETS.md           # Quick guides for changing sets
 │   ├── groups.ts             # Categories and their chants, in display order
 │   ├── chanters.ts           # Chanters of the Sangha sets and their lineages
+│   ├── translators.ts        # Translators of the translation files, with credit, source and licence
 │   ├── ids.ts                # The ledger of chant and set numbers
 │   ├── types.ts              # The Chant and ChantSet types
 │   └── translation-guide.md  # Principles and fixed renderings for the English

@@ -1,0 +1,46 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on the Four Requisites":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L685
+# Printed in the web edition of 2024-12-26, page 53: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=61
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0028 reflection-on-the-four-requisites]
+# {Paṭisaṅkhā} yoniso cīvaraṁ paṭisevāmi,
+1 Wisely reflecting, I use the robe:
+# yāvadeva sītassa paṭighātāya, uṇhassa paṭighātāya,
+2 only to ward off cold, to ward off heat,
+# ḍaṁsa-makasa-vātātapa-siriṁsapa-samphassānaṁ
+3 to ward off the touch of flies, mosquitoes, wind, burning and creeping things,
+# paṭighātāya, yāvadeva hirikopina-paṭicchādanatthaṁ
+4 only for the sake of modesty.
+# {Paṭisaṅkhā} yoniso piṇḍapātaṁ paṭisevāmi, neva davāya, na madāya, na maṇḍanāya,
+5 Wisely reflecting, I use almsfood: not for fun, not for pleasure, not for fattening,
+# na vibhūsanāya, yāvadeva imassa kāyassa ṭhitiyā, yāpanāya, vihiṁsūparatiyā,
+6 not for beautification, only for the maintenance and nourishment of this body, for keeping it healthy,
+# brahmacariyānuggahāya, iti purāṇañca vedanaṁ paṭihaṅkhāmi,
+7 for helping with the Holy Life; thinking thus, 'I will allay hunger
+# navañca vedanaṁ na uppādessāmi,
+8 without overeating,
+# yātrā ca me bhavissati anavajjatā ca phāsuvihāro cā'ti
+9 so that I may continue to live blamelessly and at ease.'
+# {Paṭisaṅkhā} yoniso senāsanaṁ paṭisevāmi,
+10 Wisely reflecting, I use the lodging:
+# yāvadeva sītassa paṭighātāya, uṇhassa paṭighātāya,
+11 only to ward off cold, to ward off heat,
+# ḍaṁsa-makasa-vātātapa-siriṁsapa-samphassānaṁ
+12 to ward off the touch of flies, mosquitoes, wind, burning and creeping things,
+# paṭighātāya, yāvadeva utuparissaya vinodanaṁ paṭisallānārāmatthaṁ
+13 only to remove the danger from weather, and for living in seclusion.
+# {Paṭisaṅkhā} yoniso gilāna-paccaya-bhesajja-parikkhāraṁ paṭisevāmi,
+14 Wisely reflecting, I use supports for the sick and medicinal requisites:
+# yāvadeva uppannānaṁ veyyābādhikānaṁ vedanānaṁ paṭighātāya,
+15 only to ward off painful feelings that have arisen,
+# abyāpajjha-paramatāyā'ti
+16 for the maximum freedom from disease.

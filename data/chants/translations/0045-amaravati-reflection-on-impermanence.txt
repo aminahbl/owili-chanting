@@ -1,0 +1,58 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on Impermanence":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L162
+# Printed in the web edition of 2024-12-26, page 66: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=74
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0045 reflection-on-impermanence]
+# Sabbe saṅkhārā aniccā
+1 All conditioned things are impermanent;
+# Sabbe saṅkhārā dukkhā
+2 All conditioned things are dukkha;
+# Sabbe dhammā anattā
+3 Everything is void of self.
+# Addhuvaṁ jīvitaṁ
+4 Life is not for sure;
+# Dhuvaṁ maraṇaṁ
+5 Death is for sure;
+# Avassaṁ mayā maritabbaṁ
+6 It is inevitable that I'll die;
+# Maraṇa-pariyosānaṁ me jīvitaṁ
+7 Death is the culmination of my life;
+# Jīvitaṁ me aniyataṁ
+8 My life is uncertain;
+# Maraṇaṁ me niyataṁ
+9 My death is certain.
+# Vata
+10 Indeed,
+# Ayaṁ kāyo
+11 This body
+# Aciraṁ
+12 Will soon
+# Apeta-viññāṇo
+13 Be void of consciousness
+# Chuddho
+14 And cast away.
+# Adhisessati
+15 It will lie
+# Paṭhaviṁ
+16 On the ground
+# Kaliṅgaraṁ iva
+17 Just like a rotten log,
+# Niratthaṁ
+18 Completely void of use.
+# Aniccā vata saṅkhārā
+19 Truly conditioned things cannot last,
+# Uppāda-vaya-dhammino
+20 Their nature is to rise and fall,
+# Uppajjitvā nirujjhanti
+21 Having arisen things must cease,
+# Tesaṁ vūpasamo sukho
+22 Their stilling is true happiness.

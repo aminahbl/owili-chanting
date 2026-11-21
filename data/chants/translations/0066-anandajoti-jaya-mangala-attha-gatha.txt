@@ -1,0 +1,84 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "1. Verses on the Blessings of Success":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/05-Upagantho-01.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0066 jaya-mangala-attha-gatha]
+# Bāhuṁ sahassam-abhinimmita sāvudhan-taṁ
+1 Māra, the terrible one, who had created a thousand arms with weapons,
+# Grīmekhalaṁ udita-ghora-sasena-māraṁ
+2 and had mounted on (the elephant) Girimekhala, with his army,
+# Dān'ādi-dhamma-vidhinā jitavā mun'indo
+3 did the lord of sages defeat by such things as generosity and so forth -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+4 through that resplendent power may you have the blessings of success!
+# Mārātirekam-abhiyujjhita-sabba-rattiṁ
+5 Even more terrible than Māra was the impatient and obdurate yakkha Ālavaka,
+# Ghoram-pan'āḷavakam-akkhama-thaddha-yakkhaṁ
+6 who fought (with the Buddha) throughout the whole night,
+# Khantī-sudanta-vidhinā jitavā mun'indo
+7 (him) did the lord of sages defeat by his patience and self-control
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+8 through that resplendent power may you have the blessings of success!
+# Nāḷāgiriṁ gaja-varaṁ atimatta-bhūtaṁ
+9 The great elephant Nālāgiri, who was completely intoxicated,
+# Dāv'aggi-cakkam-asanīva sudāruṇan-taṁ
+10 fearful, like a jungle fire, a flaming discus, or a flash of lightning,
+# Mett'ambu-seka-vidhinā jitavā mun'indo
+11 did the lord of sages defeat by sprinkling (him) with the waters of friendliness -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+12 through that resplendent power may you have the blessings of success!
+# Ukkhitta-khaggam-atihattha-sudāruṇan-taṁ
+13 With a sword that was lifted high in his outstretched hand, that very fearsome (bandit)
+# Dhāvan-ti-yojana-path'aṅguli- mālavantaṁ
+14 the one with a finger necklace (Aṅgulimāla) ran for (the whole of) three leagues up the path:
+# Iddhī'bhisaṅkhata-mano jitavā mun'indo
+15 (him) did the lord of sages defeat with the psychic powers created in his mind -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+16 through that resplendent power may you have the blessings of success!
+# Katvāna kaṭṭham-udaraṁ iva gabbhinīyā
+17 Having made her midriff (look large) with a piece of wood, like one who is pregnant,
+# Ciñcāya duṭṭha-vacanaṁ jana-kāya majjhe
+18 Ciñcā (then spoke) wicked words in the midst of a group of people:
+# Santena soma-vidhinā jitavā mun'indo
+19 (her) did the lord of sages defeat by means of his gentleness and peacefulness -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+20 through that resplendent power may you have the blessings of success!
+# Saccaṁ vihāya-mati-saccaka-vāda-ketuṁ
+21 The arrogant Saccaka, who had given up the truth, and had challenged (the Buddha) to a debate,
+# Vādābhiropita-manaṁ ati-andha-bhūtaṁ
+22 with his mind fixed on his argument, completely blind to the truth,
+# Paññā-padīpa-jalito jitavā mun'indo
+23 (him) did the lord of sages defeat with the shining lamp of true wisdom -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+24 through that resplendent power may you have the blessings of success!
+# Nandopananda-bhujagaṁ vibudhaṁ mah'iddhiṁ
+25 Taming the wise dragon Nandopananda, who had great power,
+# Puttena thera-bhujagena damāpayanto
+26 by way of his son (Moggallāna), who was a dragon of an elder,
+# Iddhūpadesa-vidhinā jitavā mun'indo
+27 (thus) did the lord of sages defeat (him) by instructing (his son to use) psychic power -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+28 through that resplendent power may you have the blessings of success!
+# Duggāha-diṭṭhi-bhujagena sudaṭṭha-hatthaṁ
+29 He whose hand was badly bitten by the serpent of wrongly taken up views,
+# Brahmaṁ visuddhi-jutim-iddhi-bakābhidhānaṁ
+30 the brahma Baka, who was clear and bright, and who possessed psychic powers,
+# Ñāṇāgadena vidhinā jitavā mun'indo
+31 did the lord of sages defeat with the medicine of his super-knowledge -
+# Tan-tejasā bhavatu te jaya-maṅgalāni
+32 through that resplendent power may you have the blessings of success!
+# Etā pi buddha-jaya-maṅgala-aṭṭha-gāthā
+33 He who recites these eight verses each and every day,
+# Yo vācano dina-dine saratem-atandī
+34 which are about the Buddha’s (many) blessed successes, and remembers them with diligence
+# Hitvān'aneka-vividhāni c'upaddavāni
+35 after giving up (all) the many and various kinds of adversity,
+# Mokkhaṁ sukhaṁ adhigameyya naro sapañño
+36 that wise man will (soon thereafter) attain both freedom and happiness.

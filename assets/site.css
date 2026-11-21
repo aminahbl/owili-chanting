@@ -1133,6 +1133,32 @@ icon-moon {
   margin-top: 0;
 }
 
+/* One choice per row, with each credit under its translator's name. The labels
+   give their radio and text to the grid, so the credit can share the text's column. */
+.translator-choices {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0.25rem 0.25rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+:root[data-chanting="both"] .translator-choices {
+  margin-top: 0;
+}
+
+.translator-choices label {
+  display: contents;
+}
+
+.translator-credit {
+  grid-column: 2;
+}
+
+.translator-credit a {
+  white-space: nowrap;
+}
+
 /* The order applies when both texts are chanted, and the shadow line when one is. */
 :root:not([data-chanting="both"]) .order-options,
 :root[data-chanting="both"] .shadow-toggle,
@@ -1708,6 +1734,10 @@ kbd {
 
 .option-note:last-child {
   margin: 0.5rem 0 0;
+}
+
+.translator-choices .translator-credit {
+  margin: 0;
 }
 
 .option-actions {

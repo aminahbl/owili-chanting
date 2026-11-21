@@ -1,0 +1,50 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Supreme Praise of the Saṅgha":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/evening-chanting.tex#L275
+# Printed in the web edition of 2024-12-26, page 27: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=35
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0015 supreme-praise-of-the-sangha]
+# Saddhammajo supaṭipatti-guṇādiyutto
+1 Born of the Dhamma, that Saṅgha which has practised well,
+# Yo'ṭṭhabbidho ariyapuggala-saṅgha-seṭṭho
+2 The field of the Saṅgha formed of eight kinds of noble beings,
+# Sīlādidhamma-pavarāsaya-kāya-citto
+3 Guided in body and mind by excellent morality and virtue.
+# Vandām'ahaṁ tam-ariyāna-gaṇaṁ susuddhaṁ
+4 I revere that assembly of noble beings perfected in purity.
+# Saṅgho yo sabba-pāṇīnaṁ saraṇaṁ khemam-uttamaṁ
+5 The Saṅgha, which is the supreme, secure refuge of all beings —
+# Tatiyānussatiṭṭhānaṁ vandāmi taṁ siren'ahaṁ
+6 As the Third Object of Recollection, I venerate it with bowed head.
+# Saṅghass'āhasmi dāso va saṅgho me sāmi-kissaro
+7 I am indeed the Saṅgha's servant, the Saṅgha is my Lord and Guide.
+# Saṅgho dukkhassa ghātā ca vidhātā ca hitassa me
+8 The Saṅgha is sorrow's destroyer and it bestows blessings on me.
+# Saṅghass'āhaṁ niyyādemi sarīrañ-jīvitañ-cidaṁ
+9 To the Saṅgha I dedicate this body and life,
+# Vandanto'haṁ carissāmi saṅghassopaṭipannataṁ
+10 And in devotion I will walk the well-practised way of the Saṅgha.
+# Natthi me saraṇaṁ aññaṁ saṅgho me saraṇaṁ varaṁ
+11 For me there is no other refuge, the Saṅgha is my excellent refuge.
+# Etena sacca-vajjena vaḍḍheyyaṁ satthu-sāsane
+12 By the utterance of this Truth, may I grow in the Master's Way.
+# Saṅghaṁ me vandamānena yaṁ puññaṁ pasutaṁ idha
+13 By my devotion to the Saṅgha, and the blessing of this practice —
+# Sabbepi antarāyā me māhesuṁ tassa tejasā
+14 By its power, may all obstacles be overcome.
+# Kāyena vācāya va cetasā vā
+16 By body, speech, or mind,
+# Saṅghe kukammaṁ pakataṁ mayā yaṁ
+17 For whatever wrong action I have committed towards the Saṅgha,
+# Saṅgho paṭiggaṇhātu accayantaṁ
+18 May my acknowledgement of fault be accepted,
+# Kālantare saṁvarituṁ va saṅghe
+19 That in future there may be restraint regarding the Saṅgha.

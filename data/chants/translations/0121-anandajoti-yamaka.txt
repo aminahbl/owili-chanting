@@ -1,0 +1,20 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Abhidhamma Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Abhidhamma-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0121 yamaka]
+# Ye keci kusalā dhammā, sabbe te kusalamūlā.
+1 Whatever are wholesome things, are they all wholesome roots?
+# Ye vā pana kusalamūlā, sabbe te dhammā kusalā.
+2 Whatever are wholesome roots, are they all wholesome things?
+# Ye keci kusalā dhammā, sabbe te kusalamūlena ekamūlā.
+3 Whatever are wholesome things, do they all have the same roots with the wholesome root?
+# Ye vā pana kusalamūlena ekamūlā, sabbe te dhammā kusalā.
+4 Whatever have the same roots with the wholesome root, are they all wholesome roots?

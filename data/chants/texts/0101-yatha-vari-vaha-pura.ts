@@ -5,7 +5,7 @@ export const chant = {
   slug: "yatha-vari-vaha-pura",
   title: "Just as Rivers",
   paliTitle: "Yathā vāri-vahā pūrā",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/anumodana.html#yatha", categories: [{ category: "Anumodanā", order: 1 }] },
+  paliSource: { label: "Community Chanting Book, Volume One", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L522", categories: [{ category: "Reflections & Recollections", order: 8 }] },
   translation: "draft",
   sections: [
     {
@@ -19,6 +19,10 @@ export const chant = {
       lines: [
         { id: 3, pali: "Icchitaṁ patthitaṁ tumhaṁ", en: "Whatever you wish or hope for," },
         { id: 4, pali: "Khippam-eva samijjhatu", en: "may it quickly be fulfilled;" },
+      ],
+    },
+    {
+      lines: [
         { id: 5, pali: "Sabbe pūrentu saṅkappā", en: "may all your wishes be fulfilled," },
         { id: 6, pali: "Cando paṇṇaraso yathā", en: "as the moon on the fifteenth day," },
         { id: 7, pali: "Maṇi jotiraso yathā", en: "or as a radiant gem." },
@@ -31,6 +35,10 @@ export const chant = {
         { id: 9, pali: "Sabba-rogo vinassatu", en: "may every illness be destroyed," },
         { id: 10, pali: "Mā te bhavatv-antarāyo", en: "may no obstacles come to you," },
         { id: 11, pali: "Sukhī dīgh'āyuko bhava", en: "may you be happy and live long." },
+      ],
+    },
+    {
+      lines: [
         { id: 12, pali: "Abhivādana-sīlissa", en: "For one in the habit of showing respect," },
         { id: 13, pali: "Niccaṁ vuḍḍhāpacāyino", en: "who always honours the elders," },
         { id: 14, pali: "Cattāro dhammā vaḍḍhanti", en: "four things increase:" },
@@ -44,10 +52,18 @@ export const chant = {
         { id: 17, pali: "Rakkhantu sabba-devatā", en: "may all the devas protect you." },
         { id: 18, pali: "Sabba-buddhānubhāvena", en: "By the power of all the Buddhas," },
         { id: 19, pali: "Sadā sotthī bhavantu te", en: "may you always be safe." },
+      ],
+    },
+    {
+      lines: [
         { id: 20, pali: "Bhavatu sabba-maṅgalaṁ", en: "May there be every blessing;" },
         { id: 21, pali: "Rakkhantu sabba-devatā", en: "may all the devas protect you." },
         { id: 22, pali: "Sabba-dhammānubhāvena", en: "By the power of all the Dhamma," },
         { id: 23, pali: "Sadā sotthī bhavantu te", en: "may you always be safe." },
+      ],
+    },
+    {
+      lines: [
         { id: 24, pali: "Bhavatu sabba-maṅgalaṁ", en: "May there be every blessing;" },
         { id: 25, pali: "Rakkhantu sabba-devatā", en: "may all the devas protect you." },
         { id: 26, pali: "Sabba-saṅghānubhāvena", en: "By the power of all the Saṅgha," },

@@ -1,0 +1,116 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "The Teaching on Mindfulness of Breathing":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L882
+# Printed in the web edition of 2024-12-26, page 85: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=93
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0089 anapanassati-sutta]
+# Ānāpānassati bhikkhave bhāvitā bahulīkatā
+1 Bhikkhus, when mindfulness of breathing is developed and cultivated
+# Mahapphalā hoti mahānisaṁsā
+2 It is of great fruit and great benefit;
+# Ānāpānassati bhikkhave bhāvitā bahulīkatā
+3 When mindfulness of breathing is developed and cultivated
+# Cattāro satipaṭṭhāne paripūreti
+4 It fulfills the Four Foundations of Mindfulness;
+# Cattāro satipaṭṭhānā bhāvitā bahulīkatā
+5 When the Four Foundations of Mindfulness are developed and cultivated
+# Satta-bojjhaṅge paripūrenti
+6 They fulfill the Seven Factors of Awakening;
+# Satta-bojjhaṅgā bhāvitā bahulīkatā
+7 When the Seven Factors of Awakening are developed and cultivated
+# Vijjā-vimuttiṁ paripūrenti
+8 They fulfill true knowledge and deliverance.
+# Kathaṁ bhāvitā ca bhikkhave ānāpānassati kathaṁ bahulīkatā
+9 And how, bhikkhus, is mindfulness of breathing developed and cultivated
+# Mahapphalā hoti mahānisaṁsā
+10 So that it is of great fruit and great benefit?
+# Idha bhikkhave bhikkhu
+11 Here, bhikkhus, a bhikkhu,
+# Arañña-gato vā
+12 Gone to the forest,
+# Rukkha-mūla-gato vā
+13 To the foot of a tree
+# Suññāgāra-gato vā
+14 Or to an empty hut.
+# Nisīdati pallaṅkaṁ ābhujitvā
+15 Sits down having crossed his legs,
+# Ujuṁ kāyaṁ paṇidhāya parimukhaṁ satiṁ upaṭṭhapetvā
+16 Sets his body erect, having established mindfulness in front of him.
+# So sato'va assasati sato'va passasati
+17 Ever mindful he breathes in; mindful he breathes out.
+# Dīghaṁ vā assasanto dīghaṁ assasāmī'ti pajānāti
+18 Breathing in long, he knows 'I breathe in long';
+# Dīghaṁ vā passasanto dīghaṁ passasāmī'ti pajānāti
+19 Breathing out long, he knows 'I breathe out long';
+# Rassaṁ vā assasanto rassaṁ assasāmī'ti pajānāti
+20 Breathing in short, he knows 'I breathe in short';
+# Rassaṁ vā passasanto rassaṁ passasāmī'ti pajānāti
+21 Breathing out short, he knows 'I breathe out short'.
+# Sabba-kāya-paṭisaṁvedī assasissāmī'ti sikkhati
+22 He trains thus: 'I shall breathe in experiencing the whole body'.
+# Sabba-kāya-paṭisaṁvedī passasissāmī'ti sikkhati
+23 He trains thus: 'I shall breathe out experiencing the whole body'.
+# Passambhayaṁ kāya-saṅkhāraṁ assasissāmī'ti sikkhati
+24 He trains thus: 'I shall breathe in tranquillizing the bodily formations'.
+# Passambhayaṁ kāya-saṅkhāraṁ passasissāmī'ti sikkhati
+25 He trains thus: 'I shall breathe out tranquillizing the bodily formations'.
+# Pīti-paṭisaṁvedī assasissāmī'ti sikkhati
+26 He trains thus: 'I shall breathe in experiencing rapture'.
+# Pīti-paṭisaṁvedī passasissāmī'ti sikkhati
+27 He trains thus: 'I shall breathe out experiencing rapture'.
+# Sukha-paṭisaṁvedī assasissāmī'ti sikkhati
+28 He trains thus: 'I shall breathe in experiencing pleasure'
+# Sukha-paṭisaṁvedī passasissāmī'ti sikkhati
+29 He trains thus: 'I shall breathe out experiencing pleasure'.
+# Citta-saṅkhāra-paṭisaṁvedī assasissāmī'ti sikkhati
+30 He trains thus: 'I shall breathe in experiencing the mental formations'.
+# Citta-saṅkhāra-paṭisaṁvedī passasissāmī'ti sikkhati
+31 He trains thus: 'I shall breathe out experiencing the mental formations'.
+# Passambhayaṁ citta-saṅkhāraṁ assasissāmī'ti sikkhati
+32 He trains thus: 'I shall breathe in tranquillizing the mental formations'.
+# Passambhayaṁ citta-saṅkhāraṁ passasissāmī'ti sikkhati
+33 He trains thus: 'I shall breathe out tranquillizing the mental formations'.
+# Citta-paṭisaṁvedī assasissāmī'ti sikkhati
+34 He trains thus: 'I shall breathe in experiencing the mind'.
+# Citta-paṭisaṁvedī passasissāmī'ti sikkhati
+35 He trains thus: 'I shall breathe out experiencing the mind'.
+# Abhippamodayaṁ cittaṁ assasissāmī'ti sikkhati
+36 He trains thus: 'I shall breathe in gladdening the mind'.
+# Abhippamodayaṁ cittaṁ passasissāmī'ti sikkhati
+37 He trains thus: 'I shall breathe out gladdening the mind'.
+# Samādahaṁ cittaṁ assasissāmī'ti sikkhati
+38 He trains thus: 'I shall breathe in concentrating the mind'
+# Samādahaṁ cittaṁ passasissāmī'ti sikkhati
+39 He trains thus: 'I shall breathe out concentrating the mind'.
+# Vimocayaṁ cittaṁ assasissāmī'ti sikkhati
+40 He trains thus: 'I shall breathe in liberating the mind'.
+# Vimocayaṁ cittaṁ passasissāmī'ti sikkhati
+41 He trains thus: 'I shall breathe out liberating the mind'.
+# Aniccānupassī assasissāmī'ti sikkhati
+42 He trains thus: 'I shall breathe in contemplating impermanence'.
+# Aniccānupassī passasissāmī'ti sikkhati
+43 He trains thus: 'I shall breathe out contemplating impermanence'.
+# Virāgānupassī assasissāmī'ti sikkhati
+44 He trains thus: 'I shall breathe in contemplating the fading away of passions'.
+# Virāgānupassī passasissāmī'ti sikkhati
+45 He trains thus: 'I shall breathe out contemplating the fading away of passions'.
+# Nirodhānupassī assasissāmī'ti sikkhati
+46 He trains thus: 'I shall breathe in contemplating cessation'.
+# Nirodhānupassī passasissāmī'ti sikkhati
+47 He trains thus: 'I shall breathe out contemplating cessation'.
+# Paṭinissaggānupassī assasissāmī'ti sikkhati
+48 He trains thus: 'I shall breathe in contemplating relinquishment'.
+# Paṭinissaggānupassī passasissāmī'ti sikkhati
+49 He trains thus: 'I shall breathe out contemplating relinquishment'.
+# Evaṁ bhāvitā kho bhikkhave ānāpānassati evaṁ bahulīkatā
+50 Bhikkhus, that is how mindfulness of breathing is developed and cultivated
+# Mahapphalā hoti mahānisaṁsā'ti
+51 So that it is of great fruit and great benefit.

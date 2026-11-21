@@ -5,7 +5,7 @@ export const chant = {
   slug: "namo-kara-atthaka",
   title: "The Homage Octet",
   paliTitle: "Namo-kāra-aṭṭhaka",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#namo-arahato", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 7 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L102", categories: [{ category: "Parittas", order: 5 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [7, 9], note: "English to review: *omāty-āraddhassa* and *omakātītassa* play on *om* and *omaka* (low). The draft follows the usual reading; the wordplay cannot be kept in English." },

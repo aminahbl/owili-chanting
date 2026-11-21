@@ -2,7 +2,9 @@ import { readdir, readFile } from 'node:fs/promises';
 import type { CardData, SearchEntry } from '../src/card.ts';
 import { chantPart, lrcChants, lrcTags, readLrc } from '../src/lrc.ts';
 import { normalise } from '../src/normalise.ts';
+import { checkChant, parseTranslation, type PublishedTranslation } from '../src/translation-file.ts';
 import { groups } from '../data/groups.ts';
+import { translators } from '../data/translators.ts';
 import type { Chant, ChantingLine, ChantSet, Section, Text } from '../data/types.ts';
 
 export type Group = (typeof groups)[number];
@@ -154,6 +156,52 @@ export async function loadTimings(chants: Chant[], sets: ChantSet[]): Promise<Ti
     setDefaults: new Map(forSets.map(([id, list]) => [id, (list.find((c) => c.preferred) ?? list[0]).text])),
     setRecordings: new Map(forSets.map(([id, list]) => [id, list.map((c) => c.recording)])),
   };
+}
+
+/**
+ * The translation files in `data/chants/translations/`, by chant number, which
+ * the chant's block carries for the settings to offer. Each file is named
+ * `<number>-<translator>-<slug>.txt`, with a translator from
+ * data/translators.ts, names that one chant, and is checked against the
+ * chant's lines, so the build stops on a file that no longer fits.
+ */
+export async function loadTranslations(chants: Chant[]): Promise<Map<string, PublishedTranslation[]>> {
+  const dir = new URL('../data/chants/translations/', import.meta.url);
+  const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith('.txt')).sort();
+  const byId = new Map(chants.map((c) => [c.id, c]));
+  const found = new Map<string, PublishedTranslation[]>();
+  for (const file of files) {
+    const fail = (reason: string) => new Error(`data/chants/translations/${file}: ${reason}`);
+    const text = await readFile(new URL(file, dir), 'utf8');
+    const parsed = parseTranslation(text);
+    if (typeof parsed === 'string') throw fail(parsed);
+    const named = [...parsed.chants.keys()];
+    if (named.length !== 1 || !named[0]) throw fail('names more than one chant, or has rows before its chant tag.');
+    const chant = byId.get(named[0]);
+    if (!chant) throw fail(`names an unknown chant (${named[0]}).`);
+    const prefix = `${chant.id}-`;
+    const suffix = `-${chant.slug}.txt`;
+    if (!file.startsWith(prefix) || !file.endsWith(suffix)) {
+      throw fail(`is not named <number>-<translator>-<slug>.txt for ${chant.id} ${chant.slug}.`);
+    }
+    const translator = translators.find((t) => t.id === file.slice(prefix.length, -suffix.length));
+    if (!translator) throw fail('names a translator that is not in data/translators.ts.');
+    const lines = chant.sections.flatMap((s) => s.lines);
+    const lineIds = new Set(lines.filter((l) => 'pali' in l).map((l) => l.id));
+    const cueIds = new Set(lines.filter((l) => 'cue' in l).map((l) => l.id));
+    const checked = checkChant(parsed.chants.get(chant.id)!, lineIds, cueIds);
+    if (typeof checked === 'string') throw fail(checked);
+    const source = text
+      .split(/\r?\n/)
+      .find((row) => row.startsWith(`# ${translator.source}/`))
+      ?.slice(2)
+      .trim();
+    if (!source) throw fail(`has no comment row linking to the chant in ${translator.source}.`);
+    const notice = `English translation ${translator.credit}. ${translator.licence.label}: ${translator.licence.url}`;
+    const published = { translator: translator.id, name: translator.title, lang: parsed.tags.lang, lines: checked, notice, source };
+    found.set(chant.id, [...(found.get(chant.id) ?? []), published]);
+  }
+  return found;
 }
 
 // Cards use the men's form until the site has a setting for the form.

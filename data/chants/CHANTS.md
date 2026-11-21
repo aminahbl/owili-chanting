@@ -8,6 +8,7 @@ Each section is a quick guide to one change. After any change, run `npm run chec
 2. Take the next number, and add a line for it at the end of [ids.ts](../ids.ts).
 3. Add a module to `texts/` named `<number>-<slug>.ts` that exports `chant` with `satisfies Chant`.
 4. Add the number to one or more categories in [groups.ts](../groups.ts).
+5. If the chant opens with the leader's announcement, such as *Handa mayaṁ …*, put the announcement in a prelude of its own, as described in [DATA.md](../DATA.md#chants).
 
 A chant may be added with the Pali only; the English follows as separate work, as described in the [translation guide](../translation-guide.md#making-and-reviewing-a-translation).
 
@@ -24,7 +25,7 @@ Edit its categories in [groups.ts](../groups.ts).
 1. Give a new line an `id` the chant has not used. Do not renumber or reuse a line `id` once the site is released ([details](../DATA.md#chants)).
 2. When a line break moves, move the English with its Pali.
 3. Update the line numbers in the chant's `editorial` notes.
-4. Update the chant's rows in any timing file in `timings/` that the build reports.
+4. Update the chant's rows in any timing file in `timings/` or translation file in `translations/` that the build reports.
 
 ## Mark a chant ready for release
 
@@ -33,7 +34,7 @@ Remove `draft: true` from its module once its lines will not change. The build l
 ## Rename a chant's slug
 
 1. Change `slug` in the module, in its file name and in [ids.ts](../ids.ts).
-2. Change its `[chant:<number> <slug>]` tags in `timings/`.
+2. Change its `[chant:<number> <slug>]` tags in `timings/` and `translations/`, and the slug in the names of its files there.
 3. Update the slug comments in [groups.ts](../groups.ts) and [sets/](../sets/).
 
 ## Retire a chant
@@ -41,8 +42,12 @@ Remove `draft: true` from its module once its lines will not change. The build l
 1. Move its module into `retired/`.
 2. Add `retired: true` to its line in [ids.ts](../ids.ts). **Do not delete the line.**
 3. Remove its number from [groups.ts](../groups.ts) and from any set in [sets/](../sets/).
-4. Remove its tag and rows from `timings/`.
+4. Remove its tag and rows from `timings/`, and its files from `translations/`.
 
 ## Add a timing
 
 Follow [timings/TIMINGS.md](timings/TIMINGS.md), or export a timing from the chant page and add the file to `timings/`.
+
+## Add a translation file
+
+Follow [translations/TRANSLATIONS.md](translations/TRANSLATIONS.md).

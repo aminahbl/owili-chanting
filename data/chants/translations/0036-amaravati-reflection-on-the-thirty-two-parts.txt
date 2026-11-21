@@ -1,0 +1,88 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on the Thirty-Two Parts":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L898
+# Printed in the web edition of 2024-12-26, page 60: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=68
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0036 reflection-on-the-thirty-two-parts]
+# {Ayaṁ kho} me kāyo uddhaṁ pādatalā adho kesamatthakā
+1 This, which is my body, from the soles of the feet up, and down from the crown of the head,
+# tacapariyanto pūro nānappakārassa asucino
+2 is a sealed bag of skin filled with unattractive things.
+# Atthi imasmiṁ kāye
+3 In this body there are:
+# kesā
+4 hair of the head
+# lomā
+5 hair of the body
+# nakhā
+6 nails
+# dantā
+7 teeth
+# taco
+8 skin
+# maṁsaṁ
+9 flesh
+# nahārū
+10 sinews
+# aṭṭhī
+11 bones
+# aṭṭhimiñjaṁ
+12 bone marrow
+# vakkaṁ
+13 kidneys
+# hadayaṁ
+14 heart
+# yakanaṁ
+15 liver
+# kilomakaṁ
+16 membranes
+# pihakaṁ
+17 spleen
+# papphāsaṁ
+18 lungs
+# antaṁ
+19 bowels
+# antaguṇaṁ
+20 entrails
+# udariyaṁ
+21 undigested food
+# karīsaṁ
+22 excrement
+# pittaṁ
+23 bile
+# semhaṁ
+24 phlegm
+# pubbo
+25 pus
+# lohitaṁ
+26 blood
+# sedo
+27 sweat
+# medo
+28 fat
+# assu
+29 tears
+# vasā
+30 grease
+# kheḷo
+31 spittle
+# siṅghāṇikā
+32 mucus
+# lasikā
+33 oil of the joints
+# muttaṁ
+34 urine
+# matthaluṅgan'ti
+35 brain
+# Evam-ayaṁ me kāyo uddhaṁ pādatalā adho kesamatthakā
+36 This, then, which is my body, from the soles of the feet up, and down from the crown of the head,
+# tacapariyanto pūro nānappakārassa asucino
+37 is a sealed bag of skin filled with unattractive things.

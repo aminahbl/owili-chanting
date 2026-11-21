@@ -1,0 +1,48 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Evening Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Evening-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0011 supreme-praise-of-the-buddha]
+# Buddh'vārahanta-varatādiguṇābhiyutto
+1 The Buddha has noble virtues, such as being Worthy and so forth,
+# Suddhābhiñāṇa-karuṇāhi samāgatatto
+2 together with pure higher knowledges and compassion,
+# Bodhesi yo sujanataṁ kamalaṁ va sūro
+3 the one who awakens good people like the sun (awakens) the lotus,
+# Vandām'ahaṁ tam-araṇaṁ sirasā jinendaṁ
+4 I worship that passionless, Victorious Lord with my head.
+# Buddho yo sabba-pāṇīnaṁ saraṇaṁ khemam-uttamaṁ
+5 The Buddha, who is the supreme refuge for all living beings,
+# Paṭhamānussatiṭṭhānaṁ vandāmi taṁ siren'ahaṁ
+6 I recall first in this place, I worship him with my head,
+# Buddhassāh'asmi dāso va buddho me sāmi-kissaro
+7 I am the servant of the Buddha, the Buddha is my lord and master.
+# Buddho dukkhassa ghātā ca vidhātā ca hitassa me
+8 The Buddha is a destroyer of suffering, a provider (of solace) and he benefits me.
+# Buddhass'āhaṁ niyyādemi sarīrañ-jīvitañ-cidaṁ
+9 I dedicate this body and this life to the Buddha.
+# Vandanto'haṁ carissāmi buddhass'eva subodhitaṁ
+10 I will live worshipping the Buddha’s True Awakening.
+# Natthi me saraṇaṁ aññaṁ buddho me saraṇaṁ varaṁ
+11 For me there is no other refuge, for me the Buddha is the best refuge!
+# Etena sacca-vajjena vaḍḍheyyaṁ satthu-sāsane
+12 By this declaration of the truth may the Teacher’s dispensation prosper.
+# Buddhaṁ me vandamānena yaṁ puññaṁ pasutaṁ idha
+13 Through my worship of the Buddha and whatever merit is found here,
+# Sabbepi antarāyā me māhesuṁ tassa tejasā
+14 through the power of that, may there be no dangers for me.
+# Kāyena vācāya va cetasā vā
+16 By body, by speech or by mind,
+# Buddhe kukammaṁ pakataṁ mayā yaṁ
+17 whatever bad deeds were done by me regarding the Buddha,
+# Buddho paṭiggaṇhātu accayantaṁ
+18 may the Buddha accept my confession,
+# Kālantare saṁvarituṁ va buddhe
+19 for my restraint in the future regarding the Buddha.

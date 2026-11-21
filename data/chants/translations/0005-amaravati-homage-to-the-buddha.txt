@@ -1,0 +1,38 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Homage to the Buddha":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L124
+# Printed in the web edition of 2024-12-26, page 4: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=12
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0005 homage-to-the-buddha]
+# Yo so tathāgato arahaṁ sammāsambuddho
+1 The Tathāgata is the Pure One, the Perfectly Enlightened One.
+# Vijjācaraṇa-sampanno,
+2 He is impeccable in conduct and understanding,
+# Sugato,
+3 The Accomplished One,
+# Lokavidū
+4 The Knower of the Worlds.
+# Anuttaro purisadamma-sārathi
+5 He trains perfectly those who wish to be trained.
+# Satthā deva-manussānaṁ,
+6 He is Teacher of gods and humans.
+# Buddho bhagavā.
+7 He is awake and holy.
+# Yo imaṁ lokaṁ sadevakaṁ samārakaṁ sabrahmakaṁ
+8 In this world with its gods, demons, and kind spirits,
+# Sassamaṇa-brāhmaṇiṁ pajaṁ sadeva-manussaṁ sayaṁ abhiññā sacchikatvā pavedesi
+9 Its seekers and sages, celestial and human beings, he has by deep insight revealed the Truth.
+# Yo dhammaṁ desesi ādi-kalyāṇaṁ majjhe-kalyāṇaṁ pariyosāna-kalyāṇaṁ
+10 He has pointed out the Dhamma: beautiful in the beginning, beautiful in the middle, beautiful in the end.
+# Sātthaṁ sabyañjanaṁ kevala-paripuṇṇaṁ parisuddhaṁ brahma-cariyaṁ pakāsesi
+11 He has explained the Spiritual Life of complete purity in its essence and conventions.
+# Tam-ahaṁ bhagavantaṁ abhipūjayāmi tam-ahaṁ bhagavantaṁ sirasā namāmi
+12 I chant my praise to the Blessed One, I bow my head to the Blessed One.

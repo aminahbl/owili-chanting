@@ -5,14 +5,14 @@ export const chant = {
   slug: "karaniya-metta-sutta-short",
   title: "The Buddha's Words on Love (short)",
   paliTitle: "Karaṇīya-metta-sutta (short)",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#karaniyam-attha" },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L248" },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2026-04-08/" }],
   editorial: [
-    { status: "kept", lines: [1], note: "Snp 1.8 has *sabba-lokasmim* where the manual has *sabba-lokasmiṁ*. Kept as the manual prints it." },
-    { status: "kept", lines: [2], note: "Snp 1.8 has *Mānasaṁ-bhāvaye* where the manual has *Mānasam-bhāvaye*. Kept as the manual prints it." },
-    { status: "kept", lines: [4], note: "Snp 1.8 has *averam* where the manual has *averaṁ*. Kept as the manual prints it." },
-    { status: "kept", lines: [8], note: "Snp 1.8 has *vihāram* where the manual has *vihāraṁ*. Kept as the manual prints it." },
+    { status: "kept", lines: [1], note: "Snp 1.8 has *sabba-lokasmim* where the chanting book has *sabba-lokasmiṁ*. Kept as the chanting book prints it." },
+    { status: "kept", lines: [2], note: "Snp 1.8 has *Mānasaṁ-bhāvaye* where the chanting book has *Mānasam-bhāvaye*. Kept as the chanting book prints it." },
+    { status: "kept", lines: [4], note: "Snp 1.8 has *averam* where the chanting book has *averaṁ*. Kept as the chanting book prints it." },
+    { status: "kept", lines: [8], note: "Snp 1.8 has *vihāram* where the chanting book has *vihāraṁ*. Kept as the chanting book prints it." },
   ],
   sections: [
     {

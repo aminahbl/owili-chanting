@@ -5,10 +5,10 @@ export const chant = {
   slug: "angulimala-paritta",
   title: "Aṅgulimāla's Protection",
   paliTitle: "Aṅgulimāla-paritta",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yato-ham-bhagini", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 21 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L502", categories: [{ category: "Parittas", order: 17 }] },
   translation: "draft",
   editorial: [
-    { status: "kept", lines: [3], note: "MN 86 has *gabbhassā* where the manual has *gabbhassa*. Kept as the manual prints it." },
+    { status: "kept", lines: [3], note: "MN 86 has *gabbhassā* where the chanting book has *gabbhassa*. Kept as the chanting book prints it." },
   ],
   sections: [
     {

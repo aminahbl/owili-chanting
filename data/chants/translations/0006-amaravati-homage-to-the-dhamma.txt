@@ -1,0 +1,28 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Homage to the Dhamma":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L210
+# Printed in the web edition of 2024-12-26, page 6: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=14
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0006 homage-to-the-dhamma]
+# Yo so svākkhāto bhagavatā dhammo
+1 The Dhamma is well expounded by the Blessed One,
+# Sandiṭṭhiko,
+2 Apparent here and now,
+# Akāliko,
+3 Timeless,
+# Ehipassiko,
+4 Encouraging investigation,
+# Opanayiko
+5 Leading inwards,
+# Paccattaṁ veditabbo viññūhi
+6 To be experienced individually by the wise.
+# Tam-ahaṁ dhammaṁ abhipūjayāmi tam-ahaṁ dhammaṁ sirasā namāmi
+7 I chant my praise to this Teaching, I bow my head to this Truth.

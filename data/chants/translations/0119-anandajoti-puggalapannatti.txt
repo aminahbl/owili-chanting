@@ -1,0 +1,39 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Abhidhamma Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Abhidhamma-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0119 puggalapannatti]
+# Cha paññattiyo khandhapaññatti, āyatanapaññatti, dhātupaññatti, saccapaññatti,
+1 There are six designations: the designation of the components, the designation of the sense-spheres, the designation of the elements, the designation of the truths,
+# indriyapaññatti, puggalapaññattī'ti.
+2 the designation of the faculties, the designation of the persons.
+# Kittāvatā puggalānaṁ puggalapaññatti.
+3 In what way is there a designation of the person regarding persons?
+# Samayavimutto, asamayavimutto,
+4 One free occasionally, one free always,
+# kuppadhammo, akuppadhammo,
+5 one unsteady, one steady,
+# parihānadhammo, aparihānadhammo,
+6 one liable to fall, one not liable to fall,
+# cetanābhabbo, anurakkhaṇābhabbo,
+7 one able in intention, one able in guarding,
+# puthujjano, gotrabhū,
+8 the worldling, the lineage-holder,
+# bhayūparato, abhayūparato,
+9 one abstaining through fear, one not abstaining through fear,
+# bhabbāgamano, abhabbāgamano,
+10 one able to arrive, one unable to arrive,
+# niyato, aniyato,
+11 one determined, one undetermined,
+# paṭipannako, phaleṭhito,
+12 one path-attained, one established in fruition...
+# arahā, arahattāya paṭipanno.
+13 the Worthy One, the one on the path to Worthiness.

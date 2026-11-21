@@ -1,0 +1,22 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on the Last Instructions":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L850
+# Printed in the web edition of 2024-12-26, page 84: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=92
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0081 pacchima-ovada-gatha]
+# Handa dāni bhikkhave āmantayāmi vo
+1 Now bhikkhus I declare to you,
+# Vaya-dhammā saṅkhārā
+2 Change is the nature of conditioned things;
+# Appamādena sampādethā'ti
+3 Perfect yourselves, not being negligent:
+# Ayaṁ tathāgatassa pacchimā vācā
+4 These are the Tathāgata's final words.

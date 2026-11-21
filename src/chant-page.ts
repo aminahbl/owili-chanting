@@ -236,6 +236,10 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
       readStepsAgain();
       showTiming();
       showTranslation();
+    } else if (name === 'translator') {
+      // Choosing a translation ends the imports on the page, which would otherwise take its place.
+      translations.removeImports();
+      afterTranslationChange();
     } else useSettings();
   };
 
@@ -342,14 +346,26 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     showTiming();
   });
 
-  // The translation in use: the site's English or an imported file.
+  // The translation in use: the site's English, a published translation or an
+  // imported file. While an import is in use, no choice is marked.
   const translationName = document.querySelector<HTMLElement>('.translation-name');
   const translationError = document.querySelector<HTMLElement>('.translation-error');
   const translationImport = document.querySelector<HTMLInputElement>('#translation-import');
-  const useSiteButton = document.querySelector<HTMLButtonElement>('#translation-site');
+  const translatorInputs = [...document.querySelectorAll<HTMLInputElement>('input[name="translator"]')];
+  const translatorExtras = [...document.querySelectorAll<HTMLElement>('label[data-translator], .translator-credit')];
   function showTranslation(message = '') {
-    if (translationName) translationName.textContent = translations.description;
-    if (useSiteButton) useSiteButton.hidden = !translations.isImported;
+    const available = translations.available;
+    const choice = translations.choice;
+    const imported = translations.isImported;
+    for (const input of translatorInputs) input.checked = !imported && input.value === choice;
+    for (const el of translatorExtras) {
+      const translator = el.dataset.translator ?? '';
+      el.hidden = el.matches('label') ? !available.includes(translator) : imported || translator !== choice;
+    }
+    if (translationName) {
+      translationName.textContent = translations.description;
+      translationName.hidden = !translationName.textContent;
+    }
     if (translationError) translationError.textContent = message;
   }
   // After an import or its removal, the lines' text has changed.
@@ -369,10 +385,6 @@ function setUpLines(chant: HTMLElement, slidesEl: HTMLElement, backButton: HTMLE
     const result = translations.import(file.name, await file.text());
     if ('error' in result) showTranslation(result.error);
     else afterTranslationChange(result.note);
-  });
-  useSiteButton?.addEventListener('click', () => {
-    translations.useSite();
-    afterTranslationChange();
   });
 
   // The user's audio file, in either view. While it is linked to the

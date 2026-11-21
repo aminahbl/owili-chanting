@@ -4,29 +4,35 @@ export const chant = {
   id: "0005",
   slug: "homage-to-the-buddha",
   title: "Homage to the Buddha",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/morning-chanting.html#buddha-pali", categories: [{ category: "Morning Chanting", order: 3 }] },
+  paliSource: { label: "Community Chanting Book, Volume One", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L124", categories: [{ category: "Morning Chanting", order: 3 }] },
   translation: "draft",
   sections: [
     {
       lines: [
-        { id: 1, pali: "Handa mayaṁ buddhābhitthutiṁ karomase", en: "Now let us chant in praise of the Buddha.", leader: true },
+        { id: 1, pali: "Yo so tathāgato arahaṁ sammāsambuddho", en: "The Tathāgata, worthy, perfectly self-awakened," },
+        { id: 2, pali: "Vijjācaraṇa-sampanno,", en: "accomplished in knowledge and conduct," },
+        { id: 3, pali: "Sugato,", en: "well-gone," },
+        { id: 4, pali: "Lokavidū", en: "knower of the worlds," },
       ],
     },
     {
       lines: [
-        { id: 2, pali: "Yo so tathāgato arahaṁ sammāsambuddho", en: "The Tathāgata, worthy, perfectly self-awakened," },
-        { id: 3, pali: "Vijjācaraṇa-sampanno, sugato, lokavidū", en: "accomplished in knowledge and conduct, well-gone, knower of the worlds," },
-        { id: 4, pali: "Anuttaro purisadamma-sārathi", en: "unsurpassed guide of those ready to be trained," },
-        { id: 5, pali: "Satthā deva-manussānaṁ, buddho bhagavā.", en: "teacher of devas and humans, awakened, the Gracious One;" },
+        { id: 5, pali: "Anuttaro purisadamma-sārathi", en: "unsurpassed guide of those ready to be trained," },
+        { id: 6, pali: "Satthā deva-manussānaṁ,", en: "teacher of devas and humans," },
+        { id: 7, pali: "Buddho bhagavā.", en: "awakened, the Gracious One;" },
       ],
     },
     {
       lines: [
-        { id: 6, pali: "Yo imaṁ lokaṁ sadevakaṁ samārakaṁ sabrahmakaṁ", en: "who made known this world with its devas, Māras and Brahmās," },
-        { id: 7, pali: "Sassamaṇa-brāhmaṇiṁ pajaṁ sadeva-manussaṁ sayaṁ abhiññā sacchikatvā pavedesi", en: "its ascetics and brahmins, its devas and humans, having realised it by his own direct knowledge;" },
-        { id: 8, pali: "Yo dhammaṁ desesi ādi-kalyāṇaṁ majjhe-kalyāṇaṁ pariyosāna-kalyāṇaṁ", en: "who taught the Dhamma, good in the beginning, good in the middle, good in the end," },
-        { id: 9, pali: "Sātthaṁ sabyañjanaṁ kevala-paripuṇṇaṁ parisuddhaṁ brahma-cariyaṁ pakāsesi", en: "and made clear the holy life, complete and pure, in its meaning and its words:" },
-        { id: 10, pali: "Tam-ahaṁ bhagavantaṁ abhipūjayāmi tam-ahaṁ bhagavantaṁ sirasā namāmi", en: "I honour the Gracious One, I bow my head to the Gracious One." },
+        { id: 8, pali: "Yo imaṁ lokaṁ sadevakaṁ samārakaṁ sabrahmakaṁ", en: "who made known this world with its devas, Māras and Brahmās," },
+        { id: 9, pali: "Sassamaṇa-brāhmaṇiṁ pajaṁ sadeva-manussaṁ sayaṁ abhiññā sacchikatvā pavedesi", en: "its ascetics and brahmins, its devas and humans, having realised it by his own direct knowledge;" },
+        { id: 10, pali: "Yo dhammaṁ desesi ādi-kalyāṇaṁ majjhe-kalyāṇaṁ pariyosāna-kalyāṇaṁ", en: "who taught the Dhamma, good in the beginning, good in the middle, good in the end," },
+        { id: 11, pali: "Sātthaṁ sabyañjanaṁ kevala-paripuṇṇaṁ parisuddhaṁ brahma-cariyaṁ pakāsesi", en: "and made clear the holy life, complete and pure, in its meaning and its words:" },
+      ],
+    },
+    {
+      lines: [
+        { id: 12, pali: "Tam-ahaṁ bhagavantaṁ abhipūjayāmi tam-ahaṁ bhagavantaṁ sirasā namāmi", en: "I honour the Gracious One, I bow my head to the Gracious One." },
       ],
     },
   ],

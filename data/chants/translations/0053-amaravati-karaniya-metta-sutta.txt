@@ -1,0 +1,95 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "The Buddha's Words on Loving-Kindness":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L123
+# Printed in the web edition of 2024-12-26, page 37: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=45
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book prints the English on the facing page with line breaks of its own; the pairing with the Pali lines is ours.
+# In this chant the English does not follow the Pali line by line, so some pairs are approximate. These are lines 4, 15–16 and 30–33.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0053 karaniya-metta-sutta]
+# Karaṇīyam-attha-kusalena
+1 {This is what should be done} By one who is skilled in goodness
+# Yan-taṁ santaṁ padaṁ abhisamecca
+2 And who knows the path of peace:
+# Sakko ujū ca suhujū ca
+3 Let them be able and upright,
+# Suvaco c'assa mudu anatimānī
+4 Straightforward and gentle in speech, Humble and not conceited,
+# Santussako ca subharo ca
+5 Contented and easily satisfied,
+# Appakicco ca sallahuka-vutti
+6 Unburdened with duties and frugal in their ways.
+# Sant'indriyo ca nipako ca
+7 Peaceful and calm, and wise and skilful,
+# Appagabbho kulesu ananugiddho
+8 Not proud and demanding in nature.
+# Na ca khuddaṁ samācare kiñci
+9 Let them not do the slightest thing
+# Yena viññū pare upavadeyyuṁ
+10 That the wise would later reprove,
+# Sukhino vā khemino hontu
+11 Wishing: In gladness and in safety,
+# Sabbe sattā bhavantu sukhit'attā
+12 May all beings be at ease.
+# Ye keci pāṇa-bhūt'atthi
+13 Whatever living beings there may be,
+# Tasā vā thāvarā vā anavasesā
+14 Whether they are weak or strong, omitting none,
+# Dīghā vā ye mahantā vā
+15 The great or the mighty,
+# Majjhimā rassakā aṇuka-thūlā
+16 medium, short, or small,
+# Diṭṭhā vā ye ca adiṭṭhā
+17 The seen and the unseen,
+# Ye ca dūre vasanti avidūre
+18 Those living near and far away,
+# Bhūtā vā sambhavesī vā
+19 Those born and to be born,
+# Sabbe sattā bhavantu sukhit'attā
+20 May all beings be at ease.
+# Na paro paraṁ nikubbetha
+21 Let none deceive another
+# Nātimaññetha katthaci naṁ kiñci
+22 Or despise any being in any state.
+# Byārosanā paṭighasaññā
+23 Let none through anger or ill-will
+# Nāññam-aññassa dukkham-iccheyya
+24 Wish harm upon another.
+# Mātā yathā niyaṁ puttaṁ
+25 Even as a mother protects with her life
+# Āyusā eka-puttam-anurakkhe
+26 Her child, her only child,
+# Evam'pi sabba-bhūtesu
+27 So with a boundless heart
+# Mānasam-bhāvaye aparimāṇaṁ
+28 Should one cherish all living beings,
+# Mettañ-ca sabba-lokasmiṁ
+30 Radiating kindness
+# Mānasam-bhāvaye aparimāṇaṁ
+31 over the entire world:
+# Uddhaṁ adho ca tiriyañ-ca
+32 Spreading upwards to the skies And downwards to the depths, Outwards
+# Asambādhaṁ averaṁ asapattaṁ
+33 and unbounded, Freed from hatred and ill-will.
+# Tiṭṭhañ-caraṁ nisinno vā
+34 Whether standing or walking, seated,
+# Sayāno vā yāvat'assa vigata-middho
+35 Or lying down — free from drowsiness —
+# Etaṁ satiṁ adhiṭṭheyya
+36 One should sustain this recollection.
+# Brahmam-etaṁ vihāraṁ idham-āhu
+37 This is said to be the sublime abiding.
+# Diṭṭhiñca anupagamma
+38 By not holding to fixed views,
+# Sīlavā dassanena sampanno
+39 The pure-hearted one, having clarity of vision,
+# Kāmesu vineyya gedhaṁ
+40 Being freed from all sense-desires,
+# Na hi jātu gabbha-seyyaṁ punaretī'ti
+41 Is not born again into this world.

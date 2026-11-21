@@ -1,0 +1,18 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Chanting for Meditators, "Chanting for Meditators - Evening Paritta Chants, Day Nine":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Chanting-for-Meditators/09-Parittam-Pathamagilanasuttam.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0062 angulimala-paritta]
+# Yato'haṁ bhagini ariyāya jātiyā jāto
+1 Sister, from the time I was born in a Noble birth
+# Nābhijānāmi sañcicca pāṇaṁ jīvitā voropetā
+2 I am not aware of having intentionally deprived a being of life,
+# Tena saccena sotthi te hotu sotthi gabbhassa
+3 through this truth may you be safe, and may your foetus be safe!

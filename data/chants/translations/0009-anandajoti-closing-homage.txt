@@ -1,0 +1,24 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Evening Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Evening-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0009 closing-homage]
+# {Arahaṁ} sammāsambuddho bhagavā
+1 The Fortunate One is Worthy, the Perfect Sambuddha:
+# Buddhaṁ bhagavantaṁ abhivādemi
+2 I worship the Buddha, the Fortunate One.
+# {Svākkhāto} bhagavatā dhammo
+3 The Dhamma has been well-proclaimed by the Fortunate One:
+# Dhammaṁ namassāmi
+4 I honour the Dhamma.
+# {Supaṭipanno} bhagavato sāvakasaṅgho
+5 The Fortunate One’s Saṅgha of disciples are good in their practice:
+# Saṅghaṁ namāmi
+6 I revere the Saṅgha.

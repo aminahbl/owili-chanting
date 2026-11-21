@@ -1,0 +1,31 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "1. The Opening Ceremony":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-01.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0049 invitation-for-paritta-chanting]
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+1 For the warding off of misfortune, for the accomplishment of all good fortune,
+# Sabbadukkha-vināsāya
+2 for the destruction of all suffering:
+# Parittaṁ brūtha maṅgalaṁ
+3 please chant the auspicious safeguard.
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+4 For the warding off of misfortune, for the accomplishment of all good fortune,
+# Sabbabhaya-vināsāya
+5 for the destruction of all fear:
+# Parittaṁ brūtha maṅgalaṁ
+6 please chant the auspicious safeguard.
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+7 For the warding off of misfortune, for the accomplishment of all good fortune,
+# Sabbaroga-vināsāya
+8 for the destruction of all disease:
+# Parittaṁ brūtha maṅgalaṁ
+9 please chant the auspicious safeguard.

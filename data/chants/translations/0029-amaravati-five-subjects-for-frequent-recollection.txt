@@ -1,0 +1,28 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Five Subjects for Frequent Recollection":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L722
+# Printed in the web edition of 2024-12-26, page 55: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=63
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0029 five-subjects-for-frequent-recollection]
+# {Jarā-dhammomhi} jaraṁ anatīto
+1 I am of the nature to age, I have not gone beyond ageing.
+# Byādhi-dhammomhi byādhiṁ anatīto
+2 I am of the nature to sicken, I have not gone beyond sickness.
+# Maraṇa-dhammomhi maraṇaṁ anatīto
+3 I am of the nature to die, I have not gone beyond dying.
+# Sabbehi me piyehi manāpehi nānābhāvo vinābhāvo
+4 All that is mine, beloved and pleasing, will become otherwise, will become separated from me.
+# Kammassakomhi kammadāyādo kammayoni kammabandhu kammapaṭisaraṇo
+5 I am the owner of my kamma, heir to my kamma, born of my kamma, related to my kamma, abide supported by my kamma.
+# Yaṁ kammaṁ karissāmi, kalyāṇaṁ vā pāpakaṁ vā, tassa dāyādo bhavissāmi
+6 Whatever kamma I shall do, for good or for ill, of that I will be the heir.
+# Evaṁ amhehi abhiṇhaṁ paccavekkhitabbaṁ
+7 Thus we should frequently recollect.
