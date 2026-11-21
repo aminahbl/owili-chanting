@@ -1,0 +1,19 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "2. Worshipping the Virtues of the Three Treasures":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-02.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0012 recollection-of-the-dhamma]
+# Svākkhāto bhagavatā dhammo
+1 The Dhamma has been well-proclaimed by the Fortunate One,
+# Sandiṭṭhiko akāliko ehipassiko
+2 it is visible, not subject to time, inviting inspection,
+# Opanayiko paccattaṁ veditabbo viññūhī'ti
+3 onward leading, and can be understood by the wise for themselves.

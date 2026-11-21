@@ -1,0 +1,32 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Requesting Paritta Chanting":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/formal-requests.tex#L47
+# Printed in the web edition of 2024-12-26, page 125: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=133
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0049 invitation-for-paritta-chanting]
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+1 For warding off misfortune, for the arising of good fortune,
+# Sabbadukkha-vināsāya
+2 For the dispelling of all dukkha,
+# Parittaṁ brūtha maṅgalaṁ
+3 May you chant a blessing and protection.
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+4 For warding off misfortune, for the arising of good fortune,
+# Sabbabhaya-vināsāya
+5 For the dispelling of all fear,
+# Parittaṁ brūtha maṅgalaṁ
+6 May you chant a blessing and protection.
+# Vipatti-paṭibāhāya sabba-sampatti-siddhiyā
+7 For warding off misfortune, for the arising of good fortune,
+# Sabbaroga-vināsāya
+8 For the dispelling of all sickness,
+# Parittaṁ brūtha maṅgalaṁ
+9 May you chant a blessing and protection.

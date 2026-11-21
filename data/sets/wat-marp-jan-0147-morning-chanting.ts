@@ -7,10 +7,15 @@ export const set = {
   chanter: "wat-marp-jan",
   chants: [
     "0003", // dedication-of-offerings
+    "0164", // prelude-preliminary-homage
     "0004", // preliminary-homage
+    "0165", // prelude-homage-to-the-buddha
     "0005", // homage-to-the-buddha
+    "0166", // prelude-homage-to-the-dhamma
     "0006", // homage-to-the-dhamma
+    "0167", // prelude-homage-to-the-sangha
     "0007", // homage-to-the-sangha
+    "0168", // prelude-salutation-to-the-triple-gem
     "0008", // salutation-to-the-triple-gem
     "0009", // closing-homage
   ],

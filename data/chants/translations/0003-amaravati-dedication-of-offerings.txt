@@ -1,0 +1,44 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Dedication of Offerings":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/evening-chanting.tex#L1
+# Printed in the web edition of 2024-12-26, page 19: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=27
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0003 dedication-of-offerings]
+# {Yo so} bhagavā arahaṁ sammāsambuddho
+1 {To the Blessed One,} the Lord, who fully attained perfect enlightenment,
+# Svākkhāto yena bhagavatā dhammo
+2 To the Teaching, which he expounded so well,
+# Supaṭipanno yassa bhagavato sāvakasaṅgho
+3 And to the Blessed One's disciples who have practised well,
+# Tam-mayaṁ bhagavantaṁ sadhammaṁ sasaṅghaṁ
+4 To these — the Buddha, the Dhamma, and the Saṅgha —
+# Imehi sakkārehi yathārahaṁ āropitehi abhipūjayāma
+5 We render with offerings our rightful homage.
+# Sādhu no bhante bhagavā sucira-parinibbutopi
+6 It is well for us that the Blessed One, having attained liberation,
+# Pacchimā-janatānukampa-mānasā
+7 Still had compassion for later generations.
+# Ime sakkāre duggata-paṇṇākāra-bhūte paṭiggaṇhātu
+8 May these simple offerings be accepted
+# Amhākaṁ dīgharattaṁ hitāya sukhāya
+9 For our long-lasting benefit and for the happiness it gives us.
+# Arahaṁ sammāsambuddho bhagavā
+10 The Lord, the Perfectly Enlightened and Blessed One —
+# Buddhaṁ bhagavantaṁ abhivādemi
+11 I render homage to the Buddha, the Blessed One.
+# {Svākkhāto} bhagavatā dhammo
+12 {The Teaching,} so completely explained by him —
+# Dhammaṁ namassāmi
+13 I bow to the Dhamma.
+# {Supaṭipanno} bhagavato sāvakasaṅgho
+14 {The Blessed One's disciples,} who have practised well —
+# Saṅghaṁ namāmi
+15 I bow to the Saṅgha.

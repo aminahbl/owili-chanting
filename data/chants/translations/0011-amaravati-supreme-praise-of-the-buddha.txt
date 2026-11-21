@@ -1,0 +1,50 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Supreme Praise of the Buddha":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/evening-chanting.tex#L105
+# Printed in the web edition of 2024-12-26, page 23: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=31
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0011 supreme-praise-of-the-buddha]
+# Buddh'vārahanta-varatādiguṇābhiyutto
+1 The Buddha, the truly worthy one, endowed with such excellent qualities,
+# Suddhābhiñāṇa-karuṇāhi samāgatatto
+2 Whose being is composed of purity, transcendental wisdom, and compassion,
+# Bodhesi yo sujanataṁ kamalaṁ va sūro
+3 Who has enlightened the wise like the sun awakening the lotus —
+# Vandām'ahaṁ tam-araṇaṁ sirasā jinendaṁ
+4 I bow my head to that peaceful chief of conquerors.
+# Buddho yo sabba-pāṇīnaṁ saraṇaṁ khemam-uttamaṁ
+5 The Buddha, who is the safe, secure refuge of all beings —
+# Paṭhamānussatiṭṭhānaṁ vandāmi taṁ siren'ahaṁ
+6 As the First Object of Recollection, I venerate him with bowed head.
+# Buddhassāh'asmi dāso va buddho me sāmi-kissaro
+7 I am indeed the Buddha's servant, the Buddha is my Lord and Guide.
+# Buddho dukkhassa ghātā ca vidhātā ca hitassa me
+8 The Buddha is sorrow's destroyer, who bestows blessings on me.
+# Buddhass'āhaṁ niyyādemi sarīrañ-jīvitañ-cidaṁ
+9 To the Buddha I dedicate this body and life,
+# Vandanto'haṁ carissāmi buddhass'eva subodhitaṁ
+10 And in devotion I will walk the Buddha's Path of Awakening.
+# Natthi me saraṇaṁ aññaṁ buddho me saraṇaṁ varaṁ
+11 For me there is no other refuge, the Buddha is my excellent refuge.
+# Etena sacca-vajjena vaḍḍheyyaṁ satthu-sāsane
+12 By the utterance of this Truth, may I grow in the Master's Way.
+# Buddhaṁ me vandamānena yaṁ puññaṁ pasutaṁ idha
+13 By my devotion to the Buddha, and the blessing of this practice —
+# Sabbepi antarāyā me māhesuṁ tassa tejasā
+14 By its power, may all obstacles be overcome.
+# Kāyena vācāya va cetasā vā
+16 By body, speech, or mind,
+# Buddhe kukammaṁ pakataṁ mayā yaṁ
+17 For whatever wrong action I have committed towards the Buddha,
+# Buddho paṭiggaṇhātu accayantaṁ
+18 May my acknowledgement of fault be accepted,
+# Kālantare saṁvarituṁ va buddhe
+19 That in future there may be restraint regarding the Buddha.

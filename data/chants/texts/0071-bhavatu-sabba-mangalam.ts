@@ -5,7 +5,7 @@ export const chant = {
   slug: "bhavatu-sabba-mangalam",
   title: "May There Be Every Blessing",
   paliTitle: "Bhavatu sabba-maṅgalaṁ",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bhavatu", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 30 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L723", categories: [{ category: "Parittas", order: 25 }] },
   translation: "draft",
   sections: [
     {

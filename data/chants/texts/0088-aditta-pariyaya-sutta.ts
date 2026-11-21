@@ -5,13 +5,13 @@ export const chant = {
   slug: "aditta-pariyaya-sutta",
   title: "The Fire Sermon",
   paliTitle: "Āditta-pariyāya-sutta",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#aditta-pariyaya", categories: [{ category: "Suttas", order: 3 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/suttas.tex#L860", categories: [{ category: "The Cardinal Suttas", order: 3 }] },
   links: [{ text: "Recording: Ayya Santacitta, Ayya Santussika", href: "https://dharmaseed.org/talks/78560/" }],
   translation: "draft",
   editorial: [
-    { status: "kept", lines: [35], note: "SN 35.28 has *jivhāviññāṇaṁ* where the manual has *jivhāviññāṇam*. Kept as the manual prints it." },
-    { status: "kept", lines: [60, 64, 68, 72, 76, 80], note: "SN 35.28 has *tasmim* where the manual has *tasmiṁ*. Kept as the manual prints it." },
-    { status: "kept", lines: [77], note: "Kd 1 has *Manasmim* where the manual has *Manasmiṁ*. Kept as the manual prints it." },
+    { status: "kept", lines: [35], note: "SN 35.28 has *jivhāviññāṇaṁ* where the chanting book has *jivhāviññāṇam*. Kept as the chanting book prints it." },
+    { status: "kept", lines: [60, 64, 68, 72, 76, 80], note: "SN 35.28 has *tasmim* where the chanting book has *tasmiṁ*. Kept as the chanting book prints it." },
+    { status: "kept", lines: [77], note: "Kd 1 has *Manasmim* where the chanting book has *Manasmiṁ*. Kept as the chanting book prints it." },
     { status: "open", lines: [13, 14], note: "English to review: the first sense keeps \"bhikkhus\" and splits as the Pali does; the other senses are one line each." },
   ],
   sections: [

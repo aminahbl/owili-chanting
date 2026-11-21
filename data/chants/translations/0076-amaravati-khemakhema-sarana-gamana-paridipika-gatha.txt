@@ -1,0 +1,54 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "True and False Refuges":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L264
+# Printed in the web edition of 2024-12-26, page 69: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=77
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0076 khemakhema-sarana-gamana-paridipika-gatha]
+# Bahuṁ ve saraṇaṁ yanti
+1 To many refuges they go —
+# pabbatāni vanāni ca
+2 To mountain slopes and forest glades,
+# Ārāma-rukkha-cetyāni
+3 To parkland shrines and sacred sites —
+# manussā bhaya-tajjitā
+4 People overcome by fear.
+# N'etaṁ kho saraṇaṁ khemaṁ
+5 Such a refuge is not secure,
+# n'etaṁ saraṇam-uttamaṁ
+6 Such a refuge is not supreme,
+# N'etaṁ saraṇam-āgamma
+7 Such a refuge does not bring
+# sabba-dukkhā pamuccati
+8 Complete release from suffering.
+# Yo ca buddhañ-ca dhammañ-ca
+9 Whoever goes to refuge
+# saṅghañ-ca saraṇaṁ gato
+10 In the Triple Gem
+# Cattāri ariya-saccāni
+11 Sees with right discernment
+# sammappaññāya passati
+12 The Four Noble Truths:
+# Dukkhaṁ dukkha-samuppādaṁ
+13 Suffering and its origin
+# dukkhassa ca atikkamaṁ
+14 And that which lies beyond —
+# Ariyañ-c'aṭṭh'aṅgikaṁ maggaṁ
+15 The Noble Eightfold Path
+# dukkhūpasama-gāminaṁ
+16 That leads the way to suff'ring's end.
+# Etaṁ kho saraṇaṁ khemaṁ
+17 Such a refuge is secure,
+# etaṁ saraṇam-uttamaṁ
+18 Such a refuge is supreme,
+# Etaṁ saraṇam-āgamma
+19 Such a refuge truly brings
+# sabba-dukkhā pamuccatī'ti.
+20 Complete release from all suffering.

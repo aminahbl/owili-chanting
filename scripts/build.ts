@@ -6,7 +6,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { chantHref, SEARCH_INDEX } from '../src/card.ts';
 import { chantBlock, chantPage, openSetPage, setPage, type SetLink } from './chant-page.ts';
 import { checkIds } from './ids.ts';
-import { entries, groupsOf, loadChants, loadSets, loadTimings, searchIndex, setsGroup, type Entry, type Group } from './chant-list.ts';
+import { entries, groupsOf, loadChants, loadSets, loadTimings, loadTranslations, searchIndex, setsGroup, type Entry, type Group } from './chant-list.ts';
 import type { Chant, ChantSet } from '../data/types.ts';
 import { APPLY_SETTINGS, handWrittenPage, listPage, notFoundPage, openSetsPage, pageHref, PAGES, setsPage, type SetChanter } from './templates.ts';
 import { groups } from '../data/groups.ts';
@@ -64,8 +64,9 @@ const byNumber = new Map(chants.map((c) => [c.id, c]));
 const listed = sets.map((set) => ({ set, chanter: chanterOf(set), chants: set.chants.map((id) => byNumber.get(id)!) }));
 if (sets.length) await write(`/list/${setsGroup.id}/index.html`, setsPage(setsGroup, shown, listed));
 const timings = await loadTimings(chants, sets);
+const translations = await loadTranslations(chants);
 for (const { set, chanter, chants: setChants } of listed) {
-  const page = setPage(set, setChants, chanter, timings.setDefaults.get(set.id), timings.setRecordings.get(set.id));
+  const page = setPage(set, setChants, chanter, translations, timings.setDefaults.get(set.id), timings.setRecordings.get(set.id));
   await write(`/sets/${set.slug}/index.html`, page);
 }
 const setLinks = (chant: Chant): SetLink[] =>
@@ -74,9 +75,16 @@ const setLinks = (chant: Chant): SetLink[] =>
     .map(({ set, chanter }) => ({ slug: set.slug, title: set.title, chanterTitle: chanter.title }));
 
 for (const chant of chants) {
-  const page = chantPage(chant, groupsOf(chant), timings.defaults.get(chant.id), timings.recordings.get(chant.id), setLinks(chant));
+  const page = chantPage(
+    chant,
+    groupsOf(chant),
+    timings.defaults.get(chant.id),
+    timings.recordings.get(chant.id),
+    setLinks(chant),
+    translations.get(chant.id),
+  );
   await write(`${chantHref(chant.slug)}/index.html`, page);
-  await write(`/blocks/${chant.id}.html`, chantBlock(chant));
+  await write(`/blocks/${chant.id}.html`, chantBlock(chant, translations.get(chant.id)));
 }
 
 await write('/open-sets/index.html', openSetsPage());
@@ -129,3 +137,5 @@ const headers = [
 await write('/_headers', `${headers.join('\n')}\n`);
 
 console.log(`Built ${chants.length} chants, ${sets.length} sets, ${shown.length} groups into dist/`);
+const drafts = chants.filter((c) => c.draft).map((c) => c.id);
+if (drafts.length) console.log(`Draft chants, not ready for release: ${drafts.join(', ')}.`);

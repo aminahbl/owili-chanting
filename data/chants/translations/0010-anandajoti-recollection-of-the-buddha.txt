@@ -1,0 +1,20 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Evening Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Evening-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0010 recollection-of-the-buddha]
+# Taṁ kho pana bhagavantaṁ evaṁ kalyāṇo kittisaddo abbhuggato
+1 This good report has gone round about the Fortunate One,
+# Itipi so bhagavā arahaṁ sammāsambuddho
+2 Such is he, the Fortunate One, the Worthy One, the Perfect Sambuddha,
+# Vijjācaraṇa-sampanno sugato lokavidū
+3 the one endowed with understanding and good conduct, the Happy One, the one who understands the worlds,
+# Anuttaro purisadamma-sārathi satthā deva-manussānaṁ buddho bhagavā'ti
+4 the unsurpassed guide for those people who need taming, the Teacher of gods and men, the Buddha, the Fortunate One.

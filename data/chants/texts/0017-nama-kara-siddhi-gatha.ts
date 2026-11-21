@@ -5,7 +5,7 @@ export const chant = {
   slug: "nama-kara-siddhi-gatha",
   title: "The Verses of Success through Homage",
   paliTitle: "Nama-kāra-siddhi-gāthā",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yo-cakkhuma", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 6 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L67", categories: [{ category: "Parittas", order: 4 }] },
   translation: "draft",
   links: [{ text: "Word-by-word analysis", href: "https://pali-sutta-readings.github.io/readings/2026-05-20/" }],
   sections: [

@@ -1,0 +1,37 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Chanting for Meditators, "Chanting for Meditators - Daily Morning Chants":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Chanting-for-Meditators/00-Daily-1-Morning-Chants.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0122 patthana-matika-patha]
+# Hetu-paccayo, ārammaṇa-paccayo,
+1 Root condition, object condition,
+# adhipati-paccayo, anantara-paccayo,
+2 predominance condition, preceding condition,
+# samanantara-paccayo, saha-jāta-paccayo,
+3 prior condition, arising together condition,
+# aññam-añña-paccayo, nissaya-paccayo,
+4 mutuality condition, support condition,
+# upanissaya-paccayo, pure-jāta-paccayo,
+5 strong support condition, arising before condition,
+# pacchā-jāta-paccayo, āsevana-paccayo,
+6 arising later condition, habitual condition,
+# kamma-paccayo, vipāka-paccayo,
+7 (intentional) deed condition, result condition,
+# āhāra-paccayo, indriya-paccayo,
+8 nutriment condition, faculty condition,
+# jhāna-paccayo, magga-paccayo,
+9 absorption condition, path condition,
+# sampayutta-paccayo, vippayutta-paccayo,
+10 association condition, disassociation condition,
+# atthi-paccayo, n'atthi-paccayo,
+11 presence condition, absence condition,
+# vigata-paccayo, avigata-paccayo.
+12 disappearance condition, non-disappearance condition.

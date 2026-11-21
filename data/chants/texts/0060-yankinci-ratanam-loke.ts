@@ -5,7 +5,7 @@ export const chant = {
   slug: "yankinci-ratanam-loke",
   title: "Whatever Treasure There Is",
   paliTitle: "Yaṅkiñci ratanaṁ loke",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yankinci-ratanam", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 19 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L308", categories: [{ category: "Parittas", order: 9 }] },
   translation: "draft",
   sections: [
     {

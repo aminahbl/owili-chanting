@@ -1,0 +1,92 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "The Teaching on Striving According to Dhamma":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p3.tex#L1136
+# Printed in the web edition of 2024-12-26, page 115: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=123
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0041 the-teaching-on-striving-according-to-dhamma]
+# Evaṁ svākkhāto bhikkhave mayā dhammo
+1 Bhikkhus, the Dhamma has thus been well expounded by me,
+# Uttāno
+2 Elucidated,
+# Vivaṭo
+3 Disclosed,
+# Pakāsito
+4 Revealed,
+# Chinna-pilotiko
+5 And stripped of patchwork —
+# Alam-eva saddhā-pabbajitena kula-puttena vīriyaṁ ārabhituṁ
+6 This is enough for a clansman, who has gone forth out of faith, to arouse his energy thus:
+# Kāmaṁ taco ca nahāru ca aṭṭhi ca avasissatu
+7 'Willingly let only my skin, sinews and bones remain,
+# Sarīre upasussatu maṁsa-lohitaṁ
+8 And let the flesh and blood in this body wither away.
+# Yaṁ taṁ
+9 As long as whatever is to be attained
+# Purisa-thāmena
+10 By human strength,
+# Purisa-vīriyena
+11 By human energy,
+# Purisa-parakkamena
+12 By human effort,
+# Pattabbaṁ na taṁ apāpuṇitvā
+13 Has not been attained,
+# Vīriyassa saṇṭhānaṁ bhavissatī'ti
+14 Let not my efforts stand still.'
+# Dukkhaṁ bhikkhave kusīto viharati
+15 Bhikkhus, the lazy person dwells in suffering,
+# Vokiṇṇo pāpakehi akusalehi dhammehi
+16 Soiled by evil, unwholesome states
+# Mahantañca sadatthaṁ parihāpeti
+17 And great is the personal good that he neglects.
+# Āraddha-vīriyo ca kho bhikkhave sukhaṁ viharati
+18 The energetic person though dwells happily,
+# Pavivitto pāpakehi akusalehi dhammehi
+19 Well withdrawn from unwholesome states
+# Mahantañca sadatthaṁ paripūreti
+20 And great is the personal good that he achieves.
+# Na bhikkhave hīnena aggassa patti hoti
+21 Bhikkhus, it is not by lower means that the supreme is attained
+# Aggena ca kho bhikkhave aggassa patti hoti
+22 But, bhikkhus, it is by the supreme that the supreme is attained.
+# Maṇḍapeyyam-idaṁ bhikkhave brahmacariyaṁ
+23 Bhikkhus, this holy life is like the cream of the milk:
+# Satthā sammukhī-bhūto
+24 The Teacher is present,
+# Tasmātiha bhikkhave vīriyaṁ ārabhatha
+25 Therefore, bhikkhus, start to arouse your energy
+# Appattassa pattiyā
+26 For the attainment of the as yet unattained,
+# Anadhigatassa adhigamāya
+27 For the achievement of the as yet unachieved,
+# Asacchikatassa sacchikiriyāya
+28 For the realization of the as yet unrealized.
+# Evaṁ no ayaṁ amhākaṁ pabbajjā avaṅkatā avañjhā bhavissati
+29 Thinking, in such a way: 'Our Going Forth will not be barren
+# Saphalā sa-udrayā
+30 But will become fruitful and fertile,
+# Yesaṁ mayaṁ paribhuñjāma cīvara-piṇḍapāta-senāsana-gilānappaccaya-bhesajja-parikkhāraṁ tesaṁ te kārā amhesu
+31 And all our use of robes, almsfood, lodgings, and medicinal requisites, given by others for our support,
+# Mahapphalā bhavissanti mahānisaṁsā'ti
+32 Will reward them with great fruit and great benefit.'
+# Evaṁ hi vo bhikkhave sikkhitabbaṁ
+33 Bhikkhus, you should train yourselves thus:
+# Att'atthaṁ vā hi bhikkhave sampassamānena
+34 Considering your own good,
+# Alam-eva appamādena sampādetuṁ
+35 It is enough to strive for the goal without negligence;
+# Par'atthaṁ vā hi bhikkhave sampassamānena
+36 Bhikkhus, considering the good of others,
+# Alam-eva appamādena sampādetuṁ
+37 It is enough to strive for the goal without negligence;
+# Ubhay'atthaṁ vā hi bhikkhave sampassamānena
+38 Bhikkhus, considering the good of both,
+# Alam-eva appamādena sampādetun'ti
+39 It is enough to strive for the goal without negligence.

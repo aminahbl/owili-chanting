@@ -4,7 +4,7 @@ export const chant = {
   id: "0049",
   slug: "invitation-for-paritta-chanting",
   title: "Invitation for Paritta Chanting",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#invitation", categories: [{ category: "Parittas", subcategory: "Invitations", order: 1 }] },
+  paliSource: { label: "Community Chanting Book, Volume One", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/formal-requests.tex#L47", categories: [{ category: "Formal Requests", order: 4 }] },
   translation: "draft",
   notes: [
     "After bowing three times, with hands joined in añjali, recite the following",

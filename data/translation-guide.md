@@ -205,6 +205,32 @@ The formula as lines:
 | *āvuso* | friend |
 | *kalyāṇamitta* | good friend |
 | *upāsaka*, *upāsikā* | lay follower |
+| *bho* (between ascetics and brahmins) | sir |
+
+**Discourses and views:**
+
+| Pali | English |
+|---|---|
+| *samaṇo gotamo* | the ascetic Gotama |
+| *paribbājaka* | wanderer |
+| *puthujjana* | ordinary person |
+| *vaṇṇaṁ*, *avaṇṇaṁ bhāsati* | speaks in praise of, speaks in dispraise of |
+| *dhammapariyāya* | teaching on the Dhamma |
+| *bhāṇavāra* | recitation section |
+| *diṭṭhi*, *diṭṭhiṭṭhāna* | view, ground for views |
+| *attā*, *loka* | self, world |
+| *sassata*, *uccheda* | eternal, annihilation |
+| *takkī vīmaṁsī* | a reasoner, an inquirer |
+| *ātappa*, *padhāna*, *anuyoga*, *sammā-manasikāra* | ardour, striving, devotion, right attention |
+| *cetosamādhi* | samadhi of mind |
+| *pubbenivāsaṁ anussarati* | recollects past lives |
+| *saṁvaṭṭa-vivaṭṭa* | eon of contraction and expansion |
+| *phassa*, *vedanā*, *upādāna*, *bhava*, *jāti* | contact, feeling, clinging, existence, birth |
+| *jarā-maraṇa*; *soka-parideva-dukkha-domanass'upāyāsā* | ageing and death; sorrow, lamentation, pain, grief and despair |
+| *samudaya*, *atthaṅgama*, *assāda*, *ādīnava*, *nissaraṇa* | origin, ending, gratification, danger, escape |
+| *kāma*, *kāmaguṇa* | sensual pleasure, strand of sensual pleasure |
+| *vitakka*, *vicāra* | initial thought, sustained thought |
+| *sukha* | happiness |
 
 **Ceremonies:**
 
@@ -221,3 +247,4 @@ The formula as lines:
 2. Recurring terms take their rendering from the tables above. A new recurring term is added to the tables first.
 3. Lines where the translation is uncertain (a rare word, a disputed reading, or a choice that may lean too far towards warmth) are recorded with the reason as open editorial notes in the chant's data (`editorial`), so review can start there.
 4. A new translation is marked `translation: "draft"` in the chant's data. After review it is marked `"reviewed"`.
+5. When a line break moves, as it may while a chant made from a recording is checked, the English moves with its Pali, and both lines are reread.

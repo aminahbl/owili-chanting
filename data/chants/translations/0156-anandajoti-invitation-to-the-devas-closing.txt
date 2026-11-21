@@ -1,0 +1,14 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Chanting for Meditators, "Chanting for Meditators - Evening Paritta Chants, Day One":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Chanting-for-Meditators/01-Parittam-Mangalasuttam.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0156 invitation-to-the-devas-closing]
+# Dhammassavana-kālo ayam-bhadantā
+1 Reverend Sirs, this is the time for hearing the Dhamma!

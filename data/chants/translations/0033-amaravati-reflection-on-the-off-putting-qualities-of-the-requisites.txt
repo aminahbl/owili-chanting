@@ -1,0 +1,86 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on the Off-Putting Qualities of the Requisites":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L1
+# Printed in the web edition of 2024-12-26, page 62: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=70
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0033 reflection-on-the-off-putting-qualities-of-the-requisites]
+# {Yathā paccayaṁ} pavattamānaṁ dhātu-mattam-ev'etaṁ
+1 Composed of only elements according to causes and conditions
+# Yad idaṁ cīvaraṁ tad upabhuñjako ca puggalo
+2 Are these robes and so is the person wearing them;
+# Dhātu-mattako,
+3 Merely elements,
+# Nissatto,
+4 Not a being,
+# Nijjīvo,
+5 Without a soul
+# Suñño
+6 And empty of self.
+# Sabbāni pana imāni cīvarāni ajigucchanīyāni
+7 None of these robes are innately repulsive
+# Imaṁ pūti-kāyaṁ patvā,
+8 But touching this unclean body
+# Ativiya jigucchanīyāni jāyanti
+9 They become disgusting indeed.
+# Yathā paccayaṁ pavattamānaṁ dhātu-mattam-ev'etaṁ
+10 Composed of only elements according to causes and conditions
+# Yad idaṁ piṇḍapāto tad upabhuñjako ca puggalo
+11 Is this almsfood and so is the person eating it;
+# Dhātu-mattako,
+12 Merely elements,
+# Nissatto,
+13 Not a being,
+# Nijjīvo,
+14 Without a soul
+# Suñño
+15 And empty of self.
+# Sabbo panāyaṁ piṇḍapāto ajigucchanīyo
+16 None of this almsfood is innately repulsive
+# Imaṁ pūti-kāyaṁ patvā,
+17 But touching this unclean body
+# Ativiya jigucchanīyo jāyati
+18 It becomes disgusting indeed.
+# Yathā paccayaṁ pavattamānaṁ dhātu-mattam-ev'etaṁ
+19 Composed of only elements according to causes and conditions
+# Yad idaṁ senāsanaṁ tad upabhuñjako ca puggalo
+20 Is this dwelling and so is the person using it;
+# Dhātu-mattako,
+21 Merely elements,
+# Nissatto,
+22 Not a being,
+# Nijjīvo,
+23 Without a soul
+# Suñño
+24 And empty of self.
+# Sabbāni pana imāni senāsanāni ajigucchanīyāni
+25 None of these dwellings are innately repulsive
+# Imaṁ pūti-kāyaṁ patvā,
+26 But touching this unclean body
+# Ativiya jigucchanīyāni jāyanti
+27 They become disgusting indeed.
+# Yathā paccayaṁ pavattamānaṁ dhātu-mattam-ev'etaṁ
+28 Composed of only elements according to causes and conditions
+# Yad idaṁ gilāna-paccaya-bhesajja-parikkhāro tad upabhuñjako ca puggalo
+29 Is this medicinal requisite and so is the person that takes it;
+# Dhātu-mattako,
+30 Merely elements,
+# Nissatto,
+31 Not a being,
+# Nijjīvo,
+32 Without a soul
+# Suñño
+33 And empty of self.
+# Sabbo panāyaṁ gilāna-paccaya-bhesajja-parikkhāro ajigucchanīyo
+34 None of this medicinal requisite is innately repulsive
+# Imaṁ pūti-kāyaṁ patvā,
+35 But touching this unclean body
+# Ativiya jigucchanīyo jāyati
+36 It becomes disgusting indeed.

@@ -1,0 +1,56 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on the Sharing of Merit":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L60
+# Printed in the web edition of 2024-12-26, page 34: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=42
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0037 sabba-patti-dana-gatha]
+# Puññass'idāni katassa
+1 May whatever living beings,
+# Yān'aññāni katāni me
+2 Without measure, without end,
+# Tesañca bhāgino hontu
+3 Partake of all the merit,
+# Sattānantāppamāṇakā
+4 From the good deeds I have done:
+# Ye piyā guṇavantā ca
+5 Those loved and full of goodness,
+# Mayhaṁ mātā-pitādayo
+6 My mother and my father dear,
+# Diṭṭhā me cāpyadiṭṭhā vā
+7 Beings seen by me and those unseen,
+# Aññe majjhatta-verino
+8 Those neutral and averse,
+# Sattā tiṭṭhanti lokasmiṁ
+9 Beings established in the world,
+# Te bhummā catu-yonikā
+10 From the three planes and four grounds of birth,
+# Pañc'eka-catu-vokārā
+11 With five aggregates or one or four,
+# Saṁsarantā bhavābhave
+12 Wand'ring on from realm to realm,
+# Ñātaṁ ye patti-dānam-me
+13 Those who know my act of dedication,
+# Anumodantu te sayaṁ
+14 May they all rejoice in it,
+# Ye c'imaṁ nappajānanti
+15 And as for those yet unaware,
+# Devā tesaṁ nivedayuṁ
+16 May the devas let them know.
+# Mayā dinnāna-puññānaṁ anumodana-hetunā
+17 By rejoicing in my sharing,
+# Sabbe sattā sadā hontu
+18 May all beings live at ease,
+# Averā sukha-jīvino
+19 In freedom from hostility,
+# Khemappadañca pappontu
+20 May their good wishes be fulfilled,
+# Tesāsā sijjhataṁ subhā
+21 And may they all reach safety.

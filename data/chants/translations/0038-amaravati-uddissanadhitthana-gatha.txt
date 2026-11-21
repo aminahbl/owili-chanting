@@ -1,0 +1,46 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses of Sharing and Aspiration":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L1
+# Printed in the web edition of 2024-12-26, page 33: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=41
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book prints the English on the facing page with line breaks of its own; the pairing with the Pali lines is ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0038 uddissanadhitthana-gatha]
+# {Iminā puññakammena} upajjhāyā guṇuttarā
+1 Through the goodness that arises from my practice, May my spiritual teachers and guides of great virtue,
+# Ācariyūpakārā ca mātāpitā ca ñātakā
+2 My mother, my father, and my relatives,
+# Suriyo candimā rājā guṇavantā narāpi ca
+3 The Sun and the Moon, and all virtuous leaders of the world,
+# Brahma-mārā ca indā ca lokapālā ca devatā
+4 May the highest gods and evil forces, Celestial beings, guardian spirits of the Earth,
+# Yamo mittā manussā ca majjhattā verikāpi ca
+5 and the Lord of Death, May those who are friendly, indifferent, or hostile,
+# Sabbe sattā sukhī hontu puññāni pakatāni me
+6 May all beings receive the blessings of my life,
+# Sukhañca tividhaṁ dentu khippaṁ pāpetha vomataṁ
+7 May they soon attain the threefold bliss and realize the Deathless.
+# Iminā puññakammena iminā uddissena ca
+8 Through the goodness that arises from my practice, And through this act of sharing,
+# Khipp'āhaṁ sulabhe ceva taṇhūpādāna-chedanaṁ
+9 May all cravings and attachments quickly cease
+# Ye santāne hīnā dhammā yāva nibbānato mamaṁ
+10 And all harmful states of mind. Until I realize Nibbāna,
+# Nassantu sabbadā yeva yattha jāto bhave bhave
+11 In every kind of birth,
+# Ujucittaṁ satipaññā sallekho viriyamhinā
+12 may I have an upright mind, With mindfulness and wisdom, austerity and vigour.
+# Mārā labhantu nokāsaṁ kātuñca viriyesu me
+13 May the forces of delusion not take hold nor weaken my resolve.
+# Buddhādhipavaro nātho dhammo nātho varuttamo
+14 The Buddha is my excellent refuge, Unsurpassed is the protection of the Dhamma,
+# Nātho paccekabuddho ca saṅgho nāthottaro mamaṁ
+15 The Solitary Buddha is my noble guide, The Saṅgha is my supreme support.
+# Tesottamānubhāvena mārokāsaṁ labhantu mā
+16 Through the supreme power of all these, May darkness and delusion be dispelled.

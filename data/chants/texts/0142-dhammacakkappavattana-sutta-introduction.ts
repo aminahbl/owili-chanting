@@ -5,7 +5,7 @@ export const chant = {
   slug: "dhammacakkappavattana-sutta-introduction",
   title: "Introduction to Setting in Motion the Wheel of Dhamma",
   paliTitle: "Anuttaraṁ abhisambodhiṁ",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#dhammacakkappavattana", categories: [{ category: "Suttas", order: 1 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/suttas.tex#L46", categories: [{ category: "The Cardinal Suttas", order: 1 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [1, 2, 3, 4, 5, 6, 7, 8], note: "English to review: the introduction is a later verse composition; the draft follows the commentarial reading." },

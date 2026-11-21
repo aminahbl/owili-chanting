@@ -1,0 +1,22 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Recollection of the Buddha":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/evening-chanting.tex#L60
+# Printed in the web edition of 2024-12-26, page 21: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=29
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0010 recollection-of-the-buddha]
+# Taṁ kho pana bhagavantaṁ evaṁ kalyāṇo kittisaddo abbhuggato
+1 A good word of the Blessed One's reputation has spread as follows:
+# Itipi so bhagavā arahaṁ sammāsambuddho
+2 He, the Blessed One, is indeed the Pure One, the Perfectly Enlightened One;
+# Vijjācaraṇa-sampanno sugato lokavidū
+3 He is impeccable in conduct and understanding, the Accomplished One, the Knower of the Worlds;
+# Anuttaro purisadamma-sārathi satthā deva-manussānaṁ buddho bhagavā'ti
+4 He trains perfectly those who wish to be trained; he is Teacher of gods and humans; he is Awake and Holy.

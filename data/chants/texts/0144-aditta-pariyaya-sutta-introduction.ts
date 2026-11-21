@@ -5,7 +5,7 @@ export const chant = {
   slug: "aditta-pariyaya-sutta-introduction",
   title: "Introduction to the Fire Sermon",
   paliTitle: "Veneyyadamanopāye sabbaso",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#aditta-pariyaya", categories: [{ category: "Suttas", order: 3 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/suttas.tex#L860", categories: [{ category: "The Cardinal Suttas", order: 3 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [1, 2, 3, 4, 5, 6, 7, 8], note: "English to review: the introduction is a later verse composition with long compounds; the draft follows the commentarial reading." },

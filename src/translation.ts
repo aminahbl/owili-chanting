@@ -1,11 +1,14 @@
-// The translation on a chant or set page: the site's English, or a translation
-// the user imported. An import is kept under each chant's own number, so it
-// applies on every page that shows the chant. The text is escaped before it is
-// placed in the page, so a file cannot add markup.
+// The translation on a chant or set page: the site's English, a published
+// translation chosen in the settings, or a translation the user imported. The
+// choice of published translation is a setting for every page, and a chant
+// without that translation shows the site's English. An import is kept under
+// each chant's own number, so it applies on every page that shows the chant,
+// and takes the place of the choice. The text is escaped before it is placed in
+// the page, so a file cannot add markup.
 import { lineText, type Forms } from './line-text.ts';
 import { readChantSettings, writeChantSettings, type ImportedTranslation } from './settings.ts';
 import { visibleText } from './text-view.ts';
-import { checkChant, parseTranslation, writeTranslation, type ExportChant } from './translation-file.ts';
+import { checkChant, parseTranslation, writeTranslation, type ExportChant, type PublishedTranslation } from './translation-file.ts';
 
 /** One chant on the page: its number, its slug and the element that holds its lines. */
 export interface TranslationPart {
@@ -38,14 +41,21 @@ function translationOf(line: HTMLElement): Forms | null {
   return { men: fileText(en, leader, 'men'), women: fileText(en, leader, 'women') };
 }
 
+function publishedOf(part: TranslationPart): PublishedTranslation[] {
+  const data = part.block.querySelector('script.published-translations')?.textContent;
+  return data ? (JSON.parse(data) as PublishedTranslation[]) : [];
+}
+
 export class Translations {
   private parts: TranslationPart[];
   /** Each line's English as built, to restore when an import is removed. */
   private site = new Map<HTMLElement, string>();
+  private published = new Map<TranslationPart, PublishedTranslation[]>();
 
   constructor(parts: TranslationPart[]) {
     this.parts = parts;
     for (const line of parts.flatMap(linesOf)) this.site.set(line, line.querySelector('.en')?.innerHTML ?? '');
+    for (const part of parts) this.published.set(part, publishedOf(part));
     this.show();
   }
 
@@ -53,10 +63,31 @@ export class Translations {
     return readChantSettings(part.id).translation;
   }
 
-  /** Fills each line with the translation in use, and names it in the info panel. */
+  /** The published translators of the chants on the page. */
+  get available(): string[] {
+    return [...new Set(this.parts.flatMap((part) => this.published.get(part)!.map((t) => t.translator)))];
+  }
+
+  /** The published translator chosen in the settings, or '' for the site's English or a choice no chant on the page has. */
+  get choice(): string {
+    const chosen = document.documentElement.dataset.translator ?? '';
+    return this.available.includes(chosen) ? chosen : '';
+  }
+
+  private chosen(part: TranslationPart): PublishedTranslation | undefined {
+    const choice = this.choice;
+    return choice ? this.published.get(part)!.find((t) => t.translator === choice) : undefined;
+  }
+
+  /** The translation a chant shows, or undefined for the site's English. */
+  private inUse(part: TranslationPart): ImportedTranslation | undefined {
+    return this.imported(part) ?? this.chosen(part);
+  }
+
+  /** Fills each line with the translation in use. */
   show() {
     for (const part of this.parts) {
-      const imported = this.imported(part);
+      const translation = this.inUse(part);
       for (const line of linesOf(part)) {
         let en = line.querySelector<HTMLElement>('.en');
         if (!en) {
@@ -64,12 +95,12 @@ export class Translations {
           en.className = 'en';
           line.append(en);
         }
-        if (!imported) {
+        if (!translation) {
           en.innerHTML = this.site.get(line) ?? '';
           en.removeAttribute('lang');
           continue;
         }
-        const text = imported.lines[line.dataset.line ?? ''];
+        const text = translation.lines[line.dataset.line ?? ''];
         if (!text) {
           en.replaceChildren();
           en.removeAttribute('lang');
@@ -77,41 +108,33 @@ export class Translations {
         }
         const repeat = line.querySelector('.pali .repeat')?.outerHTML;
         en.innerHTML = lineText(text, line.classList.contains('leader')) + (repeat ? ` ${repeat}` : '');
-        en.lang = imported.lang;
+        en.lang = translation.lang;
       }
     }
-    this.showInfo();
   }
 
-  private showInfo() {
-    const names = this.names;
-    const term = document.querySelector('.translation-term');
-    const site = document.querySelector<HTMLElement>('.translation-site');
-    const imported = document.querySelector<HTMLElement>('.translation-imported');
-    if (term) term.textContent = names.length ? 'Translation' : 'English';
-    if (site) site.hidden = !this.parts.some((part) => !this.imported(part));
-    if (imported) {
-      imported.hidden = names.length === 0;
-      imported.textContent = `${names.join(', ')}, imported.`;
-    }
-  }
-
-  /** The names of the imported translations on the page. */
+  /** The names of the translations in use on the page, other than the site's English. */
   get names(): string[] {
-    return [...new Set(this.parts.flatMap((part) => this.imported(part)?.name ?? []))];
+    return [...new Set(this.parts.flatMap((part) => this.inUse(part)?.name ?? []))];
   }
 
-  /** The translation in use, for the settings, with the number of lines an import leaves without one. */
+  /**
+   * A note for the settings: the imports in use, the chants that show the site's
+   * English instead of the chosen translation, and the lines left without a translation.
+   */
   get description(): string {
-    const names = this.names;
-    if (!names.length) return 'Translation: Site English (LLM generated)';
-    const missing = this.parts.filter((part) => this.imported(part)).flatMap(linesOf).filter((line) => !translationOf(line)).length;
-    const lines = missing === 1 ? '1 line has' : `${missing} lines have`;
-    return `Translation: ${names.join(', ')}${missing ? `. ${lines} no translation` : ''}`;
+    const notes: string[] = [];
+    const imported = [...new Set(this.parts.flatMap((part) => this.imported(part)?.name ?? []))];
+    if (imported.length) notes.push(`Imported: ${imported.join(', ')}.`);
+    const uncovered = this.choice ? this.parts.filter((part) => !this.inUse(part)).length : 0;
+    if (uncovered) notes.push(`${uncovered === 1 ? '1 chant' : `${uncovered} chants`} without this translation ${uncovered === 1 ? 'shows' : 'show'} Site English.`);
+    const missing = this.parts.filter((part) => this.inUse(part)).flatMap(linesOf).filter((line) => !translationOf(line)).length;
+    if (missing) notes.push(`${missing === 1 ? '1 line has' : `${missing} lines have`} no translation.`);
+    return notes.join(' ');
   }
 
   get isImported(): boolean {
-    return this.names.length > 0;
+    return this.parts.some((part) => this.imported(part));
   }
 
   /**
@@ -140,15 +163,15 @@ export class Translations {
     return { note: others.length ? `Not on this page, so not imported: ${others.join(', ')}.` : '' };
   }
 
-  /** Removes the imports, so the site's English is used. */
-  useSite() {
+  /** Removes the imports, so the translation chosen in the settings is used. */
+  removeImports() {
     for (const part of this.parts) writeChantSettings(part.id, { translation: undefined });
     this.show();
   }
 
   /** The translation in use as a file, with each line's Pali as a comment, to edit and import. */
   export(): string {
-    const first = this.parts.map((part) => this.imported(part)).find(Boolean);
+    const first = this.parts.map((part) => this.inUse(part)).find(Boolean);
     const chants: ExportChant[] = this.parts.map((part) => ({
       id: part.id,
       slug: part.slug,
@@ -158,6 +181,7 @@ export class Translations {
         text: translationOf(line),
       })),
     }));
-    return writeTranslation(this.names.join(', ') || 'Site English (LLM generated)', first?.lang ?? 'en', chants);
+    const notices = [...new Set(this.parts.flatMap((part) => (this.imported(part) ? [] : (this.chosen(part)?.notice ?? []))))];
+    return writeTranslation(this.names.join(', ') || 'Site English (LLM generated)', first?.lang ?? 'en', chants, notices);
   }
 }

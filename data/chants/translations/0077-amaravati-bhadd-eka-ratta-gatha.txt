@@ -1,0 +1,46 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on a Shining Night of Prosperity":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L495
+# Printed in the web edition of 2024-12-26, page 75: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=83
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0077 bhadd-eka-ratta-gatha]
+# Atītaṁ nānvāgameyya
+1 One should not revive the past
+# nappaṭikaṅkhe anāgataṁ
+2 Nor speculate on what's to come;
+# Yad'atītaṁ pahīnan-taṁ
+3 The past is left behind,
+# appattañca anāgataṁ
+4 The future is un-realized.
+# Paccuppannañca yo dhammaṁ
+5 In every presently arisen state
+# tattha tattha vipassati
+6 There, just there, one clearly sees;
+# Asaṁhiraṁ asaṅkuppaṁ
+7 Unmoved, unagitated,
+# taṁ viddhām-anubrūhaye
+8 Such insight is one's strength.
+# Ajj'eva kiccam-ātappaṁ
+9 Ardently doing one's task today,
+# ko jaññā maraṇaṁ suve
+10 Tomorrow, who knows, death may come;
+# Na hi no saṅgaran-tena
+11 Facing the mighty hordes of death,
+# mahā-senena maccunā
+12 Indeed one cannot strike a deal.
+# Evaṁ vihārim-ātāpiṁ
+13 To dwell with energy aroused
+# aho-rattam-atanditaṁ
+14 Thus for a night of non-decline,
+# Taṁ ve bhadd'eka-ratto'ti
+15 That is a 'night of shining prosperity.'
+# santo ācikkhate muni
+16 So it was taught by the Peaceful Sage.

@@ -15,6 +15,7 @@ export const chanters = [
   { id: 'karuna', title: 'Karuna Buddhist Vihara' },
   { id: 'narayan-liebenson', title: 'Narayan Helen Liebenson' },
   { id: 'u-pannanda', title: 'Sayadaw U Pannanda' },
+  { id: 'unknown', title: 'Unknown' },
 ] as const;
 
 export type ChanterId = (typeof chanters)[number]['id'];

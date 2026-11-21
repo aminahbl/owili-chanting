@@ -8,7 +8,6 @@ export const chant = {
   translation: "draft",
   editorial: [
     { status: "changed", note: "The eight training rules of the manual's ceremony (lines 34–42 of *eight-precepts-ceremony*), without the request, the part of the bhikkhu or bhikkhuni and the closing verses." },
-    { status: "open", lines: [7, 8], note: "English to review: the seventh precept is one long rule in two Pali lines; the English keeps it as one sentence over the same two lines." },
   ],
   sections: [
     {
@@ -17,11 +16,14 @@ export const chant = {
         { id: 2, pali: "Adinnādānā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from taking what is not given." },
         { id: 3, pali: "Abrahma-cariyā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from unchaste conduct." },
         { id: 4, pali: "Musāvādā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from false speech." },
+      ],
+    },
+    {
+      lines: [
         { id: 5, pali: "Surā-meraya-majja-pamādaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from liquor, wine and intoxicants that cause heedlessness." },
         { id: 6, pali: "Vikāla-bhojanā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from eating at the wrong time." },
-        { id: 7, pali: "Nacca-gīta vādita visūka-dassana mālāgandha vilepana dhāraṇa maṇḍana", en: "From dancing, singing, music and shows, from wearing garlands, perfumes and cosmetics, from adornment" },
-        { id: 8, pali: "vibhūsanaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "and beautification: I undertake the training rule to refrain from these." },
-        { id: 9, pali: "Uccā-sayana mahā-sayanā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from high and luxurious beds." },
+        { id: 7, pali: "Nacca-gīta vādita visūka-dassana mālāgandha vilepana dhāraṇa maṇḍana vibhūsanaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "From dancing, singing, music and shows, from wearing garlands, perfumes and cosmetics, from adornment and beautification: I undertake the training rule to refrain from these." },
+        { id: 8, pali: "Uccā-sayana mahā-sayanā veramaṇī sikkhā-padaṁ samādiyāmi.", en: "I undertake the training rule to refrain from high and luxurious beds." },
       ],
       refs: [{ label: "AN 8.41", uid: "an8.41" }],
     },

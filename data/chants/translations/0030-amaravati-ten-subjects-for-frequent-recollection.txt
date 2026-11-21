@@ -1,0 +1,62 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Ten Subjects for Frequent Recollection by One Who Has Gone Forth":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L790
+# Printed in the web edition of 2024-12-26, page 57: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=65
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs some lines by stanza or paragraph; within those, the line breaks in the English are ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0030 ten-subjects-for-frequent-recollection]
+# {Dasa ime bhikkhave} dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā, katame dasa
+1 Bhikkhus, there are ten dhammas which should be reflected upon again and again by one who has gone forth. What are these ten?
+# Vevaṇṇiyamhi ajjhupagato'ti
+2 'I am no longer living according to worldly aims and values.'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+3 This should be reflected upon again and again by one who has gone forth.
+# Parapaṭibaddhā me jīvikā'ti
+4 'My very life is sustained through the gifts of others.'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+5 This should be reflected upon again and again by one who has gone forth.
+# Añño me ākappo karaṇīyo'ti
+6 'I should strive to abandon my former habits.'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+7 This should be reflected upon again and again by one who has gone forth.
+# Kacci nu kho me attā sīlato na upavadatī'ti
+8 'Does regret over my conduct arise in my mind?'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+9 This should be reflected upon again and again by one who has gone forth.
+# Kacci nu kho maṁ anuvicca viññū sabrahmacārī sīlato na upavadantī'ti
+10 'Could my spiritual companions find fault with my conduct?'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+11 This should be reflected upon again and again by one who has gone forth.
+# Sabbehi me piyehi manāpehi nānābhāvo vinābhāvo'ti
+12 'All that is mine, beloved and pleasing, will become otherwise, will become separated from me.'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+13 This should be reflected upon again and again by one who has gone forth.
+# Kammassakomhi kammadāyādo kammayoni kammabandhu kammapaṭisaraṇo,
+14 'I am the owner of my kamma, heir to my kamma, born of my kamma, related to my kamma, abide supported by my kamma;
+# yaṁ kammaṁ karissāmi, kalyāṇaṁ vā pāpakaṁ vā, tassa dāyādo bhavissāmī'ti
+15 whatever kamma I shall do, for good or for ill, of that I will be the heir.'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+16 This should be reflected upon again and again by one who has gone forth.
+# 'Kathambhūtassa me rattindivā vītipatantī'ti
+17 'The days and nights are relentlessly passing; how well am I spending my time?'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+18 This should be reflected upon again and again by one who has gone forth.
+# Kacci nu kho'haṁ suññāgāre abhiramāmī'ti
+19 'Do I delight in solitude or not?'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+20 This should be reflected upon again and again by one who has gone forth.
+# Atthi nu kho me uttari-manussa-dhammā alamariya-ñāṇa-dassana-viseso adhigato,
+21 'Has my practice borne fruit with freedom or insight
+# so'haṁ pacchime kāle sabrahmacārīhi puṭṭho na maṅku bhavissāmī'ti
+22 so that at the end of my life I need not feel ashamed when questioned by my spiritual companions?'
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+23 This should be reflected upon again and again by one who has gone forth.
+# Ime kho bhikkhave dasa dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā'ti
+24 Bhikkhus, these are the ten dhammas to be reflected upon again and again by one who has gone forth.

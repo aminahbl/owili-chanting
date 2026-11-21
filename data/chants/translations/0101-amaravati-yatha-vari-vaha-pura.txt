@@ -1,0 +1,68 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Just as Rivers":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L522
+# Printed in the web edition of 2024-12-26, page 50: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=58
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0101 yatha-vari-vaha-pura]
+# Yathā vāri-vahā pūrā paripūrenti sāgaraṁ
+1 Just as rivers full of water entirely fill up the sea
+# Evam-eva ito dinnaṁ petānaṁ upakappati
+2 So will what's here been given bring blessings to departed spirits.
+# Icchitaṁ patthitaṁ tumhaṁ
+3 May all your hopes and all your longings
+# Khippam-eva samijjhatu
+4 Come true in no long time.
+# Sabbe pūrentu saṅkappā
+5 May all your wishes be fulfilled
+# Cando paṇṇaraso yathā
+6 Like on the fifteenth day the moon
+# Maṇi jotiraso yathā
+7 Or like a bright and shining gem.
+# Sabb'ītiyo vivajjantu
+8 May all misfortunes be avoided,
+# Sabba-rogo vinassatu
+9 May all illness be dispelled,
+# Mā te bhavatv-antarāyo
+10 May you never meet with dangers,
+# Sukhī dīgh'āyuko bhava
+11 May you be happy and live long.
+# Abhivādana-sīlissa
+12 For those who are respectful,
+# Niccaṁ vuḍḍhāpacāyino
+13 Who always honour the elders,
+# Cattāro dhammā vaḍḍhanti
+14 Four are the qualities which will increase:
+# Āyu vaṇṇo sukhaṁ balaṁ
+15 Life, beauty, happiness and strength.
+# Bhavatu sabba-maṅgalaṁ
+16 May every blessing come to be
+# Rakkhantu sabba-devatā
+17 And all good spirits guard you well.
+# Sabba-buddhānubhāvena
+18 Through the power of all Buddhas
+# Sadā sotthī bhavantu te
+19 May you always be at ease.
+# Bhavatu sabba-maṅgalaṁ
+20 May every blessing come to be
+# Rakkhantu sabba-devatā
+21 And all good spirits guard you well.
+# Sabba-dhammānubhāvena
+22 Through the power of all Dhammas
+# Sadā sotthī bhavantu te
+23 May you always be at ease.
+# Bhavatu sabba-maṅgalaṁ
+24 May every blessing come to be
+# Rakkhantu sabba-devatā
+25 And all good spirits guard you well.
+# Sabba-saṅghānubhāvena
+26 Through the power of all Saṅghas
+# Sadā sotthī bhavantu te
+27 May you always be at ease.

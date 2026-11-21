@@ -5,7 +5,7 @@ export const chant = {
   slug: "jaya-mangala-attha-gatha",
   title: "Verses on the Buddha's Victories",
   paliTitle: "Jaya-maṅgala-aṭṭha-gāthā",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#bahum", categories: [{ category: "Parittas", subcategory: "Closing Sequence", order: 25 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L584", categories: [{ category: "Parittas", order: 21 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [11], note: "English to review: \"the water of warmth\" follows the fixed rendering of *mettā*; the image is of cooling water, which \"warmth\" does not carry. \"Water of kindness\" may read better here." },

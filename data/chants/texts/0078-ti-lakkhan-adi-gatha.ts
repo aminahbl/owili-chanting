@@ -14,10 +14,18 @@ export const chant = {
         { id: 2, pali: "yadā paññāya passati", en: "when one sees this with wisdom," },
         { id: 3, pali: "Atha nibbindati dukkhe", en: "one becomes disenchanted with suffering:" },
         { id: 4, pali: "esa maggo visuddhiyā", en: "this is the path to purity." },
+      ],
+    },
+    {
+      lines: [
         { id: 5, pali: "Sabbe saṅkhārā dukkhā'ti", en: "'All conditioned things are suffering':" },
         { id: 6, pali: "yadā paññāya passati", en: "when one sees this with wisdom," },
         { id: 7, pali: "Atha nibbindati dukkhe", en: "one becomes disenchanted with suffering:" },
         { id: 8, pali: "esa maggo visuddhiyā", en: "this is the path to purity." },
+      ],
+    },
+    {
+      lines: [
         { id: 9, pali: "Sabbe dhammā anattā'ti", en: "'All things are not-self':" },
         { id: 10, pali: "yadā paññāya passati", en: "when one sees this with wisdom," },
         { id: 11, pali: "Atha nibbindati dukkhe", en: "one becomes disenchanted with suffering:" },
@@ -31,22 +39,42 @@ export const chant = {
         { id: 14, pali: "ye janā pāra-gāmino", en: "who cross to the far shore;" },
         { id: 15, pali: "Athāyaṁ itarā pajā", en: "the rest of the people" },
         { id: 16, pali: "tīram-evānudhāvati", en: "only run up and down the bank." },
+      ],
+    },
+    {
+      lines: [
         { id: 17, pali: "Ye ca kho sammad-akkhāte", en: "But those who, in the Dhamma well taught," },
         { id: 18, pali: "dhamme dhammānuvattino", en: "practise in accordance with the Dhamma," },
         { id: 19, pali: "Te janā pāram-essanti", en: "those people will cross to the far shore," },
         { id: 20, pali: "maccu-dheyyaṁ suduttaraṁ", en: "beyond the realm of Death, so hard to cross." },
+      ],
+    },
+    {
+      lines: [
         { id: 21, pali: "Kaṇhaṁ dhammaṁ vippahāya", en: "Abandoning dark states," },
         { id: 22, pali: "sukkaṁ bhāvetha paṇḍito", en: "the wise should develop the bright," },
         { id: 23, pali: "Okā anokam-āgamma", en: "having gone from home to homelessness," },
         { id: 24, pali: "viveke yattha dūramaṁ", en: "to seclusion, so hard to enjoy." },
+      ],
+    },
+    {
+      lines: [
         { id: 25, pali: "Tatrābhiratim-iccheyya", en: "There one should seek delight," },
         { id: 26, pali: "hitvā kāme akiñcano", en: "leaving sensual pleasures behind, owning nothing." },
         { id: 27, pali: "Pariyodapeyya attānaṁ", en: "The wise should cleanse themselves" },
         { id: 28, pali: "citta-klesehi paṇḍito", en: "of the defilements of the mind." },
+      ],
+    },
+    {
+      lines: [
         { id: 29, pali: "Yesaṁ sambodhiy-aṅgesu", en: "Those whose minds, in the factors of awakening," },
         { id: 30, pali: "sammā cittaṁ subhāvitaṁ", en: "are rightly and well developed," },
         { id: 31, pali: "Ādāna-paṭinissagge", en: "who, letting go of grasping," },
         { id: 32, pali: "anupādāya ye ratā", en: "delight in not clinging:" },
+      ],
+    },
+    {
+      lines: [
         { id: 33, pali: "Khīṇ'āsavā jutimanto", en: "with taints destroyed, radiant," },
         { id: 34, pali: "te loke parinibbutā'ti", en: "they are fully quenched in the world." },
       ],

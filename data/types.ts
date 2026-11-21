@@ -4,7 +4,7 @@ import type { ChanterId } from './chanters.ts';
 export type Text = string | { men: string; women: string };
 
 export interface ChantingLine {
-  /** Assigned once and never reused, so timing files can refer to it. */
+  /** Timing files refer to it, so once the site is released it is never changed or reused. */
   id: number;
   /**
    * Opening words in curly brackets, "{Yo so} bhagavā", are chanted by the
@@ -75,6 +75,8 @@ export interface Chant {
   id: string;
   /** The page address, /chants/<slug>. */
   slug: string;
+  /** Not ready for release: its lines may still be divided again and renumbered. */
+  draft?: true;
   title: string;
   paliTitle?: string;
   /** Where the Pali text was taken from. The English is our own. */

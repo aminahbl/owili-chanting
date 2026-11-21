@@ -5,7 +5,7 @@ export const chant = {
   slug: "buddha-dhamma-sangha-guna",
   title: "The Qualities of the Buddha, the Dhamma and the Saṅgha",
   paliTitle: "Buddha-dhamma-saṅgha-guṇā",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#iti-pi-so", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 15 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L373", categories: [{ category: "Parittas", order: 12 }] },
   translation: "draft",
   sections: [
     {

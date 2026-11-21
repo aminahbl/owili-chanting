@@ -19,6 +19,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0146", // aungsi-sayadaw-dhammacakkappavattana-sutta
     "0150", // cloud-mountain-refuges-and-eight-precepts
     "0152", // narayan-liebenson-blessings
+    "0192", // unknown-girimananda-sutta
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // vandana
@@ -146,6 +147,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0051", // mangala-sutta
     "0052", // ratana-sutta
     "0053", // karaniya-metta-sutta
+    "0163", // brahmajala-sutta
   ] },
   { id: 'funeral', title: 'Funeral chants', chants: [
     "0115", // dhamma-sangani-matika
@@ -183,6 +185,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0085", // blessing-and-protection
     "0093", // blessing-to-the-world
     "0043", // pasanna-hontu-sabbe-pi
+    "0191", // etena-sacca-vajjena
   ] },
   { id: 'dedications', title: 'Dedications', chants: [
     "0092", // transference-of-merit-to-devas
@@ -208,5 +211,33 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0162", // confession-with-a-good-friend
     "0137", // vajja-pakasana
   ] },
-  { id: 'other', title: 'Other chants', chants: [] },
+  { id: 'other', title: 'Other chants', chants: [
+    "0164", // prelude-preliminary-homage
+    "0165", // prelude-homage-to-the-buddha
+    "0166", // prelude-homage-to-the-dhamma
+    "0167", // prelude-homage-to-the-sangha
+    "0168", // prelude-salutation-to-the-triple-gem
+    "0169", // prelude-recollection-of-the-buddha
+    "0170", // prelude-supreme-praise-of-the-buddha
+    "0171", // prelude-recollection-of-the-dhamma
+    "0172", // prelude-supreme-praise-of-the-dhamma
+    "0173", // prelude-recollection-of-the-sangha
+    "0174", // prelude-supreme-praise-of-the-sangha
+    "0175", // prelude-reflection-on-the-four-requisites
+    "0176", // prelude-five-subjects-for-frequent-recollection
+    "0177", // prelude-ten-subjects-for-frequent-recollection
+    "0178", // prelude-caturappamanna-obhasana
+    "0179", // prelude-recollection-after-using-the-requisites
+    "0180", // prelude-reflection-on-the-off-putting-qualities-of-the-requisites
+    "0181", // prelude-mettapharana
+    "0182", // prelude-reflection-on-the-unconditioned
+    "0183", // prelude-reflection-on-the-thirty-two-parts
+    "0184", // prelude-sabba-patti-dana-gatha
+    "0185", // prelude-uddissanadhitthana-gatha
+    "0186", // prelude-the-teaching-on-striving-according-to-dhamma
+    "0187", // prelude-dedication-of-merit-to-the-devas-and-others
+    "0188", // prelude-reflection-on-impermanence
+    "0189", // prelude-the-guardian-meditations
+    "0190", // prelude-anapanassati-sutta
+  ] },
 ];

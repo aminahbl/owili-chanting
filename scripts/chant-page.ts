@@ -3,13 +3,12 @@ import { escapeHtml } from '../src/html.ts';
 import { forms, lineText } from '../src/line-text.ts';
 import { SIZE_RANGES, TEMPO_RANGE, type Range } from '../src/settings.ts';
 import type { Chant, ChantingLine, ChantSet, Line, Ref, Section, Text } from '../data/types.ts';
+import type { PublishedTranslation } from '../src/translation-file.ts';
+import { translators } from '../data/translators.ts';
 import type { Group, RecordingInfo } from './chant-list.ts';
 import { layout, THEME_BUTTON, type SetChanter } from './templates.ts';
 
-const TRANSLATION_NOTE = 'LLM generated as a provisional guide only. Please find a reliable published translation.';
-// The page names an imported translation in the last entry, and shows the site's note only while a chant still uses the site's English.
-const TRANSLATION_INFO = `<dt class="translation-term">English</dt><dd class="translation-site">${TRANSLATION_NOTE}</dd><dd class="translation-imported" hidden></dd>`;
-const MARKER_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/markers';
+const TIMING_FILES = 'https://github.com/aminahbl/owili-chanting/blob/main/data/chants/timings';
 const DEDICATION =
   'May the heartfelt recitation of these verses be offered to the Buddha, Dhamma and Sangha and for the happiness of all beings';
 
@@ -95,14 +94,21 @@ ${body}
 </div>`;
 }
 
-// Each recording that a marker file follows, with its details, its page and the file.
+// Each recording that a timing file follows, with its details, its page and the file.
 function recording({ file, tags }: RecordingInfo): string {
   const about = [tags.ti, tags.place, tags.performers, tags.date].filter(Boolean).map((t) => escapeHtml(t)).join(', ');
   const links = [
     tags.page ? externalLink(tags.page, 'Recording page') : '',
-    externalLink(`${MARKER_FILES}/${encodeURIComponent(file)}`, 'Timing file'),
+    externalLink(`${TIMING_FILES}/${encodeURIComponent(file)}`, 'Timing file'),
   ];
   return `<dd>${about}. ${links.filter(Boolean).join(' · ')}</dd>`;
+}
+
+// A chant's published translations, which src/translation.ts offers in the settings.
+function publishedTranslations(translations: PublishedTranslation[] = []): string {
+  if (!translations.length) return '';
+  const json = JSON.stringify(translations).replace(/</g, '\\u003c');
+  return `\n<script type="application/json" class="published-translations">${json}</script>`;
 }
 
 /** A set that a chant is part of, for its info panel. */
@@ -122,12 +128,11 @@ function infoPopover(chant: Chant, groups: Group[], recordings: RecordingInfo[],
   const paliSource = placing ? `${paliSourceName}: ${placing}` : paliSourceName;
   const refs = chant.sections.flatMap((s) => s.refs ?? []);
   const items = [
+    `<dt>Pali (public domain)</dt><dd>Initially retrieved from ${paliSource}</dd>`,
     `<dt>Categories</dt><dd>${groupLinks}</dd>`,
     sets.length
       ? `<dt>Sangha sets</dt>${sets.map((s) => `<dd><a href="/sets/${s.slug}">${escapeHtml(s.title)}</a>, ${escapeHtml(s.chanterTitle)}</dd>`).join('')}`
       : '',
-    `<dt>Pali source</dt><dd>${paliSource}</dd>`,
-    chant.translation ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     refs.length ? `<dt>References</dt><dd>${refs.map(suttaCentral).join(', ')}</dd>` : '',
     chant.notes?.length ? `<dt>Notes</dt>${chant.notes.map((n) => `<dd>${escapeHtml(n)}</dd>`).join('')}` : '',
@@ -165,8 +170,26 @@ function hasTwoForms(chants: Chant[]): boolean {
   return chantLines.some((l) => hasForms(l.pali) || hasForms(l.en));
 }
 
+// Every published translator is offered; src/translation.ts hides those without
+// a translation of a chant on the page, and shows the credit of the one in use.
+// The credit links to the chant in the translator's source when the page has one
+// chant in it, and to the source as a whole otherwise.
+function translatorChoices(translations: PublishedTranslation[]): string {
+  const options = translators
+    .map((t) => {
+      const sources = translations.filter((p) => p.translator === t.id).map((p) => p.source);
+      const source = sources.length === 1 ? sources[0] : t.source;
+      const credit = `${externalLink(source, 'English translation')} ${escapeHtml(t.credit)}. ${externalLink(t.licence.url, t.licence.label)}`;
+      return `<label data-translator="${t.id}"><input type="radio" name="translator" value="${t.id}"> ${escapeHtml(t.title)}</label>
+  <p class="translator-credit option-note" data-translator="${t.id}" hidden>${credit}</p>`;
+    })
+    .join('');
+  const site = '<label><input type="radio" name="translator" value=""> Site English (LLM generated)</label>';
+  return `<div class="translator-choices">${site}${options}</div>`;
+}
+
 // The choice of men's and women's forms is included when `twoForms` is true.
-function settingsPopover(twoForms: boolean, recorded: boolean): string {
+function settingsPopover(twoForms: boolean, recorded: boolean, translations: PublishedTranslation[] = []): string {
   const body = `<form class="settings">
   <fieldset><legend>Audio</legend>
   <p class="audio-note option-note">Selected audio files are remembered by your browser on this device.${recorded ? ' Details of the available recordings, with links to their pages, are given in the info panel.' : ''}</p>
@@ -202,11 +225,11 @@ ${textSize('size', 'text')}
 ${textSize('slideSize', 'slides')}
 ${choice('chanting', 'Chanting', [['', 'Pali'], ['translation', 'Translation'], ['both', 'Pali & translation']])}
 ${choice('order', 'Order', [['', 'Pali first'], ['translation', 'Translation first']], 'order-options')}
-<fieldset><legend>Translation</legend>
+<fieldset><legend>Translations</legend>
   <label class="toggle shadow-toggle"><input type="checkbox" name="translation" value="" data-unchecked="off"> <span class="shadow-en">Show translation</span><span class="shadow-pali">Show Pali</span></label>
-  <p class="translation-name option-note"></p>
+  ${translatorChoices(translations)}
+  <p class="translation-name option-note" hidden></p>
   <div class="option-actions">
-    <button type="button" class="outline-button" id="translation-site" hidden>Use Site English (LLM generated)</button>
     <button type="button" class="outline-button" id="translation-import-button">Import translation</button>
     <input type="file" id="translation-import" accept=".txt,text/plain" hidden>
     <button type="button" class="outline-button" id="translation-export">Export translation</button>
@@ -315,6 +338,7 @@ export function chantPage(
   timing?: string,
   recordings: RecordingInfo[] = [],
   sets: SetLink[] = [],
+  translations: PublishedTranslation[] = [],
 ): string {
   const paliTitle =
     chant.paliTitle && chant.paliTitle !== chant.title ? `<p class="chant-pali-title" lang="pi">${escapeHtml(chant.paliTitle)}</p>` : '';
@@ -322,12 +346,12 @@ export function chantPage(
 <h1>${escapeHtml(chant.title)}</h1>
 ${paliTitle}
 ${notes(chant)}
-${chant.sections.map((s) => section(s)).join('\n')}
+${chant.sections.map((s) => section(s)).join('\n')}${publishedTranslations(translations)}
 </article>
 ${textFoot()}
 ${slides()}
 ${infoPopover(chant, groups, recordings, sets)}
-${settingsPopover(hasTwoForms([chant]), recordings.length > 0)}
+${settingsPopover(hasTwoForms([chant]), recordings.length > 0, translations)}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   return layout(chant.title, body, ['chant-page'], header(chant.title));
 }
@@ -341,7 +365,6 @@ function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, rec
     `<dt>Chanted by</dt><dd>${escapeHtml([chanter.title, chanter.lineageTitle].filter(Boolean).join(', '))}</dd>`,
     `<dt>Chants</dt>${chants.map((c) => `<dd><a href="${chantHref(c.slug)}">${escapeHtml(c.title)}</a></dd>`).join('')}`,
     `<dt>Anchor recording</dt><dd>${anchorName}</dd>`,
-    chants.some((c) => c.translation) ? TRANSLATION_INFO : '',
     recordings.length ? `<dt>Recordings</dt>${recordings.map(recording).join('')}` : '',
     set.links?.length
       ? `<dt>Links</dt>${set.links.map((l) => `<dd>${externalLink(l.href, l.text)}</dd>`).join('')}`
@@ -357,26 +380,33 @@ function setInfoPopover(set: ChantSet, chants: Chant[], chanter: SetChanter, rec
  * carries the chant's number. The build also writes each chant's block to
  * /blocks/<number>.html, which an open set's page fetches.
  */
-export function chantBlock(chant: Chant): string {
+export function chantBlock(chant: Chant, translations: PublishedTranslation[] = []): string {
   return `<section class="set-chant" data-chant="${chant.id}" data-slug="${chant.slug}">
 <h2 class="set-chant-title">${escapeHtml(chant.title)}</h2>
 ${notes(chant)}
-${chant.sections.map((s) => section(s, 'h3')).join('\n')}
+${chant.sections.map((s) => section(s, 'h3')).join('\n')}${publishedTranslations(translations)}
 </section>`;
 }
 
 // A set is one continuous text of chant blocks. The article carries the set's
 // number, for its kept settings.
-export function setPage(set: ChantSet, chants: Chant[], chanter: SetChanter, timing?: string, recordings: RecordingInfo[] = []): string {
+export function setPage(
+  set: ChantSet,
+  chants: Chant[],
+  chanter: SetChanter,
+  translations: Map<string, PublishedTranslation[]>,
+  timing?: string,
+  recordings: RecordingInfo[] = [],
+): string {
   const body = `<article class="chant" data-chant="${set.id}" data-slug="${set.slug}">
 <h1>${escapeHtml(set.title)}</h1>
 <p class="set-chanter">${escapeHtml(chanter.title)}</p>
-${chants.map(chantBlock).join('\n')}
+${chants.map((chant) => chantBlock(chant, translations.get(chant.id))).join('\n')}
 </article>
 ${textFoot()}
 ${slides()}
 ${setInfoPopover(set, chants, chanter, recordings)}
-${settingsPopover(hasTwoForms(chants), recordings.length > 0)}
+${settingsPopover(hasTwoForms(chants), recordings.length > 0, chants.flatMap((c) => translations.get(c.id) ?? []))}
 ${shortcutsPopover()}${timing ? `\n<script type="text/plain" id="recording-timing">${timing}</script>` : ''}`;
   const title = `${set.title}, ${chanter.title}`;
   return layout(title, body, ['chant-page', 'copy-set'], header(title));
@@ -391,7 +421,6 @@ const OPEN_SET = 'Open set';
 export function openSetPage(): string {
   const items = [
     '<dt id="open-set-chants">Chants</dt>',
-    TRANSLATION_INFO,
     '<dt class="open-set-kept">Open set</dt><dd class="open-set-kept">Kept in this browser. <a id="open-set-edit" href="/open-sets">Edit in Open sets</a></dd>',
   ];
   const body = `<div class="open-set-save text-only" hidden>

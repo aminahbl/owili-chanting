@@ -10,6 +10,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 - Open sets: sequences of chants chosen by the user, kept in the browser and shared by link, each on one page like a Sangha set
 - Pali text with secondary English line‑by‑line
 - Chanting in Pali, in translation, or in both line by line
+- Published translations, such as the English of Amaravati Buddhist Monastery and of Ānandajoti Bhikkhu, offered in the settings beside the site's English
 - The user's own translation, imported from a plain text file in place of the English
 - A text view with line tracking, and a slide view that shows a few lines at a time with the current line marked
 - Three ways for lines to move on in the slide view: Manual, Auto (at a pace worked out from the Pali, with a speed control) and Timed (following a timing file)
@@ -29,6 +30,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── chant-page.ts         # HTML for the chant, set and open set pages, and each chant's block
 │   ├── ids.ts                # Checks chant and set numbers against the ledger
 │   ├── modules.ts            # The modules each page's scripts import, for preload links
+│   ├── timings.ts            # Drafts chants and timing files from a recording's pauses
 │   └── templates.ts          # Page layout, the site header, and HTML for the list and Open sets pages
 ├── src/                      # Browser code, compiled to dist/assets/js/
 │   ├── search.ts             # Search on the list pages
@@ -44,7 +46,7 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 │   ├── tempo.ts              # The Auto speed
 │   ├── lrc.ts                # Reads timing files, shared with the build
 │   ├── timing.ts             # The timing in use for Timed advance
-│   ├── translation.ts        # The translation in use: the site's English or an imported file
+│   ├── translation.ts        # The translation in use: the site's English, a published one or an imported file
 │   ├── translation-file.ts   # Reads and writes translation files, shared with the build
 │   ├── line-text.ts          # A line's text as HTML, with leader marks and forms, shared with the build
 │   ├── audio-store.ts        # Remembering the user's audio file per chant or set
@@ -59,13 +61,16 @@ A lightweight, static website to help users chant Pali texts, with line‑by‑l
 ├── data/
 │   ├── DATA.md               # How the data fits together and is checked
 │   ├── chants/
-│   │   ├── CHANTS.md         # Steps for changing chants
+│   │   ├── CHANTS.md         # Quick guides for changing chants
+│   │   ├── RECORDED-CHANTS.md # Making a chant whose lines follow a recording
 │   │   ├── texts/            # One typed module per chant; retired ones in retired/
-│   │   └── markers/          # Timing files, one per recording
+│   │   ├── timings/          # Timing files, one per recording, and TIMINGS.md
+│   │   └── translations/     # Published translations offered in the settings, and TRANSLATIONS.md
 │   ├── sets/                 # One typed module per Sangha set; retired ones in retired/
-│   │   └── SETS.md           # Steps for changing sets
+│   │   └── SETS.md           # Quick guides for changing sets
 │   ├── groups.ts             # Categories and their chants, in display order
 │   ├── chanters.ts           # Chanters of the Sangha sets and their lineages
+│   ├── translators.ts        # Translators of the translation files, with credit, source and licence
 │   ├── ids.ts                # The ledger of chant and set numbers
 │   ├── types.ts              # The Chant and ChantSet types
 │   └── translation-guide.md  # Principles and fixed renderings for the English
@@ -89,22 +94,20 @@ Requires Node 24.22.1 or later, the earliest release with current security fixes
 
 ## Usage
 
-- On the home page, search or choose a category, then open a chant. Sangha sets lists sets in one list, each titled with who chants it; a set page works like a chant page, with the set's chants in order, each under its title. The header links to the About, Guide and Resources pages; the guide explains the features below for users.
-- The Sangha sets page links to Open sets, where the user makes, edits, shares and deletes sets of their own. An open set opens at `/open-sets/set` and works like a Sangha set page. Copy to open sets, in a Sangha set's info panel, starts an open set with its chants.
-- The theme button at the right of every page's header switches between light and dark. Until it is pressed, the site follows the system theme.
-- On a chant page, the info button shows the chant's Pali source, the recordings that have a timing file, references and notes. The settings button sets the text size, what is chanted (Pali, translation, or both), whether the smaller text under each line is shown and, for chants that have them, men's or women's forms. These settings apply to every chant.
-- Text and Slides in the header switch view. In the text view, Track marks the current line. In the slide view, the settings choose how lines move on: Manual, Auto or Timed. On a touch screen, a swipe across a slide moves a line.
-- With Timed, the settings show the timing in use, with Export timing and Import timing.
-- Under Translation in the settings, Export translation saves the translation in use as a plain text file, with each line's Pali as a comment, and Import translation loads one in place of the site's English. The file format is described in the guide and at the top of [src/translation-file.ts](src/translation-file.ts).
-- Under Audio in the settings, "Add audio file" chooses an audio file. Its controls (back, play or pause, forward, stop; a press on back or forward moves 3 seconds, and holding it rewinds or fast-forwards) are in the slide view's bottom bar, and in a bar at the foot of the text view.
-- In the slide view with Auto or Timed advance, the lock at the start of the bottom bar locks the audio to the slides. It is closed while the audio is locked. With Timed advance and a timing from a recording, the lines follow the audio, and Start, Pause and moving a line work on it. With Auto, or Timed with the rhythm model, Start and Pause also play and pause the audio. With the lock open, the audio and the slides run separately. Manual advance has no Start and no lock: next and previous move the lines, and the audio controls work on their own.
-- Keys on a chant page: Space starts or pauses (on slides with Manual advance, it moves to the next line), → and ← move a line, V switches view, T shows or hides the translation (or the Pali when the translation is chanted), I opens info, S opens settings, ? lists the shortcuts, Escape closes a popover. The ⌘ button in the header also lists the shortcuts; it is hidden on touch-only devices.
+The site's features are explained for users on its Guide page, written in [pages/guide.html](pages/guide.html). It covers the views, the settings, advancing lines, recordings, timing and translation files, keyboard shortcuts and the data kept in the browser.
 
-## Changing chants and sets
+## Documentation
 
-- [data/chants/CHANTS.md](data/chants/CHANTS.md): steps for adding, editing, renaming and retiring a chant.
-- [data/sets/SETS.md](data/sets/SETS.md): the same for Sangha sets.
-- [data/DATA.md](data/DATA.md): how the data fits together, what the build checks, and what retiring a chant or set changes.
+| File | Read it to |
+|---|---|
+| [data/DATA.md](data/DATA.md) | Understand how the data fits together, what the build checks, and the rules the quick guides follow |
+| [data/chants/CHANTS.md](data/chants/CHANTS.md) | Add, edit, rename or retire a chant |
+| [data/chants/RECORDED-CHANTS.md](data/chants/RECORDED-CHANTS.md) | Make a new chant whose lines and timing follow a recording |
+| [data/chants/timings/TIMINGS.md](data/chants/timings/TIMINGS.md) | Time a recording of an existing chant, and look up the timing commands |
+| [data/sets/SETS.md](data/sets/SETS.md) | Add, change, rename or retire a Sangha set |
+| [data/translation-guide.md](data/translation-guide.md) | Write or review the English |
+
+Each guide to a change opens with its steps as a numbered list that can be followed at a glance, with the details after it.
 
 ## Editing the about, guide and resources pages
 
@@ -113,6 +116,7 @@ Each page's body is plain HTML in `pages/<slug>.html`, starting with its `<h1>`.
 ## Browser support
 
 - An audio file plays if the browser can play its format; MP3 and AAC play in all current browsers.
+- In a long MP3 made at a variable bitrate, moving the audio can land several seconds from the time asked for, and the lines then follow the wrong part of it. A constant-bitrate copy does not have this problem; the guide page gives the command.
 - The audio file is remembered per chant or set. Chromium browsers (Chrome, Edge) keep only a link to the file and ask for permission to read it again on a later visit; other browsers keep a copy of the file in the browser.
 - The screen wake lock, which keeps the screen on while lines move on, is not available in every browser; the page works without it.
 - ES modules are used; serve over `http://localhost` or `https://`.

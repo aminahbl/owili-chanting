@@ -5,7 +5,7 @@ export const chant = {
   slug: "anatta-lakkhana-sutta-introduction",
   title: "Introduction to the Characteristic of Not-Self",
   paliTitle: "Yantaṁ sattehi",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/suttas.html#anatta-lakkhana", categories: [{ category: "Suttas", order: 2 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/suttas.tex#L477", categories: [{ category: "The Cardinal Suttas", order: 2 }] },
   translation: "draft",
   editorial: [
     { status: "open", lines: [1, 2, 3, 4, 5, 6, 7, 8], note: "English to review: the introduction is a later verse composition with long compounds; the draft follows the commentarial reading." },

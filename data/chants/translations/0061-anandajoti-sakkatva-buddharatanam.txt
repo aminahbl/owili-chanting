@@ -1,0 +1,49 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "2. The Verses on the Great Blessings of Success":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/05-Upagantho-02.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0061 sakkatva-buddharatanam]
+# Sakkatvā buddharatanaṁ
+1 Having honoured the Buddha treasure,
+# osadhaṁ uttamaṁ varaṁ
+2 the best and supreme medicine,
+# Hitaṁ devamanussānaṁ
+3 of benefit to gods and men,
+# buddhatejena sotthinā
+4 by the blessed power of the Buddha
+# Nassantupaddavā sabbe
+5 may all adversities perish,
+# dukkhā vūpasamentu te
+6 and all suffering come to an end for you!
+# Sakkatvā dhammaratanaṁ
+7 Having honoured the Dhamma treasure,
+# osadhaṁ uttamaṁ varaṁ
+8 the best and supreme medicine,
+# Pariḷāhūpasamanaṁ
+9 which brings fevers to an end,
+# dhammatejena sotthinā
+10 by the blessed power of the Dhamma
+# Nassantupaddavā sabbe
+11 may all adversities perish,
+# bhayā vūpasamentu te
+12 and all fear come to an end for you!
+# Sakkatvā saṅgharatanaṁ
+13 Having honoured the Saṅgha treasure,
+# osadhaṁ uttamaṁ varaṁ
+14 the best and supreme medicine,
+# Āhuneyyaṁ pāhuneyyaṁ
+15 worthy of gifts and hospitality,
+# saṅghatejena sotthinā
+16 by the blessed power of the Saṅgha
+# Nassantupaddavā sabbe
+17 may all adversities perish,
+# rogā vūpasamentu te
+18 and all disease come to an end for you!

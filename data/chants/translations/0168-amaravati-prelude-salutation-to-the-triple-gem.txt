@@ -1,0 +1,18 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Salutation to the Triple Gem":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L354
+# Printed in the web edition of 2024-12-26, page 9: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=17
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book prints the English as one line beside the two Pali lines; the break between them is ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0168 prelude-salutation-to-the-triple-gem]
+# Handa mayaṁ ratanattaya-paṇāma-gāthāyo c'eva
+1 Now let us chant our salutation to the Triple Gem
+# saṁvega-parikittana-pāṭhañca bhaṇāmase
+2 and a passage to arouse urgency.

@@ -1,0 +1,30 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "1. The Opening Ceremony":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-01.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0002 sarana-gamana-patha]
+# Buddhaṁ saraṇaṁ gacchāmi
+1 I go to the Buddha for refuge
+# Dhammaṁ saraṇaṁ gacchāmi
+2 I go to the Dhamma for refuge
+# Saṅghaṁ saraṇaṁ gacchāmi
+3 I go to the Saṅgha for refuge
+# Dutiyam pi buddhaṁ saraṇaṁ gacchāmi
+4 For a second time I go to the Buddha for refuge
+# Dutiyam pi dhammaṁ saraṇaṁ gacchāmi
+5 For a second time I go to the Dhamma for refuge
+# Dutiyam pi saṅghaṁ saraṇaṁ gacchāmi
+6 For a second time I go to the Saṅgha for refuge
+# Tatiyam pi buddhaṁ saraṇaṁ gacchāmi
+7 For a third time I go to the Buddha for refuge
+# Tatiyam pi dhammaṁ saraṇaṁ gacchāmi
+8 For a third time I go to the Dhamma for refuge
+# Tatiyam pi saṅghaṁ saraṇaṁ gacchāmi
+9 For a third time I go to the Saṅgha for refuge

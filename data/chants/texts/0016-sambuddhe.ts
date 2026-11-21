@@ -5,7 +5,7 @@ export const chant = {
   slug: "sambuddhe",
   title: "The Buddhas",
   paliTitle: "Sambuddhe",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#sambuddhe", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 5 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L321", categories: [{ category: "Parittas", order: 10 }] },
   translation: "draft",
   sections: [
     {

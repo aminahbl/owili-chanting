@@ -1,0 +1,22 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "1. The Opening Ceremony":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/00-Mahaparittam-01.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0161 five-precepts]
+# Pāṇātipātā veramaṇī sikkhā-padaṁ samādiyāmi.
+1 I undertake the training rule of refraining from killing living creatures
+# Adinnādānā veramaṇī sikkhā-padaṁ samādiyāmi.
+2 I undertake the training rule of refraining from taking what has not been given
+# Kāmesu micchā-cārā veramaṇī sikkhā-padaṁ samādiyāmi.
+3 I undertake the training rule of refraining from sexual misconduct
+# Musā-vādā veramaṇī sikkhā-padaṁ samādiyāmi.
+4 I undertake the training rule of refraining from false speech
+# Surā-meraya-majja-pamādaṭṭhānā veramaṇī sikkhā-padaṁ samādiyāmi.
+5 I undertake the training rule of refraining from liquor, wines, or intoxicants which cause heedlessness.

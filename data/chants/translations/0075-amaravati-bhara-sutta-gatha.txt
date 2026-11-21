@@ -1,0 +1,30 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Verses on the Burden":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p2.tex#L463
+# Printed in the web edition of 2024-12-26, page 74: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=82
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0075 bhara-sutta-gatha]
+# Bhārā have pañcakkhandhā
+1 The five aggregates indeed are burdens,
+# bhāra-hāro ca puggalo
+2 The beast of burden though is man.
+# Bhār'ādānaṁ dukkhaṁ loke
+3 In this world to take up burdens is dukkha.
+# bhāra-nikkhepanaṁ sukhaṁ
+4 Putting them down brings happiness.
+# Nikkhipitvā garuṁ bhāraṁ
+5 A heavy burden cast away,
+# aññaṁ bhāraṁ anādiya
+6 Not taking on another load,
+# Samūlaṁ taṇhaṁ abbuyha
+7 With craving pulled out from the root,
+# nicchāto parinibbuto
+8 Desires stilled, one is released.

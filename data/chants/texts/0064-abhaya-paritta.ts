@@ -5,7 +5,7 @@ export const chant = {
   slug: "abhaya-paritta",
   title: "The Danger-free Protection",
   paliTitle: "Abhaya-paritta",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#yan-dunnimittam", categories: [{ category: "Parittas", subcategory: "Core Sequence", order: 23 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L457", categories: [{ category: "Parittas", order: 15 }] },
   translation: "draft",
   sections: [
     {

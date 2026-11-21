@@ -1,0 +1,168 @@
+[ti:Girimānanda Sutta]
+[performers:Sri Lankan monks]
+[page:https://www.libib.com/u/palichant?solo=107740209]
+# The recording has almost no pauses, so the line starts were not made from pauses.
+# They were placed by aligning the chants' text to the audio with Whisper, a speech
+# model, and moved 0.3 s later, and are not yet checked by listening. Three times are
+# taken from the recording's only clear pauses: the start of line 1 of vandana, the start
+# of line 1 of etena-sacca-vajjena, and the end of the chanting.
+# The recording leaves out line 142 of girimananda-sutta.
+# Chants in recording order:
+#   vandana
+#   girimananda-sutta
+#   etena-sacca-vajjena
+
+[chant:0001 vandana]
+[00:00.57]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+[00:07.02]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+[00:13.22]1 Namo tassa bhagavato arahato sammā-sambuddhassa
+
+[chant:0091 girimananda-sutta]
+[00:19.74]1 {Evaṁ me sutaṁ} Ekaṁ samayaṁ bhagavā sāvatthiyaṁ
+[00:27.72]2 viharati jetavane Anāthapiṇḍikassa ārāme.
+[00:33.62]3 Tena kho pana samayena āyasmā Girimānando ābādhiko hoti dukkhito bāḷha-gilāno.
+[00:45.34]4 Atha kho āyasmā Ānando yena bhagavā ten'upasaṅkami,
+[00:53.68]5 upasaṅkamitvā Bhagavantaṁ abhivādetvā ekam-antaṁ nisīdi.
+[01:02.06]6 Ekam-antaṁ nisinno kho āyasmā Ānando bhagavantaṁ etad-avoca:
+[01:12.00]7 Āyasmā bhante Girimānando ābādhiko hoti dukkhito bāḷha-gilāno.
+[01:22.26]8 Sādhu bhante bhagavā yen'āyasmā Girimānando
+[01:28.98]9 ten'upasaṅkamatu anukampaṁ upādāyā'ti.
+[01:34.80]10 Sace kho tvaṁ Ānanda Girimānandassa bhikkhuno dasa saññā bhāseyyāsi,
+[01:47.94]11 ṭhānaṁ kho pan'etaṁ vijjati yaṁ Girimānandassa bhikkhuno dasa
+[01:55.78]12 saññā sutvā so ābādho ṭhānaso paṭipassambheyya.
+[02:04.02]13 Katamā dasa?
+[02:07.06]14 Anicca-saññā, anatta-saññā, asubha-saññā, ādīnava-saññā, pahāna-saññā,
+[02:15.26]15 virāga-saññā, nirodha-saññā, sabba-loke anabhirata-saññā,
+[02:22.68]16 sabba-saṅkhāresu anicchāsaññā, ānāpānassati.
+[02:29.84]17 Katamā c'Ānanda anicca-saññā?
+[02:33.34]18 Idh'Ānanda,
+[02:35.32]19 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā iti paṭisañcikkhati:
+[02:45.72]20 rūpaṁ aniccaṁ, vedanā aniccā, saññā aniccā, saṅkhārā aniccā,
+[02:53.90]21 viññāṇaṁ aniccan'ti.
+[02:57.28]22 Iti imesu pañcasu upādānakkhandhesu aniccānupassī viharati.
+[03:05.50]23 Ayaṁ vuccat'Ānanda anicca-saññā.
+[03:09.62]24 Katamā c'Ānanda anatta-saññā?
+[03:12.70]25 Idh'Ānanda,
+[03:14.72]26 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā iti paṭisañcikkhati:
+[03:25.20]27 cakkhuṁ anattā, rūpā anattā, sotaṁ anattā, saddā anattā, ghānaṁ anattā,
+[03:34.44]28 gandhā anattā, jivhā anattā, rasā anattā, kāyo anattā, phoṭṭhabbā anattā,
+[03:44.90]29 mano anattā, dhammā anattā'ti.
+[03:49.96]30 Iti imesu chasu ajjhattikabāhiresu āyatanesu anattānupassī viharati.
+[03:58.56]31 Ayaṁ vuccat'Ānanda anatta-saññā.
+[04:03.06]32 Katamā c'Ānanda asubha-saññā?
+[04:06.72]33 Idh'Ānanda,
+[04:08.32]34 bhikkhu imam-eva kāyaṁ uddhaṁ pāda-talā adho kesa-matthakā
+[04:15.48]35 taca-pariyantaṁ pūraṁ nānāppakārassa asucino paccavekkhati:
+[04:24.08]36 Atthi imasmiṁ kāye kesā, lomā, nakhā, dantā, taco, maṁsaṁ, nhāru, aṭṭhi,
+[04:33.66]37 aṭṭhi-miñjaṁ, vakkaṁ, hadayaṁ, yakanaṁ, kilomakaṁ, pihakaṁ, papphāsaṁ, antaṁ,
+[04:42.94]38 anta-guṇaṁ, udariyaṁ, karīsaṁ, pittaṁ, semhaṁ, pubbo, lohitaṁ, sedo, medo, assu,
+[04:52.64]39 vasā, kheḷo, siṅghāṇikā, lasikā, muttan'ti.
+[04:58.58]40 Iti imasmiṁ kāye asubhānupassī viharati.
+[05:04.96]41 Ayaṁ vuccat'Ānanda asubha-saññā.
+[05:08.84]42 Katamā c'Ānanda ādīnava-saññā?
+[05:12.76]43 Idh'Ānanda,
+[05:13.74]44 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā iti paṭisañcikkhati:
+[05:25.98]45 Bahu-dukkho kho ayaṁ kāyo bahu-ādīnavo.
+[05:31.22]46 Iti imasmiṁ kāye vividhā ābādhā uppajjanti, seyyathīdaṁ cakkhu-rogo, sota-rogo,
+[05:45.06]47 ghāna-rogo, jivhā-rogo, kāya-rogo, sīsa-rogo, kaṇṇa-rogo, mukha-rogo, dantarogo,
+[05:56.42]48 oṭṭha-rogo, kāso, sāso, pināso, ḍāho, jaro, kucchi-rogo, mucchā, pakkhandikā,
+[06:05.58]49 sūlā, visūcikā, kuṭṭhaṁ, gaṇḍo, kilāso, soso, apamāro, daddu, kaṇḍu, kacchu,
+[06:15.26]50 nakhasā, vitacchikā, lohitaṁ, pittaṁ, madhu-meho, aṁsā, piḷakā, bhagandalā,
+[06:24.64]51 pitta-samuṭṭhānā ābādhā, semha-samuṭṭhānā ābādhā, vāta-samuṭṭhānā ābādhā,
+[06:35.84]52 sannipātikā ābādhā, utupariṇāma-jā ābādhā, visama-parihāra-jā ābādhā,
+[06:46.74]53 opakkamikā ābādhā, kamma-vipāka-jā ābādhā, sītaṁ, uṇhaṁ, jighacchā, pipāsā,
+[06:56.70]54 uccāro, passāvo'ti.
+[07:00.72]55 Iti imasmiṁ kāye ādīnavānupassī viharati.
+[07:07.08]56 Ayaṁ vuccat'Ānanda ādīnava-saññā.
+[07:11.60]57 Katamā c'Ānanda pahāna-saññā?
+[07:15.16]58 Idh'Ānanda, bhikkhu uppannaṁ kāma-vitakkaṁ nādhivāseti, pajahati, vinodeti,
+[07:25.32]59 byantīkaroti, anabhāvaṁ gameti.
+[07:29.38]60 Uppannaṁ byāpāda-vitakkaṁ nādhivāseti, pajahati, vinodeti, byantīkaroti,
+[07:38.12]61 anabhāvaṁ gameti.
+[07:41.04]62 Uppannaṁ vihiṁsā-vitakkaṁ nādhivāseti, pajahati, vinodeti, byantīkaroti,
+[07:50.52]63 anabhāvaṁ gameti.
+[07:52.92]64 Uppann'uppanne pāpake akusale dhamme nādhivāseti, pajahati, vinodeti,
+[08:02.36]65 byantīkaroti, anabhāvaṁ gameti.
+[08:07.00]66 Ayaṁ vuccat'Ānanda pahāna-saññā.
+[08:11.46]67 Katamā c'Ānanda, virāga-saññā?
+[08:15.50]68 Idh'Ānanda,
+[08:17.08]69 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā iti paṭisañcikkhati:
+[08:27.24]70 Etaṁ santaṁ, etaṁ paṇītaṁ,
+[08:31.94]71 yad-idaṁ sabba-saṅkhāra-samatho
+[08:35.76]72 sabbūpadhippaṭinissaggo taṇhākkhayo virāgo
+[08:41.30]73 nibbānan'ti.
+[08:43.34]74 Ayaṁ vuccat'Ānanda virāgasaññā.
+[08:47.34]75 Katamā c'Ānanda, nirodha-saññā?
+[08:51.84]76 Idh'Ānanda,
+[08:53.44]77 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā iti paṭisañcikkhati:
+[09:04.12]78 Etaṁ santaṁ, etaṁ paṇītaṁ,
+[09:07.86]79 yad-idaṁ sabba-saṅkhāra-samatho
+[09:12.04]80 sabbūpadhippaṭinissaggo taṇhākkhayo nirodho
+[09:17.84]81 nibbānan'ti.
+[09:19.52]82 Ayaṁ vuccat'Ānanda nirodhasaññā.
+[09:24.30]83 Katamā c'Ānanda, sabba-loke anabhiratasaññā?
+[09:29.60]84 Idh'Ānanda, bhikkhu ye loke upādānā cetaso adhiṭṭhānābhinivesānusayā,
+[09:41.10]85 te pajahanto viharati anupādiyanto.
+[09:46.06]86 Ayaṁ vuccat'Ānanda sabba-loke anabhirata-saññā.
+[09:52.04]87 Katamā c'Ānanda sabba-saṅkhāresu anicchāsaññā?
+[09:58.82]88 Idh'Ānanda bhikkhu sabba-saṅkhāresu aṭṭīyati, harāyati, jigucchati.
+[10:07.18]89 Ayaṁ vuccat’ Ānanda, sabba-saṅkhāresu anicchā-saññā.
+[10:12.80]90 Katamā c'Ānanda ānāpānassati?
+[10:17.76]91 Idh'Ānanda,
+[10:19.30]92 bhikkhu arañña-gato vā rukkhamūla-gato vā suññāgāra-gato vā nisīdati,
+[10:28.58]93 pallaṅkaṁ ābhujitvā ujuṁ kāyaṁ paṇidhāya parimukhaṁ satiṁ upaṭṭhapetvā.
+[10:37.24]94 So sato'va assasati sato'va passasati.
+[10:42.50]95 Dīghaṁ vā assasanto:
+[10:45.14]96 Dīghaṁ assasāmī'ti pajānāti.
+[10:49.44]97 Dīghaṁ vā passasanto:
+[10:52.32]98 Dīghaṁ passasāmī'ti pajānāti.
+[10:56.08]99 Rassaṁ vā assasanto:
+[10:59.34]100 Rassaṁ assasāmī'ti pajānāti.
+[11:03.50]101 Rassaṁ vā passasanto:
+[11:06.40]102 Rassaṁ passasāmī'ti pajānāti.
+[11:10.58]103 Sabba-kāyapaṭisaṁvedī assasissāmī'ti sikkhati.
+[11:16.48]104 Sabbakāya-paṭisaṁvedī passasissāmī'ti sikkhati.
+[11:23.34]105 Passambhayaṁ kāya-saṅkhāraṁ assasissāmī'ti sikkhati.
+[11:30.40]106 Passambhayaṁ kāya-saṅkhāraṁ passasissāmī'ti sikkhati.
+[11:36.70]107 Pīti-paṭisaṁvedī assasissāmī'ti sikkhati.
+[11:42.86]108 Pīti-paṭisaṁvedī passasissāmī'ti sikkhati.
+[11:48.58]109 Sukha-paṭisaṁvedī assasissāmī'ti sikkhati.
+[11:54.10]110 Sukha-paṭisaṁvedī passasissāmī'ti sikkhati.
+[11:59.18]111 Citta-saṅkhāra-paṭisaṁvedī assasissāmī'ti sikkhati.
+[12:06.50]112 Citta-saṅkhāra-paṭisaṁvedī passasissāmī'ti sikkhati.
+[12:13.18]113 Passambhayaṁ cittasaṅkhāraṁ assasissāmī'ti sikkhati.
+[12:19.32]114 Passambhayaṁ citta-saṅkhāraṁ passasissāmī'ti sikkhati.
+[12:26.54]115 Citta-paṭisaṁvedī assasissāmī'ti sikkhati.
+[12:32.02]116 Citta-paṭisaṁvedī passasissāmī'ti sikkhati.
+[12:37.12]117 Abhippamodayaṁ cittaṁ assasissāmī'ti sikkhati.
+[12:43.66]118 Abhippamodayaṁ cittaṁ passasissāmī'ti sikkhati.
+[12:49.56]119 Samādahaṁ cittaṁ assasissāmī'ti sikkhati.
+[12:54.74]120 Samādahaṁ cittaṁ passasissāmī'ti sikkhati.
+[12:59.46]121 Vimocayaṁ cittaṁ assasissāmī'ti sikkhati.
+[13:05.38]122 Vimocayaṁ cittaṁ passasissāmī'ti sikkhati.
+[13:10.76]123 Aniccānupassī assasissāmī'ti sikkhati.
+[13:15.84]124 Aniccānupassī passasissāmī'ti sikkhati.
+[13:20.66]125 Virāgānupassī assasissāmī'ti sikkhati.
+[13:26.36]126 Virāgānupassī passasissāmī'ti sikkhati.
+[13:31.50]127 Nirodhānupassī assasissāmī'ti sikkhati.
+[13:36.76]128 Nirodhānupassī passasissāmī'ti sikkhati.
+[13:41.68]129 Paṭinissaggānupassī assasissāmī'ti sikkhati.
+[13:48.12]130 Paṭinissaggānupassī passasissāmī'ti sikkhati.
+[13:54.72]131 Ayaṁ vuccat’ Ānanda, ānāpānassati.
+[14:00.00]132 Sace kho tvaṁ Ānanda Girimānandassa bhikkhuno imā dasa saññā bhāseyyāsi,
+[14:12.58]133 ṭhānaṁ kho pan'etaṁ vijjati yaṁ Girimānandassa bhikkhuno imā dasa
+[14:20.62]134 saññā sutvā so ābādho ṭhānaso paṭippassambheyyā'ti.
+[14:29.34]135 Atha kho āyasmā Ānando bhagavato santike imā dasa saññā
+[14:37.26]136 uggahetvā yen'āyasmā Girimānando ten'upasaṅkami,
+[14:43.90]137 upasaṅkamitvā āyasmato Girimānandassa imā dasa saññā abhāsi.
+[14:53.36]138 Atha kho āyasmato Girimānandassa dasa saññā sutvā
+[15:00.70]139 so ābādho ṭhānaso paṭippassambhi.
+[15:05.54]140 Vuṭṭhahi c'āyasmā Girimānando tamhā ābādhā.
+[15:12.70]141 Tathā pahīno ca pan'āyasmato Girimānandassa so ābādho ahosī'ti.
+142 Girimānanda-suttaṁ niṭṭhitaṁ.
+
+[chant:0191 etena-sacca-vajjena]
+[15:26.69]1 Etena sacca-vajjena dukkhā vūpasamentu te
+[15:32.68]2 Etena sacca-vajjena bhayā vūpasamentu te
+[15:38.68]3 Etena sacca-vajjena rogā vūpasamentu te
+[15:49.69]

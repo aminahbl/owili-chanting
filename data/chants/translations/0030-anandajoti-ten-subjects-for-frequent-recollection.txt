@@ -1,0 +1,61 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Safeguard Recitals, "06. The Discourse on the Ten Things":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Safeguard/01-Pathamakabhanavaram-06.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# The leader's words at the start of line 1 are marked with curly brackets, as for any leader line.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0030 ten-subjects-for-frequent-recollection]
+# {Dasa ime bhikkhave} dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā, katame dasa
+1 {“There are these ten things, monks,} that one who has gone forth should frequently reflect on. What are the ten?
+# Vevaṇṇiyamhi ajjhupagato'ti
+2 “I have become one who has no (distinctive) appearance”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+3 one who has gone forth should frequently reflect on this.
+# Parapaṭibaddhā me jīvikā'ti
+4 “I am bound to others for my livelihood”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+5 one who has gone forth should frequently reflect on this.
+# Añño me ākappo karaṇīyo'ti
+6 “I should comport myself differently”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+7 one who has gone forth should frequently reflect on this.
+# Kacci nu kho me attā sīlato na upavadatī'ti
+8 “Can I myself find no fault with my virtue?”
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+9 one who has gone forth should frequently reflect on this.
+# Kacci nu kho maṁ anuvicca viññū sabrahmacārī sīlato na upavadantī'ti
+10 “Will my wise companions in the spiritual life, after testing me, find no fault with my virtue?”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+11 one who has gone forth should frequently reflect on this.
+# Sabbehi me piyehi manāpehi nānābhāvo vinābhāvo'ti
+12 “There is alteration in, and separation from, all that is dear and appealing to me”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+13 one who has gone forth should frequently reflect on this.
+# Kammassakomhi kammadāyādo kammayoni kammabandhu kammapaṭisaraṇo,
+14 “It is actions that I own, it is actions that I am heir to, it is actions that I am born from, actions are my kinsfolk, actions are my refuge -
+# yaṁ kammaṁ karissāmi, kalyāṇaṁ vā pāpakaṁ vā, tassa dāyādo bhavissāmī'ti
+15 whatever actions I perform, whether good or bad, to that I will be the heir”,
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+16 one who has gone forth should frequently reflect on this.
+# 'Kathambhūtassa me rattindivā vītipatantī'ti
+17 “In what way do the nights and days pass for me?”
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+18 one who has gone forth should frequently reflect on this.
+# Kacci nu kho'haṁ suññāgāre abhiramāmī'ti
+19 “Do I delight in empty places?”
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+20 one who has gone forth should frequently reflect on this.
+# Atthi nu kho me uttari-manussa-dhammā alamariya-ñāṇa-dassana-viseso adhigato,
+21 “Has a state beyond (ordinary) human beings - the distinction of what is truly noble knowledge and seeing - been attained by me?
+# so'haṁ pacchime kāle sabrahmacārīhi puṭṭho na maṅku bhavissāmī'ti
+22 Will I at the end, when questioned by my companions in the spiritual life, not be embarrassed?”
+# pabbajitena abhiṇhaṁ paccavekkhitabbaṁ
+23 one who has gone forth should frequently reflect on this.
+# Ime kho bhikkhave dasa dhammā pabbajitena abhiṇhaṁ paccavekkhitabbā'ti
+24 These are the ten things, monks, that one who has gone forth should frequently reflect on.”

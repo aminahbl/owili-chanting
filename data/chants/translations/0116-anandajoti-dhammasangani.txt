@@ -1,0 +1,30 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Abhidhamma Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Abhidhamma-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0116 dhammasangani]
+# Kusalā dhammā, akusalā dhammā, abyākatā dhammā.
+1 Wholesome thoughts, unwholesome thoughts, thoughts without consequences.
+# Katame dhammā kusalā.
+2 What are wholesome thoughts?
+# Yasmiṁ samaye kāmāvacaraṁ kusalaṁ cittaṁ uppannaṁ hoti,
+3 When a wholesome thought in the sensuous worlds has arisen,
+# somanassa-sahagataṁ ñāṇa-sampayuttaṁ,
+4 connected with well-being, joined with knowledge,
+# rūpārammaṇaṁ vā saddārammaṇaṁ vā gandhārammaṇaṁ vā rasārammaṇaṁ
+5 taking form as object, or sound as object, or smell as object, or taste as object,
+# vā phoṭṭhabbārammaṇaṁ vā dhammārammaṇaṁ vā,
+6 or touch as object, or thought as object,
+# yaṁ yaṁ vā panārabbha, tasmiṁ samaye phasso hoti, avikkhepo hoti,
+7 or whatever it begins with, at that time there is contact... balance.
+# ye vā pana tasmiṁ samaye aññe pi atthi paṭicca-samuppannā arūpino dhammā,
+8 At that time, these or other formless thoughts are conditionally originated.
+# ime dhammā kusalā.
+9 These are wholesome thoughts.

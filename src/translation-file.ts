@@ -72,6 +72,19 @@ export function checkChant(rows: Row[], lineIds: Set<number>, cueIds: Set<number
   return lines;
 }
 
+/** A published translation of one chant, which the build places in the chant's block for the settings to offer. */
+export interface PublishedTranslation {
+  /** The translator's ID in data/translators.ts. */
+  translator: string;
+  name: string;
+  lang: string;
+  lines: Record<string, Forms>;
+  /** The credit and licence, kept as comment rows in an export. */
+  notice: string;
+  /** The chant in the translator's source, linked from the credit in the settings. */
+  source: string;
+}
+
 /** A chant's lines for an export: each line's Pali, for a comment, and its translation, if it has one. */
 export interface ExportChant {
   id: string;
@@ -79,10 +92,11 @@ export interface ExportChant {
   lines: { id: string; pali: string; text: Forms | null }[];
 }
 
-export function writeTranslation(name: string, lang: string, chants: ExportChant[]): string {
+export function writeTranslation(name: string, lang: string, chants: ExportChant[], notices: string[] = []): string {
   const rows = [
     `[lang:${lang}]`,
     `[ti:${name}]`,
+    ...notices.map((notice) => `# ${notice}`),
     '# [lang] gives the language as a code, such as de, th or pt-BR.',
     '# Each row is a line ID and its translation. A row with no text is passed over.',
     '# A line with men’s and women’s forms can have two rows, such as 2/men and 2/women.',

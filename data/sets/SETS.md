@@ -1,6 +1,6 @@
 # Changing Sangha sets
 
-After any change, run `npm run check` and `npm run build`. The build names anything missing. Details are in [DATA.md](../DATA.md).
+Each section is a quick guide to one change. After any change, run `npm run check` and `npm run build`. The build names anything missing. How the data fits together, and the rules the steps follow, are in [DATA.md](../DATA.md).
 
 ## Add a set
 

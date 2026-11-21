@@ -1,0 +1,43 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Morning Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Morning-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates.
+# The leader's words at the start of line 1 are marked with curly brackets, as for any leader line.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0003 dedication-of-offerings]
+# {Yo so} bhagavā arahaṁ sammāsambuddho
+1 {He who is} the Fortunate One, the Worthy One, the Perfect Sambuddha,
+# Svākkhāto yena bhagavatā dhammo
+2 the Dhamma which has been well-proclaimed by the Fortunate One,
+# Supaṭipanno yassa bhagavato sāvakasaṅgho
+3 the Fortunate One’s Saṅgha of disciples who are good in their practice:
+# Tam-mayaṁ bhagavantaṁ sadhammaṁ sasaṅghaṁ
+4 the Fortunate One, together with the Dhamma and the Saṅgha,
+# Imehi sakkārehi yathārahaṁ āropitehi abhipūjayāma
+5 we worship, as is worthy, together with the respects that are prescribed.
+# Sādhu no bhante bhagavā sucira-parinibbutopi
+6 Although our venerable Fortunate One has attained Nibbāna a very long time ago,
+# Pacchimā-janatānukampa-mānasā
+7 out of a compassionate mind for later generations,
+# Ime sakkāre duggata-paṇṇākāra-bhūte paṭiggaṇhātu
+8 please accept these poor offerings, given with respect,
+# Amhākaṁ dīgharattaṁ hitāya sukhāya
+9 for our benefit and happiness for a long time.
+# Arahaṁ sammāsambuddho bhagavā
+10 The Fortunate One is Worthy, the Perfect Sambuddha:
+# Buddhaṁ bhagavantaṁ abhivādemi
+11 I worship the Buddha, the Fortunate One.
+# {Svākkhāto} bhagavatā dhammo
+12 The Dhamma has been well-proclaimed by the Fortunate One:
+# Dhammaṁ namassāmi
+13 I honour the Dhamma.
+# {Supaṭipanno} bhagavato sāvakasaṅgho
+14 The Fortunate One’s Saṅgha of disciples are good in their practice:
+# Saṅghaṁ namāmi
+15 I revere the Saṅgha.

@@ -1,0 +1,27 @@
+[lang:en]
+[ti:Ānandajoti Bhikkhu]
+# English translation © Ānandajoti Bhikkhu.
+# Source: Ancient Buddhist Texts, Thai Chanting, "Morning Chanting":
+# https://ancient-buddhist-texts.net/Texts-and-Translations/Thai-Chanting/Morning-Chanting.htm
+# Licensed under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+# The words are as published. Each English line is placed with the line of the chant it
+# translates, and where a chant line holds several of the source's lines, their English is joined.
+# Where a source line holds several of the chant's lines, its English is divided at its commas.
+# This file is licensed under CC BY-SA 3.0, and is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0006 homage-to-the-dhamma]
+# Yo so svākkhāto bhagavatā dhammo
+1 That which is the Dhamma has been well-proclaimed by the Fortunate One,
+# Sandiṭṭhiko,
+2 it is visible,
+# Akāliko,
+3 not subject to time,
+# Ehipassiko,
+4 inviting inspection,
+# Opanayiko
+5 onward leading,
+# Paccattaṁ veditabbo viññūhi
+6 and can be understood by the wise for themselves.
+# Tam-ahaṁ dhammaṁ abhipūjayāmi tam-ahaṁ dhammaṁ sirasā namāmi
+7 I worship that Dhamma, I bow my head to that Dhamma.

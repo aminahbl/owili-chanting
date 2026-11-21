@@ -1,0 +1,24 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on the Unconditioned":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L483
+# Printed in the web edition of 2024-12-26, page 49: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=57
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0035 reflection-on-the-unconditioned]
+# Atthi bhikkhave ajātaṁ abhūtaṁ akataṁ asaṅkhataṁ
+1 There is an Unborn, Unoriginated, Uncreated and Unformed.
+# No cetaṁ bhikkhave abhavissa ajātaṁ abhūtaṁ akataṁ asaṅkhataṁ
+2 If there was not this Unborn, this Unoriginated, this Uncreated, this Unformed,
+# Na yidaṁ jātassa bhūtassa katassa saṅkhatassa nissaraṇaṁ paññāyetha
+3 Freedom from the world of the born, the originated, the created, the formed would not be possible.
+# Yasmā ca kho bhikkhave atthi ajātaṁ abhūtaṁ akataṁ asaṅkhataṁ
+4 But since there is an Unborn, Unoriginated, Uncreated and Unformed,
+# Tasmā jātassa bhūtassa katassa saṅkhatassa nissaraṇaṁ paññāyati
+5 Therefore is freedom possible from the world of the born, the originated, the created and the formed.

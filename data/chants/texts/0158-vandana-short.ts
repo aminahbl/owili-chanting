@@ -5,10 +5,10 @@ export const chant = {
   slug: "vandana-short",
   title: "Homage (short)",
   paliTitle: "Vandanā (short)",
-  paliSource: { label: "Bhikkhu Manual", url: "https://bhikkhu-manual.github.io/chants/parittas.html#namo-tassa", categories: [{ category: "Parittas", subcategory: "Introductory Chants", order: 3 }] },
+  paliSource: { label: "Community Chanting Book, Volume Two", url: "https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/parittas.tex#L37", categories: [{ category: "Parittas", order: 2 }] },
   translation: "draft",
   editorial: [
-    { status: "changed", note: "The manual's line chanted once, where *vandana* chants it three times." },
+    { status: "changed", note: "The chanting book's line chanted once, where *vandana* chants it three times." },
   ],
   sections: [
     {

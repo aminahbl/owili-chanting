@@ -14,10 +14,18 @@ export const chant = {
         { id: 2, pali: "acalā supatiṭṭhitā", en: "unshakeable and well established," },
         { id: 3, pali: "Sīlañ-ca yassa kalyāṇaṁ", en: "and good virtue," },
         { id: 4, pali: "ariya-kantaṁ pasaṁsitaṁ", en: "loved and praised by the noble ones," },
+      ],
+    },
+    {
+      lines: [
         { id: 5, pali: "Saṅghe pasādo yass'atthi", en: "who has confidence in the Saṅgha" },
         { id: 6, pali: "uju-bhūtañ-ca dassanaṁ", en: "and whose view is straight:" },
         { id: 7, pali: "Adaliddo-ti taṁ āhu", en: "they are called 'not poor';" },
         { id: 8, pali: "amoghaṁ tassa jīvitaṁ", en: "their life is not in vain." },
+      ],
+    },
+    {
+      lines: [
         { id: 9, pali: "Tasmā saddhañ-ca sīlañ-ca", en: "Therefore faith and virtue," },
         { id: 10, pali: "pasādaṁ dhamma-dassanaṁ", en: "confidence and seeing the Dhamma," },
         { id: 11, pali: "Anuyuñjetha medhāvī", en: "the wise should pursue," },

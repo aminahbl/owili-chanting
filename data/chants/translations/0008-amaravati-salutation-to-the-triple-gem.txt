@@ -1,0 +1,124 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Salutation to the Triple Gem":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/morning-chanting.tex#L354
+# Printed in the web edition of 2024-12-26, page 9: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=17
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0008 salutation-to-the-triple-gem]
+# Buddho susuddho karuṇā-mahaṇṇavo
+1 The Buddha, absolutely pure, with ocean-like compassion,
+# Yo'ccanta-suddhabbara-ñāṇa-locano
+2 Possessing the clear sight of wisdom,
+# Lokassa pāpūpakilesa-ghātako
+3 Destroyer of worldly self-corruption —
+# Vandāmi buddhaṁ aham-ādarena taṁ
+4 Devotedly indeed, that Buddha I revere.
+# Dhammo padīpo viya tassa satthuno
+5 The Teaching of the Lord, like a lamp,
+# Yo magga-pākāmata-bheda-bhinnako
+6 Illuminating the Path and its Fruit: the Deathless,
+# Lokuttaro yo ca tad-attha-dīpano
+7 That which is beyond the conditioned world —
+# Vandāmi dhammaṁ aham-ādarena taṁ
+8 Devotedly indeed, that Dhamma I revere.
+# Saṅgho sukhettābhyati-khetta-saññito
+9 The Saṅgha, the most fertile ground for cultivation,
+# Yo diṭṭha-santo sugatānubodhako
+10 Those who have realized peace, awakened after the Accomplished One,
+# Lolappahīno ariyo sumedhaso
+11 Noble and wise, all longing abandoned —
+# Vandāmi saṅghaṁ aham-ādarena taṁ
+12 Devotedly indeed, that Saṅgha I revere.
+# Iccevam-ekantabhipūja-neyyakaṁ vatthuttayaṁ vandayatābhisaṅkhataṁ
+13 This salutation should be made to that which is worthy.
+# Puññaṁ mayā yaṁ mama sabbupaddavā mā hontu ve tassa pabhāva-siddhiyā
+14 Through the power of such good action, may all obstacles disappear.
+# Idha tathāgato loke uppanno arahaṁ sammāsambuddho
+15 One who knows things as they are has come into this world; and he is an Arahant, a perfectly Awakened being,
+# Dhammo ca desito niyyāniko upasamiko parinibbāniko sambodhagāmī sugatappavedito
+16 Purifying the way leading out of delusion, calming and directing to perfect peace, and leading to enlightenment — this Way he has made known.
+# Mayan-taṁ dhammaṁ sutvā evaṁ jānāma
+17 Having heard the Teaching, we know this:
+# Jātipi dukkhā
+18 Birth is dukkha,
+# Jarāpi dukkhā
+19 Ageing is dukkha,
+# Maraṇampi dukkhaṁ
+20 And death is dukkha;
+# Soka-parideva-dukkha-domanass'upāyāsāpi dukkhā
+21 Sorrow, lamentation, pain, grief, and despair are dukkha;
+# Appiyehi sampayogo dukkho
+22 Association with the disliked is dukkha;
+# Piyehi vippayogo dukkho
+23 Separation from the liked is dukkha;
+# Yamp'icchaṁ na labhati tampi dukkhaṁ
+24 Not attaining one's wishes is dukkha.
+# Saṅkhittena pañcupādānakkhandhā dukkhā
+25 In brief, the five focuses of identity are dukkha.
+# Seyyathīdaṁ
+26 These are as follows:
+# Rūpūpādānakkhandho
+27 Attachment to form,
+# Vedanūpādānakkhandho
+28 Attachment to feeling,
+# Saññūpādānakkhandho
+29 Attachment to perception,
+# Saṅkhārūpādānakkhandho
+30 Attachment to mental formations,
+# Viññāṇūpādānakkhandho
+31 Attachment to sense-consciousness.
+# Yesaṁ pariññāya
+32 For the complete understanding of this,
+# Dharamāno so bhagavā evaṁ bahulaṁ sāvake vineti
+33 The Blessed One in his lifetime frequently instructed his disciples in just this way.
+# Evaṁ bhāgā ca panassa bhagavato sāvakesu anusāsanī bahulā pavattati
+34 In addition, he further instructed:
+# Rūpaṁ aniccaṁ
+35 Form is impermanent,
+# Vedanā aniccā
+36 Feeling is impermanent,
+# Saññā aniccā
+37 Perception is impermanent,
+# Saṅkhārā aniccā
+38 Mental formations are impermanent,
+# Viññāṇaṁ aniccaṁ
+39 Sense-consciousness is impermanent;
+# Rūpaṁ anattā
+40 Form is not-self,
+# Vedanā anattā
+41 Feeling is not-self,
+# Saññā anattā
+42 Perception is not-self,
+# Saṅkhārā anattā
+43 Mental formations are not-self,
+# Viññāṇaṁ anattā
+44 Sense-consciousness is not-self;
+# Sabbe saṅkhārā aniccā
+45 All conditions are transient,
+# Sabbe dhammā anattā'ti
+46 There is no self in the created or the uncreated.
+# Te mayaṁ otiṇṇāmha jātiyā jarā-maraṇena
+47 All of us are bound by birth, ageing, and death,
+# Sokehi paridevehi dukkhehi domanassehi upāyāsehi
+48 By sorrow, lamentation, pain, grief, and despair,
+# Dukkhotiṇṇā dukkha-paretā
+49 Bound by dukkha and obstructed by dukkha.
+# Appeva nāmimassa kevalassa dukkha-kkhandhassa antakiriyā paññāyethā'ti
+50 Let us all aspire to complete freedom from suffering.
+# Cira-parinibbutampi taṁ bhagavantaṁ uddissa arahantaṁ sammāsambuddhaṁ
+52 Remembering the Blessed One, the Noble Lord, and Perfectly Enlightened One, who long ago attained Parinibbāna,
+# Saddhā agārasmā anagāriyaṁ pabbajitā
+53 We have gone forth with faith from home to homelessness,
+# Tasmiṁ bhagavati brahma-cariyaṁ carāma
+54 And like the Blessed One, we practise the Holy Life,
+# Bhikkhūnaṁ sikkhāsājīva-samāpannā
+55 Being fully equipped with the bhikkhus'/nuns' system of training.
+# Taṁ no brahma-cariyaṁ imassa kevalassa dukkha-kkhandhassa antakiriyāya saṁvattatu
+56 May this Holy Life lead us to the end of this whole mass of suffering.

@@ -1,0 +1,32 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Taking the Three Refuges":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/formal-requests.tex#L158
+# Printed in the web edition of 2024-12-26, page 128: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=136
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# Lines are divided as the book divides them.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0002 sarana-gamana-patha]
+# Buddhaṁ saraṇaṁ gacchāmi
+1 To the Buddha I go for refuge.
+# Dhammaṁ saraṇaṁ gacchāmi
+2 To the Dhamma I go for refuge.
+# Saṅghaṁ saraṇaṁ gacchāmi
+3 To the Saṅgha I go for refuge.
+# Dutiyam pi buddhaṁ saraṇaṁ gacchāmi
+4 For the second time, to the Buddha I go for refuge.
+# Dutiyam pi dhammaṁ saraṇaṁ gacchāmi
+5 For the second time, to the Dhamma I go for refuge.
+# Dutiyam pi saṅghaṁ saraṇaṁ gacchāmi
+6 For the second time, to the Saṅgha I go for refuge.
+# Tatiyam pi buddhaṁ saraṇaṁ gacchāmi
+7 For the third time, to the Buddha I go for refuge.
+# Tatiyam pi dhammaṁ saraṇaṁ gacchāmi
+8 For the third time, to the Dhamma I go for refuge.
+# Tatiyam pi saṅghaṁ saraṇaṁ gacchāmi
+9 For the third time, to the Saṅgha I go for refuge.

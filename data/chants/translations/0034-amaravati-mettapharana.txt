@@ -1,0 +1,48 @@
+[lang:en]
+[ti:Amaravati Buddhist Monastery]
+# English translation © Amaravati Buddhist Monastery, published by Amaravati Publications.
+# Source: the Community Chanting Book, the LaTeX source of Chanting Book, Volume One, "Reflection on Universal Well-Being":
+# https://github.com/profound-labs/community-chanting-book/blob/55d625dc81d25483d760877ce4c2f304caa8bcc4/chapters/english/reflections-and-recollections-p1.tex#L248
+# Printed in the web edition of 2024-12-26, page 41: https://abhayagiri.org/media/Chanting-Book-EN-Vol-1-Web-2024-12-26.pdf#page=49
+# Licensed under CC BY-NC-ND 4.0: https://creativecommons.org/licenses/by-nc-nd/4.0/
+# The words are as published. Tone marks are left out, the leader's words are marked with
+# curly brackets instead of square ones, and lines that wrap in print are joined.
+# The book pairs most lines; where one English line faces two Pali lines, the break between them is ours.
+# This file is not covered by the licence of the repository it is in.
+# Each row is a line number of the chant and its English; the # row above it gives the Pali.
+
+[chant:0034 mettapharana]
+# Ahaṁ sukhito homi
+1 May I abide in well-being,
+# Niddukkho homi,
+2 In freedom from affliction,
+# Avero homi,
+3 In freedom from hostility,
+# Abyāpajjho homi,
+4 In freedom from ill-will,
+# Anīgho homi,
+5 In freedom from anxiety,
+# Sukhī attānaṁ pariharāmi
+6 And may I maintain well-being in myself.
+# Sabbe sattā sukhitā hontu,
+7 May everyone abide in well-being,
+# Sabbe sattā averā hontu,
+8 In freedom from hostility,
+# Sabbe sattā abyāpajjhā hontu,
+9 In freedom from ill-will,
+# Sabbe sattā anīghā hontu,
+10 In freedom from anxiety, and may they
+# Sabbe sattā sukhī attānaṁ pariharantu
+11 Maintain well-being in themselves.
+# Sabbe sattā sabbadukkhā pamuccantu
+12 May all beings be released from all suffering.
+# Sabbe sattā laddha-sampattito mā vigacchantu
+13 And may they not be parted from the good fortune they have attained.
+# Sabbe sattā kammassakā kammadāyādā kammayonī kammabandhū kammapaṭisaraṇā,
+14 When they act upon intention, All beings are the owners of their action and inherit its results. Their future is born from such action, companion to such action, And its results will be their home.
+# Yaṁ kammaṁ karissanti,
+15 All actions with intention,
+# Kalyāṇaṁ vā pāpakaṁ vā,
+16 Be they skilful or harmful —
+# Tassa dāyādā bhavissanti
+17 Of such acts they will be the heirs.
