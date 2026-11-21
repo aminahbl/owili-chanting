@@ -19,6 +19,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0146", // aungsi-sayadaw-dhammacakkappavattana-sutta
     "0150", // cloud-mountain-refuges-and-eight-precepts
     "0152", // narayan-liebenson-blessings
+    "0192", // unknown-girimananda-sutta
   ] },
   { id: 'reverence', title: 'Reverence', chants: [
     "0001", // vandana
@@ -184,6 +185,7 @@ export const groups: { id: string; title: string; chants: string[] }[] = [
     "0085", // blessing-and-protection
     "0093", // blessing-to-the-world
     "0043", // pasanna-hontu-sabbe-pi
+    "0191", // etena-sacca-vajjena
   ] },
   { id: 'dedications', title: 'Dedications', chants: [
     "0092", // transference-of-merit-to-devas

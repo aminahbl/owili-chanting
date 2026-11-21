@@ -195,4 +195,6 @@ export const ids: { id: string; slug: string; retired?: true }[] = [
   { id: '0188', slug: 'prelude-reflection-on-impermanence' },
   { id: '0189', slug: 'prelude-the-guardian-meditations' },
   { id: '0190', slug: 'prelude-anapanassati-sutta' },
+  { id: '0191', slug: 'etena-sacca-vajjena' },
+  { id: '0192', slug: 'unknown-girimananda-sutta' },
 ];
